@@ -2,10 +2,6 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign social_icons = true
-  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
-    assign social_icons = false
-  endif
   if section.settings.enable_country_selector or section.settings.enable_language_selector
     assign language_country_selector = true
   endif
@@ -14,21 +10,11 @@
   endif
 -%}
 
-{% if social_icons %}
-  {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
-{% endif %}
-
-<div
-  class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
-  {{ block.shopify_attributes }}
->
-  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
-    {%- if section.settings.show_social and social_icons -%}
-      {%- render 'social-icons' -%}
-    {%- endif -%}
+<div class="page-width">
+  <div class="inne-announcement-bar">
     {%- if section.blocks.size == 1 -%}
       <div
-        class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}"
+        class="announcement-bar"
         role="region"
         aria-label="{{ 'sections.header.announcement' | t }}"
         {{ block.shopify_attributes }}
@@ -52,6 +38,157 @@
         {%- endif -%}
       </div>
     {%- elsif section.blocks.size > 1 -%}
+      {% comment %}  {% endcomment %}
+      {% if settings.enable_country_widget %}
+        <div
+          class="announcement-widget_countries {{ section.settings.show_on }}"
+          data-section-id="{{ section.id }}"
+        >
+          <p class="delivery-heading">Delivery</p>
+          <div class="widget_countries widget_countries_selector">
+            <div class="wrap_widget_countries">
+              <div class="selected_flag"><div class="fflag fflag-US ff-sm"></div></div>
+              <div class="arrow-down"></div>
+            </div>
+            <div class="wp_show_select_countries wp_show_popup_adv">
+              <div class="show_select_countries show_popup_adv">
+                <div class="title_c">Select regional settings</div>
+                <div class="pad">
+                  <div class="grouped">
+                    <label aria-label="Country of delivery">Country of delivery</label>
+                    <div class="selectioner" role="listbox">
+                      <div class="selected_country arrow-down">
+                        <span class="fflag fflag-US ff-sm"></span><span class="country_name">United States</span>
+                      </div>
+                      <div class="selector_country">
+                        {% render 'flags' %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="widget_countries widget_countries_deliveries">
+            <div class="delivery_options domestic">
+              <p class="main_text">
+                <span class="free_delivery domestic">{{ settings.country_widget_domestic_delivery_free }}</span>
+                <span class="free_delivery international">
+                  {{- settings.country_widget_international_delivery_free -}}
+                </span>
+                <a class="interogation" href="{{ settings.country_widget_shipping_page_link.url }}">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 0C2.6838 0 0 2.6835 0 6C0 9.31615 2.6835 12 6 12C9.3162 12 12 9.3165 12 6C12 2.68385 9.3165 0 6 0ZM6.61615 8.38174C6.61615 8.5713 6.33973 8.76082 6.00012 8.76082C5.64471 8.76082 5.39201 8.5713 5.39201 8.38174V5.37267C5.39201 5.15154 5.64473 5.00145 6.00012 5.00145C6.33973 5.00145 6.61615 5.15154 6.61615 5.37267V8.38174ZM6.00014 4.27491C5.63684 4.27491 5.35254 4.00638 5.35254 3.70624C5.35254 3.40612 5.63686 3.1455 6.00014 3.1455C6.35555 3.1455 6.63989 3.40612 6.63989 3.70624C6.63989 4.00638 6.35552 4.27491 6.00014 4.27491Z" fill="#9F9F9F"/>
+                  </svg>
+                </a>
+              </p>
+              <div class="wrap_delivery_pop wp_show_popup_adv">
+                <div class="show_popup_adv">
+                  <div class="title_c">Delivery to (<span class="country_name">United States</span>)</div>
+                  <div class="pad">
+                    {% if settings.country_widget_domestic_delivery_option1 != blank
+                      and settings.country_widget_domestic_delivery_option1_logo != blank
+                    %}
+                      <div class="options domestic grouped">
+                        <div class="option option1">{{ settings.country_widget_domestic_delivery_option1 }}</div>
+                        <div class="logo_delivery logo1">
+                          {% comment %}
+                            <img
+                              class="Image--lazyLoad Image--fadeIn"
+                              data-src="{{ settings.country_widget_domestic_delivery_option1_logo | img_url: '300x', scale: 2 }}"
+                              src="{{ settings.country_widget_domestic_delivery_option1_logo | img_url: '300x', scale: 2 }}"
+                              alt="{{ settings.country_widget_domestic_delivery_option1_logo.alt | escape }}"
+                            >
+                          {% endcomment %}
+                          {%- assign alt = settings.country_widget_domestic_delivery_option1_logo.alt | escape -%}
+                          {{
+                            settings.country_widget_domestic_delivery_option1_logo
+                            | image_url: width: 300
+                            | image_tag: loading: 'lazy', class: 'Image--lazyLoad Image--fadeIn', alt: alt
+                          }}
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if settings.country_widget_domestic_delivery_option2 != blank
+                      and settings.country_widget_domestic_delivery_option2_logo != blank
+                    %}
+                      <div class="options domestic grouped">
+                        <div class="option option2">{{ settings.country_widget_domestic_delivery_option2 }}</div>
+                        <div class="logo_delivery logo2">
+                          {% comment %}
+                            <img
+                              class="Image--lazyLoad Image--fadeIn"
+                              data-src="{{ settings.country_widget_domestic_delivery_option2_logo | img_url: '300x', scale: 2 }}"
+                              src="{{ settings.country_widget_domestic_delivery_option2_logo | img_url: '300x', scale: 2 }}"
+                              alt="{{ settings.country_widget_domestic_delivery_option2_logo.alt | escape }}"
+                            >
+                          {% endcomment %}
+                          {%- assign alt = settings.country_widget_domestic_delivery_option2_logo.alt | escape -%}
+                          {{
+                            settings.country_widget_domestic_delivery_option2_logo
+                            | image_url: width: 300
+                            | image_tag: loading: 'lazy', class: 'Image--lazyLoad Image--fadeIn', alt: alt
+                          }}
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if settings.country_widget_international_delivery_option1 != blank
+                      and settings.country_widget_international_delivery_option1_logo != blank
+                    %}
+                      <div class="options international grouped">
+                        <div class="option option1">{{ settings.country_widget_international_delivery_option1 }}</div>
+                        <div class="logo_delivery logo1">
+                          {% comment %}
+                            <img
+                              class="Image--lazyLoad Image--fadeIn"
+                              data-src="{{ settings.country_widget_international_delivery_option1_logo | img_url: '300x', scale: 2 }}"
+                              src="{{ settings.country_widget_international_delivery_option1_logo | img_url: '300x', scale: 2 }}"
+                              alt="{{ settings.country_widget_international_delivery_option1_logo.alt | escape }}"
+                            >
+                          {% endcomment %}
+                          {%- assign alt = settings.country_widget_international_delivery_option1_logo.alt | escape -%}
+                          {{
+                            settings.country_widget_international_delivery_option1_logo
+                            | image_url: width: 300
+                            | image_tag: loading: 'lazy', class: 'Image--lazyLoad Image--fadeIn', alt: alt
+                          }}
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if settings.country_widget_international_delivery_option2 != blank
+                      and settings.country_widget_international_delivery_option2_logo != blank
+                    %}
+                      <div class="options international grouped">
+                        <div class="option option2">{{ settings.country_widget_international_delivery_option2 }}</div>
+                        <div class="logo_delivery logo2">
+                          {% comment %}
+                            <img
+                              class="Image--lazyLoad Image--fadeIn"
+                              data-src="{{ settings.country_widget_international_delivery_option2_logo | img_url: '300x', scale: 2 }}"
+                              src="{{ settings.country_widget_international_delivery_option2_logo | img_url: '300x', scale: 2 }}"
+                              alt="{{ settings.country_widget_international_delivery_option2_logo.alt | escape }}"
+                            >
+                          {% endcomment %}
+                          {%- assign alt = settings.country_widget_international_delivery_option2_logo.alt | escape -%}
+                          {{
+                            settings.country_widget_international_delivery_option2_logo
+                            | image_url: width: 300
+                            | image_tag: loading: 'lazy', class: 'Image--lazyLoad Image--fadeIn', alt: alt
+                          }}
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                  <p class="details">
+                    <a href="{{ settings.country_widget_shipping_page_link.url }}">Show more details</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {% comment %}  {% endcomment %}
       <slideshow-component
         class="announcement-bar"
         role="region"
@@ -66,7 +203,7 @@
             aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
             aria-controls="Slider-{{ section.id }}"
           >
-            {% render 'icon-caret' %}
+            {% render 'left-icon-arrow' %}
           </button>
           <div
             class="grid grid--1-col slider slider--everywhere"
@@ -120,7 +257,7 @@
             aria-label="{{ 'sections.announcements.next_announcement' | t }}"
             aria-controls="Slider-{{ section.id }}"
           >
-            {% render 'icon-caret' %}
+            {% render 'right-icon-arrow' %}
           </button>
         </div>
       </slideshow-component>
@@ -128,129 +265,66 @@
         <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
       {%- endif -%}
     {%- endif -%}
-    <div class="localization-wrapper">
-      {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
-        <noscript class="small-hide medium-hide">
-          {%- form 'localization', id: 'AnnouncementCountryMobileFormNoScript', class: 'localization-form' -%}
-            <div class="localization-form__select">
-              <h2 class="visually-hidden" id="AnnouncementCountryMobileLabelNoScript">
-                {{ 'localization.country_label' | t }}
-              </h2>
-              <select
-                class="localization-selector link"
-                name="country_code"
-                aria-labelledby="AnnouncementCountryMobileLabelNoScript"
-              >
-                {%- for country in localization.available_countries -%}
-                  <option
-                    value="{{ country.iso_code }}"
-                    {%- if country.iso_code == localization.country.iso_code %}
-                      selected
-                    {% endif %}
-                  >
-                    {{ country.name }} ({{ country.currency.iso_code }}
-                    {{ country.currency.symbol }})
-                  </option>
-                {%- endfor -%}
-              </select>
-              {% render 'icon-caret' %}
-            </div>
-            <button class="button button--tertiary">{{ 'localization.update_country' | t }}</button>
-          {%- endform -%}
-        </noscript>
 
-        <localization-form class="small-hide medium-hide no-js-hidden">
-          {%- form 'localization', id: 'AnnouncementCountryForm', class: 'localization-form' -%}
-            <div>
-              <h2 class="visually-hidden" id="AnnouncementCountryLabel">{{ 'localization.country_label' | t }}</h2>
-              {%- render 'country-localization', localPosition: 'AnnouncementCountry' -%}
-            </div>
-          {%- endform -%}
-        </localization-form>
-      {% endif %}
-
-      {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
-        <noscript class="small-hide medium-hide">
-          {%- form 'localization', id: 'AnnouncementLanguageMobileFormNoScript', class: 'localization-form' -%}
-            <div class="localization-form__select">
-              <h2 class="visually-hidden" id="AnnouncementLanguageMobileLabelNoScript">
-                {{ 'localization.language_label' | t }}
-              </h2>
-              <select
-                class="localization-selector link"
-                name="locale_code"
-                aria-labelledby="AnnouncementLanguageMobileLabelNoScript"
-              >
-                {%- for language in localization.available_languages -%}
-                  <option
-                    value="{{ language.iso_code }}"
-                    lang="{{ language.iso_code }}"
-                    {%- if language.iso_code == localization.language.iso_code %}
-                      selected
-                    {% endif %}
-                  >
-                    {{ language.endonym_name | capitalize }}
-                  </option>
-                {%- endfor -%}
-              </select>
-              {% render 'icon-caret' %}
-            </div>
-            <button class="button button--tertiary">{{ 'localization.update_language' | t }}</button>
-          {%- endform -%}
-        </noscript>
-
-        <localization-form class="small-hide medium-hide no-js-hidden">
-          {%- form 'localization', id: 'AnnouncementLanguageForm', class: 'localization-form' -%}
-            <div>
-              <h2 class="visually-hidden" id="AnnouncementLanguageLabel">{{ 'localization.language_label' | t }}</h2>
-              {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
-            </div>
-          {%- endform -%}
-        </localization-form>
-      {%- endif -%}
-    </div>
     {% comment %}  {% endcomment %}
-    <div class="doubly-wrapper" data-nosnippet=""></div>
+    <div class="doubly-wrapper custom-german" data-nosnippet=""></div>
     {% comment %}  {% endcomment %}
   </div>
 </div>
 
+<script defer="defer">
+  $(function () {
+    $('.selectioner .selected_country').on('click', function (e) {
+      e.preventDefault();
+      $(this).parent().toggleClass('active');
+    });
+    $('.selectioner .selector_country .option').on('click', function (e) {
+      e.preventDefault();
+      var international = $(this).attr('data-international');
+      var flagTag = $(this).attr('value');
+      var selected_country_text = $(this).find('.fflag').attr('title');
+      //console.log(international);
+      //modify flag
+      var selected = $('.widget_countries .selected_flag');
+      var selected_country = $('.selected_country');
+      selected.find('div').removeClass();
+      selected_country.find('.fflag').removeClass();
+      selected.find('div').addClass(flagTag);
+      selected_country.find('span:not(.country_name)').addClass(flagTag);
+      selected_country.find('.country_name').text(selected_country_text);
+      $('.wrap_delivery_pop .country_name').text(selected_country_text);
+      $(this).parents('.selectioner').removeClass('active');
+
+      //modify delivery
+      var delivery = $('.delivery_options');
+      if (international == 'true') {
+        delivery.removeClass('domestic').addClass('international');
+      } else {
+        delivery.removeClass('international').addClass('domestic');
+      }
+    });
+  });
+</script>
+
+{% style %}
+  .fflag {
+    background-image: url({{'flagSprite42.png'|asset_url}});
+    background-repeat: no-repeat;
+    background-size: 100% 49494%;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    box-sizing: content-box;
+    box-shadow: 0 0 0 1px rgba(220, 220, 220, 0.5);
+  }
+{% endstyle %}
 {% schema %}
 {
   "name": "Custom Announcement bar",
   "max_blocks": 12,
-  "class": "custom-announcement-bar",
-  "enabled_on": {
-    "groups": ["header"]
-  },
+  "class": "Grid--center widget-countries-currency custom-announcement-bar",
   "settings": [
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "accent-1"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_line_separator",
-      "default": true,
-      "label": "t:sections.header.settings.show_line_separator.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.announcement-bar.settings.header__1.content",
-      "info": "t:sections.announcement-bar.settings.header__1.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_social",
-      "default": false,
-      "label": "t:sections.announcement-bar.settings.show_social.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.announcement-bar.settings.header__2.content"
-    },
     {
       "type": "checkbox",
       "id": "auto_rotate",
@@ -288,6 +362,30 @@
       "id": "enable_language_selector",
       "default": false,
       "label": "t:sections.announcement-bar.settings.enable_language_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "Countries / Currencies"
+    },
+    {
+      "type": "select",
+      "id": "show_on",
+      "label": "Show",
+      "options": [
+        {
+          "value": "hidden-lap hidden-desk",
+          "label": "Only on Mobile"
+        },
+        {
+          "value": "hidden-phone hidden-pocket",
+          "label": "Only on Desktop"
+        },
+        {
+          "value": "",
+          "label": "Mobile and Desktop"
+        }
+      ],
+      "default": ""
     }
   ],
   "blocks": [

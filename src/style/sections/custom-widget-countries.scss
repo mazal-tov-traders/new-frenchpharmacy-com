@@ -707,20 +707,19 @@
     margin-left: 5px;
   }
   .widget_countries .wrap_widget_countries .arrow-down {
-    border: solid #1c1b1b;
+    border: solid #fff;
     border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+    margin-left: 33px;
     padding: 3px;
-    margin-left: 5px;
     position: relative;
-    top: -2px;
+    top: -22px;
+    transform: rotate(45deg);
   }
   .widget_countries .wrap_widget_countries {
     line-height: 1.25em;
     position: relative;
-    top: 8px;
+    top: 9px;
     text-align: left;
-    margin-bottom: 8px;
     cursor: pointer;
   }
   .widget_countries .wrap_widget_countries > p {
@@ -858,7 +857,6 @@
     width: 100%;
   }
   .widget_countries .delivery_options {
-    margin-top: 10px;
     display: inline-block;
   }
   .widget_countries .delivery_options.domestic .international,
@@ -876,26 +874,18 @@
   .delivery_options .main_text {
     text-transform: uppercase;
     cursor: pointer;
+    white-space: nowrap;
+    margin: 0;
   }
   .delivery_options .main_text .interogation {
     top: 2px;
-    border: 1px solid #000;
-    border-radius: 100%;
     width: 15px;
     height: 15px;
     display: inline-block;
     text-align: center;
-    font-size: 11px;
-    position: relative;
   }
-  .delivery_options .main_text .interogation:after {
-    content: '?';
-    color: #ff4713;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
+
+
   .wp_show_popup_adv.wrap_delivery_pop {
     transform: none;
     left: auto;
@@ -947,9 +937,6 @@
     top: 9px;
     right: auto;
   }
-  .widget-countries-currency {
-    margin-top: 35px;
-  }
   .widget-countries-currency.no-margin {
     margin-top: 0;
   }
@@ -968,4 +955,19 @@
   .widget-countries-currency .wp_show_popup_adv.wrap_delivery_pop {
     transform: translateX(-50%);
     left: 50%;
+  }
+
+  // 
+  .free_delivery.domestic {
+    font-family: "Proxima Nova" sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 22px;
+    text-align: left;
+    color: #fff;
+    text-transform: none ;
+  }
+  .delivery-heading{
+    margin: 0;
   }

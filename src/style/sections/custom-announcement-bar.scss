@@ -1,4 +1,39 @@
-.inne-rannouncement-bar{
+.custom-announcement-bar {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #2f2f2f;
+  .inne-announcement-bar {
     display: flex;
     justify-content: space-between;
+    .announcement-bar__message.h5 {
+      font-family: "Proxima Nova" sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 15.83px;
+      letter-spacing: 0.05em;
+      text-align: center;
+      color: rgba(255, 255, 255, 1);
+    }
+    .announcement-widget_countries {
+      display: flex;
+      align-items: center;
+      .delivery-heading {
+        font-family: 'Proxima Nova' sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 15.83px;
+        letter-spacing: 0.05em;
+        text-align: center;
+        color: #fff;
+      }
+    }
+
+    .doubly-wrapper.custom-german .doubly-nice-select .current{
+        color: #fff !important;
+    }
+    .doubly-wrapper .doubly-nice-select::after {
+        border-color: #fff !important;
+    }
+  }
 }
