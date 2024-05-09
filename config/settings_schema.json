@@ -1465,5 +1465,81 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Custom Announcement bar",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Countries \/ Currencies"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_country_widget",
+        "label": "Enable Country Widget",
+        "default": true
+      },
+      {
+        "type": "url",
+        "id": "country_widget_shipping_page_link",
+        "label": "Link"
+      },
+      {
+        "type": "text",
+        "id": "country_widget_domestic_delivery_free",
+        "label": "Domestic Free Delivery",
+        "info": "Main text for Free Delivery (Domestic)"
+      },
+      {
+        "type": "richtext",
+        "id": "country_widget_domestic_delivery_option1",
+        "label": "Domestic Delivery Option 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "country_widget_domestic_delivery_option1_logo",
+        "label": "Logo shipping 1",
+        "info": "220x png recommended"
+      },
+      {
+        "type": "richtext",
+        "id": "country_widget_domestic_delivery_option2",
+        "label": "Domestic Delivery Option 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "country_widget_domestic_delivery_option2_logo",
+        "label": "Logo shipping 2",
+        "info": "220x png recommended"
+      },
+      {
+        "type": "text",
+        "id": "country_widget_international_delivery_free",
+        "label": "International Free Delivery",
+        "info": "Main text for Free Delivery (International)"
+      },
+      {
+        "type": "richtext",
+        "id": "country_widget_international_delivery_option1",
+        "label": "International Delivery Option 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "country_widget_international_delivery_option1_logo",
+        "label": "Logo shipping 1",
+        "info": "220x png recommended"
+      },
+      {
+        "type": "richtext",
+        "id": "country_widget_international_delivery_option2",
+        "label": "International Delivery Option 2"
+      },
+      {
+        "type": "image_picker",
+        "id": "country_widget_international_delivery_option2_logo",
+        "label": "Logo shipping 2",
+        "info": "220x png recommended"
+      }
+    ]
   }
 ]

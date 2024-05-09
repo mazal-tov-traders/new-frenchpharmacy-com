@@ -1,0 +1,77 @@
+.custom-collection-list {
+  .collection-list {
+    display: flex;
+    max-width: 1920px;
+    width: 100%;
+    justify-content: space-between;
+
+    .collection-list-item {
+      transition: width 0.5s ease;
+      padding-bottom: 39px;
+      height: 627px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      cursor: pointer;
+      border-left: 1px solid #FFFFFF4D;
+      &__heading {
+        font-family: "Proxima Nova";
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 26.8px;
+        text-align: center;
+
+        color: #fff;
+        text-transform: uppercase;
+      }
+      &__sub-heading {
+        font-family: "Raleway", sans-serif;
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 25.83px;
+        letter-spacing: -0.03em;
+        text-align: left;
+        color: #fff;
+        display: none;
+      }
+      &__btn {
+        max-width: 152px;
+        height: 50px;
+        align-content: center;
+        text-align: center;
+        display: flex;
+        background: #ff5c35;
+        display: none;
+        .btn {
+          color: #fff;
+          font-family: "Proxima Nova", sans-serif;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 19.49px;
+          letter-spacing: -0.03em;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+    }
+    .collection-list-item.active {
+      padding: 0 50px 40px 50px;
+
+      .collection-list-item__heading {
+        padding-bottom: 10px;
+        font-family: "Barlow", sans-serif;
+        font-size: 34px;
+        font-weight: 500;
+        line-height: 40.8px;
+        text-align: left;
+      }
+      .collection-list-item__sub-heading {
+        padding-bottom: 30px;
+        display: block;
+      }
+      .collection-list-item__btn {
+        display: block;
+      }
+    }
+  }
+}
