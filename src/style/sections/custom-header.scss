@@ -1,5 +1,9 @@
-.header{
+.custom-header{
     .doubly-wrapper{
         display: none !important;
+    }
+    .inner-header{
+        display: flex;
+        justify-content: space-between;
     }
 }
