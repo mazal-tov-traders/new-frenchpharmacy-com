@@ -66,10 +66,77 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "custom_collection_list_BxrdBp": {
+      "type": "custom-collection-list",
+      "blocks": {
+        "featured_collection_fWiDPw": {
+          "type": "featured_collection",
+          "settings": {
+            "background": "shopify:\/\/shop_images\/Rectangle_4133742.jpg",
+            "heading": "Face",
+            "sub_heading": "Skincare you'll stick with",
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/collections\/books"
+          }
+        },
+        "featured_collection_HqnXLi": {
+          "type": "featured_collection",
+          "settings": {
+            "background": "shopify:\/\/shop_images\/Rectangle_4133742_1.jpg",
+            "heading": "Body",
+            "sub_heading": "Body care is a choice",
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/collections\/study-guides"
+          }
+        },
+        "featured_collection_aFWx9N": {
+          "type": "featured_collection",
+          "settings": {
+            "background": "shopify:\/\/shop_images\/Rectangle_4133742_2.jpg",
+            "heading": "Well Being",
+            "sub_heading": "Healthy, glowing skin basics",
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/collections\/study-guides"
+          }
+        },
+        "featured_collection_wqqmrb": {
+          "type": "featured_collection",
+          "settings": {
+            "background": "shopify:\/\/shop_images\/Rectangle_4133742_3.jpg",
+            "heading": "Hair",
+            "sub_heading": "Life isn't perfect but your hair can be",
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/collections\/frontpage"
+          }
+        },
+        "featured_collection_FHbMaU": {
+          "type": "featured_collection",
+          "settings": {
+            "background": "shopify:\/\/shop_images\/Rectangle_4133742_4.jpg",
+            "heading": "Baby",
+            "sub_heading": "Gentle care for newborn skin",
+            "button_label": "Shop Now",
+            "button_link": "shopify:\/\/collections\/study-guides"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_fWiDPw",
+        "featured_collection_HqnXLi",
+        "featured_collection_aFWx9N",
+        "featured_collection_wqqmrb",
+        "featured_collection_FHbMaU"
+      ],
+      "settings": {
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "featured_collection",
+    "custom_collection_list_BxrdBp"
   ]
 }

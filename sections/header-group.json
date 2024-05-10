@@ -2,32 +2,71 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "custom_announcement_bar_8iqKnU": {
+      "type": "custom-announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
+        "announcement_3DAY6d": {
+          "type": "announcement",
+          "settings": {
+            "text": "SHIPS 24-7 FROM OUR US WAREHOUSES",
+            "link": ""
+          }
+        },
+        "announcement_rF6x9Y": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome",
+            "link": ""
+          }
+        },
+        "announcement_9aAQnD": {
+          "type": "announcement",
+          "settings": {
+            "text": "SHIPS 24-7 FROM OUR US WAREHOUSES",
+            "link": "shopify:\/\/products\/miracles"
+          }
+        },
+        "announcement_xakyDK": {
           "type": "announcement",
           "settings": {
             "text": "Welcome to our store",
             "link": ""
           }
+        },
+        "announcement_zT38tJ": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        },
+        "announcement_WzLRzt": {
+          "type": "announcement",
+          "settings": {
+            "text": "SHIPS 24-7 FROM OUR US WAREHOUSES",
+            "link": ""
+          }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement_3DAY6d",
+        "announcement_rF6x9Y",
+        "announcement_9aAQnD",
+        "announcement_xakyDK",
+        "announcement_zT38tJ",
+        "announcement_WzLRzt"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "show_line_separator": true,
-        "show_social": false,
         "auto_rotate": false,
         "change_slides_speed": 5,
         "enable_country_selector": false,
-        "enable_language_selector": false
+        "enable_language_selector": false,
+        "show_on": ""
       }
     },
     "header": {
       "type": "header",
+      "disabled": true,
       "settings": {
         "logo_position": "middle-left",
         "menu": "main-menu",
@@ -43,10 +82,16 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "my_header_TBnEXp": {
+      "type": "my-header",
+      "settings": {
+      }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "custom_announcement_bar_8iqKnU",
+    "header",
+    "my_header_TBnEXp"
   ]
 }
