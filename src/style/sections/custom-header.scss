@@ -1,9 +1,23 @@
-.custom-header{
-    .doubly-wrapper{
-        display: none !important;
+.custom-section-header {
+  @media screen and (min-width: 990px) {
+    .header--middle-left {
+      grid-template-areas: "heading navigation icons";
+      grid-template-columns: auto 1fr 0.3fr;
+      column-gap: 2rem;
     }
-    .inner-header{
-        display: flex;
-        justify-content: space-between;
+  }
+  .custom-header {
+    .doubly-wrapper {
+      display: none !important;
     }
+    .inner-header {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .header__icon--cart{
+    svg{
+        width: 20px;
+    }
+  }
 }

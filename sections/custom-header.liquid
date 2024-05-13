@@ -51,19 +51,12 @@
     }
   {%- endif -%}
 
-  {% if section.settings.menu != blank %}
+ 
     .custom-header.header {
-      grid-template-columns: auto auto 1fr auto;
-      grid-template-areas: "heading burger navigation icons";
+      grid-template-columns: auto 1fr 0.4fr;
+      grid-template-areas: "heading  navigation icons";
     }
 
-    @media (max-width: 989px) {
-      .custom-header.header {
-        grid-template-columns: auto auto 1fr auto;
-        grid-template-areas: "heading drawer search-modal icons";
-      }
-    }
-  {%- endif -%}
 
   .menu-drawer-container {
     display: flex;
@@ -162,8 +155,8 @@
 {%- endif -%}
 
 <svg xmlns="http://www.w3.org/2000/svg" class="hidden">
-  <symbol id="icon-search" viewbox="0 0 18 19" fill="none">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.03 11.68A5.784 5.784 0 112.85 3.5a5.784 5.784 0 018.18 8.18zm.26 1.12a6.78 6.78 0 11.72-.7l5.4 5.4a.5.5 0 11-.71.7l-5.41-5.4z" fill="currentColor"/>
+  <symbol id="icon-search" viewBox="0 0 22 22" fill="none"> 
+    <path d="M9.0664 18.119C4.06716 18.119 0 14.0549 0 9.05952C0 4.06409 4.06716 3.05176e-05 9.0664 3.05176e-05C14.0656 3.05176e-05 18.1328 4.06409 18.1328 9.05952C18.1328 14.0549 14.0656 18.119 9.0664 18.119ZM9.0664 1.71747C5.01488 1.71747 1.71875 5.01109 1.71875 9.05952C1.71875 13.108 5.01488 16.4016 9.0664 16.4016C13.1179 16.4016 16.414 13.108 16.414 9.05952C16.414 5.01109 13.1179 1.71747 9.0664 1.71747ZM21.7483 21.7486C22.0839 21.4132 22.0839 20.8694 21.7483 20.5341L17.9026 16.6913C17.567 16.356 17.0228 16.356 16.6872 16.6913C16.3517 17.0267 16.3517 17.5705 16.6872 17.9058L20.5329 21.7486C20.7007 21.9162 20.9207 22 21.1406 22C21.3606 22 21.5805 21.9162 21.7483 21.7486Z" fill="#2F2F2F"/>
   </symbol>
 
   <symbol id="icon-reset" class="icon icon-close"  fill="none" viewBox="0 0 18 18" stroke="currentColor">
@@ -203,7 +196,7 @@
 
     <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
       <details data-show-drawer-footer id="Details-menu-drawer-container" class="custom-drawer menu-drawer-container">
-        <summary
+        <summarynavigation
           class="header__icon header__icon--menu header__icon--summary link"
           aria-label="{{ 'sections.header.menu' | t }}"
         >
@@ -212,7 +205,7 @@
             {% render 'icon-close' %}
           </span>
         </summary>
-        <div id="menu-drawer" class="gradient menu-drawer motion-reduce">
+        {% comment %} <div id="menu-drawer" class="gradient menu-drawer motion-reduce">
           <div class="menu-drawer__header page-width">
             <div class="menu-drawer__header-wrap">
               <div class="menu-drawer__header-logo">
@@ -223,303 +216,16 @@
                           width: '38px'
                       }}
                   {%- else -%}
-                      <span class="h2">{{ shop.name }}</span>
+                     <span class="h2">{{ shop.name }}</span> 
                   {%- endif -%}
                 </a>
-              </div>
+              </div> 
               <div class="menu-drawer__header-close js-close-drawer">
                 {% render 'icon-close' %}
               </div>
             </div>
           </div>
-          <div class="menu-drawer__inner-container">
-            <div class="menu-drawer__navigation-container custom-drawer__menu-block">
-              {% for block in section.blocks %}
-                {% if block.type == 'main_navigation' %}
-                  {%- for link in block.settings.main_menu_block.links -%}
-
-                    <details data-close-drawer-footer data-close id="Details-menu-drawer">
-                      <summary
-                          id="HeaderDrawer"
-                          class="menu-drawer__menu-item menu-drawer__menu-item-block menu-drawer__menu-item-block--{{ forloop.index }} link link--text list-menu__item focus-inset"
-                      >
-                        <{% if link.links.size == 0 %}a href="{{link.url}}"{% else %}div{% endif %} class="11 menu-drawer__menu-wrap">
-                          <div class="link-item">
-                            {% for item in shop.metaobjects.navigation_icons.values %}
-                              {% assign title = link.title %}
-
-                              {% if item.link_title == title %}
-                                {{ item.image.value | image_url: width: 20 | image_tag }}
-                              {% endif %}
-                            {% endfor %}
-                          </div>
-                          {{ link.title }}
-                        </{% if link.links.size == 0 %}a{% else %}div{% endif %}>
-                          {% if link.links.size > 0 %}
-                            {% render 'icon-arrow' %}
-                            {% render 'icon-caret' %}
-                          {% endif %}
-                      </summary>
-                      <div
-                          id="childlink-{{ childlink.handle | escape }}"
-                          class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                      >
-                        <nav class="menu-drawer__navigation">
-                          <ul class="menu-drawer__menu custom-drawer__menu-second has-submenu list-menu" role="list">
-                            {%- for childlink in link.links -%}
-                              <li>
-                                {%- if childlink.links != blank -%}
-                                  <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
-                                    <summary
-                                        id="HeaderDrawer-{{ childlink.handle }}"
-                                        class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if childlink.child_active %} menu-drawer__menu-item--active{% endif %}"
-                                    >
-                                      {{ childlink.title | escape }}
-                                      {% render 'icon-arrow' %}
-                                      {% render 'icon-caret' %}
-                                    </summary>
-                                    <div
-                                        id="link-{{ childlink.handle | escape }}"
-                                        class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                                        tabindex="-1"
-                                    >
-                                      <div class="menu-drawer__inner-submenu">
-                                        <ul class="menu-drawer__menu custom-drawer__menu-last list-menu" role="list" tabindex="-1">
-                                          {%- for grandchildlink in childlink.links -%}
-                                            <li>
-                                              <a
-                                                  id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                                  href="{{ grandchildlink.url }}"
-                                                  class="custom-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
-                                                  {% if grandchildlink.current %}
-                                                    aria-current="page"
-                                                  {% endif %}
-                                              >
-                                                <div class="link-item">
-                                                  {% for item in shop.metaobjects.navigation_icons.values %}
-                                                    {% assign title = grandchildlink.title %}
-
-                                                    {% if item.link_title == title %}
-                                                      {{ item.image.value | image_url: width: 20 | image_tag }}
-                                                    {% endif %}
-                                                  {% endfor %}
-                                                </div>
-                                                {{ grandchildlink.title | escape }}
-                                              </a>
-                                            </li>
-                                          {%- endfor -%}
-                                        </ul>
-                                      </div>
-                                    </div>
-                                  </details>
-                                {%- else -%}
-                                  <a
-                                      id="HeaderDrawer-{{ childlink.handle }}"
-                                      href="{{ childlink.url }}"
-                                      class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
-                                      {% if link.current %}
-                                        aria-current="page"
-                                      {% endif %}
-                                  >
-                                    {{ childlink.title | escape }}
-                                  </a>
-                                {%- endif -%}
-                              </li>
-                            {%- endfor -%}
-                          </ul>
-                        </nav>
-                      </div>
-                    </details>
-                  {% endfor %}
-                {% else %}
-                  <details data-close-drawer-footer data-close id="Details-menu-drawer">
-                  <summary
-                    id="HeaderDrawer"
-                    class="menu-drawer__menu-item menu-drawer__menu-item-block menu-drawer__menu-item-block--{{ forloop.index }} link link--text list-menu__item focus-inset"
-                  >
-                    <div class="menu-drawer__menu-wrap">
-                      <div class="link-item">
-                        {% for item in shop.metaobjects.navigation_icons.values %}
-                          {% assign title = block.settings.title_nav %}
-
-                          {% if item.link_title == title %}
-                              {{ item.image.value | image_url: width: 20 | image_tag }}
-                          {% endif %}
-                        {% endfor %}
-                      </div>
-                      {{ block.settings.title_nav }}
-                    </div>
-                    {% render 'icon-arrow' %}
-                    {% render 'icon-caret' %}
-                  </summary>
-                  <div
-                    id="childlink-{{ childlink.handle | escape }}"
-                    class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                  >
-                    <nav class="menu-drawer__navigation">
-                      <ul class="menu-drawer__menu custom-drawer__menu-first has-submenu list-menu" role="list">
-                        {%- for link in block.settings.menu_block.links -%}
-                          <li>
-                            {%- if link.links != blank -%}
-                              <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
-                                <summary
-                                  id="HeaderDrawer-{{ link.handle }}"
-                                  class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
-                                >111
-                                  {{ link.title | escape }}
-                                  {% render 'icon-arrow' %}
-                                  {% render 'icon-caret' %}
-                                </summary>
-                                <div
-                                  id="link-{{ link.handle | escape }}"
-                                  class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                                  tabindex="-1"
-                                >
-                                  <div class="menu-drawer__inner-submenu">
-                                    <ul class="menu-drawer__menu custom-drawer__menu-second list-menu" role="list" tabindex="-1">
-                                      {%- for childlink in link.links -%}
-                                        <li>
-                                          {%- if childlink.links == blank -%}
-                                            <a
-                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                              href="{{ childlink.url }}"
-                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
-                                              {% if childlink.current %}
-                                                aria-current="page"
-                                              {% endif %}
-                                            >
-                                              <div class="link-item">
-                                                {% for item in shop.metaobjects.navigation_icons.values %}
-                                                  {% assign title = childlink.title %}
-
-                                                  {% if item.link_title == title %}
-                                                      {{ item.image.value | image_url: width: 20 | image_tag }}
-                                                  {% endif %}
-                                                {% endfor %}
-                                              </div>
-                                              {{ childlink.title | escape }}
-                                            </a>
-                                          {%- else -%}
-                                            <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
-                                              <summary
-                                                id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                                class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
-                                              >
-                                                <div class="link-item">
-                                                  {% for item in shop.metaobjects.navigation_icons.values %}
-                                                    {% assign title = childlink.title %}
-
-                                                    {% if item.link_title == title %}
-                                                        {{ item.image.value | image_url: width: 20 | image_tag }}
-                                                    {% endif %}
-                                                  {% endfor %}
-                                                </div>
-                                                {{ childlink.title | escape }}
-                                                {% render 'icon-arrow' %}
-                                                {% render 'icon-caret' %}
-                                              </summary>
-                                              <div
-                                                id="childlink-{{ childlink.handle | escape }}"
-                                                class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                                              >
-                                                <ul
-                                                  class="menu-drawer__menu-last custom-drawer__menu-last menu-drawer__menu list-menu"
-                                                  role="list"
-                                                  tabindex="-1"
-                                                >
-                                                  {%- for grandchildlink in childlink.links -%}
-                                                    <li>
-                                                      <a
-                                                        id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                                        href="{{ grandchildlink.url }}"
-                                                        class="custom-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
-                                                        {% if grandchildlink.current %}
-                                                          aria-current="page"
-                                                        {% endif %}
-                                                      >
-                                                        <div class="link-item">
-                                                          {% for item in shop.metaobjects.navigation_icons.values %}
-                                                            {% assign title = grandchildlink.title %}
-
-                                                            {% if item.link_title == title %}
-                                                                {{ item.image.value | image_url: width: 20 | image_tag }}
-                                                            {% endif %}
-                                                          {% endfor %}
-                                                        </div>
-                                                        {{ grandchildlink.title | escape }}
-                                                      </a>
-                                                    </li>
-                                                  {%- endfor -%}
-                                                </ul>
-                                              </div>
-                                            </details>
-                                          {%- endif -%}
-                                        </li>
-                                      {%- endfor -%}
-                                    </ul>
-                                  </div>
-                                </div>
-                              </details>
-                            {%- else -%}
-                              <a
-                                id="HeaderDrawer-{{ link.handle }}"
-                                href="{{ link.url }}"
-                                class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"
-                                {% if link.current %}
-                                  aria-current="page"
-                                {% endif %}
-                              >
-                                {{ link.title | escape }}
-                              </a>
-                            {%- endif -%}
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    </nav>
-                  </div>
-                </details>
-                {% endif %}
-              {% endfor %}
-            </div>
-          </div>
-          <div class="menu-drawer__footer js-menu-drawer__footer">
-            <div class="menu-drawer__footer-items">
-              <div class="menu-drawer__cart">
-                <a href="{{ routes.cart_url }}" class="menu-drawer__cart-link">
-                  {%- render 'icon-cart-drawer' -%}
-                  <div class="cart-count-bubble">
-                      <span data-item-count>{{ cart.item_count }}</span>
-                  </div>
-                </a>
-              </div>
-              {% if section.settings.account_text != blank %}
-                <a href="/account" class="menu-drawer__footer-account">
-                    <div class="menu-drawer__footer-icon">
-                        {{ section.settings.account_svg }}
-                    </div>
-                    <div>{{ section.settings.account_text }}</div>
-                </a>
-              {% endif %}
-            </div>
-            {% if section.settings.tel != blank %}
-              <div class="menu-drawer__footer-items">
-                <a href="tel:+{{ section.settings.tel }}" class="menu-drawer__footer-tel">
-                  <div  class="menu-drawer__footer-icon">
-                      {{ section.settings.tel_svg }}
-                  </div>
-                  <div>{{ section.settings.tel }}</div>
-                </a>
-              </div>
-            {% endif %}
-            <div class="menu-drawer__footer-items">
-              {%- for link in section.settings.menu_drawer.links -%}
-                  <li class="menu-drawer__footer-items-link">
-                      <a href="{{ link.url }}">{{ link.title | escape }}</a>
-                  </li>
-              {%- endfor -%}
-            </div>
-          </div>
-        </div>
+        </div> {% endcomment %}
       </details>
     </header-drawer>
 
@@ -549,7 +255,7 @@
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
           </div>
-          <div class="custom-header__logo--mob">
+          {% comment %} <div class="custom-header__logo--mob">
             {%- if settings.logo_mob != blank -%}
                 {{ settings.logo_mob | image_url: width: 300 | image_tag:
                     class: 'header__heading-logo',
@@ -558,7 +264,7 @@
             {%- else -%}
                 <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
-          </div>
+          </div> {% endcomment %}
           {% else  %}
           <a href="{{ routes.root_url }}" class="custom-header__logo--desk header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
@@ -581,7 +287,7 @@
               <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
           </a>
-          <a href="{{ routes.root_url }}" class="custom-header__logo--mob">
+          {% comment %} <a href="{{ routes.root_url }}" class="custom-header__logo--mob">
             {%- if settings.logo_mob != blank -%}
                 {{ settings.logo_mob | image_url: width: 300 | image_tag:
                     class: 'header__heading-logo',
@@ -590,7 +296,7 @@
             {%- else -%}
                 <span class="h2">{{ shop.name }}</span>
             {%- endif -%}
-          </a>
+          </a> {% endcomment %}
         {% endif %}
 
 
@@ -628,7 +334,6 @@
                 {%- endif -%}
               >
               <label class="field__label field__label--desk" for="{{ input_id }}">{% if section.settings.secrch_label != blank %}{{ section.settings.secrch_label }}{% else %}{{ 'general.search.search' | t }}{% endif %}</label>
-              {% comment %} <label class="field__label field__label--mob" for="{{ input_id }}">{% if section.settings.secrch_label_mob != blank %}{{ section.settings.secrch_label_mob }}{% else %}{{ 'general.search.search' | t }}{% endif %}</label> {% endcomment %}
 
               <input type="hidden" name="options[prefix]" value="last">
               <input type="hidden" name="type" value="product" />
@@ -931,125 +636,6 @@
   burgerOpen();
 {% endjavascript %}
 
-<script>
-    document.addEventListener('DOMContentLoaded', ()=>{
-        const links_items = document.querySelectorAll('.link-item');
-        const burgerContent = document.querySelector("[data-burger-content]");
-        const btnsBurgerClose = document.querySelectorAll("[data-burger-close]");
-        const menuOverlay = document.querySelector('.menu-block__overlay');
-
-        links_items.forEach(el => {
-          el.addEventListener('click', ()=>{
-                if(el.nextSibling.nextSibling){
-                    links_items.forEach(element => {
-                        if(element.nextSibling.nextSibling && el != element){
-                            element.classList.remove('active')
-                            element.nextSibling.nextSibling.classList.remove('active')
-                        }
-                    })
-
-                    if(el.classList.contains('active')){
-                      el.classList.remove('active')
-                      el.nextSibling.nextSibling.classList.remove('active')
-                    }else{
-                      el.classList.add('active')
-                      el.nextSibling.nextSibling.classList.add('active')
-                    }
-
-                    const msnryList = document.querySelectorAll('.links-side');
-                    msnryList.forEach(element => {
-                      let msnry = new Masonry( element, {
-                        itemSelector: '.links-block',
-                        isAnimated: true
-                      });
-                    });
-                }
-            })
-
-            el.addEventListener('keydown', handleKeyPress);
-
-            function handleKeyPress(event) {
-              if(el.nextSibling.nextSibling) {
-                links_items.forEach(element => {
-                  if(element.nextSibling.nextSibling && el != element){
-                      element.classList.remove('active')
-                      element.nextSibling.nextSibling.classList.remove('active')
-                  }
-                })
-
-                if (event.key === 'Enter' || event.key === 'Return' || event.keyCode === 13 || event.which === 13) {
-                  el.classList.add('active')
-                  el.nextSibling.nextSibling.classList.add('active')
-                }
-
-                if (event.key === 'Escape') {
-                  el.classList.remove('active')
-                  el.nextSibling.nextSibling.classList.remove('active')
-                }
-
-                const msnryList = document.querySelectorAll('.links-side');
-                msnryList.forEach(element => {
-                  let msnry = new Masonry( element, {
-                    itemSelector: '.links-block',
-                    isAnimated: true
-                  });
-                });
-              }
-            }
-        })
-
-      const closeMenu = () => {
-        menuOverlay.classList.remove('show-bg');
-        document.querySelectorAll('.megamenu-item.active').forEach(activeItem => {
-          activeItem.classList.remove('active');
-        })
-        document.querySelectorAll('.link-item.active').forEach(activeItem => {
-          activeItem.classList.remove('active');
-        })
-        if (burgerContent.classList.contains("burger-open")) {
-          burgerContent.classList.remove("burger-open");
-        }
-      }
-
-      btnsBurgerClose.forEach(btnClose => {
-        btnClose.addEventListener('click', () => {
-          menuOverlay.classList.add('show-bg');
-          menuOverlay.addEventListener('click', closeMenu);
-        })
-      })
-    })
-</script>
-
-{% unless content_for_header contains "Shopify.designMode" %}
-  <script>
-    window.addEventListener('resize', function() { 
-      if (window.screen.width >= 990){
-        setTimeout(function() {
-          location.reload();
-        }, 100);
-      }
-    });
-  </script>
-{% endunless %}
-
-<style>
-  .menu-block__overlay {
-    bottom: 0;
-    display: none;
-    height: 100vh;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 3;
-  }
-
-  .menu-block__overlay.show-bg {
-    display: block;
-  }
-</style>
-
 <script type="application/ld+json">
   {
     "@context": "http://schema.org",
@@ -1093,7 +679,7 @@
 {% schema %}
 {
   "name": "Custom Header",
-  "class": "section-header",
+  "class": "section-header custom-section-header",
   "max_blocks": 3,
   "settings": [
     {
@@ -1122,12 +708,6 @@
       "label": "Search label"
     },
     {
-      "type": "text",
-      "id": "secrch_label_mob",
-      "default": "What are you looking for?",
-      "label": "Search label mobile"
-    },
-    {
       "type": "select",
       "id": "sticky_header_type",
       "options": [
@@ -1150,37 +730,6 @@
       ],
       "default": "on-scroll-up",
       "label": "t:sections.header.settings.sticky_header_type.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.spacing"
-    },
-    {
-      "type":"text",
-      "id":"account_text",
-      "label":"Text Account drawer",
-      "default": "My Account"
-    },
-    {
-      "type":"html",
-      "id":"account_svg",
-      "label":"Account Svg drawer"
-    },
-    {
-      "type":"text",
-      "id":"tel",
-      "label":"Phone number drawer",
-      "default": "214-342-9290"
-    },
-    {
-      "type":"html",
-      "id":"tel_svg",
-      "label":"Phone Svg drawer"
-    },
-    {
-      "type": "link_list",
-      "id": "menu_drawer",
-      "label": "Drawer navigation"
     },
     {
       "type": "range",
@@ -1218,38 +767,7 @@
     }
   ],
   "blocks": [
-    {
-      "type": "navigation",
-      "name": "Navigation Block",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title_nav",
-          "label": "Navigation title"
-        },
-        {
-          "type": "link_list",
-          "id": "menu_block",
-          "label": "Menu Block"
-        }
-      ]
-    },
-    {
-      "type": "main_navigation",
-      "name": "Main Navigation",
-      "settings": [
-        {
-          "type": "text",
-          "id": "main_title_nav",
-          "label": "Navigation title"
-        },
-        {
-          "type": "link_list",
-          "id": "main_menu_block",
-          "label": "Menu Block"
-        }
-      ]
-    }
+   
   ],
   "presets": [{ "name": "Custom Header", "blocks": [] }]
 }

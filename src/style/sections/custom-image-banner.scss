@@ -1,0 +1,57 @@
+.image-banner {
+  position: relative;
+
+  .image-background {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  &__wrapper {
+   
+    padding: 116px 0 116px;
+
+    .sub_heading {
+      font-family: 'Proxima Nova' sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20px;
+      text-align: left;
+      color: #fff;
+    }
+    .heading {
+      font-family: "Barlow" sans-serif;
+      font-size: 54px;
+      font-weight: 400;
+      line-height: 60px;
+      letter-spacing: -0.05em;
+      text-align: left;
+      color: #fff;
+    }
+    .content {
+      font-family: "Proxima Nova" sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+      color: #fff;
+    }
+    .image-banner-btn {
+      background: rgba(255, 92, 53, 1);
+      padding: 16px 40px 16px 40px;
+      width: max-content;
+
+      .btn {
+        font-family: "Proxima Nova" sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 19.49px;
+        letter-spacing: -0.03em;
+        text-align: left;
+        color: #fff;
+      }
+    }
+  }
+}

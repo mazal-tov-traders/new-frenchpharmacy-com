@@ -1,3 +1,31 @@
-.custom-header-menu-inner{
+.custom-header-menu.body-container {
+  background: rgba(47, 47, 47, 1);
+  height: max-content;
+
+  .custom-header-menu-inner {
     position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .header__menu-item {
+    padding-top: 16px;
+    padding-bottom: 15px;
+  }
+  .header__menu-item.list-menu__item {
+    color: #fff;
+    text-transform: uppercase;
+    font-family: "Proxima Nova" sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.49px;
+    letter-spacing: 0.05em;
+    text-align: center;
+
+    svg {
+      color: currentColor;
+    }
+  }
+  .mega-menu__content {
+    z-index: 2;
+  }
 }

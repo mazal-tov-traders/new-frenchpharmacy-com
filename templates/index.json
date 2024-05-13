@@ -1,42 +1,42 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "custom_image_banner_qGpLyy": {
+      "type": "custom-image-banner",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "sub_heading_rjmYpz": {
+          "type": "sub_heading",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "sub_heading": "The one and only recognized worldwide"
           }
         },
-        "button": {
-          "type": "buttons",
+        "heading_XnAKz6": {
+          "type": "heading",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "heading": "<p>Beauty <br\/>Eye Solution<\/p>"
+          }
+        },
+        "content_KfjtGf": {
+          "type": "content",
+          "settings": {
+            "content": "<p>In addition to caring for dry, tired, and irritated eyes,<\/p><p> the drops give your eyes an amazing radiance.<\/p>"
+          }
+        },
+        "btn_Ant73E": {
+          "type": "btn",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": ""
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "sub_heading_rjmYpz",
+        "heading_XnAKz6",
+        "content_KfjtGf",
+        "btn_Ant73E"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "banner": "shopify:\/\/shop_images\/Rectangle_4133756.jpg"
       }
     },
     "featured_collection": {
@@ -135,7 +135,7 @@
     }
   },
   "order": [
-    "image_banner",
+    "custom_image_banner_qGpLyy",
     "featured_collection",
     "custom_collection_list_BxrdBp"
   ]

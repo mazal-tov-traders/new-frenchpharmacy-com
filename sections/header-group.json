@@ -83,15 +83,30 @@
         "padding_bottom": 20
       }
     },
-    "my_header_TBnEXp": {
-      "type": "my-header",
+    "custom_header_ccbVRd": {
+      "type": "custom-header",
       "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "secrch_label": "What can we help you to find today?",
+        "sticky_header_type": "on-scroll-up",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "custom_header_menu_ejatpQ": {
+      "type": "custom-header-menu",
+      "settings": {
+        "menu": "main-menu",
+        "menu_type_desktop": "mega"
       }
     }
   },
   "order": [
     "custom_announcement_bar_8iqKnU",
     "header",
-    "my_header_TBnEXp"
+    "custom_header_ccbVRd",
+    "custom_header_menu_ejatpQ"
   ]
 }
