@@ -277,7 +277,45 @@
         onload="this.media='all'"
       >
     {%- endif -%}
+    <style>
+      @font-face {
+        font-family: 'Nova-300';
+        src: url( '{{ "proximanova-300.ttf" | asset_url }}' ) format( 'truetype' );
+        font-weight: 300;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Nova-300it';
+        src: url( '{{ "proximanova-300-italic.ttf" | asset_url }}' ) format( 'truetype' );
+        font-weight: 300;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: 'Nova-400';
+        src: url( '{{ "proxima-nova-400.ttf" | asset_url }}' ) format( 'truetype' );
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Nova-400it';
+        src: url( '{{ "proximanova-400-italic.ttf" | asset_url }}' ) format( 'truetype' );
+        font-weight: 400;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: 'Nova-600';
+        src: url( '{{ "proximanova-600.ttf" | asset_url }}' ) format( 'truetype' );
+        font-weight: 600;
+        font-style: normal;
+      }
 
+      @font-face {
+        font-family: 'Nova-700';
+        src: url( '{{ "proxima-nova-700.ttf" | asset_url }}' ) format( 'truetype' );
+        font-weight: 700;
+        font-style: normal;
+      }
+    </style>
     <script>
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');

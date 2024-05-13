@@ -958,8 +958,8 @@
   }
 
   // 
-  .free_delivery.domestic {
-    font-family: "Proxima Nova" sans-serif;
+  .free_delivery.domestic, .free_delivery.international {
+    font-family: "Nova-300-italic" sans-serif;
     font-size: 12px;
     font-style: italic;
     font-weight: 300;
