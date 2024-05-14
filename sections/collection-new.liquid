@@ -1,0 +1,96 @@
+<div class="slider-product">
+  <div class="page-width">
+    <div class="swiper mySwiper">
+      <ul
+        data-id="{{ section.id }}"
+        class="swiper-wrapper"
+        role="list"
+        aria-label="{{ 'general.slider.name' | t }}"
+      >
+        {%- for product in section.settings.collection.products -%}
+          <li
+            class="product-cartochka swiper-slide"
+          >
+            {% render 'card-product', card_product: product %}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="wrapper_btn-slider">
+      <div class="swiper-button-prev">
+        <svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 3.5C19.2761 3.5 19.5 3.72386 19.5 4C19.5 4.27614 19.2761 4.5 19 4.5L19 3.5ZM0.646446 4.35355C0.451185 4.15829 0.451185 3.84171 0.646446 3.64645L3.82843 0.464466C4.02369 0.269204 4.34027 0.269204 4.53553 0.464466C4.7308 0.659728 4.7308 0.976311 4.53553 1.17157L1.70711 4L4.53553 6.82843C4.7308 7.02369 4.7308 7.34027 4.53553 7.53553C4.34027 7.7308 4.02369 7.7308 3.82843 7.53553L0.646446 4.35355ZM19 4.5L1 4.5L1 3.5L19 3.5L19 4.5Z" fill=""/>
+        </svg>
+      </div>
+      <div class="swiper-button-next">
+        <svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 3.5C0.723858 3.5 0.5 3.72386 0.5 4C0.5 4.27614 0.723858 4.5 1 4.5L1 3.5ZM19.3536 4.35355C19.5488 4.15829 19.5488 3.84171 19.3536 3.64645L16.1716 0.464466C15.9763 0.269204 15.6597 0.269204 15.4645 0.464466C15.2692 0.659728 15.2692 0.976311 15.4645 1.17157L18.2929 4L15.4645 6.82843C15.2692 7.02369 15.2692 7.34027 15.4645 7.53553C15.6597 7.7308 15.9763 7.7308 16.1716 7.53553L19.3536 4.35355ZM1 4.5L19 4.5L19 3.5L1 3.5L1 4.5Z" fill=""/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script>
+  function sliderInit() {
+    var swiper = new Swiper('.mySwiper', {
+      freeMode: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      breakpoints: {
+        980: {
+          slidesPerView: 5,
+          spaceBetween: 45,
+        },
+        600: {
+          slidesPerView: 2,
+          spaceBetween: 40,
+        },
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+      },
+    });
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    sliderInit();
+  });
+</script>
+{% schema %}
+{
+  "name": "Custom Collection",
+  "tag": "section",
+  "class": "custom-collection",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Featured collection",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:sections.featured-collection.settings.collection.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Collection"
+    }
+  ]
+}
+{% endschema %}

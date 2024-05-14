@@ -1,0 +1,117 @@
+.slider-product {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 79px 0 80px;
+  @media screen and (min-width: 500px) {
+    padding: 56px 0 100px;
+  }
+  .page-width {
+ 
+    position: relative;
+    .swiper-free-mode > .swiper-wrapper {
+        padding-left: 0px;
+      }
+      
+  }
+}
+.swiper.mySwiper {
+  margin-bottom: 39px;
+ 
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: none;
+}
+
+.swiper-button-next {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 178, 227, 1);
+  border-radius: 50%;
+  z-index: 1;
+  svg {
+    fill: #fff;
+    width: 18px;
+  }
+}
+.swiper-button-next.swiper-button-disabled {
+  background: transparent;
+  border: 1px solid #181214;
+  opacity: 100;
+  svg {
+    fill: #181214;
+  }
+}
+.swiper-button-prev {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 178, 227, 1);
+  border-radius: 50%;
+  z-index: 1;
+  svg {
+    fill: #fff;
+    width: 18px;
+  }
+}
+.swiper-button-prev.swiper-button-disabled {
+  background: transparent;
+  border: 1px solid #181214;
+  opacity: 100;
+  svg {
+    fill: #181214;
+  }
+}
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  left: var(--swiper-navigation-sides-offset, -85px);
+  right: auto;
+}
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  right: var(--swiper-navigation-sides-offset, -85px);
+  left: auto;
+}
+.swiper-pagination {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 12px;
+  height: 12px;
+  background: rgba(0, 178, 227, 1);
+  opacity: 100;
+}
+.swiper-pagination-bullet {
+  background: rgba(0, 178, 227, 1);
+  width: 8px;
+  height: 8px;
+  opacity: 0.2;
+}
+
+@media screen and (min-width: 1500px) {
+  .slider-product {
+    .swiper-button-next,
+    .swiper-button-prev {
+      top: var(--swiper-navigation-top-offset, 60%);
+    }
+  }
+}
+@media screen and (max-width: 1500px) {
+  .slider-product {
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: static;
+      z-index: 1;
+    }
+    .wrapper_btn-slider {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 72px;
+    }
+  }
+}
+
