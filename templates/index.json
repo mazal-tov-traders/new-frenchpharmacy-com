@@ -133,10 +133,10 @@
         "padding_bottom": 120
       }
     },
-    "collection_new_hbNHKJ": {
-      "type": "collection-new",
+    "custom_collection_slider_RryDNy": {
+      "type": "custom-collection-slider",
       "settings": {
-        "title": "NEW ARRIVALS",
+        "title": "Featured collection",
         "collection": "best-selling"
       }
     }
@@ -145,6 +145,6 @@
     "custom_image_banner_qGpLyy",
     "featured_collection",
     "custom_collection_list_BxrdBp",
-    "collection_new_hbNHKJ"
+    "custom_collection_slider_RryDNy"
   ]
 }
