@@ -560,9 +560,9 @@
                                   -%}
                                     <li>
                                       {%- if block.settings.enable_quick_add -%}
-                                        {% assign quick_add = "standard" %}
+                                        {% assign quick_add = 'standard' %}
                                       {%- else -%}
-                                        {% assign quick_add = "none" %}
+                                        {% assign quick_add = 'none' %}
                                       {%- endif -%}
                                       {% render 'card-product',
                                         card_product: product,
@@ -743,6 +743,11 @@
       }
     </script>
   </div>
+  {% comment %}  {% endcomment %}
+  <div class="Product Product--large" id="judgeMe">
+    {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+  </div>
+  {% comment %}  {% endcomment %}
 </section>
 
 {% schema %}

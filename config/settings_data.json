@@ -1,7 +1,8 @@
 {
   "current": {
-    "logo": "shopify:\/\/shop_images\/logo.png",
+    "logo": "shopify:\/\/shop_images\/logo_8c15c1d1-76fc-4144-9b5e-3f13734e3a84.png",
     "logo_width": 300,
+    "favicon": "shopify:\/\/shop_images\/logo_8c15c1d1-76fc-4144-9b5e-3f13734e3a84.png",
     "type_header_font": "assistant_n4",
     "heading_scale": 100,
     "type_body_font": "assistant_n4",
@@ -121,14 +122,14 @@
     "country_widget_shipping_page_link": "shopify:\/\/pages\/contact-us",
     "country_widget_domestic_delivery_free": "Free Delivery order $75+",
     "country_widget_domestic_delivery_option1": "<p><strong>USPS<\/strong><br\/>Delivery Time: 3 to 7 days<br\/>From $0<\/p>",
-    "country_widget_domestic_delivery_option1_logo": "shopify:\/\/shop_images\/United-States-Postal-Service-Logo_300x_2x_f710bc75-8337-49fa-9416-ceaf225a29d4.webp",
+    "country_widget_domestic_delivery_option1_logo": "shopify:\/\/shop_images\/United-States-Postal-Service-Logo.png",
     "country_widget_domestic_delivery_option2": "<p><strong>UPS<\/strong><br\/>Delivery Time: 2 days<br\/>From $14.40<\/p>",
-    "country_widget_domestic_delivery_option2_logo": "shopify:\/\/shop_images\/United-States-Postal-Service-Logo_300x_2x_f710bc75-8337-49fa-9416-ceaf225a29d4.webp",
+    "country_widget_domestic_delivery_option2_logo": "shopify:\/\/shop_images\/ups.png",
     "country_widget_international_delivery_free": "Free Delivery order $75+",
     "country_widget_international_delivery_option1": "<p><strong>DHL<\/strong><br\/>Delivery Time: 10 to 16 days<br\/>From $0<\/p>",
-    "country_widget_international_delivery_option1_logo": "shopify:\/\/shop_images\/United-States-Postal-Service-Logo_300x_2x_97e03f40-403d-420d-9b80-077d7b8d6c89.webp",
+    "country_widget_international_delivery_option1_logo": "shopify:\/\/shop_images\/dhl-express-logo-1.jpg",
     "country_widget_international_delivery_option2": "<p><strong>DHL<\/strong><br\/>Delivery Time: 2 to 4 days<br\/>From $34.40<\/p>",
-    "country_widget_international_delivery_option2_logo": "shopify:\/\/shop_images\/United-States-Postal-Service-Logo_300x_2x_f710bc75-8337-49fa-9416-ceaf225a29d4.webp",
+    "country_widget_international_delivery_option2_logo": "shopify:\/\/shop_images\/DHL-Logo.jpg",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",

@@ -5,6 +5,13 @@
     "custom_announcement_bar_8iqKnU": {
       "type": "custom-announcement-bar",
       "blocks": {
+        "announcement_3i9gFm": {
+          "type": "announcement",
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        },
         "announcement_3DAY6d": {
           "type": "announcement",
           "settings": {
@@ -49,6 +56,7 @@
         }
       },
       "block_order": [
+        "announcement_3i9gFm",
         "announcement_3DAY6d",
         "announcement_rF6x9Y",
         "announcement_9aAQnD",

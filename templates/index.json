@@ -103,7 +103,7 @@
         "featured_collection_wqqmrb": {
           "type": "featured_collection",
           "settings": {
-            "background": "shopify:\/\/shop_images\/Rectangle_4133742_3.jpg",
+            "background": "shopify:\/\/shop_images\/Rectangle_4133742_6b1a3838-30c0-4d62-a5ad-89a8dff158cc.jpg",
             "heading": "Hair",
             "sub_heading": "Life isn't perfect but your hair can be",
             "button_label": "Shop Now",
@@ -132,11 +132,19 @@
         "padding_top": 120,
         "padding_bottom": 120
       }
+    },
+    "collection_new_hbNHKJ": {
+      "type": "collection-new",
+      "settings": {
+        "title": "NEW ARRIVALS",
+        "collection": "best-selling"
+      }
     }
   },
   "order": [
     "custom_image_banner_qGpLyy",
     "featured_collection",
-    "custom_collection_list_BxrdBp"
+    "custom_collection_list_BxrdBp",
+    "collection_new_hbNHKJ"
   ]
 }
