@@ -567,7 +567,7 @@
                                       {% render 'card-product',
                                         card_product: product,
                                         media_aspect_ratio: block.settings.image_ratio,
-                                        show_secondary_image: false,
+                                        show_secondary_image: true,
                                         lazy_load: false,
                                         quick_add: quick_add,
                                         section_id: section.id,
@@ -743,11 +743,6 @@
       }
     </script>
   </div>
-  {% comment %}  {% endcomment %}
-  <div class="Product Product--large" id="judgeMe">
-    {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
-  </div>
-  {% comment %}  {% endcomment %}
 </section>
 
 {% schema %}
