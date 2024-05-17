@@ -1,8 +1,5 @@
-<div
-  class="jdgm-carousel-wrapper"
-  data-from-snippet="{% if concierge_install != nil %}{{ concierge_install }}{% else %}true{% endif %}"
-  data-auto-install="{% if auto_install != nil %}{{ auto_install }}{% else %}false{% endif %}"
->
+<!-- Start of Judge.me code -->
+<div class="jdgm-carousel-wrapper">
   {% assign jm_metafields = shop.metafields.judgeme %}
   <div class="jdgm-carousel-title-and-link">
     <h2 class="jdgm-carousel-title">Let customers speak for us</h2>
@@ -26,6 +23,7 @@
   </div>
   {{ jm_metafields.featured_carousel }}
 </div>
+<!-- End of Judge.me code -->
 
 {% schema %}
 {

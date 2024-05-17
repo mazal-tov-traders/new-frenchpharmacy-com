@@ -50,6 +50,17 @@
                         <ul class="list-unstyled" role="list">
                           {%- for grandchildlink in childlink.links -%}
                             <li>
+                              {% comment %} myCustom {% endcomment %}
+                              {% if grandchildlink.url contains 'collections'
+                                or grandchildlink.handle contains 'collections'
+                              %}
+                                {%- for collection in collections -%}
+                                  {% if collection.title == grandchildlink.title %}
+                                    {{ collection.image | image_url: width: 100 | image_tag: class: 'img' }}
+                                  {% endif %}
+                                {% endfor %}
+                              {% endif %}
+                              {% comment %} end myCustom {% endcomment %}
                               <a
                                 id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                 href="{{ grandchildlink.url }}"
