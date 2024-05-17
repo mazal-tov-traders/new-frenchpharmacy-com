@@ -410,6 +410,7 @@
       </a>
       
     </div>
+    
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
 
@@ -417,61 +418,76 @@
   {%- render 'cart-notification', color_scheme: section.settings.color_scheme, desktop_menu_type: section.settings.menu_type_desktop -%}
 {%- endif -%}
 
-{% javascript %}
+
+
+ {% comment %} <script>
   class StickyHeader extends HTMLElement {
     constructor() {
       super();
     }
-
+  
     connectedCallback() {
       this.header = document.querySelector('.section-header');
+      if (!this.header) {
+        console.error('Element .section-header not found');
+        return;
+      }
+  
       this.headerIsAlwaysSticky = this.getAttribute('data-sticky-type') === 'always' || this.getAttribute('data-sticky-type') === 'reduce-logo-size';
       this.headerBounds = {};
-
+  
       this.setHeaderHeight();
-
-      window.matchMedia('(max-width: 990px)').addEventListener('change', this.setHeaderHeight.bind(this));
-
+  
+      if (window.matchMedia) {
+        window.matchMedia('(max-width: 990px)').addEventListener('change', this.setHeaderHeight.bind(this));
+      }
+  
       if (this.headerIsAlwaysSticky) {
         this.header.classList.add('shopify-section-header-sticky');
-      };
-
+      }
+  
       this.currentScrollTop = 0;
       this.preventReveal = false;
       this.predictiveSearch = this.querySelector('predictive-search');
-
+  
       this.onScrollHandler = this.onScroll.bind(this);
       this.hideHeaderOnScrollUp = () => this.preventReveal = true;
-
+  
       this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
       window.addEventListener('scroll', this.onScrollHandler, false);
-
+  
       this.createObserver();
     }
-
+  
     setHeaderHeight() {
-      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      if (this.header) {
+        document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      }
     }
-
+  
     disconnectedCallback() {
       this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
       window.removeEventListener('scroll', this.onScrollHandler);
     }
-
+  
     createObserver() {
+      if (!this.header) return;
+  
       let observer = new IntersectionObserver((entries, observer) => {
         this.headerBounds = entries[0].intersectionRect;
         observer.disconnect();
       });
-
+  
       observer.observe(this.header);
     }
-
+  
     onScroll() {
+      if (!this.header) return;
+  
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
+  
       if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
-
+  
       if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
         this.header.classList.add('scrolled-past-header');
         if (this.preventHide) return;
@@ -482,159 +498,52 @@
           requestAnimationFrame(this.reveal.bind(this));
         } else {
           window.clearTimeout(this.isScrolling);
-
+  
           this.isScrolling = setTimeout(() => {
             this.preventReveal = false;
           }, 66);
-
+  
           requestAnimationFrame(this.hide.bind(this));
         }
       } else if (scrollTop <= this.headerBounds.top) {
         this.header.classList.remove('scrolled-past-header');
         requestAnimationFrame(this.reset.bind(this));
       }
-
+  
       this.currentScrollTop = scrollTop;
     }
-
+  
     hide() {
-      if (this.headerIsAlwaysSticky) return;
+      if (!this.header || this.headerIsAlwaysSticky) return;
       this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
       this.closeMenuDisclosure();
     }
-
+  
     reveal() {
-      if (this.headerIsAlwaysSticky) return;
+      if (!this.header || this.headerIsAlwaysSticky) return;
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
     }
-
+  
     reset() {
-      if (this.headerIsAlwaysSticky) return;
+      if (!this.header || this.headerIsAlwaysSticky) return;
       this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
     }
-
+  
     closeMenuDisclosure() {
+      if (!this.header) return;
       this.disclosures = this.disclosures || this.header.querySelectorAll('header-menu');
-      this.disclosures.forEach(disclosure => disclosure.close());
+      this.disclosures.forEach(disclosure => {
+        if (disclosure.close) {
+          disclosure.close();
+        }
+      });
     }
   }
-
+  
   customElements.define('sticky-header', StickyHeader);
-
-  function closeDrawer() {
-    const btnClose = document.querySelector(".js-close-drawer");
-    const btnTrigger = document.querySelector(".custom-header [aria-controls='menu-drawer']");
-
-    btnClose.addEventListener("click", ()=> {
-      btnTrigger.click();
-    })
-  }
-
-  function closeSubDrawer() {
-    const btnsClose = document.querySelectorAll(".js-close-subdrawer");
-    const closeElems = document.querySelectorAll(".custom-header [data-close]");
-
-    btnsClose.forEach(element => {
-        element.addEventListener("click", ()=> {
-          closeElems.forEach(closeElem => {
-            closeElem.removeAttribute("open");
-          });
-      })
-    });
-  }
-
-  closeDrawer();
-  closeSubDrawer();
-
-  function closeDrawerFooter() {
-    const drawerFooter = document.querySelector(".js-menu-drawer__footer");
-    const closeDrawerFooter = document.querySelectorAll("[data-close-drawer-footer]");
-    const showDrawerFooter = document.querySelectorAll("[data-show-drawer-footer]");
-
-    closeDrawerFooter.forEach(el => {
-      el.addEventListener("click", (e)=> {
-        e.stopPropagation();
-
-        if (el.hasAttribute("data-close-drawer-footer")) {
-          drawerFooter.classList.remove("show");
-          drawerFooter.classList.add("hide");
-        }
-      })
-    });
-
-    showDrawerFooter.forEach(elem => {
-      elem.addEventListener("click", (e)=> {
-        e.stopPropagation();
-
-        if (elem.hasAttribute("data-show-drawer-footer")) {
-          drawerFooter.classList.remove("hide");
-          drawerFooter.classList.add("show");
-        }
-      })
-    });
-  }
-
-  closeDrawerFooter();
-
-  function burgerOpen() {
-    const burgerBtn = document.querySelector("[data-burger-open]");
-    const burgerContent = document.querySelector("[data-burger-content]");
-    const bannerLinks = document.querySelectorAll('.banner-inner .link-item');
-    const headerOverlay = document.querySelector(".header__overlay");
-    const burgerBtnKey = document.querySelector(".custom-header__burger");
-
-    headerOverlay.addEventListener("click",() => {
-      if (burgerContent.classList.contains("burger-open")) {
-        burgerContent.classList.remove("burger-open");
-        headerOverlay.classList.remove("show-bg");
-        document.querySelectorAll('.megamenu-item.active').forEach(activeItem => {
-          activeItem.classList.remove('active');
-        });
-        document.querySelectorAll('.link-item.active').forEach(activeItem => {
-          activeItem.classList.remove('active');
-        })
-      } else {
-        burgerContent.classList.add("burger-open");
-        headerOverlay.classList.add("show-bg");
-      }
-    })
-
-    function toggleBurger() {
-      if (burgerContent.classList.contains("burger-open")) {
-        burgerContent.classList.remove("burger-open");
-        headerOverlay.classList.remove("show-bg");
-      } else {
-        burgerContent.classList.add("burger-open");
-        headerOverlay.classList.add("show-bg");
-      }
-
-      bannerLinks.forEach(element => {
-          if(element.nextSibling.nextSibling){
-              element.classList.remove('active')
-              element.nextSibling.nextSibling.classList.remove('active')
-          }
-      })
-    }
-
-    function handleKeyPress(event) {
-      if (event.key === 'Enter' || event.key === 'Return' || event.keyCode === 13 || event.which === 13) {
-        burgerContent.classList.add("burger-open");
-        headerOverlay.classList.add("show-bg");
-      }
-
-      if (event.key === 'Escape') {
-        burgerContent.classList.remove("burger-open");
-        headerOverlay.classList.remove("show-bg");
-      }
-    }
-
-    burgerBtn.addEventListener("click", toggleBurger);
-    burgerBtnKey.addEventListener('keydown', handleKeyPress);
-  }
-
-  burgerOpen();
-{% endjavascript %}
+  
+</script>  {% endcomment %}
 
 <script type="application/ld+json">
   {

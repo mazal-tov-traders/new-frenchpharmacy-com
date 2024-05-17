@@ -1,3 +1,8 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {%- unless section.settings.quick_add == 'none' -%}
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -6,6 +11,16 @@
 {%- if section.settings.quick_add == 'standard' -%}
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
+{% comment %}
+  {%- liquid
+    assign products_to_display = section.settings.collection.all_products_count
+
+    if section.settings.collection.all_products_count > section.settings.products_to_show
+      assign products_to_display = section.settings.products_to_show
+      assign more_in_collection = true
+    endif
+  -%}
+{% endcomment %}
 
 <div class="slider-product">
   <div class="page-width">
@@ -16,11 +31,22 @@
         role="list"
         aria-label="{{ 'general.slider.name' | t }}"
       >
-        {%- for product in section.settings.collection.products -%}
+        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
           <li
             class="product-cartochka swiper-slide"
           >
-            {% render 'card-product', card_product: product, quick_add: section.settings.quick_add %}
+            {% render 'card-product',
+              card_product: product,
+              quick_add: section.settings.quick_add,
+              show_product_info: true,
+              extend_height: true,
+              media_aspect_ratio: 'adapt',
+              show_vendor: true,
+              show_rating: true,
+              section_id: section.id,
+              lazy_load: lazy_load,
+              show_labels: false
+            %}
           </li>
         {%- endfor -%}
       </ul>
@@ -43,6 +69,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
 <script>
   function sliderInit() {
     var swiper = new Swiper('.mySwiper', {
@@ -75,6 +102,7 @@
     sliderInit();
   });
 </script>
+
 {% schema %}
 {
   "name": "Custom Collection",
@@ -94,6 +122,15 @@
       "type": "collection",
       "id": "collection",
       "label": "t:sections.featured-collection.settings.collection.label"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 25,
+      "step": 1,
+      "default": 8,
+      "label": "t:sections.featured-collection.settings.products_to_show.label"
     },
     {
       "type": "select",
