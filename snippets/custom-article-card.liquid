@@ -1,0 +1,16 @@
+<div class="custom-blog-card-wrapper">
+  {%- if show_image == true and article.image -%}
+    <img
+      src="{{ article.image.src | image_url: width: 300 }}"
+      class="blog-card-img"
+      alt="{{ article.image.src.alt | escape }}"
+    >
+  {%- endif -%}
+  <div class="card__content">
+    <span class="first-tags">{{ article.tags.first }}</span>
+    <h3 class="card__heading">
+      {{ article.title | truncate: 50 | escape }}
+    </h3>
+    <a href="{{ article.url }}" class="link"> red more </a>
+  </div>
+</div>
