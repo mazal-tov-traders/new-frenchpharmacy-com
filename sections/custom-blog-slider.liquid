@@ -81,17 +81,15 @@
       init() {
         this.slider = new Swiper(this.section.querySelector(".mySwiper"), {
           speed: 1000,
-            grabCursor: true,
-            centeredSlides: true,
-            loopedSlides: 2,
-            initialSlide: 1,
-            loop: true,
-            createElements: true,
-            slideToClickedSlide:true,
-          pagination: {
-            el: this.section.querySelector('.slider-double__pagination'),
-            clickable: true
-          },
+          grabCursor: true,
+          centeredSlides: true,
+          loopedSlides: 2,
+          initialSlide: 1,
+          loop: true,
+          createElements: true,
+          slideToClickedSlide:true,
+          freeMode: true,
+
           navigation: {
             nextEl: this.section.querySelector('.swiper-button-next'),
             prevEl: this.section.querySelector('.swiper-button-prev')
@@ -102,7 +100,6 @@
             centeredSlides: false,
             spaceBetween: 10,
           },
-
           769: {
             slidesPerView: 3,
             spaceBetween: 20,

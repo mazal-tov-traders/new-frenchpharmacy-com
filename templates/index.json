@@ -137,72 +137,19 @@
       "type": "custom-collection-slider",
       "settings": {
         "title": "Featured collection",
-        "collection": "best-selling"
+        "collection": "german",
+        "products_to_show": 8,
+        "quick_add": "standard"
       }
     },
-    "1715772755ba07f0b7": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_homepage_UL7mnJ": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/review_widget_homepage\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "product": "121212"
-          }
-        },
-        "judge_me_reviews_featured_carousel_mw9H6t": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/featured_carousel\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "maxwidth": 1080
-          }
-        },
-        "judge_me_reviews_all_reviews_text_F6BJHw": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/all_reviews_text\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_homepage_UL7mnJ",
-        "judge_me_reviews_featured_carousel_mw9H6t",
-        "judge_me_reviews_all_reviews_text_F6BJHw"
-      ],
+    "custom_blog_slider_KPhQwn": {
+      "type": "custom-blog-slider",
       "settings": {
-        "include_margins": true
-      }
-    },
-    "17157727636f943a54": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_medals_tN6Jtz": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/medals\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        },
-        "judge_me_reviews_preview_badge_homepage_wq6PjT": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge_homepage\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "product": "gfghft"
-          }
-        },
-        "judge_me_reviews_ugc_media_grid_qMnLm6": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/ugc_media_grid\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        },
-        "judge_me_reviews_verified_badge_e3xThy": {
-          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/verified_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_medals_tN6Jtz",
-        "judge_me_reviews_preview_badge_homepage_wq6PjT",
-        "judge_me_reviews_ugc_media_grid_qMnLm6",
-        "judge_me_reviews_verified_badge_e3xThy"
-      ],
-      "settings": {
-        "include_margins": true
+        "heading": "The Blog",
+        "sub_heading": "All about French Pharmacy beauty culture.",
+        "blog": "news",
+        "padding_top": 24,
+        "padding_bottom": 24
       }
     }
   },
@@ -211,7 +158,6 @@
     "featured_collection",
     "custom_collection_list_BxrdBp",
     "custom_collection_slider_RryDNy",
-    "1715772755ba07f0b7",
-    "17157727636f943a54"
+    "custom_blog_slider_KPhQwn"
   ]
 }
