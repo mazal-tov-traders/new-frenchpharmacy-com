@@ -130,6 +130,16 @@
                 class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
               >
                 {{- 'products.product.sold_out' | t -}}
+
+                {% comment %}  {% endcomment %}
+                {{
+                  product_card_product.compare_at_price
+                  | minus: product_card_product.price
+                  | times: 100
+                  | divided_by: product_card_product.compare_at_price
+                }}
+                % off
+                {% comment %}  {% endcomment %}
               </span>
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span
@@ -195,7 +205,7 @@
                 </span>
               </p>
               <p class="rating-count caption">
-                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }})</span>
+                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }} reviews)</span>
                 <span class="visually-hidden">
                   {{- card_product.metafields.reviews.rating_count }}
                   {{ 'accessibility.total_reviews' | t -}}
@@ -416,7 +426,10 @@
                   {%- render 'loading-spinner' -%}
                 </button>
               </modal-opener>
-              <modal-dialog id="QuickAddBulk-{{ card_product.id }}" class="quick-add-modal color-{{ section.settings.color_scheme }}">
+              <modal-dialog
+                id="QuickAddBulk-{{ card_product.id }}"
+                class="quick-add-modal color-{{ section.settings.color_scheme }}"
+              >
                 <div
                   role="dialog"
                   aria-label="{{ 'products.product.choose_product_options' | t: product_name: card_product.title | escape }}"
