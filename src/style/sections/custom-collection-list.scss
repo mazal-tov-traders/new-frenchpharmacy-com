@@ -4,7 +4,9 @@
     max-width: 1920px;
     width: 100%;
     justify-content: space-between;
-
+    .collection-list-item.active{
+      width: 40% ;
+    }
     .collection-list-item {
       transition: width 0.3s ease;
       padding-bottom: 39px;
@@ -14,6 +16,7 @@
       justify-content: flex-end;
       cursor: pointer;
       border-left: 1px solid #FFFFFF4D;
+      width: 20%; 
       &__heading {
         font-family: "Nova-400";
         font-size: 22px;

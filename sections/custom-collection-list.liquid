@@ -1,7 +1,3 @@
-{{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-slider.css' | asset_url | stylesheet_tag }}
-
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -77,24 +73,28 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const items = document.querySelectorAll('.collection-list-item');
+    const collection = document.querySelector('.collection-list');
+    const firstBanner = collection.querySelector('.collection-list-item');
 
-    items.forEach((item, index) => {
-      item.addEventListener('mouseenter', () => {
-        items.forEach((item) => {
-          item.classList.remove('active');
-          item.style.width = '180px';
-        });
+    if (firstBanner) {
+      firstBanner.classList.add('active');
+    }
 
-        item.classList.add('active');
-        item.style.width = '570px';
-      });
-
-      if (index === 0) {
-        item.classList.add('active');
-        item.style.width = '570px';
+    function removeActiveCardClass() {
+      const currentActiveCard = document.querySelector('.collection-list-item.active');
+      if (currentActiveCard) {
+        currentActiveCard.classList.remove('active');
       }
-    });
+    }
+
+    collection.addEventListener('mouseenter', (e) => {
+        if (e.target.classList.contains('collection-list-item')) {
+          removeActiveCardClass();
+          e.target.classList.add('active');
+        }
+      },
+      true
+    ); 
   });
 </script>
 
