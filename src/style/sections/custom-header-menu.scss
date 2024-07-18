@@ -71,8 +71,8 @@
 }
 #MegaMenu-Content-1 {
   .mega-menu__list.page-width {
-    display: flex;
-    gap: 57px;
+    // display: flex;
+    // gap: 57px;
     .list-unstyled.german {
       width: 500px;
 
@@ -83,4 +83,30 @@
       }
     }
   }
+}
+
+//  меню
+
+ul.mega-menu__list {
+  // display: grid;
+  // grid-template-columns: repeat(4, 1fr);
+  // // grid-auto-rows: auto;
+  // // grid-auto-flow: column;
+  // gap: 10px;
+  display: block;
+  columns: 5;
+}
+
+ul.mega-menu__list li {
+  break-inside: avoid;
+  &:not(:last-child) {
+    width: 14%;
+    margin-bottom: 10px;
+  }
+}
+
+ul.mega-menu__list li.best-collection {
+  // grid-column: 5 / 6;
+  // grid-row: 1 / span 10;
+  break-before: column;
 }

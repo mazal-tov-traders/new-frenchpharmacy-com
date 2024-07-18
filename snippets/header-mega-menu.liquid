@@ -35,7 +35,7 @@
                   role="list"
                 >
                   {%- for childlink in link.links -%}
-                    <li>
+                    <li class="{% if childlink.handle == 'best-selling-brand'%} best-collection{%endif%}">
                       {% if childlink.handle == 'best-selling-brand'
                         and section.settings.image_for_best_collection != blank
                       %}
@@ -56,6 +56,7 @@
                         {{ childlink.title | escape }}
                       </a>
 
+                      {% comment %} start custom mega menu {% endcomment %}
                       {%- if childlink.links != blank -%}
                         <ul
                           class="list-unstyled {% if  childlink.handle == 'best-selling-brand' %}german{% endif %}"
@@ -63,8 +64,6 @@
                         >
                           {%- for grandchildlink in childlink.links -%}
                             <li>
-                              {% comment %} myCustom {% endcomment %}
-
                               {% if grandchildlink.url contains 'collections'
                                 or grandchildlink.handle contains 'collections'
                               %}
@@ -76,15 +75,7 @@
                                     >
                                   {% endif %}
                                 {% endif %}
-                                {% comment %}
-                                  {%- for collection in collections -%}
-                                    {% if collection.title == grandchildlink.title %}
-                                      {{ collection.image | image_url: width: 100 | image_tag: class: 'img' }}
-                                    {% endif %}
-                                  {% endfor %}
-                                {% endcomment %}
                               {% endif %}
-                              {% comment %} end myCustom {% endcomment %}
                               <a
                                 id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                 href="{{ grandchildlink.url }}"
@@ -99,6 +90,7 @@
                           {%- endfor -%}
                         </ul>
                       {%- endif -%}
+                      {% comment %} end custom mega menu {% endcomment %}
                     </li>
                   {%- endfor -%}
                 </ul>
