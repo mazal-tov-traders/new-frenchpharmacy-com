@@ -712,7 +712,8 @@
     margin-left: 33px;
     padding: 3px;
     position: relative;
-    top: -22px;
+    top: -23px;
+    left: 2px;
     transform: rotate(45deg);
   }
   .widget_countries .wrap_widget_countries {
@@ -883,6 +884,11 @@
     height: 15px;
     display: inline-block;
     text-align: center;
+    svg{
+      position: absolute;
+      top: 4px;
+      right: 4px;
+    }
   }
 
 
@@ -944,7 +950,7 @@
     margin-bottom: 20px;
   }
   .widget-countries-currency .widget_countries_selector {
-    margin-right: 20px;
+    margin-right: 28px;
   }
   .widget-countries-currency .wrap_delivery_pop .show_popup_adv:before {
     width: 17px;
@@ -959,14 +965,13 @@
 
   // 
   .free_delivery.domestic, .free_delivery.international {
-    font-family: "Nova-300-italic" sans-serif;
-    font-size: 12px;
-    font-style: italic;
-    font-weight: 300;
+    font-family: "Nova-600it" sans-serif;
+    font-size: 14px;  
     line-height: 22px;
     text-align: left;
     color: #fff;
     text-transform: none ;
+    letter-spacing: 0.1px;
   }
   .delivery-heading{
     margin: 0;

@@ -36,6 +36,15 @@
                 >
                   {%- for childlink in link.links -%}
                     <li>
+                      {% if childlink.handle == 'best-selling-brand'
+                        and section.settings.image_for_best_collection != blank
+                      %}
+                        {{
+                          section.settings.image_for_best_collection
+                          | image_url: width: 175
+                          | image_tag: class: 'judge-me-verified'
+                        }}
+                      {% endif %}
                       <a
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                         href="{{ childlink.url }}"
@@ -46,8 +55,12 @@
                       >
                         {{ childlink.title | escape }}
                       </a>
+
                       {%- if childlink.links != blank -%}
-                        <ul class="list-unstyled" role="list">
+                        <ul
+                          class="list-unstyled {% if  childlink.handle == 'best-selling-brand' %}german{% endif %}"
+                          role="list"
+                        >
                           {%- for grandchildlink in childlink.links -%}
                             <li>
                               {% comment %} myCustom {% endcomment %}
@@ -56,10 +69,12 @@
                                 or grandchildlink.handle contains 'collections'
                               %}
                                 {% if collections[grandchildlink.handle].featured_image %}
-                                  <img
-                                    src="{{ collections[grandchildlink.handle].featured_image | image_url: width: 100 }}"
-                                    alt="{{ grandchildlink.title }}"
-                                  >
+                                  {% if childlink.handle == 'best-selling-brand' %}
+                                    <img
+                                      src="{{ collections[grandchildlink.handle].featured_image | image_url: width: 100 }}"
+                                      alt="{{ grandchildlink.title }}"
+                                    >
+                                  {% endif %}
                                 {% endif %}
                                 {% comment %}
                                   {%- for collection in collections -%}

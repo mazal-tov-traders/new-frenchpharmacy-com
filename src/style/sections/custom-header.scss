@@ -5,6 +5,13 @@
       grid-template-columns: auto 1fr 0.3fr;
       column-gap: 2rem;
     }
+    .header__heading-logo {
+      width: 515px;
+    }
+    .header__heading-link {
+      padding-bottom: 0px;
+      padding-top: 0px;
+    }
   }
   .custom-header {
     .doubly-wrapper {
@@ -15,9 +22,22 @@
       justify-content: space-between;
     }
   }
-  .header__icon--cart{
-    svg{
-        width: 20px;
+  .header__icon--cart {
+    svg {
+      width: 20px;
     }
+  }
+}
+@media screen and (min-width: 990px) {
+  .search-modal__form {
+    max-width: 43.2rem;
+  }
+}
+@media screen and (min-width: 750px) {
+  .search-modal__content {
+    padding: 0 0rem;
+  }
+  .search-modal__content {
+    justify-content: flex-end;
   }
 }
