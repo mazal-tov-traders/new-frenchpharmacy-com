@@ -35,65 +35,136 @@
                   role="list"
                 >
                   {%- for childlink in link.links -%}
-                    <li class="{% if childlink.handle == 'best-selling-brand'%} best-collection{%endif%}">
-                      {% if childlink.handle == 'best-selling-brand'
-                        and section.settings.image_for_best_collection != blank
-                      %}
-                        {{
-                          section.settings.image_for_best_collection
-                          | image_url: width: 175
-                          | image_tag: class: 'judge-me-verified'
-                        }}
-                      {% endif %}
-                      <a
-                        id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
-                        href="{{ childlink.url }}"
-                        class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
-                        {% if childlink.current %}
-                          aria-current="page"
+                    {% comment %}  эта проверка не дает вывести  меню с этим тайтлом {% endcomment %}
+                    {%- if childlink.handle != 'best-selling-brand' -%}
+                      {% comment %}  {% endcomment %}
+                      <li class="{% if childlink.handle == 'best-selling-brand'%} best-collection{%endif%}">
+                        {% if childlink.handle == 'best-selling-brand'
+                          and section.settings.image_for_best_collection != blank
+                        %}
+                          {{
+                            section.settings.image_for_best_collection
+                            | image_url: width: 175
+                            | image_tag: class: 'judge-me-verified'
+                          }}
                         {% endif %}
-                      >
-                        {{ childlink.title | escape }}
-                      </a>
-
-                      {% comment %} start custom mega menu {% endcomment %}
-                      {%- if childlink.links != blank -%}
-                        <ul
-                          class="list-unstyled {% if  childlink.handle == 'best-selling-brand' %}german{% endif %}"
-                          role="list"
+                        <a
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
                         >
-                          {%- for grandchildlink in childlink.links -%}
-                            <li>
-                              {% if grandchildlink.url contains 'collections'
-                                or grandchildlink.handle contains 'collections'
-                              %}
-                                {% if collections[grandchildlink.handle].featured_image %}
-                                  {% if childlink.handle == 'best-selling-brand' %}
-                                    <img
-                                      src="{{ collections[grandchildlink.handle].featured_image | image_url: width: 100 }}"
-                                      alt="{{ grandchildlink.title }}"
-                                    >
+                          {{ childlink.title | escape }}
+                        </a>
+
+                        {% comment %} start custom mega menu {% endcomment %}
+                        {%- if childlink.links != blank -%}
+                          <ul
+                            class="list-unstyled {% if  childlink.handle == 'best-selling-brand' %}german{% endif %}"
+                            role="list"
+                          >
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                {% if grandchildlink.url contains 'collections'
+                                  or grandchildlink.handle contains 'collections'
+                                %}
+                                  {% if collections[grandchildlink.handle].featured_image %}
+                                    {% if childlink.handle == 'best-selling-brand' %}
+                                      <img
+                                        src="{{ collections[grandchildlink.handle].featured_image | image_url: width: 100 }}"
+                                        alt="{{ grandchildlink.title }}"
+                                      >
+                                    {% endif %}
                                   {% endif %}
                                 {% endif %}
-                              {% endif %}
-                              <a
-                                id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                href="{{ grandchildlink.url }}"
-                                class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
-                                {% if grandchildlink.current %}
-                                  aria-current="page"
-                                {% endif %}
-                              >
-                                {{ grandchildlink.title | escape }}
-                              </a>
-                            </li>
-                          {%- endfor -%}
-                        </ul>
-                      {%- endif -%}
-                      {% comment %} end custom mega menu {% endcomment %}
-                    </li>
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                        {% comment %} end custom mega menu {% endcomment %}
+                      </li>
+                    {% endif %}
                   {%- endfor -%}
                 </ul>
+                {% comment %}  старт доп меню {% endcomment %}
+                <ul>
+                  {%- for childlink in link.links -%}
+                    {% comment %}  эта проверка  выводит меню с этим тайтлом {% endcomment %}
+                    {%- if childlink.handle == 'best-selling-brand' -%}
+                      {% comment %}  {% endcomment %}
+                      <li class="{% if childlink.handle == 'best-selling-brand'%} best-collection{%endif%}">
+                        {% if childlink.handle == 'best-selling-brand'
+                          and section.settings.image_for_best_collection != blank
+                        %}
+                          {{
+                            section.settings.image_for_best_collection
+                            | image_url: width: 175
+                            | image_tag: class: 'judge-me-verified'
+                          }}
+                        {% endif %}
+                        <a
+                          id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
+                          href="{{ childlink.url }}"
+                          class="mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                          {% if childlink.current %}
+                            aria-current="page"
+                          {% endif %}
+                        >
+                          {{ childlink.title | escape }}
+                        </a>
+
+                        {% comment %} start custom mega menu {% endcomment %}
+                        {%- if childlink.links != blank -%}
+                          <ul
+                            class="list-unstyled {% if  childlink.handle == 'best-selling-brand' %}german{% endif %}"
+                            role="list"
+                          >
+                            {%- for grandchildlink in childlink.links -%}
+                              <li>
+                                {% if grandchildlink.url contains 'collections'
+                                  or grandchildlink.handle contains 'collections'
+                                %}
+                                  {% if collections[grandchildlink.handle].featured_image %}
+                                    {% if childlink.handle == 'best-selling-brand' %}
+                                      <img
+                                        src="{{ collections[grandchildlink.handle].featured_image | image_url: width: 100 }}"
+                                        alt="{{ grandchildlink.title }}"
+                                      >
+                                    {% endif %}
+                                  {% endif %}
+                                {% endif %}
+                                <a
+                                  id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                  href="{{ grandchildlink.url }}"
+                                  class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}"
+                                  {% if grandchildlink.current %}
+                                    aria-current="page"
+                                  {% endif %}
+                                >
+                                  {{ grandchildlink.title | escape }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        {%- endif -%}
+                        {% comment %} end custom mega menu {% endcomment %}
+                      </li>
+                    {% endif %}
+                  {%- endfor -%}
+                </ul>
+                {% comment %} энт доп меню {% endcomment %}
               </div>
             </details>
           </header-menu>
