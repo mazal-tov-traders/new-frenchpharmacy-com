@@ -72,30 +72,56 @@
         "show_on": ""
       }
     },
-    
     "custom_header_ccbVRd": {
       "type": "custom-header",
       "settings": {
         "logo_position": "middle-left",
         "menu": "main-menu",
-        "secrch_label": "What can we help you to find today?",
-        "sticky_header_type": "on-scroll-up",
+        "secrch_label": "What are you looking for?",
+        "sticky_header_type": "always",
         "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "padding_top": 18,
+        "padding_bottom": 18
       }
     },
     "custom_header_menu_ejatpQ": {
       "type": "custom-header-menu",
+      "blocks": {
+        "anchor_mega_menu1_XnFbHA": {
+          "type": "anchor_mega_menu1",
+          "settings": {
+            "heading_menu1": "French brands",
+            "anchor1": "BEST SELLING BRAND",
+            "image1": "shopify:\/\/shop_images\/Frame_1000002483.png"
+          }
+        },
+        "anchor_mega_menu2_Qf88zK": {
+          "type": "anchor_mega_menu2",
+          "settings": {
+            "heading_menu2": "Face",
+            "anchor1": "SKIN CARE",
+            "image1": "shopify:\/\/shop_images\/Rectangle_4133775_2x_d72c747a-287d-438b-9313-7b930e2ba5cc.png",
+            "anchor2": "MAKEUP",
+            "image2": "shopify:\/\/shop_images\/Rectangle_4133775.png",
+            "anchor3": "SKIN CONCERN",
+            "image3": "shopify:\/\/shop_images\/Rectangle_4133775_1.png",
+            "anchor4": "EYE CONCERN",
+            "image4": "shopify:\/\/shop_images\/Rectangle_4133775_2.png"
+          }
+        }
+      },
+      "block_order": [
+        "anchor_mega_menu1_XnFbHA",
+        "anchor_mega_menu2_Qf88zK"
+      ],
       "settings": {
-        "menu": "main-menu",
+        "menu": "mega-menu",
         "menu_type_desktop": "mega"
       }
     }
   },
   "order": [
     "custom_announcement_bar_8iqKnU",
-    
     "custom_header_ccbVRd",
     "custom_header_menu_ejatpQ"
   ]

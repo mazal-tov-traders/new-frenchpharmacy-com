@@ -13,7 +13,6 @@
   }
   .header__menu-item.list-menu__item {
     color: #fff;
-    text-transform: capitalize;
     font-family: "Nova-400" sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -52,48 +51,27 @@
   font-size: 13px;
   line-height: 15.83px;
   letter-spacing: 0.05em;
+  transition: transform 0.2s ease, color 0.2s ease; /* Плавный переход для transform и color */
   text-align: left;
   color: #f0f0f0;
   text-transform: uppercase;
 }
 .list-unstyled .mega-menu__link.link:hover {
-  font-family: "Nova-600";
-  font-size: 13px;
-  line-height: 15.83px;
-  letter-spacing: 0.05em;
-  text-align: left;
   color: #00c08b;
 }
-#MegaMenu-Content-1 {
-  .mega-menu__list.page-width {
-  
-    .list-unstyled.german {
-      column-gap: 20px;
-      width: 391px;
-      column-count: 3;
-      column-width: 108px;
-      display: inline-block;
-      li {
-        break-inside: avoid;
-      }
-    }
-  }
-}
 
-.mega-menu[open] .mega-menu__content {
-  opacity: 1;
-  transform: translateY(0);
-  display: flex;
-}
+#MegaMenu-Content-1{
+    display: flex;
+  }
+
+
 //  меню
 
 ul.mega-menu__list {
-  column-gap: 10px; 
-  max-width: 1184px;
+
   column-count: 4;
-  column-width: 108px;
   display: inline-block;
-  width: 100%;
+ 
 }
 
 ul.mega-menu__list > li {
@@ -102,7 +80,26 @@ ul.mega-menu__list > li {
     margin-bottom: 10px;
   }
 }
-
-ul.mega-menu__list li.best-collection {
-  break-before: column;
+.mega-menu__best-selling-brand{
+  border-left: solid 1px rgba(217, 217, 217, 0.1);
+  .best-collection{
+    list-style: none;
+    .mega-menu__link--level-2{
+      margin-bottom: 25px;
+    }
+    .list-unstyled.german{
+      break-before: column;
+      column-count: 3;
+      display: inline-block;
+      li{
+        break-inside: avoid;
+      }
+     
+    }
+    .judge-me-verified-img{
+      margin-bottom: 25px;
+    }
+  }
 }
+
+

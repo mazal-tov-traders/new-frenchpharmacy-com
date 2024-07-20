@@ -27,27 +27,38 @@
               </summary>
               <div
                 id="MegaMenu-Content-{{ forloop.index }}"
-                class="mega-menu__content color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
+                class="mega-menu__content page-width color-{{ section.settings.menu_color_scheme }} gradient motion-reduce global-settings-popup"
                 tabindex="-1"
               >
                 <ul
-                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  class="mega-menu__list{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
                   role="list"
                 >
                   {%- for childlink in link.links -%}
                     {% comment %}  эта проверка не дает вывести  меню с этим тайтлом {% endcomment %}
                     {%- if childlink.handle != 'best-selling-brand' -%}
                       {% comment %}  {% endcomment %}
-                      <li class="{% if childlink.handle == 'best-selling-brand'%} best-collection{%endif%}">
-                        {% if childlink.handle == 'best-selling-brand'
-                          and section.settings.image_for_best_collection != blank
-                        %}
-                          {{
-                            section.settings.image_for_best_collection
-                            | image_url: width: 175
-                            | image_tag: class: 'judge-me-verified'
-                          }}
-                        {% endif %}
+                      <li>
+                        {% for block in section.blocks %}
+                          {% case block.type %}
+                            {% when 'anchor_mega_menu2' %}
+                              {%- if link.title == block.settings.heading_menu2 -%}
+                                {% if childlink.title == block.settings.anchor1 and block.settings.image1 != blank %}
+                                  {{ block.settings.image1 | image_url: width: 170 | image_tag: class: 'img-block' }}
+                                {% endif %}
+                                {% if childlink.title == block.settings.anchor2 and block.settings.image2 != blank %}
+                                  {{ block.settings.image2 | image_url: width: 170 | image_tag: class: 'img-block' }}
+                                {% endif %}
+                                {% if childlink.title == block.settings.anchor3 and block.settings.image3 != blank %}
+                                  {{ block.settings.image3 | image_url: width: 170 | image_tag: class: 'img-block' }}
+                                {% endif %}
+                                {% if childlink.title == block.settings.anchor4 and block.settings.image4 != blank %}
+                                  {{ block.settings.image4 | image_url: width: 170 | image_tag: class: 'img-block' }}
+                                {% endif %}
+                              {% endif %}
+                          {% endcase %}
+                        {% endfor %}
+
                         <a
                           id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                           href="{{ childlink.url }}"
@@ -58,27 +69,13 @@
                         >
                           {{ childlink.title | escape }}
                         </a>
-
-                        {% comment %} start custom mega menu {% endcomment %}
                         {%- if childlink.links != blank -%}
                           <ul
-                            class="list-unstyled {% if  childlink.handle == 'best-selling-brand' %}german{% endif %}"
+                            class="list-unstyled"
                             role="list"
                           >
                             {%- for grandchildlink in childlink.links -%}
                               <li>
-                                {% if grandchildlink.url contains 'collections'
-                                  or grandchildlink.handle contains 'collections'
-                                %}
-                                  {% if collections[grandchildlink.handle].featured_image %}
-                                    {% if childlink.handle == 'best-selling-brand' %}
-                                      <img
-                                        src="{{ collections[grandchildlink.handle].featured_image | image_url: width: 100 }}"
-                                        alt="{{ grandchildlink.title }}"
-                                      >
-                                    {% endif %}
-                                  {% endif %}
-                                {% endif %}
                                 <a
                                   id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                   href="{{ grandchildlink.url }}"
@@ -93,27 +90,36 @@
                             {%- endfor -%}
                           </ul>
                         {%- endif -%}
-                        {% comment %} end custom mega menu {% endcomment %}
                       </li>
                     {% endif %}
                   {%- endfor -%}
                 </ul>
                 {% comment %}  старт доп меню {% endcomment %}
-                <ul>
+
+                <ul
+                  class="mega-menu__best-selling-brand"
+                  role="list"
+                >
                   {%- for childlink in link.links -%}
                     {% comment %}  эта проверка  выводит меню с этим тайтлом {% endcomment %}
                     {%- if childlink.handle == 'best-selling-brand' -%}
                       {% comment %}  {% endcomment %}
-                      <li class="{% if childlink.handle == 'best-selling-brand'%} best-collection{%endif%}">
-                        {% if childlink.handle == 'best-selling-brand'
-                          and section.settings.image_for_best_collection != blank
-                        %}
-                          {{
-                            section.settings.image_for_best_collection
-                            | image_url: width: 175
-                            | image_tag: class: 'judge-me-verified'
-                          }}
-                        {% endif %}
+                      <li class="{% if childlink.handle ==  'best-selling-brand' %}best-collection{%endif%}">
+                        {% for block in section.blocks %}
+                          {% case block.type %}
+                            {% when 'anchor_mega_menu1' %}
+                              {%- if link.title == block.settings.heading_menu1 -%}
+                                {% if childlink.title == block.settings.anchor1 and block.settings.image1 != blank %}
+                                  {{
+                                    block.settings.image1
+                                    | image_url: width: 175
+                                    | image_tag: class: 'judge-me-verified-img'
+                                  }}
+                                {% endif %}
+                              {% endif %}
+                          {% endcase %}
+                        {% endfor %}
+
                         <a
                           id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                           href="{{ childlink.url }}"
