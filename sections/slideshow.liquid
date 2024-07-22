@@ -128,19 +128,37 @@
                 assign fetch_priority = 'high'
               endif
             -%}
+
             {%- if forloop.first %}
               {{
                 block.settings.image
                 | image_url: width: 3840
-                | image_tag: height: height, sizes: sizes, widths: widths, fetchpriority: fetch_priority
+                | image_tag:
+                  height: height,
+                  sizes: sizes,
+                  widths: widths,
+                  fetchpriority: fetch_priority,
+                  class: 'slideshow_image'
               }}
+              {{
+                block.settings.image_mobile
+                | image_url: width: 760
+                | image_tag: loading: 'lazy', class: 'slideshow_mob-image'
+              }}
+
             {%- else -%}
               {{
                 block.settings.image
                 | image_url: width: 3840
-                | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths
+                | image_tag: loading: 'lazy', height: height, sizes: sizes, widths: widths, class: 'slideshow_image'
+              }}
+              {{
+                block.settings.image_mobile
+                | image_url: width: 760
+                | image_tag: loading: 'lazy', class: 'slideshow_mob-image'
               }}
             {%- endif -%}
+
           {%- else -%}
             {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
             {%- if placeholder_slide == 1 -%}
@@ -394,6 +412,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Image mobile"
         },
         {
           "type": "image_picker",

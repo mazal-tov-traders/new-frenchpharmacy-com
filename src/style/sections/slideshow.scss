@@ -54,7 +54,7 @@
     font-family: "Nova-400";
     font-size: 16px;
     line-height: 20px;
-    text-align: left;
+
     color: #fff;
     text-transform: uppercase;
     margin-bottom: 30px;
@@ -65,7 +65,7 @@
     font-weight: 300;
     line-height: 60px;
     letter-spacing: -0.05em;
-    text-align: left;
+
     color: #fff;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -74,7 +74,6 @@
     font-family: "Nova-400";
     font-size: 18px;
     line-height: 24px;
-    text-align: left;
     color: #fff;
     margin-bottom: 40px;
   }
@@ -84,23 +83,57 @@
       font-size: 14px;
       line-height: 17.05px;
       letter-spacing: -0.03em;
-      text-align: left;
+
       padding: 16px 40px 16px 40px;
       background: transparent;
       border: 1px solid #ff5c35;
       color: #ff5c35;
-      
+
       text-transform: uppercase;
     }
     .button::after {
-        content: none;
+      content: none;
     }
     .button::before {
-        content: none;
+      content: none;
     }
     .button:hover {
       background: #ff5c35;
       color: #fff;
     }
+  }
+}
+.slideshow_image {
+  img {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 760px) {
+  .slideshow_mob-image {
+    display: none;
+  }
+}
+@media screen and (max-width: 759px) {
+  .slideshow__img-content {
+    display: none !important;
+  }
+
+  .slideshow.banner {
+    min-height: 880px;
+  }
+  .slideshow_image {
+    display: none !important;
+  }
+  .slideshow__text-wrapper.banner__content.banner__content--middle-left.page-width.banner--desktop-transparent {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+  .banner__heading {
+    font-size: 44px;
+    line-height: 50px;
+  }
+  .banner__text {
+    margin-bottom: 30px;
   }
 }

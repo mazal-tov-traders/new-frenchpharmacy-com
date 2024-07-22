@@ -1090,7 +1090,7 @@ summary::-webkit-details-marker {
 
 .media > *:not(.zoom):not(.deferred-media__poster-button),
 .media model-viewer {
-  display: block;
+  /* display: block; */
   max-width: 100%;
   position: absolute;
   top: 0;

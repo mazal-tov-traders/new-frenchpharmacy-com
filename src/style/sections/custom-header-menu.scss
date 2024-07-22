@@ -35,7 +35,16 @@
 .mega-menu[open] .mega-menu__content {
   background: #4f4f4f;
 }
-
+.header__menu-item:hover {
+  span {
+    text-decoration: none;
+  }
+ 
+ 
+}
+details[open]>.header__menu-item {
+  text-decoration: none;
+}
 // стили для меню бест
 .mega-menu__link.mega-menu__link--level-2.link {
   color: #ff5c35;
@@ -51,7 +60,7 @@
   font-size: 13px;
   line-height: 15.83px;
   letter-spacing: 0.05em;
-  transition: transform 0.2s ease, color 0.2s ease; /* Плавный переход для transform и color */
+  transition: transform 0.2s ease, color 0.2s ease; 
   text-align: left;
   color: #f0f0f0;
   text-transform: uppercase;

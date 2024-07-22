@@ -5,24 +5,10 @@
     "custom_announcement_bar_8iqKnU": {
       "type": "custom-announcement-bar",
       "blocks": {
-        "announcement_3i9gFm": {
-          "type": "announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "link": ""
-          }
-        },
         "announcement_3DAY6d": {
           "type": "announcement",
           "settings": {
             "text": "SHIPS 24-7 FROM OUR US WAREHOUSES",
-            "link": ""
-          }
-        },
-        "announcement_rF6x9Y": {
-          "type": "announcement",
-          "settings": {
-            "text": "Welcome",
             "link": ""
           }
         },
@@ -31,20 +17,6 @@
           "settings": {
             "text": "SHIPS 24-7 FROM OUR US WAREHOUSES",
             "link": "shopify:\/\/products\/miracles"
-          }
-        },
-        "announcement_xakyDK": {
-          "type": "announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "link": ""
-          }
-        },
-        "announcement_zT38tJ": {
-          "type": "announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "link": ""
           }
         },
         "announcement_WzLRzt": {
@@ -56,12 +28,8 @@
         }
       },
       "block_order": [
-        "announcement_3i9gFm",
         "announcement_3DAY6d",
-        "announcement_rF6x9Y",
         "announcement_9aAQnD",
-        "announcement_xakyDK",
-        "announcement_zT38tJ",
         "announcement_WzLRzt"
       ],
       "settings": {

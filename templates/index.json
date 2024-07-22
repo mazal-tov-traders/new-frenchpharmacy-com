@@ -1,42 +1,99 @@
 {
   "sections": {
-    "custom_image_banner_qGpLyy": {
-      "type": "custom-image-banner",
+    "slideshow_4DiC8J": {
+      "type": "slideshow",
       "blocks": {
-        "sub_heading_rjmYpz": {
-          "type": "sub_heading",
+        "slide_k4bpmT": {
+          "type": "slide",
           "settings": {
-            "sub_heading": "The one and only recognized worldwide"
+            "image": "shopify:\/\/shop_images\/Rectangle_4133756_1.jpg",
+            "image_mobile": "shopify:\/\/shop_images\/1112_1.jpg",
+            "image_content": "shopify:\/\/shop_images\/Frame_1000002483.png",
+            "title": "The one and only recognized worldwide",
+            "heading": "Beauty Eye Solution",
+            "heading_size": "h1",
+            "subheading": "In addition to caring for dry, tired, and irritated eyes, the drops give your eyes an amazing radiance.",
+            "button_label": "Shop Now",
+            "link": "#",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
           }
         },
-        "heading_XnAKz6": {
-          "type": "heading",
+        "slide_mTp8TU": {
+          "type": "slide",
           "settings": {
-            "heading": "<p>Beauty <br\/>Eye Solution<\/p>"
-          }
-        },
-        "content_KfjtGf": {
-          "type": "content",
-          "settings": {
-            "content": "<p>In addition to caring for dry, tired, and irritated eyes,<\/p><p> the drops give your eyes an amazing radiance.<\/p>"
-          }
-        },
-        "btn_Ant73E": {
-          "type": "btn",
-          "settings": {
+            "title": "",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
-            "button_link": ""
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_33twpP": {
+          "type": "slide",
+          "settings": {
+            "title": "",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide_Gc34Rb": {
+          "type": "slide",
+          "settings": {
+            "title": "",
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": false,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "color_scheme": "scheme-1",
+            "text_alignment_mobile": "center"
           }
         }
       },
       "block_order": [
-        "sub_heading_rjmYpz",
-        "heading_XnAKz6",
-        "content_KfjtGf",
-        "btn_Ant73E"
+        "slide_k4bpmT",
+        "slide_mTp8TU",
+        "slide_33twpP",
+        "slide_Gc34Rb"
       ],
       "settings": {
-        "banner": "shopify:\/\/shop_images\/Rectangle_4133756.jpg"
+        "layout": "grid",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about our brand"
       }
     },
     "featured_collection": {
@@ -171,7 +228,7 @@
     }
   },
   "order": [
-    "custom_image_banner_qGpLyy",
+    "slideshow_4DiC8J",
     "featured_collection",
     "custom_collection_list_BxrdBp",
     "custom_collection_slider_RryDNy",
