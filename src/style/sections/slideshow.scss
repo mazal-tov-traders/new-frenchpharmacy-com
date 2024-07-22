@@ -1,0 +1,106 @@
+.slide-width {
+  max-width: 1920px !important;
+  width: 100%;
+  margin: 0 auto;
+}
+.slider-mobile-gutter.slide-width {
+  .slideshow__controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: none;
+    .slider-button.slider-button--prev {
+      display: none;
+    }
+    .slider-button.slider-button--next {
+      display: none;
+    }
+    .slideshow__autoplay.slider-button {
+      display: none;
+    }
+    .slider-counter.slider-counter--dots {
+      .slider-counter__link.slider-counter__link--dots.link {
+        .dot {
+          width: 6px;
+          height: 6px;
+          background-color: #fff;
+          opacity: 60%;
+          border-radius: 0%;
+          border: none;
+        }
+      }
+      .slider-counter__link.slider-counter__link--dots.link.slider-counter__link--active {
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 0%;
+          background-color: #fff;
+          opacity: 100%;
+          border: none;
+        }
+      }
+    }
+  }
+}
+.slideshow__img-content {
+  position: absolute;
+  top: 23px;
+  right: 35px;
+}
+
+.slideshow__text.banner__box {
+  .banner__title {
+    font-family: "Nova-400";
+    font-size: 16px;
+    line-height: 20px;
+    text-align: left;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  .banner__heading {
+    font-family: "Barlow" sans-serif;
+    font-size: 54px;
+    font-weight: 300;
+    line-height: 60px;
+    letter-spacing: -0.05em;
+    text-align: left;
+    color: #fff;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .banner__text {
+    font-family: "Nova-400";
+    font-size: 18px;
+    line-height: 24px;
+    text-align: left;
+    color: #fff;
+    margin-bottom: 40px;
+  }
+  .banner__buttons {
+    .button {
+      font-family: "Nova-400";
+      font-size: 14px;
+      line-height: 17.05px;
+      letter-spacing: -0.03em;
+      text-align: left;
+      padding: 16px 40px 16px 40px;
+      background: transparent;
+      border: 1px solid #ff5c35;
+      color: #ff5c35;
+      
+      text-transform: uppercase;
+    }
+    .button::after {
+        content: none;
+    }
+    .button::before {
+        content: none;
+    }
+    .button:hover {
+      background: #ff5c35;
+      color: #fff;
+    }
+  }
+}
