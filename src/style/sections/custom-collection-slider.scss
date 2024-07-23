@@ -84,15 +84,57 @@
       text-decoration: none;
     }
   }
-  .slider-product-btn:hover{
+  .slider-product-btn:hover {
     background: #00c08b;
-    .btn{
+    .btn {
       color: #fff;
     }
   }
 }
 .swiper.mySwiper {
   margin-bottom: 60px;
+  .card__inner.gradient {
+    margin-bottom: 20px;
+  }
+  .card__content {
+    border-top: 1px solid #f0f0f0;
+  }
+  @media screen and (min-width: 750px) {
+    .card__information {
+      padding-bottom: 1.7rem;
+      padding-top: 20px;
+    }
+  }
+  .extend-height.card--media.card__inner {
+    height: 220px;
+  }
+  .card-wrapper {
+    width: 100%;
+    padding: 0px;
+  }
+  .caption-with-letter-spacing.light {
+    font-family: "Nova-400";
+    font-size: 14px;
+    line-height: 17.05px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #6a6a6a;
+    margin-bottom: 10px;
+  }
+  .inner-raiting-and-count {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    align-items: center;
+    margin-bottom: 20px;
+    .rating {
+      display: flex;
+    }
+  }
+  .card__heading {
+    text-align: center;
+  }
 }
 .wrapper_btn-slider {
   .swiper-button-next::after,
