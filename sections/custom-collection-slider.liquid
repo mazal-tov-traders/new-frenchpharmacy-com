@@ -14,6 +14,12 @@
 
 <div class="slider-product">
   <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="slider-product__title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.sub_title != blank %}
+      <h3 class="slider-product__sub-title">{{ section.settings.sub_title }}</h3>
+    {% endif %}
     <div class="swiper mySwiper">
       <ul
         data-id="{{ section.id }}"
@@ -49,6 +55,23 @@
         {% render 'icon-swiper-next' %}
       </div>
     </div>
+    {%- if section.settings.button_label != blank -%}
+      <div
+        class="slider-product-btn"
+      >
+        <a
+          {% if section.settings.button_link == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.button_link }}"
+          {% endif %}
+
+          class="btn"
+        >
+          {{- section.settings.button_label | escape -}}
+        </a>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 
@@ -95,7 +118,7 @@
 
 {% schema %}
 {
-  "name": "Custom Collection",
+  "name": "Custom Collection Slider",
   "tag": "section",
   "class": "custom-collection",
   "disabled_on": {
@@ -107,6 +130,12 @@
       "id": "title",
       "default": "Featured collection",
       "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "sub_title",
+      "default": "collection",
+      "label": "Sub Heading"
     },
     {
       "type": "collection",
@@ -138,11 +167,22 @@
           "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
         }
       ]
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Button label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
     }
   ],
   "presets": [
     {
-      "name": "Custom Collection"
+      "name": "Custom Collection Slider"
     }
   ]
 }

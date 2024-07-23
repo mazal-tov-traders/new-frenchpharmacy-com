@@ -123,6 +123,35 @@
               </a>
             </h3>
           </div>
+          {% comment %}
+            <div class="card__badge {{ settings.badge_position }}">
+              {%- if card_product.available == false -%}
+                <span
+                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+                  class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
+                >
+                  {{- 'products.product.sold_out' | t -}}
+
+
+                  {{
+                    product_card_product.compare_at_price
+                    | minus: product_card_product.price
+                    | times: 100
+                    | divided_by: product_card_product.compare_at_price
+                  -}}
+                  121212 % off
+
+                </span>
+              {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
+                <span
+                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+                  class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                >
+                  {{- 'products.product.on_sale' | t -}}
+                </span>
+              {%- endif -%}
+            </div>
+          {% endcomment %}
           <div class="card__badge {{ settings.badge_position }}">
             {%- if card_product.available == false -%}
               <span
@@ -130,16 +159,6 @@
                 class="badge badge--bottom-left color-{{ settings.sold_out_badge_color_scheme }}"
               >
                 {{- 'products.product.sold_out' | t -}}
-
-                {% comment %}  {% endcomment %}
-                {{
-                  product_card_product.compare_at_price
-                  | minus: product_card_product.price
-                  | times: 100
-                  | divided_by: product_card_product.compare_at_price
-                }}
-                % off
-                {% comment %}  {% endcomment %}
               </span>
             {%- elsif card_product.compare_at_price > card_product.price and card_product.available -%}
               <span
@@ -147,6 +166,11 @@
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               >
                 {{- 'products.product.on_sale' | t -}}
+                {%- assign discount = card_product.compare_at_price | minus: card_product.price -%}
+                {%- assign discount_percentage = discount | times: 100 | divided_by: card_product.compare_at_price -%}
+                {%- assign discount_percentage = discount_percentage | round -%}
+                {{ ' ' -}}
+                {{- discount_percentage }}%{{ ' ' }}
               </span>
             {%- endif -%}
           </div>
