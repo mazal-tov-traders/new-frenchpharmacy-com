@@ -1,7 +1,100 @@
+// стили для мега меню
 .custom-header-menu.body-container {
-  background: rgba(47, 47, 47, 1);
-  height: max-content;
+  background: #4f4f4f;
+}
+.mega-menu[open] .mega-menu__content {
+  background: #4f4f4f;
+}
+.header__menu-item:hover {
+  span {
+    text-decoration: none;
+  }
+}
+details[open] > .header__menu-item {
+  text-decoration: none;
+}
+// стили для меню бест
+.mega-menu__link.mega-menu__link--level-2.link {
+  color: #ff5c35;
+  font-family: "Nova-400";
+  font-size: 16px;
+  line-height: 19.49px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
 
+.mega-menu__link.link {
+  font-family: "Nova-300";
+  font-size: 13px;
+  line-height: 15.83px;
+  letter-spacing: 0.05em;
+  transition: transform 0.2s ease, color 0.2s ease;
+  text-align: left;
+  color: #f0f0f0;
+  text-transform: uppercase;
+}
+.list-unstyled .mega-menu__link.link:hover {
+  color: #00c08b;
+}
+
+#MegaMenu-Content-1 {
+  display: flex;
+}
+
+//  меню
+
+ul.mega-menu__list {
+  column-count: 4;
+  display: inline-block;
+}
+
+ul.mega-menu__list > li {
+  break-inside: avoid;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+.mega-menu__best-selling-brand {
+  border-left: solid 1px rgba(217, 217, 217, 0.1);
+  .best-collection {
+    list-style: none;
+    .mega-menu__link--level-2 {
+      margin-bottom: 25px;
+    }
+    .list-unstyled.german {
+      break-before: column;
+      column-count: 3;
+      display: inline-block;
+      li {
+        break-inside: avoid;
+      }
+    }
+    .judge-me-verified-img {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+#MegaMenu-Content-2 {
+  .mega-menu__list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 60px;
+    .mega-menu__link.mega-menu__link--level-2.link {
+      padding-bottom: 20px;
+    }
+  }
+}
+
+//  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! REcreate mega menu in Header !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+.custom-mega-menu {
+  margin: 0 auto;
+  max-width: 1920px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  background: #4F4F4F;
   .custom-header-menu-inner {
     position: relative;
     display: flex;
@@ -28,97 +121,34 @@
     z-index: 2;
   }
 }
-// стили для мега меню
-.custom-header-menu.body-container {
-  background: #4f4f4f;
-}
-.mega-menu[open] .mega-menu__content {
-  background: #4f4f4f;
-}
-.header__menu-item:hover {
-  span {
-    text-decoration: none;
-  }
- 
- 
-}
-details[open]>.header__menu-item {
-  text-decoration: none;
-}
-// стили для меню бест
-.mega-menu__link.mega-menu__link--level-2.link {
-  color: #ff5c35;
-  font-family: "Nova-400";
-  font-size: 16px;
-  line-height: 19.49px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.mega-menu__link.link {
-  font-family: "Nova-300";
-  font-size: 13px;
-  line-height: 15.83px;
-  letter-spacing: 0.05em;
-  transition: transform 0.2s ease, color 0.2s ease; 
-  text-align: left;
-  color: #f0f0f0;
-  text-transform: uppercase;
-}
-.list-unstyled .mega-menu__link.link:hover {
-  color: #00c08b;
-}
-
-#MegaMenu-Content-1{
-    display: flex;
-  }
-
-
-//  меню
-
-ul.mega-menu__list {
-
-  column-count: 4;
-  display: inline-block;
- 
-}
-
-ul.mega-menu__list > li {
-  break-inside: avoid;
-  &:not(:last-child) {
-    margin-bottom: 10px;
+@media screen and (min-width: 1118px) {
+  .hiden-search {
+    display: none;
   }
 }
-.mega-menu__best-selling-brand{
-  border-left: solid 1px rgba(217, 217, 217, 0.1);
-  .best-collection{
-    list-style: none;
-    .mega-menu__link--level-2{
-      margin-bottom: 25px;
-    }
-    .list-unstyled.german{
-      break-before: column;
-      column-count: 3;
-      display: inline-block;
-      li{
-        break-inside: avoid;
-      }
-     
-    }
-    .judge-me-verified-img{
-      margin-bottom: 25px;
-    }
+@media screen and (max-width: 1117px) {
+  .custom-search.search-modal__content.search-modal__content-bottom {
+    display: none;
   }
 }
 
-
-#MegaMenu-Content-2{
-  .mega-menu__list{
-    display: flex;
-    justify-content: space-between;
-    padding:0px 60px ;
-    .mega-menu__link.mega-menu__link--level-2.link{
-      padding-bottom: 20px;
-    }
+@media screen and (max-width: 1117px) {
+  .custom-search.search-modal__content.search-modal__content-bottom {
+    display: none;
+  }
+}
+@media screen and (max-width: 990px) {
+  .custom-mega-menu{
+    display: none;
+  }
+}
+@media screen and (min-width: 650px) {
+  .header__heading-logo-mob {
+    display: none;
+  }
+}
+@media screen and (max-width: 649px) {
+  .header__heading-logo-wrapper {
+    display: none;
   }
 }
