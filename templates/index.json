@@ -96,32 +96,16 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "custom_collection_slider_RryDNy": {
+      "type": "custom-collection-slider",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
+        "title": "BEST SELLERS",
+        "sub_title": "Simple skincare that lives with you!",
+        "collection": "best-selling",
         "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "quick_add": "standard",
+        "button_label": "SHOP BEST SELLERS",
+        "button_link": "shopify:\/\/collections"
       }
     },
     "custom_collection_list_BxrdBp": {
@@ -190,15 +174,6 @@
         "padding_bottom": 120
       }
     },
-    "custom_collection_slider_RryDNy": {
-      "type": "custom-collection-slider",
-      "settings": {
-        "title": "Featured collection",
-        "collection": "best-selling",
-        "products_to_show": 8,
-        "quick_add": "none"
-      }
-    },
     "1715772755ba07f0b7": {
       "type": "apps",
       "blocks": {
@@ -229,9 +204,8 @@
   },
   "order": [
     "slideshow_4DiC8J",
-    "featured_collection",
-    "custom_collection_list_BxrdBp",
     "custom_collection_slider_RryDNy",
+    "custom_collection_list_BxrdBp",
     "1715772755ba07f0b7",
     "custom_blog_slider_YNWbdV"
   ]

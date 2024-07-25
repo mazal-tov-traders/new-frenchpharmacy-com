@@ -3,6 +3,7 @@
 
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'swiper-min.css' | asset_url | stylesheet_tag }}
 {%- unless section.settings.quick_add == 'none' -%}
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -81,9 +82,9 @@
   }
 
   .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
+    height: calc((100% - 30px) / 2) !important;
+
+    /* Center slide text vertically */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,16 +95,8 @@
     section: document.querySelector("#shopify-section-{{ section.id }}"),
     init() {
       this.slider = new Swiper(this.section.querySelector(".mySwiper"), {
-        //speed: 1000,
           grabCursor: true,
-          //centeredSlides: true,
-         // loopedSlides: 2,
-         // initialSlide: 1,
           loop: true,
-        //   createElements: true,
-         // slideToClickedSlide:true,
-          slidesPerView: 5,
-          spaceBetween: 45,
           freeMode: true,
         pagination: {
           el: this.section.querySelector('.slider-double__pagination'),
@@ -115,12 +108,19 @@
         },
         breakpoints: {
         300: {
-          slidesPerView: 1,
+          slidesPerView: 2,
           centeredSlides: false,
           spaceBetween: 10,
+          grid: {
+            rows: 2,
+          },
         },
 
         769: {
+          slidesPerView: 4,
+          spaceBetween: 45,
+        },
+        1124: {
           slidesPerView: 5,
           spaceBetween: 45,
         },

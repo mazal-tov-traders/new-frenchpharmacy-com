@@ -8,12 +8,18 @@
   }
   .slider-product__title {
     font-family: "Barlow";
-    font-size: 34px;
+    font-size: 28px;
     font-weight: 400;
-    line-height: 40.8px;
+    line-height: 33.6px;
     color: #2f2f2f;
     text-align: center;
     margin-bottom: 15px;
+  }
+  @media screen and (min-with: 700px) {
+    .slider-product__title{
+      font-size: 34px;
+      line-height: 40.8px;
+    }
   }
   .slider-product__title:not(:has(+ .slider-product__sub-title)) {
     margin-bottom: 50px;
@@ -93,15 +99,76 @@
 }
 .swiper.mySwiper {
   margin-bottom: 60px;
+  // старт карточка товара
+  .quick-add {
+    margin-top: auto;
+  }
+  .quick-add__submit.button::after {
+    content: none;
+  }
+  .quick-add__submit.button::before {
+    content: none;
+  }
+  .quick-add__submit.button {
+    background: transparent;
+    border: 1px solid #2f2f2f;
+    span {
+      font-family: "Nova-400";
+      font-size: 14px;
+      line-height: 17.05px;
+      letter-spacing: -0.03em;
+      text-align: left;
+      color: #2f2f2f;
+      text-transform: uppercase;
+    }
+  }
+  .quick-add__submit.button:hover {
+    background: #ff5c35;
+    border: none;
+    span {
+      color: #fff;
+      font-family: "Nova-400";
+      font-size: 14px;
+      line-height: 17.05px;
+      letter-spacing: -0.03em;
+      text-align: left;
+    }
+  }
+
   .card__inner.gradient {
     margin-bottom: 20px;
   }
-  .card__content {
-    border-top: 1px solid #f0f0f0;
+  @media screen and (min-width: 769px) {
+    .card.card--standard.card--media {
+      min-height: 525px !important;
+      height: 100%;
+    }
   }
+ 
+  .card.card--standard.card--media {
+    height: 100%;
+  }
+
+  .card-wrapper.product-card-wrapper {
+    .card__content.custom-card__content {
+      border-top: 1px solid #f0f0f0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      .card__information {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        .card-information {
+          margin-top: auto;
+        }
+      }
+    }
+  }
+
   @media screen and (min-width: 750px) {
     .card__information {
-      padding-bottom: 1.7rem;
+      padding-bottom: 30px;
       padding-top: 20px;
     }
   }
@@ -134,7 +201,64 @@
   }
   .card__heading {
     text-align: center;
+    font-family: "Nova-400";
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #2f2f2f;
+    margin-bottom: 20px;
   }
+  .price {
+    .price__container {
+      display: flex;
+      justify-content: center;
+      .price-item.price-item--regular {
+        font-family: "Nova-600";
+        font-size: 18px;
+        line-height: 26px;
+        letter-spacing: -0.03em;
+        text-align: left;
+        .price-item_regular_cent {
+          font-family: "Nova-600";
+          font-size: 13px;
+          letter-spacing: -0.03em;
+          text-align: left;
+        }
+      }
+
+      s.price-item.price-item--regular {
+        font-family: "Nova-300";
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: -0.03em;
+        text-align: left;
+        color: #6a6a6a;
+
+        .price-item_sale_cent {
+          font-family: "Nova-300";
+          font-size: 12px;
+          letter-spacing: -0.03em;
+          text-align: left;
+          color: #6a6a6a;
+        }
+      }
+      .price-item.price-item--sale.price-item--last {
+        font-family: "Nova-600";
+        font-size: 18px;
+        line-height: 26px;
+        letter-spacing: -0.03em;
+        text-align: left;
+
+        .price-item_regular_cent {
+          font-family: "Nova-600";
+          font-size: 13px;
+          letter-spacing: -0.03em;
+          text-align: left;
+        }
+      }
+    }
+  }
+  // энт карточка товара
 }
 .wrapper_btn-slider {
   .swiper-button-next::after,
@@ -221,5 +345,11 @@
       gap: 50px;
       margin-top: 72px;
     }
+  }
+}
+@media screen and (max-width: 769px) {
+  .swiper-grid-column > .swiper-wrapper {
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
   }
 }
