@@ -75,23 +75,25 @@
     {%- endif -%}
   </div>
 </div>
-<style>
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
+{% style %}
+    #shopify-section-{{ section.id }} {
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
 
-  .swiper-slide {
-    height: calc((100% - 30px) / 2) !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .swiper-slide {
+      height: calc((100% - 30px) / 2) !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .swiper-grid-column > .swiper-wrapper {
+      flex-wrap: wrap !important;
+      flex-direction: row !important;
+    }
   }
-  .swiper-grid-column > .swiper-wrapper {
-    flex-wrap: wrap !important;
-    flex-direction: row !important;
-  }
-</style>
+{% endstyle %}
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script defer="defer">
   const section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }} = {

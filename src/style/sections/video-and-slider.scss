@@ -1,0 +1,111 @@
+.video-slider_inner {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  .video-section__media {
+    max-width: 645px;
+    width: 100%;
+  }
+  .swiper.mySwiper {
+    max-width: 945px;
+    width: 100%;
+    margin-right: -300px;
+    .swiper-slide.swiper-slide-next {
+      opacity: 31%;
+      pointer-events: none;
+
+      .swiper-slide-next::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        pointer-events: none;
+      }
+    }
+  }
+  //  start card product
+  .swiper.mySwiper {
+    @media screen and (min-width: 769px) {
+        .card.card--standard.card--media {
+            height: 100%;
+            min-height: 333px !important;
+        }
+    }
+    .price {
+      .price__container {
+        justify-content: flex-start;
+      }
+    }
+
+    .card__heading {
+      color: #2f2f2f;
+      font-family: Nova-400;
+      font-size: 18px;
+      line-height: 26px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+    .inner-raiting-and-count {
+      justify-content: flex-start;
+      margin-bottom: 15px;
+    }
+    .card__content.custom-card__content {
+      border-top: none !important;
+    }
+    .card--extend-height.card--standard.card--text .card__inner,
+    .card--extend-height.card--media .card__inner {
+      flex-grow: 0;
+    }
+    .card__inner.gradient {
+      width: 150px;
+      height: 150px;
+    }
+    .rating-star:before {
+      content: "\2605\2605\2605\2605\2605";
+      background: linear-gradient(
+        90deg,
+        rgb(255, 92, 53, 1) var(--percent),
+        rgba(var(--color-foreground), 0.15) var(--percent)
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .product-card-wrapper {
+      .rating-count.caption {
+        font-family: "Nova-400";
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17.05px;
+        text-align: left;
+        color: rgba(106, 106, 106, 1);
+      }
+    }
+    .card__badge {
+      align-self: self-start;
+      grid-row-start: 1;
+      justify-self: flex-start;
+      .badge {
+        border: 1px solid transparent;
+        border-radius: 0;
+        display: inline-block;
+        background: rgba(0, 192, 139, 1);
+        font-family: "Nova-700";
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 14.62px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+  }
+  //   end card product
+}
+
+
