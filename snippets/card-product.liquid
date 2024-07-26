@@ -207,7 +207,10 @@
                 </span>
               </p>
               <p class="rating-count caption">
-                <span aria-hidden="true">({{ card_product.metafields.reviews.rating_count }} reviews)</span>
+                <span class="rating-desc" aria-hidden="true"
+                  >({{ card_product.metafields.reviews.rating_count }} reviews)</span
+                >
+                <span class="rating-mob" aria-hidden="true">{{ card_product.metafields.reviews.rating_count }}</span>
                 <span class="visually-hidden">
                   {{- card_product.metafields.reviews.rating_count }}
                   {{ 'accessibility.total_reviews' | t -}}

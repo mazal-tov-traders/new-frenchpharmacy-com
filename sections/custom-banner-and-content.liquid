@@ -1,0 +1,98 @@
+<div class="banner-wrapper">
+  <div
+    class="page-width inner_banner-content"
+  >
+    {% if section.settings.img_in_banner != blank %}
+      {{ section.settings.img_in_banner | image_url: width: 498 | image_tag: class: 'img-in-banner' }}
+    {% endif %}
+    {% if section.settings.content != blank %}
+      <h3 class="banner-content">{{ section.settings.content }}</h3>
+    {% endif %}
+    <div class="icon-inner">
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+          {%- when 'icons' -%}
+            {% if block.settings.icon != blank %}
+              {{ block.settings.icon | image_url: width: 90 | image_tag: class: icon }}
+            {% endif %}
+        {% endcase %}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    @media screen and (min-width: 750px) {
+      .banner-wrapper{
+          background-image: url({{ section.settings.banner_desktop | image_url: width: 1920 }});
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          max-width: 1920px;
+          width: 100%;
+          margin: 0 auto;
+          min-height: 516px;
+      }
+    }
+    @media screen and (max-width: 749px) {
+      .banner-wrapper{
+        background-image: url({{ section.settings.banner_mobile | image_url: width: 749 }});
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          max-width: 1920px;
+          width: 100%;
+          margin: 0 auto;
+          min-height: 789px;
+       }
+    }
+  }
+{%- endstyle -%}
+{% schema %}
+{
+  "name": "Banner and Content",
+  "tag": "section",
+  "class": "section custom-banner-and-content",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_desktop",
+      "label": "Banner desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_mobile",
+      "label": "Banner mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "img_in_banner",
+      "label": "Banner mobile"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "content",
+      "label": "content"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icons",
+      "name": "Icons",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner and Content"
+    }
+  ]
+}
+{% endschema %}

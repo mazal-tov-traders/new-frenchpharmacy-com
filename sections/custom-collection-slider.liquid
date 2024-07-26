@@ -83,13 +83,16 @@
 
   .swiper-slide {
     height: calc((100% - 30px) / 2) !important;
-
-    /* Center slide text vertically */
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  .swiper-grid-column > .swiper-wrapper {
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+  }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script defer="defer">
   const section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }} = {
     section: document.querySelector("#shopify-section-{{ section.id }}"),
@@ -98,10 +101,6 @@
           grabCursor: true,
           loop: true,
           freeMode: true,
-        pagination: {
-          el: this.section.querySelector('.slider-double__pagination'),
-          clickable: true
-        },
         navigation: {
           nextEl: this.section.querySelector('.swiper-button-next'),
           prevEl: this.section.querySelector('.swiper-button-prev')
@@ -109,8 +108,7 @@
         breakpoints: {
         300: {
           slidesPerView: 2,
-          centeredSlides: false,
-          spaceBetween: 10,
+          spaceBetween: 30,
           grid: {
             rows: 2,
           },

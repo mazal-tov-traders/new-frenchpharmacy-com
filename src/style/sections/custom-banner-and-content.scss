@@ -1,0 +1,36 @@
+.custom-banner-and-content {
+
+  .inner_banner-content {
+    padding-top: 60px;
+    @media screen and (min-width: 790px) {
+      padding: 119px 35px;
+    }
+  }
+  .img-in-banner {
+    margin-bottom: 30px;
+    max-width: 498px;
+    width: 100%;
+  }
+  .banner-content {
+    margin-bottom: 50px;
+    max-width: 600px;
+    width: 100%;
+    font-family: 'Nova-300';
+    font-size: 20px;
+    line-height: 30px;
+    text-align: left;
+    color: #2F2F2F;
+  }
+  .icon-inner {
+    gap: 30px;
+    column-gap: 30px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    @media screen and (min-width: 790px) {
+      display: flex;
+    }
+  }
+}
+
+//
