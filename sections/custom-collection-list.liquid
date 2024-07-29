@@ -74,10 +74,17 @@
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const collection = document.querySelector('.collection-list');
-    const firstBanner = collection.querySelector('.collection-list-item');
+    const items = collection.querySelectorAll('.collection-list-item');
 
-    if (firstBanner) {
-      firstBanner.classList.add('active');
+    function updateActiveState() {
+      if (window.innerWidth < 800) {
+        items.forEach((item) => item.classList.add('active'));
+      } else {
+        const firstBanner = collection.querySelector('.collection-list-item');
+        if (firstBanner) {
+          firstBanner.classList.add('active');
+        }
+      }
     }
 
     function removeActiveCardClass() {
@@ -87,14 +94,21 @@
       }
     }
 
-    collection.addEventListener('mouseenter', (e) => {
-        if (e.target.classList.contains('collection-list-item')) {
-          removeActiveCardClass();
-          e.target.classList.add('active');
+    updateActiveState();
+    window.addEventListener('resize', updateActiveState);
+
+    collection.addEventListener(
+      'mouseenter',
+      (e) => {
+        if (window.innerWidth >= 800) {
+          if (e.target.classList.contains('collection-list-item')) {
+            removeActiveCardClass();
+            e.target.classList.add('active');
+          }
         }
       },
       true
-    ); 
+    );
   });
 </script>
 

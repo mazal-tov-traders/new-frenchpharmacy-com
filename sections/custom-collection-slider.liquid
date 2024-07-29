@@ -31,6 +31,7 @@
         {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
           <li
             class="product-cartochka swiper-slide"
+            style="margin-top: 0px;"
           >
             {% render 'card-product',
               card_product: product,
@@ -87,6 +88,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-top: 0px !important;
     }
     .swiper-grid-column > .swiper-wrapper {
       flex-wrap: wrap !important;
