@@ -108,6 +108,73 @@
         "button_link": "shopify:\/\/collections"
       }
     },
+    "custom_banner_and_content_UF3etV": {
+      "type": "custom-banner-and-content",
+      "blocks": {
+        "icons_pNJ3xr": {
+          "type": "icons",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/diamond.png"
+          }
+        },
+        "icons_mtFyXH": {
+          "type": "icons",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/platinum.png"
+          }
+        },
+        "icons_8zkpeF": {
+          "type": "icons",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/gold.png"
+          }
+        },
+        "icons_xkA7ef": {
+          "type": "icons",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/silver.png"
+          }
+        },
+        "icons_zqcbC4": {
+          "type": "icons",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/1-percent_1.png"
+          }
+        },
+        "icons_rdnFaD": {
+          "type": "icons",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/1-percent.png"
+          }
+        }
+      },
+      "block_order": [
+        "icons_pNJ3xr",
+        "icons_mtFyXH",
+        "icons_8zkpeF",
+        "icons_xkA7ef",
+        "icons_zqcbC4",
+        "icons_rdnFaD"
+      ],
+      "settings": {
+        "banner_desktop": "shopify:\/\/shop_images\/Rectangle_4133697.jpg",
+        "banner_mobile": "shopify:\/\/shop_images\/Rectangle_4133697_3.jpg",
+        "img_in_banner": "shopify:\/\/shop_images\/logo_1_8a33c0b7-062e-464d-83ee-743208842cf7.png",
+        "content": "brings to the USA all the beauty brands found in French Pharmacy and the personalized advices about your skin type"
+      }
+    },
+    "custom_collection_slider_zHJ7xc": {
+      "type": "custom-collection-slider",
+      "settings": {
+        "title": "NEW ARRIVALS",
+        "sub_title": "Under-the-radar French Pharmacy beauty.",
+        "collection": "new-arrivals",
+        "products_to_show": 20,
+        "quick_add": "standard",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
     "custom_collection_list_BxrdBp": {
       "type": "custom-collection-list",
       "blocks": {
@@ -174,6 +241,28 @@
         "padding_bottom": 120
       }
     },
+    "video_and_slider_bGArme": {
+      "type": "video-and-slider",
+      "settings": {
+        "heading": "Brand Spotlight",
+        "heading_size": "h1",
+        "sub_heading": "Discover, Shop, and Love Your New Beauty Obsession",
+        "collection": "baby",
+        "products_to_show": 11,
+        "quick_add": "standard",
+        "title": "Illuminate Your Shine",
+        "sub_title": "Lorem ipsum dolor sit amet consectetur. Vestibulum bibendum massa lorem id ipsum nisl ac.",
+        "enable_video_looping": false,
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify:\/\/shop_images\/Rectangle_4133766.jpg",
+        "description": "",
+        "button_label": "Button label",
+        "button_link": "",
+        "full_width": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "1715772755ba07f0b7": {
       "type": "apps",
       "blocks": {
@@ -200,69 +289,16 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "custom_banner_and_content_UF3etV": {
-      "type": "custom-banner-and-content",
-      "blocks": {
-        "icons_pNJ3xr": {
-          "type": "icons",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/diamond.png"
-          }
-        },
-        "icons_mtFyXH": {
-          "type": "icons",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/platinum.png"
-          }
-        },
-        "icons_8zkpeF": {
-          "type": "icons",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/gold.png"
-          }
-        },
-        "icons_xkA7ef": {
-          "type": "icons",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/silver.png"
-          }
-        },
-        "icons_zqcbC4": {
-          "type": "icons",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/1-percent_1.png"
-          }
-        },
-        "icons_rdnFaD": {
-          "type": "icons",
-          "settings": {
-            "icon": "shopify:\/\/shop_images\/1-percent.png"
-          }
-        }
-      },
-      "block_order": [
-        "icons_pNJ3xr",
-        "icons_mtFyXH",
-        "icons_8zkpeF",
-        "icons_xkA7ef",
-        "icons_zqcbC4",
-        "icons_rdnFaD"
-      ],
-      "settings": {
-        "banner_desktop": "shopify:\/\/shop_images\/Rectangle_4133697.jpg",
-        "banner_mobile": "shopify:\/\/shop_images\/Rectangle_4133697_3.jpg",
-        "img_in_banner": "shopify:\/\/shop_images\/logo_1_8a33c0b7-062e-464d-83ee-743208842cf7.png",
-        "content": "brings to the USA all the beauty brands found in French Pharmacy and the personalized advices about your skin type"
-      }
     }
   },
   "order": [
     "slideshow_4DiC8J",
     "custom_collection_slider_RryDNy",
+    "custom_banner_and_content_UF3etV",
+    "custom_collection_slider_zHJ7xc",
     "custom_collection_list_BxrdBp",
+    "video_and_slider_bGArme",
     "1715772755ba07f0b7",
-    "custom_blog_slider_YNWbdV",
-    "custom_banner_and_content_UF3etV"
+    "custom_blog_slider_YNWbdV"
   ]
 }

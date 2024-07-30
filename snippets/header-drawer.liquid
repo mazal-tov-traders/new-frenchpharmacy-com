@@ -4,9 +4,103 @@
   Usage:
   {% render 'header-drawer' %}
 {% endcomment %}
+<style>
+  header-drawer {
+    justify-self: start;
+    margin-left: -1.2rem;
+  }
+
+
+  {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
+    .scrolled-past-header .header__heading-logo-wrapper {
+      width: 75%;
+    }
+  {%- endif -%}
+
+  {%- if section.settings.menu_type_desktop != "drawer" -%}
+    @media screen and (min-width: 990px) {
+      header-drawer {
+        display: none;
+      }
+    }
+  {%- endif -%}
+
+  {% if section.settings.menu != blank %}
+    .custom-header.header {
+      grid-template-columns: auto auto 1fr auto;
+      grid-template-areas: "heading burger navigation icons";
+    }
+
+    @media (max-width: 989px) {
+      .custom-header.header {
+        grid-template-columns: auto auto 1fr auto;
+        grid-template-areas: "heading drawer search-modal icons";
+      }
+    }
+  {%- endif -%}
+
+  .menu-drawer-container {
+    display: flex;
+  }
+
+  .menu-drawer-container:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .header__icon:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .header__icon span:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .header__icon span svg:focus-visible {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .list-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .list-menu--inline {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+
+  summary.list-menu__item {
+    padding-right: 2.7rem;
+  }
+
+  .list-menu__item {
+    display: flex;
+    align-items: center;
+    line-height: calc(1 + 0.3 / var(--font-body-scale));
+  }
+
+  .list-menu__item--link {
+    text-decoration: none;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    line-height: calc(1 + 0.8 / var(--font-body-scale));
+  }
+
+  @media screen and (min-width: 750px) {
+    .list-menu__item--link {
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
+    }
+  }
+</style>
 
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
-  <details id="Details-menu-drawer-container" class="menu-drawer-container">
+  <details id="Details-menu-drawer-container" class="custom-drawer menu-drawer-container">
     <summary
       class="header__icon header__icon--menu header__icon--summary link focus-inset"
       aria-label="{{ 'sections.header.menu' | t }}"
@@ -17,11 +111,31 @@
       </span>
     </summary>
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      <div class="menu-drawer__header page-width">
+        <div class="menu-drawer__header-wrap">
+          <div class="menu-drawer__header-logo">
+            <a href="{{ routes.root_url }}" class="custom-header__logo--mob">
+              {%- if settings.logo_mob != blank -%}
+                {{
+                  settings.logo_mob
+                  | image_url: width: 300
+                  | image_tag: class: 'header__heading-logo', width: '38px'
+                }}
+              {%- else -%}
+                <span class="h2">{{ shop.name }}</span>
+              {%- endif -%}
+            </a>
+          </div>
+          <div class="menu-drawer__header-close js-close-drawer">
+            {% render 'icon-close' %}
+          </div>
+        </div>
+      </div>
       <div class="menu-drawer__inner-container">
-        <div class="menu-drawer__navigation-container">
+        <div class="menu-drawer__navigation-container custom-drawer__menu-block">
           <nav class="menu-drawer__navigation">
             <ul class="menu-drawer__menu has-submenu list-menu" role="list">
-              {%- for link in section.settings.menu.links -%}
+              {%- for link in section.settings.menu_mob.links -%}
                 <li>
                   {%- if link.links != blank -%}
                     <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
@@ -43,7 +157,7 @@
                             {% render 'icon-arrow' %}
                             {{ link.title | escape }}
                           </button>
-                          <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                          <ul class="menu-drawer__menu custom-drawer__menu-second list-menu" role="list" tabindex="-1">
                             {%- for childlink in link.links -%}
                               <li>
                                 {%- if childlink.links == blank -%}
@@ -78,17 +192,31 @@
                                         {% render 'icon-arrow' %}
                                         {{ childlink.title | escape }}
                                       </button>
+                                      {% comment %}  {% endcomment %}
                                       <ul
-                                        class="menu-drawer__menu list-menu"
+                                        class="menu-drawer__menu custom-drawer__menu-last list-menu {% if childlink.handle == 'brands-a-e' %}sorting-links-alph{% endif %}{% if childlink.handle == 'brands-e-n' %}sorting-links-alph{% endif %}{% if childlink.handle == 'brands-n-v' %}sorting-links-alph{% endif %}"
                                         role="list"
                                         tabindex="-1"
                                       >
-                                        {%- for grandchildlink in childlink.links -%}
+                                        {% assign current_letter = '' %}
+                                        {% assign sorted_links = childlink.links | sort: 'title' %}
+
+                                        {% for grandchildlink in sorted_links %}
+                                          {% assign first_letter = grandchildlink.title | slice: 0, 1 | upcase %}
+                                          {% if childlink.handle == 'brands-a-e'
+                                            or childlink.handle == 'brands-e-n'
+                                            or childlink.handle == 'brands-n-v'
+                                          %}
+                                            {% if first_letter != current_letter %}
+                                              {% assign current_letter = first_letter %}
+                                              <li class="alphabet-letter">{{ current_letter }}</li>
+                                            {% endif %}
+                                          {% endif %}
                                           <li>
                                             <a
                                               id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                               href="{{ grandchildlink.url }}"
-                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                              class="custom-drawer__menu-item menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
                                               {% if grandchildlink.current %}
                                                 aria-current="page"
                                               {% endif %}
@@ -96,8 +224,32 @@
                                               {{ grandchildlink.title | escape }}
                                             </a>
                                           </li>
-                                        {%- endfor -%}
+                                        {% endfor %}
                                       </ul>
+
+                                      {% comment %}  {% endcomment %}
+                                      {% comment %}
+                                        <ul
+                                          class="menu-drawer__menu list-menu {% if childlink.handle ==  'brands-a-e' %}sorting-links-alph{%endif%}{% if childlink.handle ==  'brands-e-n' %}sorting-links-alph{%endif%}{% if childlink.handle ==  'brands-n-v' %}sorting-links-alph{%endif%}"
+                                          role="list"
+                                          tabindex="-1"
+                                        >
+                                          {%- for grandchildlink in childlink.links -%}
+                                            <li>
+                                              <a
+                                                id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                                href="{{ grandchildlink.url }}"
+                                                class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                                {% if grandchildlink.current %}
+                                                  aria-current="page"
+                                                {% endif %}
+                                              >
+                                                {{ grandchildlink.title | escape }}
+                                              </a>
+                                            </li>
+                                          {%- endfor -%}
+                                        </ul>
+                                      {% endcomment %}
                                     </div>
                                   </details>
                                 {%- endif -%}
@@ -254,3 +406,38 @@
     </div>
   </details>
 </header-drawer>
+{% comment %}
+  <script defer="'defer'">
+    document.addEventListener('DOMContentLoaded', function () {
+      // Находим все списки с классом sorting-links-alph
+      const lists = document.querySelectorAll('.sorting-links-alph');
+
+      lists.forEach((list) => {
+        let currentLetter = ''; // Текущая буква алфавита
+
+        // Преобразуем NodeList в массив и сортируем его по заголовкам
+        const items = Array.from(list.querySelectorAll('li')).sort((a, b) => {
+          const titleA = a.textContent.trim().toUpperCase();
+          const titleB = b.textContent.trim().toUpperCase();
+          return titleA.localeCompare(titleB);
+        });
+
+        items.forEach((item) => {
+          const title = item.textContent.trim().toUpperCase();
+          const firstLetter = title.charAt(0);
+
+          // Если первая буква заголовка изменилась, вставляем новую букву в список
+          if (firstLetter !== currentLetter) {
+            currentLetter = firstLetter;
+            const letterElement = document.createElement('li');
+            letterElement.textContent = currentLetter;
+            letterElement.className = 'alphabet-letter';
+            list.insertBefore(letterElement, item);
+          }
+
+          list.appendChild(item); // Вставляем элемент обратно в список
+        });
+      });
+    });
+  </script>
+{% endcomment %}
