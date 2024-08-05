@@ -4,100 +4,6 @@
   Usage:
   {% render 'header-drawer' %}
 {% endcomment %}
-<style>
-  header-drawer {
-    justify-self: start;
-    margin-left: -1.2rem;
-  }
-
-
-  {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
-    .scrolled-past-header .header__heading-logo-wrapper {
-      width: 75%;
-    }
-  {%- endif -%}
-
-  {%- if section.settings.menu_type_desktop != "drawer" -%}
-    @media screen and (min-width: 990px) {
-      header-drawer {
-        display: none;
-      }
-    }
-  {%- endif -%}
-
-  {% if section.settings.menu != blank %}
-    .custom-header.header {
-      grid-template-columns: auto auto 1fr auto;
-      grid-template-areas: "heading burger navigation icons";
-    }
-
-    @media (max-width: 989px) {
-      .custom-header.header {
-        grid-template-columns: auto auto 1fr auto;
-        grid-template-areas: "heading drawer search-modal icons";
-      }
-    }
-  {%- endif -%}
-
-  .menu-drawer-container {
-    display: flex;
-  }
-
-  .menu-drawer-container:focus-visible {
-    outline: none;
-    box-shadow: none;
-  }
-
-  .header__icon:focus-visible {
-    outline: none;
-    box-shadow: none;
-  }
-
-  .header__icon span:focus-visible {
-    outline: none;
-    box-shadow: none;
-  }
-
-  .header__icon span svg:focus-visible {
-    outline: none;
-    box-shadow: none;
-  }
-
-  .list-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .list-menu--inline {
-    display: inline-flex;
-    flex-wrap: wrap;
-  }
-
-  summary.list-menu__item {
-    padding-right: 2.7rem;
-  }
-
-  .list-menu__item {
-    display: flex;
-    align-items: center;
-    line-height: calc(1 + 0.3 / var(--font-body-scale));
-  }
-
-  .list-menu__item--link {
-    text-decoration: none;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
-    line-height: calc(1 + 0.8 / var(--font-body-scale));
-  }
-
-  @media screen and (min-width: 750px) {
-    .list-menu__item--link {
-      padding-bottom: 0.5rem;
-      padding-top: 0.5rem;
-    }
-  }
-</style>
 
 <header-drawer data-breakpoint="{% if section.settings.menu_type_desktop == 'drawer' %}desktop{% else %}tablet{% endif %}">
   <details id="Details-menu-drawer-container" class="custom-drawer menu-drawer-container">
@@ -111,16 +17,14 @@
       </span>
     </summary>
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
+      {% comment %} custom {% endcomment %}
+      {% comment %} start logo and close button {% endcomment %}
       <div class="menu-drawer__header page-width">
         <div class="menu-drawer__header-wrap">
           <div class="menu-drawer__header-logo">
             <a href="{{ routes.root_url }}" class="custom-header__logo--mob">
-              {%- if settings.logo_mob != blank -%}
-                {{
-                  settings.logo_mob
-                  | image_url: width: 300
-                  | image_tag: class: 'header__heading-logo', width: '38px'
-                }}
+              {%- if settings.logo != blank -%}
+                {{ settings.logo | image_url: width: 300 | image_tag: class: 'header__heading-logo' }}
               {%- else -%}
                 <span class="h2">{{ shop.name }}</span>
               {%- endif -%}
@@ -130,7 +34,278 @@
             {% render 'icon-close' %}
           </div>
         </div>
+        {% comment %} end logo and close button {% endcomment %}
+        {% comment %} start search form {% endcomment %}
+        <div
+          class="custom-search search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}"
+          tabindex="-1"
+        >
+          {%- if settings.predictive_search_enabled -%}
+            <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+          {%- else -%}
+            <search-form class="search-modal__form">
+          {%- endif -%}
+          <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+            <div class="field">
+              <input
+                class="search__input field__input"
+                id="{{ input_id }}"
+                type="search"
+                name="q"
+                value="{{ search.terms | escape }}"
+                placeholder="{{ 'general.search.search' | t }}"
+                {%- if settings.predictive_search_enabled -%}
+                  role="combobox"
+                  aria-expanded="false"
+                  aria-owns="predictive-search-results"
+                  aria-controls="predictive-search-results"
+                  aria-haspopup="listbox"
+                  aria-autocomplete="list"
+                  autocorrect="off"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                {%- endif -%}
+              >
+              <label class="field__label field__label--desk" for="{{ input_id }}">
+                {%- if section.settings.secrch_label != blank -%}
+                  {{- section.settings.secrch_label -}}
+                {%- else -%}
+                  {{- 'general.search.search' | t -}}
+                {%- endif -%}
+              </label>
+
+              <input type="hidden" name="options[prefix]" value="last">
+              <input type="hidden" name="type" value="product">
+              <button
+                type="reset"
+                class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+                aria-label="{{ 'general.search.reset' | t }}"
+              >
+                <svg class="icon icon-close" aria-hidden="true" focusable="false">
+                  <use xlink:href="#icon-reset">
+                </svg>
+              </button>
+              <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+                <svg class="icon icon-search" aria-hidden="true" focusable="false">
+                  <use href="#icon-search">
+                </svg>
+              </button>
+            </div>
+
+            {%- if settings.predictive_search_enabled -%}
+              <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+                <div class="predictive-search__loading-state">
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    class="spinner"
+                    viewBox="0 0 66 66"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+              </div>
+
+              <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+            {%- endif -%}
+          </form>
+          {%- if settings.predictive_search_enabled -%}
+            </predictive-search>
+          {%- else -%}
+            </search-form>
+          {%- endif -%}
+        </div>
+        {% comment %} end search form {% endcomment %}
+        {% comment %}  start logo judge.me {% endcomment %}
+        <div
+          class="jdgm-medals-wrapper jdgm-widget jdgm-medals-wrapper--small"
+          data-widget-name="medals"
+          data-impressions-tracked="true"
+          data-views-tracked="true"
+        >
+          <div class="jdgm-verified-wrapper"></div>
+          <div class="jdgm-rating">
+            <span class="jdgm-rating__stars" data-score="4.78"
+              ><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span
+              ><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span
+              ><span class="jdgm-star jdgm--on"></span></span
+            ><span class="jdgm-rating__count" data-value="5007">5007 reviews</span>
+          </div>
+
+          <div class="jdgm-verified-by">
+            <span class="jdgm-verified-by__text">Verified by</span
+            ><span class="jdgm-verified-by__image"
+              ><img
+                alt="Judge.me Logo"
+                src="https://judgeme-public-images.imgix.net/judgeme/logos/logo-judgeme.svg?auto=format"
+            ></span>
+          </div>
+        </div>
+        {% comment %} end logo judge.me  {% endcomment %}
+        {% comment %} start widget countries {% endcomment %}
+        {% if settings.enable_country_widget %}
+          <div
+            class="announcement-widget_countries {{ section.settings.show_on }}"
+            data-section-id="{{ section.id }}"
+          >
+            <div class="inner-heading-flaf">
+              <p class="delivery-heading">Delivery</p>
+              <div class="widget_countries widget_countries_selector">
+                <div class="wrap_widget_countries">
+                  <div class="selected_flag"><div class="fflag fflag-US ff-sm"></div></div>
+                  <div class="arrow-down"></div>
+                </div>
+                <div class="wp_show_select_countries wp_show_popup_adv">
+                  <div class="show_select_countries show_popup_adv">
+                    <div class="title_c">Select regional settings</div>
+                    <div class="pad">
+                      <div class="grouped">
+                        <label aria-label="Country of delivery">Country of delivery</label>
+                        <div class="selectioner" role="listbox">
+                          <div class="selected_country arrow-down">
+                            <span class="fflag fflag-US ff-sm"></span><span class="country_name">United States</span>
+                          </div>
+                          <div class="selector_country">
+                            {% render 'flags' %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="widget_countries widget_countries_deliveries">
+              <div class="delivery_options domestic">
+                <p class="main_text">
+                  <span class="free_delivery domestic">{{ settings.country_widget_domestic_delivery_free }}</span>
+                  <span class="free_delivery international">
+                    {{- settings.country_widget_international_delivery_free -}}
+                  </span>
+                  <a class="interogation" href="{{ settings.country_widget_shipping_page_link.url }}">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M6 0C2.6838 0 0 2.6835 0 6C0 9.31615 2.6835 12 6 12C9.3162 12 12 9.3165 12 6C12 2.68385 9.3165 0 6 0ZM6.61615 8.38174C6.61615 8.5713 6.33973 8.76082 6.00012 8.76082C5.64471 8.76082 5.39201 8.5713 5.39201 8.38174V5.37267C5.39201 5.15154 5.64473 5.00145 6.00012 5.00145C6.33973 5.00145 6.61615 5.15154 6.61615 5.37267V8.38174ZM6.00014 4.27491C5.63684 4.27491 5.35254 4.00638 5.35254 3.70624C5.35254 3.40612 5.63686 3.1455 6.00014 3.1455C6.35555 3.1455 6.63989 3.40612 6.63989 3.70624C6.63989 4.00638 6.35552 4.27491 6.00014 4.27491Z" fill="#fff"/>
+                    </svg>
+                  </a>
+                </p>
+                <div class="wrap_delivery_pop wp_show_popup_adv">
+                  <div class="show_popup_adv">
+                    <div class="title_c">Delivery to (<span class="country_name">United States</span>)</div>
+                    <div class="pad">
+                      {% if settings.country_widget_domestic_delivery_option1 != blank
+                        and settings.country_widget_domestic_delivery_option1_logo != blank
+                      %}
+                        <div class="options domestic grouped">
+                          <div class="option option1">{{ settings.country_widget_domestic_delivery_option1 }}</div>
+                          <div class="logo_delivery logo1">
+                            {%- assign alt = settings.country_widget_domestic_delivery_option1_logo.alt | escape -%}
+                            {{
+                              settings.country_widget_domestic_delivery_option1_logo
+                              | image_url: width: 300
+                              | image_tag: loading: 'lazy', class: 'Image--lazyLoad Image--fadeIn', alt: alt
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if settings.country_widget_domestic_delivery_option2 != blank
+                        and settings.country_widget_domestic_delivery_option2_logo != blank
+                      %}
+                        <div class="options domestic grouped">
+                          <div class="option option2">{{ settings.country_widget_domestic_delivery_option2 }}</div>
+                          <div class="logo_delivery logo2">
+                            {%- assign alt = settings.country_widget_domestic_delivery_option2_logo.alt | escape -%}
+                            {{
+                              settings.country_widget_domestic_delivery_option2_logo
+                              | image_url: width: 300
+                              | image_tag: loading: 'lazy', class: 'Image--lazyLoad Image--fadeIn', alt: alt
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if settings.country_widget_international_delivery_option1 != blank
+                        and settings.country_widget_international_delivery_option1_logo != blank
+                      %}
+                        <div class="options international grouped">
+                          <div class="option option1">{{ settings.country_widget_international_delivery_option1 }}</div>
+                          <div class="logo_delivery logo1">
+                            {%- assign alt = settings.country_widget_international_delivery_option1_logo.alt
+                              | escape
+                            -%}
+                            {{
+                              settings.country_widget_international_delivery_option1_logo
+                              | image_url: width: 300
+                              | image_tag: loading: 'lazy', class: 'Image--lazyLoad Image--fadeIn', alt: alt
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
+                      {% if settings.country_widget_international_delivery_option2 != blank
+                        and settings.country_widget_international_delivery_option2_logo != blank
+                      %}
+                        <div class="options international grouped">
+                          <div class="option option2">{{ settings.country_widget_international_delivery_option2 }}</div>
+                          <div class="logo_delivery logo2">
+                            {%- assign alt = settings.country_widget_international_delivery_option2_logo.alt
+                              | escape
+                            -%}
+                            {{
+                              settings.country_widget_international_delivery_option2_logo
+                              | image_url: width: 300
+                              | image_tag: loading: 'lazy', class: 'Image--lazyLoad Image--fadeIn', alt: alt
+                            }}
+                          </div>
+                        </div>
+                      {% endif %}
+                    </div>
+                    <p class="details">
+                      <a href="{{ settings.country_widget_shipping_page_link.url }}">Show more details</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+        {% comment %} end widget countries {% endcomment %}
+        {% comment %} add app doubly{% endcomment %}
+        <div class="doubly-wrapper custom-german" data-nosnippet=""></div>
+        {% comment %} end app doubly {% endcomment %}
+        {% comment %} start accout sing in {% endcomment %}
+        <div class="inner-accoutn">
+          {%- if shop.customer_accounts_enabled -%}
+            <a
+              href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+              class="menu-drawer__account link focus-inset h5 medium-hide large-up-hide"
+            >
+              <account-icon>
+                {%- if customer and customer.has_avatar? -%}
+                  {{ customer | avatar }}
+                {%- else -%}
+                  {% render 'icon-account' %}
+                {%- endif -%}
+              </account-icon>
+              {% comment %}
+                {%- liquid
+                  if customer
+                    echo 'customer.account_fallback' | t
+                  else
+                    echo 'customer.log_in' | t
+                  endif
+                -%}
+              {% endcomment %}
+              <div class="acc_inner">
+                <p class="acc_log-in">Log In or</p>
+                <p class="acc_sing-up">Sign Up</p>
+              </div>
+            </a>
+          {%- endif -%}
+        </div>
+        {% comment %}  end accout sing in {% endcomment %}
       </div>
+      {% comment %} end custom {% endcomment %}
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container custom-drawer__menu-block">
           <nav class="menu-drawer__navigation">
@@ -144,7 +319,7 @@
                         class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
                       >
                         {{ link.title | escape }}
-                        {% render 'icon-arrow' %}
+                        {% render 'icon-arrow-custom' %}
                         {% render 'icon-caret' %}
                       </summary>
                       <div
@@ -153,10 +328,13 @@
                         tabindex="-1"
                       >
                         <div class="menu-drawer__inner-submenu">
-                          <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
-                            {% render 'icon-arrow' %}
-                            {{ link.title | escape }}
-                          </button>
+                          {% comment %}
+                            <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                              {% render 'icon-arrow' %}
+                              {{ link.title | escape }}
+                            </button>
+                          {% endcomment %}
+
                           <ul class="menu-drawer__menu custom-drawer__menu-second list-menu" role="list" tabindex="-1">
                             {%- for childlink in link.links -%}
                               <li>
@@ -178,21 +356,24 @@
                                       class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
                                     >
                                       {{ childlink.title | escape }}
-                                      {% render 'icon-arrow' %}
+                                      {% render 'icon-arrow-custom' %}
                                       {% render 'icon-caret' %}
                                     </summary>
                                     <div
                                       id="childlink-{{ childlink.handle | escape }}"
                                       class="menu-drawer__submenu has-submenu gradient motion-reduce"
                                     >
-                                      <button
-                                        class="menu-drawer__close-button link link--text focus-inset"
-                                        aria-expanded="true"
-                                      >
-                                        {% render 'icon-arrow' %}
-                                        {{ childlink.title | escape }}
-                                      </button>
-                                      {% comment %}  {% endcomment %}
+                                      {% comment %}
+                                        <button
+                                          class="menu-drawer__close-button link link--text focus-inset"
+                                          aria-expanded="true"
+                                        >
+                                          {% render 'icon-arrow' %}
+                                          {{ childlink.title | escape }}
+                                        </button>
+                                      {% endcomment %}
+
+                                      {% comment %} сортировка по алфавиту  {% endcomment %}
                                       <ul
                                         class="menu-drawer__menu custom-drawer__menu-last list-menu {% if childlink.handle == 'brands-a-e' %}sorting-links-alph{% endif %}{% if childlink.handle == 'brands-e-n' %}sorting-links-alph{% endif %}{% if childlink.handle == 'brands-n-v' %}sorting-links-alph{% endif %}"
                                         role="list"
@@ -226,8 +407,7 @@
                                           </li>
                                         {% endfor %}
                                       </ul>
-
-                                      {% comment %}  {% endcomment %}
+                                      {% comment %} энд сортировка {% endcomment %}
                                       {% comment %}
                                         <ul
                                           class="menu-drawer__menu list-menu {% if childlink.handle ==  'brands-a-e' %}sorting-links-alph{%endif%}{% if childlink.handle ==  'brands-e-n' %}sorting-links-alph{%endif%}{% if childlink.handle ==  'brands-n-v' %}sorting-links-alph{%endif%}"
@@ -276,27 +456,6 @@
             </ul>
           </nav>
           <div class="menu-drawer__utility-links">
-            {%- if shop.customer_accounts_enabled -%}
-              <a
-                href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-                class="menu-drawer__account link focus-inset h5 medium-hide large-up-hide"
-              >
-                <account-icon>
-                  {%- if customer and customer.has_avatar? -%}
-                    {{ customer | avatar }}
-                  {%- else -%}
-                    {% render 'icon-account' %}
-                  {%- endif -%}
-                </account-icon>
-                {%- liquid
-                  if customer
-                    echo 'customer.account_fallback' | t
-                  else
-                    echo 'customer.log_in' | t
-                  endif
-                -%}
-              </a>
-            {%- endif -%}
             {%- if localization.available_countries or localization.available_languages -%}
               <div class="menu-drawer__localization header-localization">
                 {%- if localization.available_countries and localization.available_countries.size > 1 -%}
@@ -406,38 +565,51 @@
     </div>
   </details>
 </header-drawer>
-{% comment %}
-  <script defer="'defer'">
-    document.addEventListener('DOMContentLoaded', function () {
-      // Находим все списки с классом sorting-links-alph
-      const lists = document.querySelectorAll('.sorting-links-alph');
 
-      lists.forEach((list) => {
-        let currentLetter = ''; // Текущая буква алфавита
-
-        // Преобразуем NodeList в массив и сортируем его по заголовкам
-        const items = Array.from(list.querySelectorAll('li')).sort((a, b) => {
-          const titleA = a.textContent.trim().toUpperCase();
-          const titleB = b.textContent.trim().toUpperCase();
-          return titleA.localeCompare(titleB);
-        });
-
-        items.forEach((item) => {
-          const title = item.textContent.trim().toUpperCase();
-          const firstLetter = title.charAt(0);
-
-          // Если первая буква заголовка изменилась, вставляем новую букву в список
-          if (firstLetter !== currentLetter) {
-            currentLetter = firstLetter;
-            const letterElement = document.createElement('li');
-            letterElement.textContent = currentLetter;
-            letterElement.className = 'alphabet-letter';
-            list.insertBefore(letterElement, item);
-          }
-
-          list.appendChild(item); // Вставляем элемент обратно в список
-        });
-      });
+<script defer="defer">
+  $(function () {
+    $('.selectioner .selected_country').on('click', function (e) {
+      e.preventDefault();
+      $(this).parent().toggleClass('active');
     });
-  </script>
-{% endcomment %}
+    $('.selectioner .selector_country .option').on('click', function (e) {
+      e.preventDefault();
+      var international = $(this).attr('data-international');
+      var flagTag = $(this).attr('value');
+      var selected_country_text = $(this).find('.fflag').attr('title');
+      //console.log(international);
+      //modify flag
+      var selected = $('.widget_countries .selected_flag');
+      var selected_country = $('.selected_country');
+      selected.find('div').removeClass();
+      selected_country.find('.fflag').removeClass();
+      selected.find('div').addClass(flagTag);
+      selected_country.find('span:not(.country_name)').addClass(flagTag);
+      selected_country.find('.country_name').text(selected_country_text);
+      $('.wrap_delivery_pop .country_name').text(selected_country_text);
+      $(this).parents('.selectioner').removeClass('active');
+
+      //modify delivery
+      var delivery = $('.delivery_options');
+      if (international == 'true') {
+        delivery.removeClass('domestic').addClass('international');
+      } else {
+        delivery.removeClass('international').addClass('domestic');
+      }
+    });
+  });
+</script>
+
+{% style %}
+  .fflag {
+    background-image: url({{'flagSprite42.png'|asset_url}});
+    background-repeat: no-repeat;
+    background-size: 100% 49494%;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+    box-sizing: content-box;
+    box-shadow: 0 0 0 1px rgba(220, 220, 220, 0.5);
+  }
+{% endstyle %}

@@ -147,7 +147,7 @@
       assign localization_forms = true
     endif
   -%}
-  <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
+  <header class="js-custom-header header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- liquid
       if section.settings.menu != blank
         render 'header-drawer'
@@ -497,6 +497,31 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
+
+  function closeDrawer() {
+    const btnClose = document.querySelector(".js-close-drawer");
+    const btnTrigger = document.querySelector(".js-custom-header [aria-controls='menu-drawer']");
+
+    btnClose.addEventListener("click", ()=> {
+      btnTrigger.click();
+    })
+  }
+
+  function closeSubDrawer() {
+    const btnsClose = document.querySelectorAll(".js-close-subdrawer");
+    const closeElems = document.querySelectorAll(".js-custom-header [data-close]");
+
+    btnsClose.forEach(element => {
+        element.addEventListener("click", ()=> {
+          closeElems.forEach(closeElem => {
+            closeElem.removeAttribute("open");
+          });
+      })
+    });
+  }
+
+  closeDrawer();
+  closeSubDrawer();
 {% endjavascript %}
 
 <script type="application/ld+json">
@@ -579,6 +604,7 @@
     {
       "type": "link_list",
       "id": "menu_mob",
+      "default": "main-menu",
       "label": "mobile menu"
     },
     {

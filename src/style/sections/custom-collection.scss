@@ -1,0 +1,142 @@
+.slider-product {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 79px 0 80px;
+  @media screen and (min-width: 500px) {
+    padding: 56px 0 100px;
+  }
+  .page-width {
+    position: relative;
+    .swiper-free-mode > .swiper-wrapper {
+      padding-left: 0px;
+    }
+  }
+  .rating-star:before {
+    content: "\2605\2605\2605\2605\2605";
+    background: linear-gradient(
+      90deg,
+      rgb(255, 92, 53, 1) var(--percent),
+      rgba(var(--color-foreground), 0.15) var(--percent)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .product-card-wrapper {
+    .rating-count.caption {
+      font-family: "Nova-400";
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 17.05px;
+      text-align: left;
+      color: rgba(106, 106, 106, 1);
+    }
+  }
+  .card__badge {
+    align-self: self-start;
+    grid-row-start: 1;
+    justify-self: flex-start;
+    .badge {
+      border: 1px solid transparent;
+      border-radius: 0;
+      display: inline-block;
+      background: rgba(0, 192, 139, 1);
+      font-family: "Nova-700";
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 14.62px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
+}
+.swiper.mySwiper {
+  margin-bottom: 39px;
+}
+.wrapper_btn-slider {
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    content: none;
+  }
+
+  .swiper-button-next {
+    width: 50px;
+    height: 50px;
+    background: #00c08b;
+    border-radius: 50%;
+    z-index: 1;
+    svg {
+      width: 9px;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+  .swiper-button-next.swiper-button-disabled {
+    background: transparent;
+    border: 1px solid #181214;
+    opacity: 100;
+    svg {
+      path {
+        fill: #181214;
+      }
+    }
+  }
+  .swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    background: #00c08b;
+    border-radius: 50%;
+    z-index: 1;
+    svg {
+      width: 9px;
+      path {
+        fill: #fff;
+      }
+    }
+  }
+  .swiper-button-prev.swiper-button-disabled {
+    background: transparent;
+    border: 1px solid #181214;
+    opacity: 100;
+    svg {
+      path {
+        fill: #181214;
+      }
+    }
+  }
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
+    left: var(--swiper-navigation-sides-offset, -85px);
+    right: auto;
+  }
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
+    right: var(--swiper-navigation-sides-offset, -85px);
+    left: auto;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .slider-product {
+    .swiper-button-next,
+    .swiper-button-prev {
+      top: var(--swiper-navigation-top-offset, 60%);
+    }
+  }
+}
+@media screen and (max-width: 1500px) {
+  .slider-product {
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: static;
+      z-index: 1;
+    }
+    .wrapper_btn-slider {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      margin-top: 72px;
+    }
+  }
+}
