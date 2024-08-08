@@ -316,7 +316,7 @@
                     <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
                       <summary
                         id="HeaderDrawer-{{ link.handle }}"
-                        class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
+                        class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %} parent-link"
                       >
                         {{ link.title | escape }}
                         {% render 'icon-arrow-custom' %}
@@ -353,7 +353,7 @@
                                   <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
                                     <summary
                                       id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                      class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
+                                      class="menu-drawer__menu-item link link--text list-menu__item focus-inset child-link"
                                     >
                                       {{ childlink.title | escape }}
                                       {% render 'icon-arrow-custom' %}
@@ -393,7 +393,7 @@
                                               <li class="alphabet-letter">{{ current_letter }}</li>
                                             {% endif %}
                                           {% endif %}
-                                          <li>
+                                          <li class="immediate-child">
                                             <a
                                               id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                               href="{{ grandchildlink.url }}"
@@ -456,41 +456,12 @@
             </ul>
           </nav>
           <div class="menu-drawer__utility-links">
-            {%- if localization.available_countries or localization.available_languages -%}
-              <div class="menu-drawer__localization header-localization">
-                {%- if localization.available_countries and localization.available_countries.size > 1 -%}
-                  <localization-form>
-                    {%- form 'localization', id: 'HeaderCountryMobileForm', class: 'localization-form' -%}
-                      <div>
-                        <h2 class="visually-hidden" id="HeaderCountryMobileLabel">
-                          {{ 'localization.country_label' | t }}
-                        </h2>
-                        {%- render 'country-localization', localPosition: 'HeaderCountryMobile' -%}
-                      </div>
-                    {%- endform -%}
-                  </localization-form>
-                {% endif %}
-
-                {%- if localization.available_languages and localization.available_languages.size > 1 -%}
-                  <localization-form>
-                    {%- form 'localization', id: 'HeaderLanguageMobileForm', class: 'localization-form' -%}
-                      <div>
-                        <h2 class="visually-hidden" id="HeaderLanguageMobileLabel">
-                          {{ 'localization.language_label' | t }}
-                        </h2>
-                        {%- render 'language-localization', localPosition: 'HeaderLanguageMobile' -%}
-                      </div>
-                    {%- endform -%}
-                  </localization-form>
-                {%- endif -%}
-              </div>
-            {%- endif -%}
             <ul class="list list-social list-unstyled" role="list">
-              {%- if settings.social_twitter_link != blank -%}
+              {%- if settings.social_linkedin_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
-                    {%- render 'icon-twitter' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+                  <a href="{{ settings.social_linkedin_link }}" class="list-social__link link">
+                    {%- render 'icon-linkedin' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.linkedin' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -502,14 +473,7 @@
                   </a>
                 </li>
               {%- endif -%}
-              {%- if settings.social_pinterest_link != blank -%}
-                <li class="list-social__item">
-                  <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
-                    {%- render 'icon-pinterest' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
-                  </a>
-                </li>
-              {%- endif -%}
+             
               {%- if settings.social_instagram_link != blank -%}
                 <li class="list-social__item">
                   <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
@@ -534,14 +498,7 @@
                   </a>
                 </li>
               {%- endif -%}
-              {%- if settings.social_snapchat_link != blank -%}
-                <li class="list-social__item">
-                  <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
-                    {%- render 'icon-snapchat' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
-                  </a>
-                </li>
-              {%- endif -%}
+              
               {%- if settings.social_youtube_link != blank -%}
                 <li class="list-social__item">
                   <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
@@ -550,14 +507,7 @@
                   </a>
                 </li>
               {%- endif -%}
-              {%- if settings.social_vimeo_link != blank -%}
-                <li class="list-social__item">
-                  <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
-                    {%- render 'icon-vimeo' -%}
-                    <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
-                  </a>
-                </li>
-              {%- endif -%}
+              
             </ul>
           </div>
         </div>

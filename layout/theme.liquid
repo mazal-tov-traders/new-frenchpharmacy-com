@@ -327,10 +327,8 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    {{ 'swiper-min.css' | asset_url | stylesheet_tag }}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     {{ 'main.css' | asset_url | stylesheet_tag }}
-    <script src="{{ 'swiper-min.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="my-body gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

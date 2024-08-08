@@ -1,8 +1,8 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
-
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'swiper-min.css' | asset_url | stylesheet_tag }}
 {%- unless section.settings.quick_add == 'none' -%}
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
@@ -12,7 +12,7 @@
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
-<div class="slider-product">
+{% comment %} <div class="slider-product">
   <div class="page-width">
     {% if section.settings.title != blank %}
       <h2 class="slider-product__title">{{ section.settings.title }}</h2>
@@ -74,7 +74,7 @@
       </div>
     {%- endif -%}
   </div>
-</div>
+</div> {% endcomment %}
 {% style %}
     #shopify-section-{{ section.id }} {
     .swiper {
@@ -95,43 +95,166 @@
     }
   }
 {% endstyle %}
+<script src="{{ 'swiper-min.js' | asset_url }}" defer="defer"></script>
 
-<script defer="defer">
-  const section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }} = {
-    section: document.querySelector("#shopify-section-{{ section.id }}"),
-    init() {
-      this.slider = new Swiper(this.section.querySelector(".mySwiper"), {
-          grabCursor: true,
-          loop: true,
-          freeMode: true,
-        navigation: {
-          nextEl: this.section.querySelector('.swiper-button-next'),
-          prevEl: this.section.querySelector('.swiper-button-prev')
-        },
+<component-slider-swiper>
+  <div class="page-width">
+    <swiper-container
+      data-id="{{ section.id }}"
+      class="swiper-wrapper"
+      role="list"
+      aria-label="{{ 'general.slider.name' | t }}"
+      init="false"
+      data-options='
+        {
+          "slidesPerView": 1,
+          "spaceBetween": 10,
+          "slidesOffsetAfter": 0,
+          "slidesOffsetBefore": 0,
+          "breakpoints": {
+            "480": {
+              "slidesPerView": 1,
+              "spaceBetween": 10,
+              "slidesOffsetAfter": 0,
+              "slidesOffsetBefore": 0
+            },
+            "991": {
+              "slidesPerView": 2,
+              "spaceBetween": 10,
+              "slidesOffsetAfter": 0,
+              "slidesOffsetBefore": 0
+            }
+          }
+        }
+      '
+      style="width: 100%;"
+    >
+      {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+        <li
+          class="product-cartochka swiper-slide"
+          style="margin-top: 0px;"
+        >
+          {% render 'card-product',
+            card_product: product,
+            quick_add: section.settings.quick_add,
+            show_product_info: true,
+            extend_height: true,
+            media_aspect_ratio: 'adapt',
+            show_vendor: true,
+            show_rating: true,
+            section_id: section.id,
+            lazy_load: lazy_load,
+            show_labels: false
+          %}
+        </li>
+      {%- endfor -%}
+    </swiper-container>
+    <div
+      class="custom-prev-button custom-swiper-btn"
+      data-slider-arrow
+      {% if section.settings.enable_arrows == false %}
+        style="display: none"
+      {% endif %}
+    >
+      {% render 'icon-swiper-prev', orientation: 'left' %}
+    </div>
+
+    <div
+      class="custom-next-button custom-swiper-btn"
+      data-slider-arrow
+      {% if section.settings.enable_arrows == false %}
+        style="display: none"
+      {% endif %}
+    >
+      {% render 'icon-swiper-next', orientation: 'right' %}
+    </div>
+    <div class="custom-pagination"></div>
+    <div class="custom-scrollbar"></div>
+  </div>
+</component-slider-swiper>
+
+<script>
+  class SwiperSlider extends HTMLElement {
+    constructor() {
+      super();
+
+      this.selectors = {
+        swiper: 'swiper-container',
+        prevEl: '.custom-prev-button',
+        nextEl: '.custom-next-button',
+        pagination: '.custom-pagination',
+        scrollbar: '.custom-scrollbar',
+      };
+    }
+
+    connectedCallback() {
+      this.slider = this.querySelector(this.selectors.swiper);
+      this.buttonPrev = this.querySelector(this.selectors.prevEl);
+      this.buttonNext = this.querySelector(this.selectors.nextEl);
+      this.pagination = this.querySelector(this.selectors.pagination);
+      this.scrollbar = this.querySelector(this.selectors.scrollbar);
+      this.options = this.slider.getAttribute('data-options');
+      console.log(this.pagination, this.scrollbar, this.buttonNext, this.buttonPrev, this.slider);
+
+      if (!this.slider) {
+        return null;
+      }
+      this.initSlider();
+      this.addListeners();
+    }
+
+    initSlider() {
+      let inlineOptions = this.slider.dataset.options;
+
+      if (inlineOptions) {
+        inlineOptions = JSON.parse(inlineOptions);
+      }
+
+      this.swiperParams = {
+        slidesPerView: 5,
+        slidesOffsetBefore: 0,
+        slidesOffsetAfter: 0,
+        watchSlidesProgress: true,
         breakpoints: {
-        300: {
-          slidesPerView: 2,
-          spaceBetween: 30,
-          grid: {
-            rows: 2,
+          480: {
+            slidesPerView: '2',
+            spaceBetween: 15,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 0,
           },
         },
+        navigation: {
+          nextEl: this.buttonNext,
+          prevEl: this.buttonPrev,
+        },
+        pagination: {
+          el: this.pagination,
+          clickable: true,
+        },
+        scrollbar: {
+          el: this.scrollbar,
+          hide: false,
+        },
+        on: {
+          init() {},
+        },
+        ...inlineOptions,
+      };
 
-        769: {
-          slidesPerView: 4,
-          spaceBetween: 45,
-        },
-        1124: {
-          slidesPerView: 5,
-          spaceBetween: 45,
-        },
-      }
-      });
+      Object.assign(this.slider, this.swiperParams);
+
+      this.slider.initialize();
+    }
+
+    addListeners() {
+      document.addEventListener('shopify:section:reorder', () => this.initSlider());
+      document.addEventListener('shopify:section:load', () => this.initSlider());
+      document.addEventListener('shopify:section:select', () => this.initSlider());
+      document.addEventListener('shopify:section:deselect', () => this.initSlider());
     }
   }
-  document.addEventListener("DOMContentLoaded", () => {
-    section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }}.init()
-  })
+
+  customElements.define('component-slider-swiper', SwiperSlider);
 </script>
 
 {% schema %}
