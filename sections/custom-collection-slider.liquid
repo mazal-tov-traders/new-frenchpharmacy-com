@@ -1,5 +1,6 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
+
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {%- unless section.settings.quick_add == 'none' -%}
@@ -7,13 +8,11 @@
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
 
-<script src="{{ 'custom-slider-script.js' | asset_url }}" defer="defer"></script>
-
 {%- if section.settings.quick_add == 'standard' -%}
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
-{% comment %} <div class="slider-product">
+<div class="slider-product">
   <div class="page-width">
     {% if section.settings.title != blank %}
       <h2 class="slider-product__title">{{ section.settings.title }}</h2>
@@ -75,114 +74,65 @@
       </div>
     {%- endif -%}
   </div>
-</div> {% endcomment %}
-
-{% comment %}
-  {% style %}
-      #shopify-section-{{ section.id }} {
-      .swiper {
-        width: 100%;
-        height: 100%;
-      }
-
-      .swiper-slide {
-        height: calc((100% - 30px) / 2) !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 0px !important;
-      }
-      .swiper-grid-column > .swiper-wrapper {
-        flex-wrap: wrap !important;
-        flex-direction: row !important;
-      }
-    }
-  {% endstyle %}
-{% endcomment %}
-
-<div class="slider-product">
-  <div class="page-width">
-    {% if section.settings.title != blank %}
-      <h2 class="slider-product__title">{{ section.settings.title }}</h2>
-    {% endif %}
-    {% if section.settings.sub_title != blank %}
-      <h3 class="slider-product__sub-title">{{ section.settings.sub_title }}</h3>
-    {% endif %}
-    <component-slider-swiper>
-      <swiper-container
-        init="false"
-        data-options='
-          {
-            "slidesPerView": 2,
-            "spaceBetween": 10,
-            "slidesOffsetAfter": 0,
-            "slidesOffsetBefore": 0,
-            "breakpoints": {
-              "480": {
-                "slidesPerView": 3.2,
-                "spaceBetween": 10,
-                "slidesOffsetAfter": 16,
-                "slidesOffsetBefore": 16
-              },
-              "750": {
-                "slidesPerView": 3.5,
-                "spaceBetween": 10,
-                "slidesOffsetAfter": 64,
-                "slidesOffsetBefore": 64
-              },
-              "1080": {
-                "slidesPerView": 5.5,
-                "spaceBetween": 10,
-                "slidesOffsetAfter": 64,
-                "slidesOffsetBefore": 64
-              }
-            }
-          }
-        '
-        style="width: 100%;"
-      >
-        {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-          <swiper-slide>
-            {% render 'card-product',
-              card_product: product,
-              quick_add: section.settings.quick_add,
-              show_product_info: true,
-              extend_height: true,
-              media_aspect_ratio: 'adapt',
-              show_vendor: true,
-              show_rating: true,
-              section_id: section.id,
-              lazy_load: lazy_load,
-              show_labels: false
-            %}
-          </swiper-slide>
-        {%- endfor -%}
-      </swiper-container>
-      <div class="custom-prev-button custom-swiper-btn" data-slider-arrow>1</div>
-
-      <div class="custom-next-button custom-swiper-btn" data-slider-arrow>2</div>
-      <div class="custom-pagination" style="display: none"></div>
-      <div class="custom-scrollbar"></div>
-    </component-slider-swiper>
-    {%- if section.settings.button_label != blank -%}
-      <div
-        class="slider-product-btn"
-      >
-        <a
-          {% if section.settings.button_link == blank %}
-            role="link" aria-disabled="true"
-          {% else %}
-            href="{{ section.settings.button_link }}"
-          {% endif %}
-
-          class="btn"
-        >
-          {{- section.settings.button_label | escape -}}
-        </a>
-      </div>
-    {%- endif -%}
-  </div>
 </div>
+{% style %}
+    #shopify-section-{{ section.id }} {
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      height: calc((100% - 30px) / 2) !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 0px !important;
+    }
+    .swiper-grid-column > .swiper-wrapper {
+      flex-wrap: wrap !important;
+      flex-direction: row !important;
+    }
+  }
+{% endstyle %}
+
+<script defer="defer">
+  const section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }} = {
+    section: document.querySelector("#shopify-section-{{ section.id }}"),
+    init() {
+      this.slider = new Swiper(this.section.querySelector(".mySwiper"), {
+          grabCursor: true,
+          loop: true,
+          freeMode: true,
+        navigation: {
+          nextEl: this.section.querySelector('.swiper-button-next'),
+          prevEl: this.section.querySelector('.swiper-button-prev')
+        },
+        breakpoints: {
+        300: {
+          slidesPerView: 2,
+          spaceBetween: 30,
+          grid: {
+            rows: 2,
+          },
+        },
+
+        769: {
+          slidesPerView: 4,
+          spaceBetween: 45,
+        },
+        1124: {
+          slidesPerView: 5,
+          spaceBetween: 45,
+        },
+      }
+      });
+    }
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }}.init()
+  })
+</script>
 
 {% schema %}
 {

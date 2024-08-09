@@ -551,7 +551,14 @@
                   </a>
                 </li>
               {%- endif -%}
-             
+              {%- if settings.social_pinterest_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
+                    {%- render 'icon-pinterest' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
               {%- if settings.social_instagram_link != blank -%}
                 <li class="list-social__item">
                   <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
@@ -576,7 +583,6 @@
                   </a>
                 </li>
               {%- endif -%}
-              
               {%- if settings.social_youtube_link != blank -%}
                 <li class="list-social__item">
                   <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
@@ -585,7 +591,14 @@
                   </a>
                 </li>
               {%- endif -%}
-              
+              {%- if settings.social_vimeo_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
+                    {%- render 'icon-vimeo' -%}
+                    <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
             </ul>
           </div>
         </div>
