@@ -40,6 +40,10 @@
 
   .page-width {
     position: relative;
+
+    .swiper-free-mode>.swiper-wrapper {
+      padding-left: 0px;
+    }
   }
 
   .rating-star:before {
@@ -112,17 +116,12 @@
   }
 }
 
-component-slider-swiper {
-  @media screen and (min-width: 1500px) {
-    position: relative;
-  }
-
+.swiper.mySwiper {
   margin-bottom: 60px;
 
   // старт карточка товара
   .quick-add {
     margin-top: auto;
-    margin-bottom: 0;
   }
 
   .quick-add__submit.button::after {
@@ -168,7 +167,7 @@ component-slider-swiper {
 
   @media screen and (min-width: 769px) {
     .card.card--standard.card--media {
-      
+      min-height: 525px !important;
       height: 100%;
     }
   }
@@ -309,36 +308,17 @@ component-slider-swiper {
 
 .wrapper_btn-slider {
 
-  .custom-next-button {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-
-    @media screen and (min-width: 1500px) {
-      position: absolute;
-    }
-
-    width: 50px;
-    height: 50px;
-    background: transparent;
-    border: 1px solid #6A6A6A;
-    border-radius: 50%;
-    z-index: 1;
-    cursor: pointer;
-
-    svg {
-      width: 9px;
-
-      path {
-        fill: #6a6a6a;
-      }
-    }
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    content: none;
   }
 
-  .custom-next-button:hover {
+  .swiper-button-next {
+    width: 50px;
+    height: 50px;
     background: #00c08b;
-    border: none;
+    border-radius: 50%;
+    z-index: 1;
 
     svg {
       width: 9px;
@@ -349,48 +329,24 @@ component-slider-swiper {
     }
   }
 
-  .custom-next-button.swiper-button-disabled {
+  .swiper-button-next.swiper-button-disabled {
     background: transparent;
-    border: 1px solid #6a6a6a;
+    border: 1px solid #181214;
     opacity: 100;
 
     svg {
       path {
-        fill: #6a6a6a;
+        fill: #181214;
       }
     }
   }
 
-  .custom-prev-button {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-
-    @media screen and (min-width: 1500px) {
-      position: absolute;
-    }
-
-    cursor: pointer;
+  .swiper-button-prev {
     width: 50px;
     height: 50px;
-    background: transparent;
+    background: #00c08b;
     border-radius: 50%;
     z-index: 1;
-    border: 1px solid #6A6A6A;
-
-    svg {
-      width: 9px;
-
-      path {
-        fill: #6A6A6A;
-      }
-    }
-  }
-
-  .custom-prev-button:hover {
-    background: #00c08b;
-    border: none;
 
     svg {
       width: 9px;
@@ -401,26 +357,26 @@ component-slider-swiper {
     }
   }
 
-  .custom-prev-button.swiper-button-disabled {
+  .swiper-button-prev.swiper-button-disabled {
     background: transparent;
-    border: 1px solid #6a6a6a;
+    border: 1px solid #181214;
     opacity: 100;
 
     svg {
       path {
-        fill: #6a6a6a;
+        fill: #181214;
       }
     }
   }
 
-  .custom-prev-button,
-  .swiper-rtl .custom-next-button {
+  .swiper-button-prev,
+  .swiper-rtl .swiper-button-next {
     left: var(--swiper-navigation-sides-offset, -85px);
     right: auto;
   }
 
-  .custom-next-button,
-  .swiper-rtl .custom-prev-button {
+  .swiper-button-next,
+  .swiper-rtl .swiper-button-prev {
     right: var(--swiper-navigation-sides-offset, -85px);
     left: auto;
   }
@@ -429,8 +385,8 @@ component-slider-swiper {
 @media screen and (min-width: 1500px) {
   .slider-product {
 
-    .custom-next-button,
-    .custom-prev-button {
+    .swiper-button-next,
+    .swiper-button-prev {
       top: var(--swiper-navigation-top-offset, 60%);
     }
   }
@@ -439,8 +395,8 @@ component-slider-swiper {
 @media screen and (max-width: 1500px) {
   .slider-product {
 
-    .custom-next-button,
-    .custom-prev-button {
+    .swiper-button-next,
+    .swiper-button-prev {
       position: static;
       z-index: 1;
     }
@@ -481,7 +437,7 @@ component-slider-swiper {
 
   .card__heading {
     color: #2f2f2f;
-    font-family: 'Nova-400';
+    font-family: Nova-400;
     font-size: 16px;
     line-height: 22px;
     margin-bottom: 10px;
