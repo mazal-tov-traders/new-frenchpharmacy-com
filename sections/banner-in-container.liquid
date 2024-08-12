@@ -1,0 +1,114 @@
+<div class="page-width">
+  <div class="banner-container">
+    <div class='content-inner'>
+      {% if section.settings.heading != blank %}
+        <h2 class="content-inner__heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.sub_heading != blank %}
+        <h3 class="content-inner__sub-heading">{{ section.settings.sub_heading }}</h3>
+      {% endif %}
+      {% if section.settings.content != blank %}
+        <div class="content-inner__contentg">{{ section.settings.content }}</div>
+      {% endif %}
+      {%- if section.settings.button_label != blank -%}
+        <div
+          class="content-inner__btn"
+        >
+          <a
+            {% if section.settings.button_link == blank %}
+              role="link" aria-disabled="true"
+            {% else %}
+              href="{{ section.settings.button_link }}"
+            {% endif %}
+  
+            class="btn"
+          >
+            {{- section.settings.button_label | escape -}}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    @media screen and (min-width: 750px) {
+      .banner-container{
+          background-image: url({{ section.settings.banner_desktop | image_url: width: 1920 }});
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          max-width: 1920px;
+          width: 100%;
+          margin: 0 auto;
+         
+      }
+    }
+    @media screen and (max-width: 749px) {
+        .banner-container{
+        background-image: url({{ section.settings.banner_mobile | image_url: width: 749 }});
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          max-width: 750px;
+          width: 100%;
+          margin: 0 auto;
+          
+       }
+    }
+  }
+{%- endstyle -%}
+{% schema %}
+{
+  "name": "Banner in container",
+  "tag": "section",
+  "class": "banner-in-container",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_desktop",
+      "label": "Banner desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_mobile",
+      "label": "Banner mobile"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "sub_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Container"
+    }
+  ]
+}
+{% endschema %}

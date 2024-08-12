@@ -82,14 +82,14 @@
       init() {
         this.slider = new Swiper(this.section.querySelector(".mySwiper"), {
           speed: 1000,
-          grabCursor: true,
+          {% comment %} grabCursor: true, {% endcomment %}
           centeredSlides: true,
-          loopedSlides: 2,
-          initialSlide: 1,
-          loop: true,
-          createElements: true,
+          {% comment %} loopedSlides: 2,
+          initialSlide: 1, {% endcomment %}
+          {% comment %} loop: true, {% endcomment %}
+          {% comment %} createElements: true, {% endcomment %}
           
-          freeMode: true,
+           freeMode: true,  
 
           navigation: {
             nextEl: this.section.querySelector('.swiper-button-next'),

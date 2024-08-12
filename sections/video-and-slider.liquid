@@ -200,9 +200,9 @@
     section: document.querySelector("#shopify-section-{{ section.id }}"),
     init() {
       this.slider = new Swiper(this.section.querySelector(".mySwiper"), {
-          grabCursor: true,
-          loop: true,
-          freeMode: true,
+          {% comment %} grabCursor: true,
+          loop: true, {% endcomment %}
+           freeMode: true,
         navigation: {
           nextEl: this.section.querySelector('.swiper-button-next')
         },
