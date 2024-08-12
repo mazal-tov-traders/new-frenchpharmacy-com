@@ -24,10 +24,56 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
 
 const trapFocusHandlers = {};
 
+// function trapFocus(container, elementToFocus = container) {
+//   var elements = getFocusableElements(container);
+//   var first = elements[0];
+//   var last = elements[elements.length - 1];
+
+//   removeTrapFocus();
+
+//   trapFocusHandlers.focusin = (event) => {
+//     if (event.target !== container && event.target !== last && event.target !== first) return;
+
+//     document.addEventListener('keydown', trapFocusHandlers.keydown);
+//   };
+
+//   trapFocusHandlers.focusout = function () {
+//     document.removeEventListener('keydown', trapFocusHandlers.keydown);
+//   };
+
+//   trapFocusHandlers.keydown = function (event) {
+//     if (event.code.toUpperCase() !== 'TAB') return; // If not TAB key
+//     // On the last focusable element and tab forward, focus the first element.
+//     if (event.target === last && !event.shiftKey) {
+//       event.preventDefault();
+//       first.focus();
+//     }
+
+//     //  On the first focusable element and tab backward, focus the last element.
+//     if ((event.target === container || event.target === first) && event.shiftKey) {
+//       event.preventDefault();
+//       last.focus();
+//     }
+//   };
+
+//   document.addEventListener('focusout', trapFocusHandlers.focusout);
+//   document.addEventListener('focusin', trapFocusHandlers.focusin);
+
+//   elementToFocus.focus();
+
+//   if (
+//     elementToFocus.tagName === 'INPUT' &&
+//     ['search', 'text', 'email', 'url'].includes(elementToFocus.type) &&
+//     elementToFocus.value
+//   ) {
+//     elementToFocus.setSelectionRange(0, elementToFocus.value.length);
+//   }
+// }
+
 function trapFocus(container, elementToFocus = container) {
   var elements = getFocusableElements(container);
-  var first = elements[0];
-  var last = elements[elements.length - 1];
+  var first = elements.length > 0 ? elements[0] : null;
+  var last = elements.length > 0 ? elements[elements.length - 1] : null;
 
   removeTrapFocus();
 
@@ -43,30 +89,33 @@ function trapFocus(container, elementToFocus = container) {
 
   trapFocusHandlers.keydown = function (event) {
     if (event.code.toUpperCase() !== 'TAB') return; // If not TAB key
+
     // On the last focusable element and tab forward, focus the first element.
-    if (event.target === last && !event.shiftKey) {
+    if (last && event.target === last && !event.shiftKey) {
       event.preventDefault();
-      first.focus();
+      first && first.focus();
     }
 
-    //  On the first focusable element and tab backward, focus the last element.
+    // On the first focusable element and tab backward, focus the last element.
     if ((event.target === container || event.target === first) && event.shiftKey) {
       event.preventDefault();
-      last.focus();
+      last && last.focus();
     }
   };
 
   document.addEventListener('focusout', trapFocusHandlers.focusout);
   document.addEventListener('focusin', trapFocusHandlers.focusin);
 
-  elementToFocus.focus();
+  if (elementToFocus) {
+    elementToFocus.focus();
 
-  if (
-    elementToFocus.tagName === 'INPUT' &&
-    ['search', 'text', 'email', 'url'].includes(elementToFocus.type) &&
-    elementToFocus.value
-  ) {
-    elementToFocus.setSelectionRange(0, elementToFocus.value.length);
+    if (
+      elementToFocus.tagName === 'INPUT' &&
+      ['search', 'text', 'email', 'url'].includes(elementToFocus.type) &&
+      elementToFocus.value
+    ) {
+      elementToFocus.setSelectionRange(0, elementToFocus.value.length);
+    }
   }
 }
 

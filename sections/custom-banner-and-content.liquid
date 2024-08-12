@@ -13,7 +13,7 @@
         {% case block.type %}
           {%- when 'icons' -%}
             {% if block.settings.icon != blank %}
-              {{ block.settings.icon | image_url: width: 90 | image_tag: class: icon }}
+              {{ block.settings.icon | image_url: width: 90 | image_tag: class: 'icon' }}
             {% endif %}
         {% endcase %}
       {%- endfor -%}

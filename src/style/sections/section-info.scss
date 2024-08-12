@@ -1,0 +1,91 @@
+.banner-section__info {
+    .banner-section__info-wrapper {}
+
+    .banner-section__heading {
+
+        font-family: 'Barlow';
+        font-size: 28px;
+        line-height: 33.6px;
+        font-weight: 400;
+        text-align: left;
+        color: #2F2F2F;
+        text-transform: uppercase;
+        margin-bottom: 50px;
+        text-align: center;
+
+        @media (min-width: 768px) {
+            font-size: 34px;
+            line-height: 40.8px;
+        }
+    }
+
+    .banner-section__cards {
+        display: flex;
+        gap: 76px;
+        flex-wrap: wrap;
+
+
+    }
+
+    .banner-section__card {
+        width: 100%;
+
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+    }
+
+    @media (min-width: 768px) {
+        .banner-section__card {
+            width: calc(50% - 38px);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .banner-section__card {
+            width: calc(25% - 57px);
+        }
+    }
+
+    .banner-section__card-icon {
+        margin-bottom: 20px;
+    }
+
+    .banner-section__card-heading {
+        font-family: 'Raleway';
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 23.48px;
+        letter-spacing: -0.03em;
+        text-align: left;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        color: #2F2F2F;
+    }
+
+    .banner-section__card-content {
+
+        font-family: 'Nova-300';
+        font-size: 14px;
+        line-height: 24px;
+        text-align: left;
+        color: #2F2F2F;
+
+        @media (max-width: 768px) {
+            text-align: center;
+        }
+
+        a {
+            font-family: 'Raleway';
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 24px;
+            text-align: left;
+            color: #278AFF;
+
+        }
+    }
+}
