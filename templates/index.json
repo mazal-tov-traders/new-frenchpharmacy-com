@@ -289,6 +289,149 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "section_info_EJGNkD": {
+      "type": "section-info",
+      "blocks": {
+        "info_block_YxmyLb": {
+          "type": "info_block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/fi_6022117.svg",
+            "heading": "REWARDS & DISCOUNTS",
+            "content": "Our loyalty program (French Love Points or FLPs) is very generous and allows immediate big savings (you gain points by buying, writing reviews etc). Also, we offer special discounts to our Military, First Responder and Teachers."
+          }
+        },
+        "info_block_BeP4rB": {
+          "type": "info_block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group.svg",
+            "heading": "ONLY FRESH AND REAL",
+            "content": "We select and import everyday the best and freshest from our French Pharmacies. All the latest best French Cosmetics are on<a href=\"https:\/\/ frenchpharmacy.com\" target=\"_blank\" title=\"https:\/\/ frenchpharmacy.com\"> frenchpharmacy.com<\/a>, and ship daily from our US Warehouses to your doorstep."
+          }
+        },
+        "info_block_yfDBnB": {
+          "type": "info_block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_1.svg",
+            "heading": "CUSTOMS CLEARED",
+            "content": "Beware of companies claiming to be French Pharmacies but selling out of England or Portugal... You run the risk of buying older stock and to pay Import Duties to the USA. All our online products are already customs cleared. And we pay taxes in the USA!"
+          }
+        },
+        "info_block_bp4JGC": {
+          "type": "info_block",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/x31_1_Free_Shipping.svg",
+            "heading": "FREE SHIPPING & PROTECTION",
+            "content": "All orders over $75 receive free shipping (3 to 7 days max). We are based in the USA and all orders are shipped from our US warehouses. We use UPS and USPS only. All orders are shipped fully protected (insurance already included in shipping cost) against theft, loss or damage."
+          }
+        }
+      },
+      "block_order": [
+        "info_block_YxmyLb",
+        "info_block_BeP4rB",
+        "info_block_yfDBnB",
+        "info_block_bp4JGC"
+      ],
+      "settings": {
+        "banner_desktop": "shopify:\/\/shop_images\/Rectangle_4133750_1.jpg",
+        "banner_mobile": "shopify:\/\/shop_images\/Rectangle_4133750.jpg",
+        "heading": "Elevating Beauty, Effortlessly Enjoyable"
+      }
+    },
+    "banner_in_container_AWCqbW": {
+      "type": "banner-in-container",
+      "settings": {
+        "banner_desktop": "shopify:\/\/shop_images\/Rectangle_4133753.jpg",
+        "banner_mobile": "shopify:\/\/shop_images\/Rectangle_4133753_1.jpg",
+        "heading": "why french pharmacy beauty products?",
+        "sub_heading": "CLEAN. GENTLE. EFFECTIVE",
+        "content": "<ul><li>Clinically-proven.<\/li><li>Budget-friendly prices.<\/li><li>Perfect combination of science and cosmetics.<\/li><li>Tailored to suit multiple different skin types and concerns.<\/li><\/ul>",
+        "button_label": "THERE'S MORE!",
+        "button_link": "#"
+      }
+    },
+    "ribbon_slider_Ekk39c": {
+      "type": "ribbon-slider",
+      "blocks": {
+        "icon_brends_grNmPQ": {
+          "type": "icon_brends",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Mask_group.png"
+          }
+        },
+        "icon_brends_Qz9AbC": {
+          "type": "icon_brends",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Mask_group_1.png"
+          }
+        },
+        "icon_brends_ewng3n": {
+          "type": "icon_brends",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Mask_group_2.png"
+          }
+        },
+        "icon_brends_EPwCFW": {
+          "type": "icon_brends",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Mask_group_4.png"
+          }
+        },
+        "icon_brends_PVFhnL": {
+          "type": "icon_brends",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Mask_group_3.png"
+          }
+        },
+        "icon_brends_3TzcPd": {
+          "type": "icon_brends",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Mask_group.png"
+          }
+        },
+        "icon_brends_Q4nbL8": {
+          "type": "icon_brends",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Mask_group_2.png"
+          }
+        },
+        "advice_CwBbEf": {
+          "type": "advice",
+          "settings": {
+            "content": "frenchpharmacy.com brings to the USA all the beauty brands found in French Pharmacy and the personalized advices about your skin type."
+          }
+        },
+        "brand_ethics_UiY4XV": {
+          "type": "brand_ethics",
+          "settings": {
+            "text1": "CRUELTY FREE",
+            "text2": "ETHICAL SOURCING",
+            "text3": "MADE IN FRANCE",
+            "icon": "shopify:\/\/shop_images\/Vector.svg"
+          }
+        },
+        "logo_7k8qdr": {
+          "type": "logo",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo_1e2642e3-0ff5-4ee4-8ea8-e096d8147ede.png",
+            "description": "Tap into our culture for transformational beauty products that help and emphasize the skin to do its job!"
+          }
+        }
+      },
+      "block_order": [
+        "icon_brends_grNmPQ",
+        "icon_brends_Qz9AbC",
+        "icon_brends_ewng3n",
+        "icon_brends_EPwCFW",
+        "icon_brends_PVFhnL",
+        "icon_brends_3TzcPd",
+        "icon_brends_Q4nbL8",
+        "advice_CwBbEf",
+        "brand_ethics_UiY4XV",
+        "logo_7k8qdr"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -299,6 +442,9 @@
     "custom_collection_list_BxrdBp",
     "video_and_slider_bGArme",
     "1715772755ba07f0b7",
-    "custom_blog_slider_YNWbdV"
+    "custom_blog_slider_YNWbdV",
+    "section_info_EJGNkD",
+    "banner_in_container_AWCqbW",
+    "ribbon_slider_Ekk39c"
   ]
 }

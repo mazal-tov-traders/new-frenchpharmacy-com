@@ -1,0 +1,192 @@
+<div class="page-width">
+  <div class="ribbon">
+
+    <div class="swiper mySwiper">
+
+      <div class="inner-ribbon swiper-wrapper">
+        {%- for block in section.blocks -%}
+          {% case block.type %}
+            {%- when 'icon_brends' -%}
+              {% if block.settings.icon != blank %}
+                <div class="swiper-slide">
+                {{
+                  block.settings.icon
+                  | image_url: width: 120
+                  | image_tag: class: 'banner-section__card-icon'
+                }}
+              </div>
+              {% endif %}
+          {% endcase %}
+        {%- endfor -%}
+      </div>
+
+    </div>
+
+    <div class="wrapper_btn-slider">
+      <div class="swiper-button-prev">
+        {% render 'icon-swiper-prev' %}
+      </div>
+      <div class="swiper-button-next">
+        {% render 'icon-swiper-next' %}
+      </div>
+    </div>
+    
+    <div class="content-inner">
+      {%- for block in section.blocks -%}
+        {% case block.type %}
+          {%- when 'advice' -%}
+            {% if block.settings.content != blank %}
+              <h3 class='advice-content'>{{ block.settings.content }}</h3>
+            {% endif %}
+          {%- when 'brand_ethics' -%}
+            <div class="inner-brand-ethics">
+              {% if block.settings.text1 != blank %}
+                <h2 class='brand-ethics_heading'>{{ block.settings.text1 }}</h2>
+              {% endif %}
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon | image_url: width: 10 | image_tag: class: 'icon' }}
+              {% endif %}
+              {% if block.settings.text2 != blank %}
+                <h2  class='brand-ethics_heading'>{{ block.settings.text2 }}</h2>
+              {% endif %}
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon | image_url: width: 10 | image_tag: class: 'icon' }}
+              {% endif %}
+              {% if block.settings.text3 != blank %}
+                <h2  class='brand-ethics_heading'>{{ block.settings.text3 }}</h2>
+              {% endif %}
+            </div>
+          {%- when 'logo' -%}
+            {% if block.settings.logo != blank %}
+              {{ block.settings.logo | image_url: width: 500 | image_tag: class: 'logo' }}
+            {% endif %}
+            {% if block.settings.description != blank %}
+              <h3 class='logo-description'>{{ block.settings.description }}</h3>
+            {% endif %}
+        {% endcase %}
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  const section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }} = {
+      section: document.querySelector("#shopify-section-{{ section.id }}"),
+      init() {
+        this.slider = new Swiper(this.section.querySelector(".mySwiper"), {
+          speed: 1000,
+          grabCursor: true,
+          centeredSlides: true,
+          loopedSlides: 2,
+          initialSlide: 1,
+          loop: true,
+          createElements: true,
+          freeMode: true,
+
+          navigation: {
+            nextEl: this.section.querySelector('.swiper-button-next'),
+            prevEl: this.section.querySelector('.swiper-button-prev')
+          },
+          breakpoints: {
+          300: {
+            slidesPerView: 2,
+            centeredSlides: false,
+            spaceBetween: 40,
+          },
+          669: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1124: {
+            slidesPerView: 5,
+            spaceBetween: 80,
+          },
+        }
+        });
+      }
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }}.init()
+    })
+</script>
+
+{% schema %}
+{
+  "name": "Ribbon Slider",
+  "tag": "section",
+  "class": "ribbon-slider",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "icon_brends",
+      "name": "Icon Brends",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    },
+    {
+      "type": "advice",
+      "name": "advice",
+      "settings": [
+        {
+          "type": "text",
+          "id": "content",
+          "label": "content"
+        }
+      ]
+    },
+    {
+      "type": "brand_ethics",
+      "name": "Brand Ethics",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text1",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "text3",
+          "label": "Heading"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        }
+      ]
+    },
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ribbon Slider"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,189 @@
+.ribbon-slider {
+    padding-top: 30px;
+
+    .page-width {
+        @media screen and (max-width: 1350px) {
+            padding: 0px;
+        }
+    }
+
+
+    .ribbon {
+        position: relative;
+        background-color: #FAFAFA;
+        padding: 50px 0px 60px;
+
+        @media screen and (max-width: 1500px) {
+            .swiper.mySwiper {
+                margin-bottom: 38px;
+            }
+        }
+
+
+    }
+
+    .wrapper_btn-slider {
+        @media screen and (max-width: 1500px) {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                position: sticky;
+            }
+
+        }
+
+        .swiper-button-next {
+            top: 130px;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border-radius: 50%;
+            z-index: 1;
+            border: 1px solid #6A6A6A;
+
+            svg {
+                width: 9px;
+
+                path {
+                    fill: #6A6A6A;
+                }
+            }
+        }
+
+        .swiper-button-prev {
+            top: 130px;
+            width: 50px;
+            height: 50px;
+            background: transparent;
+            border-radius: 50%;
+            z-index: 1;
+            border: 1px solid #6A6A6A;
+
+            svg {
+                width: 9px;
+
+                path {
+                    fill: #6A6A6A;
+                }
+            }
+        }
+
+        .swiper-button-next:hover {
+            width: 50px;
+            height: 50px;
+            background: #00c08b;
+            border-radius: 50%;
+            z-index: 1;
+            border: none;
+
+            svg {
+                width: 9px;
+
+                path {
+                    fill: #fff;
+                }
+            }
+        }
+
+        .swiper-button-prev:hover {
+            width: 50px;
+            height: 50px;
+            background: #00c08b;
+            border-radius: 50%;
+            z-index: 1;
+            border: none;
+
+            svg {
+                width: 9px;
+
+                path {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+
+    .swiper-slide {
+        flex-shrink: 0;
+        object-fit: scale-down;
+        .banner-section__card-icon{
+
+        }
+    }
+
+    .swiper-wrapper {
+
+        align-items: center;
+    }
+
+    .content-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 50px 35px 0;
+
+        .advice-content {
+
+            font-family: 'Nova-300';
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            color: #2F2F2F;
+            max-width: 760px;
+
+
+
+        }
+    }
+
+    .inner-brand-ethics {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+        max-width: max-content;
+        padding: 50px 10px 60px 10px;
+        border-bottom: 1px solid #F0F0F0;
+        margin-bottom: 60px;
+        text-align: center;
+
+        @media screen and (max-width: 706px) {
+            flex-direction: column;
+        }
+
+
+        .brand-ethics_heading {
+            font-family: 'Barlow';
+            font-size: 34px;
+            font-weight: 400;
+            line-height: 40.8px;
+            color: #00C08B;
+            text-transform: uppercase;
+
+        }
+    }
+
+    .logo {
+        max-width: 498px;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .logo-description {
+
+        font-family: 'Nova-400';
+        font-size: 30px;
+        font-weight: 400;
+        line-height: 42px;
+        text-align: center;
+        color: #2F2F2F;
+        max-width: 780px;
+        width: 100%;
+        @media screen and (max-width: 450px) {
+            font-size: 28px;
+        }
+
+    }
+}
