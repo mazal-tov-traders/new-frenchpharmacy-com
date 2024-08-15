@@ -568,7 +568,6 @@
 {
   "name": "Custom Header",
   "class": "section-header custom-section-header",
-  "max_blocks": 2,
   "settings": [
     {
       "type": "select",
@@ -770,7 +769,7 @@
     {
       "type": "anchor_mega_menu1",
       "name": "media for mega menu 1",
-      "limit": 1,
+     "limit": 1,
       "settings": [
         {
           "type": "text",
@@ -792,7 +791,7 @@
     {
       "type": "anchor_mega_menu2",
       "name": "media for mega menu 2",
-      "limit": 1,
+     "limit": 1,
       "settings": [
         {
           "type": "text",
@@ -840,13 +839,43 @@
           "label": "Image"
         }
       ]
+    },
+    {
+      "type": "drawer_form",
+      "name": "Drawer Form",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_mob_form",
+          "label": "Mobile image Form"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "Content"
+        }
+      ]
     }
   ],
   "presets": [
     {
       "name": "Custom Header",
       "blocks": [
-        
+        {
+          "type": "anchor_mega_menu1"
+        },
+        {
+          "type": "anchor_mega_menu2"
+        },
+        {
+          "type": "drawer_form"
+        }
       ]
     }
   ]

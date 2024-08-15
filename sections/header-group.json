@@ -64,15 +64,25 @@
             "anchor4": "EYE CONCERN",
             "image4": "shopify:\/\/shop_images\/Rectangle_4133775_2.png"
           }
+        },
+        "drawer_form_9fAAxD": {
+          "type": "drawer_form",
+          "settings": {
+            "logo_mob_form": "shopify:\/\/shop_images\/image_26.png",
+            "heading": "JOIN THE FP TRIBE",
+            "content": "Be the first to find out about new products, upcoming stories, and our community…."
+          }
         }
       },
       "block_order": [
         "anchor_mega_menu1_e4MtiG",
-        "anchor_mega_menu2_3NVJtj"
+        "anchor_mega_menu2_3NVJtj",
+        "drawer_form_9fAAxD"
       ],
       "settings": {
         "logo_position": "middle-left",
         "menu": "mega-menu",
+        "menu_mob": "main-menu",
         "secrch_label": "What are you looking for?",
         "menu_type_desktop": "mega",
         "sticky_header_type": "always",

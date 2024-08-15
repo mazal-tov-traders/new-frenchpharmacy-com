@@ -83,15 +83,16 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__navigation-container {
-  display: grid;
+  /* display: grid;
   grid-template-rows: 1fr auto;
   align-content: space-between;
-  /* overflow-y: auto; */
-  height: 100%;
+  overflow-y: auto; 
+  height: 100%; */
 }
 
 .menu-drawer__navigation {
   padding: 3rem 0;
+  margin-bottom:30px ;
 }
 
 .menu-drawer__inner-submenu {
@@ -134,7 +135,6 @@ details[open].menu-opening > .menu-drawer__submenu {
 .menu-drawer__menu-item > .icon-arrow {
   position: absolute;
   right: 3rem;
-  top: 50%;
   transform: translateY(-50%);
 }
 

@@ -3,19 +3,26 @@
     outline: none;
     box-shadow: none;
   }
-  .menu-drawer__menu.has-submenu.list-menu > li {
+
+  .menu-drawer__menu.has-submenu.list-menu>li {
     border-top: 1px solid rgba(47, 47, 47, 0.3);
   }
+
+  .custom-drawer .menu-drawer__menu.has-submenu.list-menu>li:last-child {
+    border-bottom: 1px solid rgba(47, 47, 47, 0.3);
+  }
+
   .menu-drawer {
     padding-top: 59px;
 
     &__navigation {
 
       padding: 0px 35px;
-      .menu-drawer__menu-item{
-         padding: 20px 0px 20px;
+
+      .menu-drawer__menu-item {
+        padding: 20px 0px 20px;
       }
-      
+
     }
 
     &__menu {
@@ -28,7 +35,7 @@
         color: #2F2F2F;
         margin-bottom: 20px;
         padding: 20px 0 0 0px;
-       
+
       }
 
       .child-link {
@@ -168,7 +175,7 @@
                 margin-left: 0px;
                 padding: 3px;
                 position: relative;
-                top: 0px;
+                top: -2px;
                 transform: rotate(45deg);
               }
             }
@@ -236,7 +243,7 @@
       }
 
       .inner-accoutn {
-       
+
 
         .menu-drawer__account {
           padding: 20px 0;
@@ -279,6 +286,89 @@
 }
 
 
-.inner-form{
-  margin-bottom: 400px;
+.inner_drawer-form {
+  padding: 0 35px;
+  margin-bottom: 30px;
+
+  .drawer-form_logo {
+    margin-bottom: 20px;
+  }
+
+  .drawer-form_heading {
+    margin-bottom: 10px;
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    color: #2A2F29;
+
+  }
+
+  .drawer-form_content {
+    margin-bottom: 20px;
+    font-family: 'Nova-300';
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    text-align: left;
+    color: #2A2F29;
+  }
+
+  .field {
+    margin-bottom: 3px;
+  }
+
+  .custom-form-btn {
+    cursor: pointer;
+    padding: 16px 25px 16px 25px;
+    width: 100%;
+    background: #FF5C35;
+    font-family: 'Nova-400';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17.05px;
+    letter-spacing: -0.03em;
+    border: none;
+    color: #fff;
+
+  }
+}
+
+
+.custom-drawer {
+  .menu-drawer__utility-links {
+    padding: 0 35px;
+    background: transparent;
+
+    .utility-links_haeding {
+      font-family: 'Raleway';
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 26px;
+      letter-spacing: -0.03em;
+      text-align: left;
+      color: #2A2F29;
+      margin-bottom: 15px;
+
+    }
+    .list-social__link {
+      padding: 0px;
+    }
+    .list-social {
+      gap: 10px;
+      margin-left: 0;
+
+      .list-social__item {
+        padding: 0px;
+
+        .icon {
+          height: 40px;
+          width: 40px;
+        }
+      }
+    }
+
+  }
 }
