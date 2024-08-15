@@ -2,27 +2,23 @@
   max-width: 1920px;
   width: 100%;
   margin: 0 auto;
-  .page-width.blog-page-width {
-    max-width: 1605px;
-    width: 100%;
-    margin-right: 0;
-    padding-right: 0;
+
+  .page-width.blog-page-width {}
+
+  @media screen and (min-width: 1460px) {
+    .page-width.blog-page-width {
+      max-width: 1644px;
+      width: 100%;
+      margin-right: 0;
+      padding-right: 0;
+    }
   }
-  // .swiper:after {
-  //   background: linear-gradient(270deg, #fff, hsla(0, 0%, 100%, 0.86));
-  //   content: "";
-  //   filter: blur(12px);
-  //   height: 118%;
-  //   pointer-events: none;
-  //   position: absolute;
-  //   right: -36px;
-  //   top: -27px;
-  //   width: 349px;
-  //   z-index: 20;
-  // }
+
+
   .inner_content_btn-slider {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     .wraper-content {
       .title {
@@ -34,6 +30,7 @@
         text-transform: uppercase;
         color: rgba(47, 47, 47, 1);
       }
+
       .sub-title {
         font-family: "Nova-300";
         font-size: 20px;
@@ -43,38 +40,88 @@
         color: rgba(47, 47, 47, 1);
       }
     }
+
     .wrapper_btn-slider {
       display: flex;
       gap: 30px;
+
       .swiper-button-prev {
         position: unset;
       }
+
       .swiper-button-next {
         position: unset;
       }
     }
   }
-  .swiper-wrapper {
-    padding-left: 0px;
-    .swiper-slide-next{
-      opacity: 31%;
-      
-    }
-    .swiper-slide-next::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-      pointer-events: none;
+
+  .wrapper_btn-slider.mob_btn-slider {
+    display: block;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      position: static;
+      width: 50px;
+      height: 50px;
+      background: #00c08b;
+      border-radius: 50%;
+      z-index: 1;
+      border: none;
+
+      svg {
+        width: 9px;
+
+        path {
+          fill: #fff;
+        }
+      }
     }
   }
-  .wrapper_btn-slider .swiper-button-prev, .swiper-button-next{
+
+  @media screen and (min-width: 762px) {
+    .wrapper_btn-slider.mob_btn-slider {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 762px) {
+
+    .wrapper_btn-slider.desk_btn-slider {
+      display: none;
+    }
+  }
+
+  .swiper-wrapper {
+    padding-left: 0px;
+
+    @media screen and (min-width: 1460px) {
+      .swiper-slide-next~.swiper-slide {
+
+        opacity: 31%;
+
+      }
+
+      .swiper-slide-next~.swiper-slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        pointer-events: none;
+      }
+    }
+  }
+
+  .wrapper_btn-slider .swiper-button-prev,
+  .swiper-button-next {
     background: transparent;
     border: 1px solid #6A6A6A;
-    
+
     svg path {
       fill: #6A6A6A;
     }
@@ -84,19 +131,32 @@
 .custom-blog-card-wrapper {
   display: flex;
   gap: 30px;
+
+  @media screen and (max-width: 1250px) {
+    flex-direction: column;
+  }
+
   .blog-card-img {
-    max-width: 300px;
-    height: 400px;
+    max-width: 320px;
+    height: 200px;
+
+    @media screen and (min-width: 760px) {
+      max-width: 300px;
+      height: 400px;
+    }
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     object-fit: contain;
   }
+
   .blog-card-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+
     .first-tags {
       padding: 6px 15px;
       background: rgba(202, 239, 226, 1);
@@ -109,15 +169,16 @@
       color: rgba(47, 47, 47, 1);
       margin-bottom: 20px;
     }
+
     .card__heading {
-      font-family: "Nova-600";
+      font-family: "Nova-400";
       font-size: 30px;
-      font-weight: 600;
-      line-height: 34px;
+      line-height: 42px;
       text-align: left;
       color: rgba(47, 47, 47, 1);
       margin-bottom: 50px;
     }
+
     .link-inner {
       .link {
         font-family: "Nova-700";
@@ -132,6 +193,7 @@
         gap: 10px;
         align-items: center;
         padding: 10px 15px 10px 0px;
+
         svg {
           stroke: #2f2f2f;
           transition: transform 0.5s ease-in-out, stroke 0.5s;
@@ -143,6 +205,7 @@
           transform: rotate(45deg);
           stroke: red;
         }
+
         .link {
           color: red;
         }

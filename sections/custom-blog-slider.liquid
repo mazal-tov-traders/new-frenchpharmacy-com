@@ -31,7 +31,7 @@
           </h3>
         {% endif %}
       </div>
-      <div class="wrapper_btn-slider">
+      <div class="wrapper_btn-slider desk_btn-slider">
         <div class="swiper-button-prev">
           {% render 'icon-swiper-prev' %}
         </div>
@@ -72,22 +72,48 @@
           {%- endfor -%}
         {% endif %}
       </ul>
+      
+    </div>
+    <div class="wrapper_btn-slider mob_btn-slider">
+      <div class="swiper-button-prev">
+        {% render 'icon-swiper-prev' %}
+      </div>
+      <div class="swiper-button-next">
+        {% render 'icon-swiper-next' %}
+      </div>
     </div>
   </div>
 </div>
+{% style %}
+    #shopify-section-{{ section.id }} {
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
 
+    .swiper-slide {
+      height: calc((100% - 30px) / 2) !important;
+      margin-top: 0px !important;
+      display: block;
+    }
+    .swiper-grid-column > .swiper-wrapper {
+      flex-wrap: wrap !important;
+      flex-direction: row !important;
+    }
+  }
+{% endstyle %}
 <script>
   const section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }} = {
       section: document.querySelector("#shopify-section-{{ section.id }}"),
       init() {
         this.slider = new Swiper(this.section.querySelector(".mySwiper"), {
           speed: 1000,
-          {% comment %} grabCursor: true, {% endcomment %}
-          centeredSlides: true,
+          {% comment %} grabCursor: true, 
+          centeredSlides: true, {% endcomment %}
           {% comment %} loopedSlides: 2,
-          initialSlide: 1,  {% endcomment %}
-          {% comment %} loop: true, {% endcomment %}
-          {% comment %} createElements: true, {% endcomment %}
+          initialSlide: 1, 
+           loop: true, 
+           createElements: true,  {% endcomment %}
           
            freeMode: true,  
 
@@ -97,13 +123,20 @@
           },
           breakpoints: {
           300: {
-            slidesPerView: 1.3,
+            slidesPerView: 1,
             centeredSlides: false,
-            spaceBetween: 10,
-          },
-          769: {
-            slidesPerView: 2,
             spaceBetween: 20,
+            grid: {
+              rows: 2,
+            },
+          },
+          780: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+          1460: {
+            slidesPerView: 3,
+            spaceBetween: 40,
           },
         }
         });
