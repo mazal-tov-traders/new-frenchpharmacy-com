@@ -280,16 +280,6 @@
         "include_margins": true
       }
     },
-    "custom_blog_slider_YNWbdV": {
-      "type": "custom-blog-slider",
-      "settings": {
-        "heading": "The Blog",
-        "sub_heading": "All about French Pharmacy beauty culture.",
-        "blog": "beauty-secrets",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "section_info_EJGNkD": {
       "type": "section-info",
       "blocks": {
@@ -432,6 +422,16 @@
       ],
       "settings": {
       }
+    },
+    "custom_blog_slider_YNWbdV": {
+      "type": "custom-blog-slider",
+      "settings": {
+        "heading": "The Blog",
+        "sub_heading": "All about French Pharmacy beauty culture.",
+        "blog": "beauty-secrets",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -442,9 +442,9 @@
     "custom_collection_list_BxrdBp",
     "video_and_slider_bGArme",
     "1715772755ba07f0b7",
-    "custom_blog_slider_YNWbdV",
     "section_info_EJGNkD",
     "banner_in_container_AWCqbW",
-    "ribbon_slider_Ekk39c"
+    "ribbon_slider_Ekk39c",
+    "custom_blog_slider_YNWbdV"
   ]
 }

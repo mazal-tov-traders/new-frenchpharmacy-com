@@ -255,7 +255,8 @@
     .slider-product-btn {
       display: none;
     }
-    .swiper-slide.swiper-slide-next {
+  
+    .swiper-slide-next~.swiper-slide {
       opacity: 31%;
       pointer-events: none;
 

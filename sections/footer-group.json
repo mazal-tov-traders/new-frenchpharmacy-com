@@ -2,8 +2,50 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "custom_footer_ARYadr": {
+      "type": "custom-footer",
+      "blocks": {
+        "image_JqWwaY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/logo_1e2642e3-0ff5-4ee4-8ea8-e096d8147ede.png",
+            "image_width": 250,
+            "alignment": "center"
+          }
+        },
+        "newsletter_block_XVerxm": {
+          "type": "newsletter_block",
+          "settings": {
+            "logo_form": "shopify:\/\/shop_images\/image_26.png",
+            "heading": "JOIN THE FP TRIBE",
+            "content": "Be the first to find out about new products, upcoming stories, and our community…."
+          }
+        },
+        "link_list_FJNEGi": {
+          "type": "link_list",
+          "settings": {
+            "menu": "footer"
+          }
+        },
+        "link_list_KrLFmM": {
+          "type": "link_list",
+          "settings": {
+            "menu": "footer-menu-2"
+          }
+        }
+      },
+      "block_order": [
+        "image_JqWwaY",
+        "newsletter_block_XVerxm",
+        "link_list_FJNEGi",
+        "link_list_KrLFmM"
+      ],
+      "settings": {
+      }
+    },
     "footer": {
       "type": "footer",
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
@@ -21,6 +63,7 @@
     }
   },
   "order": [
+    "custom_footer_ARYadr",
     "footer"
   ]
 }
