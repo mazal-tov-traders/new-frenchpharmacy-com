@@ -1,6 +1,13 @@
 .sw-instagram-container .sw-carousel-arrow {
     display: none;
 }
-.sw-carousel-dots{
+
+.sw-carousel-dots {
     display: none;
+}
+
+@media screen and (max-width: 500px) {
+    .sw-carousel.is-mobile .sw-carousel-slider {
+        padding: 3px 0px 3px 0px !important;
+    }
 }

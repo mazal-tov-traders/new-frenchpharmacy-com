@@ -2,7 +2,9 @@
   .banner-wrapper{
     display: flex;
     justify-content: center;
+    @media screen and (min-width: 790px) {
     flex-direction: column;
+    }
 
   }
   .inner_banner-content {
@@ -34,7 +36,7 @@
 
   .icon-inner {
     gap: 30px;
-    column-gap: 30px;
+    column-gap: 25px;
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(3, 1fr);
@@ -46,3 +48,11 @@
 }
 
 //
+@media screen and (max-width: 790px) {
+  .custom-banner-and-content{
+    .img-in-banner {
+      height: 38px;
+    }
+  }
+}
+

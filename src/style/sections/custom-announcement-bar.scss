@@ -3,10 +3,13 @@
   width: 100%;
   margin: 0 auto;
   background-color: #00c08b;
+  height: 40px;
+
   .inne-announcement-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .announcement-bar__message.h5 {
       font-family: "Nova-600" sans-serif;
       font-size: 13px;
@@ -16,9 +19,11 @@
       text-align: center;
       color: rgba(255, 255, 255, 1);
     }
+
     .announcement-widget_countries {
       display: flex;
       align-items: center;
+
       .delivery-heading {
         font-family: "Nova-600" sans-serif;
         font-size: 13px;
@@ -34,32 +39,68 @@
     .doubly-wrapper.custom-german .doubly-nice-select .current {
       color: #fff !important;
     }
+
     .doubly-wrapper .doubly-nice-select::after {
       border-color: #fff !important;
     }
+
     @media screen and (max-width: 820px) {
       .doubly-wrapper.custom-german {
         display: none;
       }
+
       .announcement-widget_countries {
         display: none;
       }
-    }
-    @media screen and (min-width: 821px) {
-      .announcement-bar,
-      .announcement-bar__announcement {
-        align-content: flex-start;
+
+      .announcement-bar__message {
+        svg {
+          display: none;
+        }
       }
-      .announcement-bar-slider.slider-buttons {
-        max-width: 372px;
-        width: 100%;
+
+
+      .slider-button {
+
+        width: 20px;
       }
+
       .announcement-bar {
-        max-width: 572px;
-        width: 100%;
+        .slider-button--prev {
+          min-width: 0;
+          padding: 0;
+          margin-left: 0px;
+        }
+
+        .slider-button--next {
+          margin-right: 0px;
+          padding: 0;
+          min-width: 0px;
+        }
       }
-      .announcement-widget_countries{
-        width: 312px;
+
+
+
+      @media screen and (min-width: 821px) {
+
+        .announcement-bar,
+        .announcement-bar__announcement {
+          align-content: flex-start;
+        }
+
+        .announcement-bar-slider.slider-buttons {
+          max-width: 372px;
+          width: 100%;
+        }
+
+        .announcement-bar {
+          max-width: 572px;
+          width: 100%;
+        }
+
+        .announcement-widget_countries {
+          width: 312px;
+        }
       }
     }
   }

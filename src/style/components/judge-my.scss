@@ -1,6 +1,14 @@
 .jdgm-carousel-wrapper {
-    padding-top: 100px !important;
-    padding-bottom: 31px !important;
+
+    @media screen and (min-width: 500px) {
+        padding-top: 100px !important;
+        padding-bottom: 31px !important;
+    }
+
+    @media screen and (max-width: 499px) {
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+    }
 }
 
 .jdgm-carousel--gallery-theme .jdgm-rev__buyer-badge {
@@ -165,10 +173,9 @@
 }
 
 
-.custom-style:has(.jdgm-carousel-wrapper){
+.custom-style:has(.jdgm-carousel-wrapper) {
     max-width: 1920px;
     width: 100%;
     margin: 0 auto;
     background-color: #F7F7F7;
 }
-

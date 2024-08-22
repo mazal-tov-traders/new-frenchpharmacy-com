@@ -1,8 +1,12 @@
 .ribbon-slider {
     padding-top: 30px;
 
+    @media screen and (max-width: 550px) {
+        padding-top: 80px;
+    }
+
     .page-width {
-       
+
         @media screen and (max-width: 1350px) {
             padding: 0px;
         }
@@ -13,7 +17,7 @@
         position: relative;
         background-color: #FAFAFA;
         padding: 50px 0px 60px;
-        
+
         @media screen and (min-width: 1350px) {
             padding: 50px 141px 60px;
         }
@@ -23,14 +27,23 @@
                 margin-bottom: 38px;
             }
         }
+        @media screen and (max-width: 500px) {
+            .swiper.mySwiper {
+                margin-bottom: 23px;
+            }
+        }
 
 
     }
-    .wrapper_btn-slider .swiper-button-next, .wrapper_btn-slider .swiper-rtl .swiper-button-prev {
+
+    .wrapper_btn-slider .swiper-button-next,
+    .wrapper_btn-slider .swiper-rtl .swiper-button-prev {
         left: auto;
         right: var(--swiper-navigation-sides-offset, -80px);
     }
-    .wrapper_btn-slider .swiper-button-prev, .wrapper_btn-slider .swiper-rtl .swiper-button-next {
+
+    .wrapper_btn-slider .swiper-button-prev,
+    .wrapper_btn-slider .swiper-rtl .swiper-button-next {
         left: var(--swiper-navigation-sides-offset, -79px);
         right: auto;
     }
@@ -46,6 +59,9 @@
                 position: sticky;
             }
 
+        }
+        @media screen and (max-width: 500px) {
+            gap: 31px;
         }
 
         .swiper-button-next {
@@ -122,9 +138,8 @@
     .swiper-slide {
         flex-shrink: 0;
         object-fit: scale-down;
-        .banner-section__card-icon{
 
-        }
+        .banner-section__card-icon {}
     }
 
     .swiper-wrapper {
@@ -137,6 +152,9 @@
         flex-direction: column;
         align-items: center;
         padding: 5px 35px 0;
+        @media screen and (max-width: 500px) {
+            padding-top: 50px;
+        }
 
         .advice-content {
 
@@ -182,6 +200,10 @@
         max-width: 498px;
         width: 100%;
         margin-bottom: 30px;
+        @media screen and (max-width: 450px) {
+            height: 38px;
+            
+        }
     }
 
     .logo-description {
@@ -194,6 +216,7 @@
         color: #2F2F2F;
         max-width: 780px;
         width: 100%;
+
         @media screen and (max-width: 450px) {
             font-size: 28px;
         }

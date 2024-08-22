@@ -10,7 +10,7 @@
             "image_mobile": "shopify:\/\/shop_images\/1112_1.jpg",
             "image_content": "shopify:\/\/shop_images\/Frame_1000002483.png",
             "title": "The one and only recognized worldwide",
-            "heading": "Beauty Eye Solution",
+            "heading": "<p>Beauty Eye Solution<\/p>",
             "subheading": "In addition to caring for dry, tired, and irritated eyes, the drops give your eyes an amazing radiance.",
             "button_label": "Shop Now",
             "link": "#",
@@ -23,28 +23,11 @@
             "text_alignment_mobile": "center"
           }
         },
-        "slide_mTp8TU": {
-          "type": "slide",
-          "settings": {
-            "title": "",
-            "heading": "Image slide",
-            "subheading": "Tell your brand's story through images",
-            "button_label": "Button label",
-            "link": "",
-            "button_style_secondary": false,
-            "box_align": "middle-left",
-            "show_text_box": false,
-            "text_alignment": "left",
-            "image_overlay_opacity": 0,
-            "color_scheme": "scheme-1",
-            "text_alignment_mobile": "center"
-          }
-        },
         "slide_33twpP": {
           "type": "slide",
           "settings": {
             "title": "",
-            "heading": "Image slide",
+            "heading": "<p>Image slide<\/p>",
             "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
             "link": "",
@@ -61,7 +44,7 @@
           "type": "slide",
           "settings": {
             "title": "",
-            "heading": "Image slide",
+            "heading": "<p>Image slide<\/p>",
             "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
             "link": "",
@@ -77,7 +60,6 @@
       },
       "block_order": [
         "slide_k4bpmT",
-        "slide_mTp8TU",
         "slide_33twpP",
         "slide_Gc34Rb"
       ],
@@ -101,7 +83,9 @@
         "products_to_show": 8,
         "quick_add": "standard",
         "button_label": "SHOP BEST SELLERS",
-        "button_link": "shopify:\/\/collections"
+        "button_link": "shopify:\/\/collections",
+        "padding_top": 100,
+        "padding_bottom": 120
       }
     },
     "custom_banner_and_content_UF3etV": {
@@ -168,7 +152,9 @@
         "products_to_show": 20,
         "quick_add": "standard",
         "button_label": "",
-        "button_link": ""
+        "button_link": "",
+        "padding_top": 120,
+        "padding_bottom": 64
       }
     },
     "custom_collection_list_BxrdBp": {
@@ -324,6 +310,22 @@
         "heading": "Elevating Beauty, Effortlessly Enjoyable"
       }
     },
+    "172433250189815f0b": {
+      "type": "apps",
+      "blocks": {
+        "socialwidget_base_widget_bPmCcK": {
+          "type": "shopify:\/\/apps\/socialwidget\/blocks\/base-widget\/508b8d5b-b176-4dc6-a0ba-2b222db6eb79",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "socialwidget_base_widget_bPmCcK"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "banner_in_container_AWCqbW": {
       "type": "banner-in-container",
       "settings": {
@@ -439,6 +441,7 @@
     "video_and_slider_bGArme",
     "1715772755ba07f0b7",
     "section_info_EJGNkD",
+    "172433250189815f0b",
     "banner_in_container_AWCqbW",
     "ribbon_slider_Ekk39c",
     "custom_blog_slider_YNWbdV"

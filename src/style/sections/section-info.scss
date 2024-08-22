@@ -22,9 +22,11 @@
     .banner-section__cards {
         display: flex;
         justify-content: space-between;
-        gap: 76px;
+        gap: 60px;
         flex-wrap: wrap;
-
+        @media (max-width: 468px) {
+            gap: 77px;
+        }
 
     }
 
