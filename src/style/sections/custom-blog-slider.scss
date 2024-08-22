@@ -2,8 +2,16 @@
   max-width: 1920px;
   width: 100%;
   margin: 0 auto;
+  padding-top: 70px;
 
-  .page-width.blog-page-width {}
+
+  @media screen and (min-width: 990px) {
+
+    .title,
+    .title-wrapper-with-link {
+      margin: 50px 0 17px;
+    }
+  }
 
   @media screen and (min-width: 1460px) {
     .page-width.blog-page-width {
@@ -16,6 +24,10 @@
 
 
   .inner_content_btn-slider {
+    @media screen and (min-width: 771px) {
+      align-items: flex-end;
+    }
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,7 +55,7 @@
 
     .wrapper_btn-slider {
       display: flex;
-      gap: 30px;
+      gap: 21px;
 
       .swiper-button-prev {
         position: unset;

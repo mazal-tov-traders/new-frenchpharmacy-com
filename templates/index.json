@@ -11,7 +11,6 @@
             "image_content": "shopify:\/\/shop_images\/Frame_1000002483.png",
             "title": "The one and only recognized worldwide",
             "heading": "Beauty Eye Solution",
-            "heading_size": "h1",
             "subheading": "In addition to caring for dry, tired, and irritated eyes, the drops give your eyes an amazing radiance.",
             "button_label": "Shop Now",
             "link": "#",
@@ -29,7 +28,6 @@
           "settings": {
             "title": "",
             "heading": "Image slide",
-            "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
             "link": "",
@@ -47,7 +45,6 @@
           "settings": {
             "title": "",
             "heading": "Image slide",
-            "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
             "link": "",
@@ -65,7 +62,6 @@
           "settings": {
             "title": "",
             "heading": "Image slide",
-            "heading_size": "h1",
             "subheading": "Tell your brand's story through images",
             "button_label": "Button label",
             "link": "",

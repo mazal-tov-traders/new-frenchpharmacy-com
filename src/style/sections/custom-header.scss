@@ -1,9 +1,9 @@
 .custom-section-header {
   @media screen and (min-width: 990px) {
     .header--middle-left {
+      column-gap: 6rem;
       grid-template-areas: "heading navigation icons";
       grid-template-columns: auto 1fr 0.3fr;
-      column-gap: 2rem;
     }
     .header__heading-logo {
       width: 515px;
@@ -11,6 +11,9 @@
     .header__heading-link {
       padding-bottom: 0px;
       padding-top: 0px;
+    }
+    .custom-search{
+      margin-left: 76px;
     }
   }
   .custom-header {

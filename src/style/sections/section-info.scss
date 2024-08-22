@@ -2,7 +2,7 @@
     .banner-section__info-wrapper {}
 
     .banner-section__heading {
-
+        letter-spacing: 0px;
         font-family: 'Barlow';
         font-size: 28px;
         line-height: 33.6px;
@@ -21,6 +21,7 @@
 
     .banner-section__cards {
         display: flex;
+        justify-content: space-between;
         gap: 76px;
         flex-wrap: wrap;
 
@@ -46,7 +47,7 @@
 
     @media (min-width: 1024px) {
         .banner-section__card {
-            width: calc(25% - 57px);
+            width: calc(23% - 25px);
         }
     }
 
@@ -61,7 +62,6 @@
         line-height: 23.48px;
         letter-spacing: -0.03em;
         text-align: left;
-        text-transform: uppercase;
         margin-bottom: 15px;
         color: #2F2F2F;
     }

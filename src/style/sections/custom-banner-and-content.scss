@@ -1,16 +1,26 @@
 .custom-banner-and-content {
+  .banner-wrapper{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 
+  }
   .inner_banner-content {
-    padding-top: 60px;
-    @media screen and (min-width: 790px) {
-      padding: 119px 35px;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+
+    @media screen and (max-width: 790px) {
+      padding-top: 60px;
     }
   }
+
   .img-in-banner {
     margin-bottom: 30px;
     max-width: 498px;
     width: 100%;
   }
+
   .banner-content {
     margin-bottom: 50px;
     max-width: 600px;
@@ -21,12 +31,14 @@
     text-align: left;
     color: #2F2F2F;
   }
+
   .icon-inner {
     gap: 30px;
     column-gap: 30px;
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(3, 1fr);
+
     @media screen and (min-width: 790px) {
       display: flex;
     }

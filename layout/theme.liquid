@@ -327,50 +327,49 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script defer="defer">
-      $(function() {
+      $(function () {
         // Event listener for selecting a country
-        $('.selectioner .selected_country').on('click', function(e) {
+        $('.selectioner .selected_country').on('click', function (e) {
           e.preventDefault();
           $(this).parent().toggleClass('active');
         });
-    
+
         // Event listener for clicking on a country option
-        $('.selectioner .selector_country .option').on('click', function(e) {
+        $('.selectioner .selector_country .option').on('click', function (e) {
           e.preventDefault();
-          
-          var international = $(this).attr("data-international");
-          var flagTag = $(this).attr("value");
-          var selected_country_text = $(this).find(".fflag").attr("title");
-          
+
+          var international = $(this).attr('data-international');
+          var flagTag = $(this).attr('value');
+          var selected_country_text = $(this).find('.fflag').attr('title');
+
           // Modify the selected flag and country text
-          var selected = $(".widget_countries .selected_flag");
-          var selected_country = $(".selected_country");
-          
-          selected.find("div").removeClass();
-          selected_country.find(".fflag").removeClass();
-          selected.find("div").addClass(flagTag);
-          selected_country.find("span:not(.country_name)").addClass(flagTag);
-          selected_country.find(".country_name").text(selected_country_text);
-          $(".wrap_delivery_pop .country_name").text(selected_country_text);
-          
-          $(this).parents(".selectioner").removeClass('active');
-          
+          var selected = $('.widget_countries .selected_flag');
+          var selected_country = $('.selected_country');
+
+          selected.find('div').removeClass();
+          selected_country.find('.fflag').removeClass();
+          selected.find('div').addClass(flagTag);
+          selected_country.find('span:not(.country_name)').addClass(flagTag);
+          selected_country.find('.country_name').text(selected_country_text);
+          $('.wrap_delivery_pop .country_name').text(selected_country_text);
+
+          $(this).parents('.selectioner').removeClass('active');
+
           // Modify delivery options based on the selected country
-          var delivery = $(".delivery_options");
-          if(international == "true") {
-            delivery.removeClass("domestic").addClass("international");
+          var delivery = $('.delivery_options');
+          if (international == 'true') {
+            delivery.removeClass('domestic').addClass('international');
           } else {
-            delivery.removeClass("international").addClass("domestic");
+            delivery.removeClass('international').addClass('domestic');
           }
         });
       });
     </script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer='defer'></script>
-   
+  
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer="defer"></script>
     {{ 'main.css' | asset_url | stylesheet_tag }}
   </head>
 
@@ -384,7 +383,7 @@
     {%- endif -%}
 
     {% sections 'header-group' %}
-    
+
     {%- if settings.cart_type != 'index' -%}
       {% section 'breadcrumbs' %}
     {%- endif -%}
@@ -447,6 +446,5 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    
   </body>
 </html>
