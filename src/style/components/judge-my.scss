@@ -160,9 +160,14 @@
         margin-right: 0px !important;
     }
 
+
+    .jdgm-carousel--gallery-theme .jdgm-carousel-item__body {
+        padding-top: 16px;
+    }
+
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1302px) {
     .jdgm-carousel--gallery-theme .jdgm-carousel__right-arrow {
         right: -100px !important;
     }
