@@ -12,9 +12,11 @@
       {%- for block in section.blocks -%}
         {% case block.type %}
           {%- when 'icons' -%}
+            <div class='icon-box'>
             {% if block.settings.icon != blank %}
-              {{ block.settings.icon | image_url: width: 90 | image_tag: class: 'icon' }}
+              {{ block.settings.icon | image_url: width: 200 | image_tag: class: 'icon' }}
             {% endif %}
+          </div>
         {% endcase %}
       {%- endfor -%}
     </div>

@@ -11,12 +11,16 @@
             padding: 0px;
         }
     }
-
+    .swiper-slide {
+        img{
+            object-fit: scale-down;
+        }
+    }
 
     .ribbon {
         position: relative;
         background-color: #FAFAFA;
-        padding: 50px 0px 60px;
+        padding: 35px 0px 60px;
 
         @media screen and (min-width: 1350px) {
             padding: 50px 141px 60px;
@@ -24,14 +28,10 @@
 
         @media screen and (max-width: 1500px) {
             .swiper.mySwiper {
-                margin-bottom: 38px;
+                margin-bottom: 6px;
             }
         }
-        @media screen and (max-width: 500px) {
-            .swiper.mySwiper {
-                margin-bottom: 23px;
-            }
-        }
+       
 
 
     }
@@ -61,7 +61,7 @@
 
         }
         @media screen and (max-width: 500px) {
-            gap: 31px;
+            gap: 30px;
         }
 
         .swiper-button-next {
@@ -136,10 +136,10 @@
     }
 
     .swiper-slide {
-        flex-shrink: 0;
-        object-fit: scale-down;
+        flex-shrink: 1;
+        // object-fit: scale-down;
 
-        .banner-section__card-icon {}
+        
     }
 
     .swiper-wrapper {
@@ -152,7 +152,7 @@
         flex-direction: column;
         align-items: center;
         padding: 5px 35px 0;
-        @media screen and (max-width: 500px) {
+        @media screen and (max-width: 1500px) {
             padding-top: 50px;
         }
 
@@ -182,6 +182,7 @@
 
         @media screen and (max-width: 706px) {
             flex-direction: column;
+            padding: 50px 11px 60px 10px;
         }
 
 
@@ -223,3 +224,4 @@
 
     }
 }
+

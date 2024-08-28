@@ -190,6 +190,10 @@
 
     .quick-add.no-js-hidden {
       max-width: 156px;
+      width: 100%;
+      @media screen and (max-width: 1540px) {
+        margin: 30px auto 0;
+      }
     }
 
     .card__heading {
@@ -200,13 +204,14 @@
       margin-bottom: 10px;
       text-align: left;
     }
+
     @media screen and (max-width: 700px) {
       .inner-raiting-and-count {
         justify-content: flex-start;
         margin-bottom: 15px;
       }
     }
-   
+
 
     .card--extend-height.card--standard.card--text .card__inner,
     .card--extend-height.card--media .card__inner {
@@ -470,7 +475,9 @@
     }
 
     .swiper.mySwiper .card-wrapper {
-      width: 145px;
+      @media screen and (min-width: 400px) {
+        width: 145px;
+      }
 
       .card__inner.gradient {
         height: 145px;

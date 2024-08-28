@@ -1,5 +1,5 @@
 .sw-instagram-container .sw-carousel-arrow {
-    display: none;
+    display: none !important;
 }
 
 .sw-carousel-dots {
@@ -11,122 +11,7 @@
         padding: 3px 0px 3px 0px !important;
     }
 }
-
-//  futurend product
-
-.thumbnail__badge-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
+.sw-instagram-header{
+    display: none !important;
 }
 
-
-
-
-@media screen and (min-width: 750px) {
-    .product--thumbnail_slider {
-        .product__media-wrapper {
-            .hidden-btn {
-                .slider-button {
-                    display: none;
-                }
-            }
-        }
-    }
-
-
-}
-
-@media screen and (min-width: 900px) {
-    .thumbnail-list.slider--tablet-up .thumbnail-list__item.slider__slide {
-        width: calc(25% - .8rem) !important;
-        height: 90px;
-    }
-}
-
-slider-component {
-    .slider-button {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border: 1px solid #2F2F2F;
-
-        svg {
-            fill: #2F2F2F;
-        }
-    }
-
-    .slider-button:disabled {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        border: 1px solid #9F9F9F;
-
-        svg {
-            fill: #9F9F9F;
-        }
-    }
-}
-
-
-@media screen and (min-width: 990px) {
-    .product--large:not(.product--no-media) .product__info-wrapper {
-        padding: 0 0 0 80px;
-        max-width: 100% !important;
-        width: calc(35% - var(--grid-desktop-horizontal-spacing) / 2);
-    }
-}
-
-@media screen and (min-width: 990px) {
-    .product--large:not(.product--no-media) .product__media-wrapper {
-        max-width: 710px !important;
-        height: 500px;
-        width: 100%;
-        width: calc(65% - var(--grid-desktop-horizontal-spacing) / 2);
-    }
-}
-
-
-
-.slider-button.slider-button--prev {
-    margin-right: 37px;
-}
-
-.slider-button.slider-button--next {
-    margin-left: 37px;
-}
-
-button.thumbnail:not([aria-current="true"]) {
-    opacity: 0.5;
-    border: 1px solid #9F9F9F;
-}
-
-
-button.thumbnail[aria-current="true"] {
-    opacity: 100;
-    border: 1px solid #FF5C35;
-}
-
-.global-media-settings {
-    border: 1px solid #9F9F9F !important;
-}
-.price {
-    .badge {
-        display: none;
-    }
-}
-.product-form__input.product-form__quantity{
-    width: 49%;
-    margin-right: -4px;
-    vertical-align: top;
-    display: inline-block;
-}
-
-variant-selects{
-    width: 49%;
-    margin-right: -4px;
-    vertical-align: top;
-    display: inline-block !important;
-}
