@@ -37,6 +37,17 @@
     }
   }
 }
+.search__input.field__input{
+  background-color: #F8F8F8;
+}
+.template-search__search {
+  .field__label {
+    font-family: 'Nova-300';
+    font-size: 16px;
+    text-align: left;
+    color: #2F2F2F;
+  }
+}
 
 @media screen and (min-width: 990px) {
   .search-modal__form {
@@ -78,9 +89,12 @@
       width: 23px;
 
     }
+
     .header__heading-link {
       padding: 7px 0px 8px 33px;
     }
 
   }
 }
+
+

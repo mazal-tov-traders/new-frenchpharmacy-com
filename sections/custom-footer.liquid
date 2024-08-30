@@ -142,13 +142,11 @@
       <div class="footer__column footer__column--info">
         <div class="footer__payment">
           <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
-          <ul class="list list-payment" role="list">
-            {%- for type in shop.enabled_payment_types -%}
-              <li class="list-payment__item">
-                {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-              </li>
-            {%- endfor -%}
-          </ul>
+          <div class="list list-payment" role="list">
+            <div class="list-payment-icons">
+              {% render 'payment-icons' %}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -156,26 +154,36 @@
 
   <div class="wrapper-bottom-footer">
     <div class="inner-top">
-      <p>All information presented in this website is intended for informational purposes only and not for the purpose of rendering medical advice.</p>
+      <p>
+        All information presented in this website is intended for informational purposes only and not for the purpose of
+        rendering medical advice.
+      </p>
       <p>Statements made on this website have not been evaluated by the Food and Drug Administration.</p>
       <p>The information contained herein is not intended to diagnose, treat, cure or prevent any disease.</p>
     </div>
     <div class="inner-bottom">
       <div class="policie-inner">
-        <h3 class='all-reserved'>@ 2024 All rights reserved.</h3>
+        <h3 class="all-reserved">@ 2024 All rights reserved.</h3>
         <ul class="policies list-unstyled">
-          {%- for policy in shop.policies -%}
-            {%- if policy != blank -%}
-              <li>
-                <small class="copyright__content"
-                  ><a href="{{ policy.url }}">{{ policy.title }}</a></small
-                >
-              </li>
-            {%- endif -%}
-          {%- endfor -%}
+          {% if section.settings.label_link1 != blank %}
+            <li>
+              <small class="copyright__content"
+                ><a href="{{ section.settings.link1 }}">{{ section.settings.label_link1 }}</a></small
+              >
+            </li>
+          {% endif %}
+          {% if section.settings.label_link1 != blank %}
+            <li>
+              <small class="copyright__content"
+                ><a href="{{ section.settings.link2 }}">{{ section.settings.label_link2 }}</a></small
+              >
+            </li>
+          {% endif %}
         </ul>
       </div>
-      <div class="web-loft">Dallas and Plano Web Design Agency: <a href="https://www.webloftdesigns.com/">Web Loft Designs</a></div>
+      <div class="web-loft">
+        Dallas and Plano Web Design Agency: <a href="https://www.webloftdesigns.com/">Web Loft Designs</a>
+      </div>
     </div>
   </div>
 </div>
@@ -184,7 +192,28 @@
   "name": "Custom Footer",
   "tag": "section",
   "class": "section custom-footer",
-  "settings": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "label_link1",
+      "label": "Label link"
+    },
+    {
+      "type": "url",
+      "id": "link1",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "label_link2",
+      "label": "Label link"
+    },
+    {
+      "type": "url",
+      "id": "link2",
+      "label": "Link"
+    }
+  ],
   "blocks": [
     {
       "type": "link_list",

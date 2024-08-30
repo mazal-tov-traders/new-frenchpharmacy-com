@@ -4,20 +4,6 @@
     margin: 0 auto;
     background-color: #FAFAFA;
 
-    .list-payment__item {
-
-        padding: 0.5rem;
-        width: 32px;
-    }
-
-    @media screen and (min-width: 750px) {
-        .list-payment {
-
-            margin-top: -29px;
-
-        }
-    }
-
     @media screen and (min-width: 750px) {
         .footer__payment {
             margin-top: 0rem;
@@ -290,7 +276,17 @@
 
             .list-unstyled {}
 
-            .copyright__content {}
+            .copyright__content {
+                a {
+                    font-family: 'Raleway';
+                    font-size: 14px;
+                    font-weight: 300;
+                    line-height: 16.44px;
+                    text-align: left;
+                    color:  #2F2F2F;
+                    
+                }
+            }
 
             .web-loft {
                 font-family: 'Nova-300';
@@ -339,11 +335,12 @@
     }
 }
 
-.list-payment__item {
-
-    padding: 0 !important;
-
+.list-payment-icons {
+    flex-wrap: nowrap;
+    display: flex;
+    gap: 8px;
 }
+
 
 .list-payment {
     display: flex;

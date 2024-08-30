@@ -17,13 +17,17 @@
         }
     }
 
+    .swiper.mySwiper {
+        margin-bottom: 35px;
+    }
+    
     .ribbon {
         position: relative;
         background-color: #FAFAFA;
         padding: 35px 0px 60px;
 
         @media screen and (min-width: 1350px) {
-            padding: 50px 141px 60px;
+            padding: 45px 141px 60px;
         }
 
         @media screen and (max-width: 1500px) {

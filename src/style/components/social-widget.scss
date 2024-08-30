@@ -1,3 +1,4 @@
+
 .sw-instagram-container .sw-carousel-arrow {
     display: none !important;
 }
@@ -11,7 +12,12 @@
         padding: 3px 0px 3px 0px !important;
     }
 }
+
 .sw-instagram-header{
     display: none !important;
 }
 
+.page-width.scroll-trigger.animate--slide-in{
+    padding-bottom: 74px;
+    padding-top: 120px;
+}

@@ -36,7 +36,7 @@
       "previous": "Previous page"
     },
     "search": {
-      "search": "Search",
+      "search": "What are you looking for?",
       "reset": "Clear search term"
     },
     "cart": {
@@ -58,7 +58,7 @@
     }
   },
   "newsletter": {
-    "label": "Email",
+    "label": "Enter your email address",
     "success": "Thanks for subscribing",
     "button_label": "Subscribe"
   },
@@ -517,6 +517,13 @@
       "max_characters": "{{ max_chars }} characters max",
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "contact": {
+        "email_label": "111111"
+      }
     }
   }
 }

@@ -25,6 +25,17 @@
 
     }
 
+    .menu-drawer__menu-item.list-menu__item.link.link--text.focus-inset {
+      text-transform: capitalize;
+      font-family: 'Nova-400';
+      font-size: 18px;
+      color: #2F2F2F;
+      line-height: 21.92px;
+      letter-spacing: 0.05em;
+      text-align: center;
+
+    }
+
     &__menu {
 
       .parent-link {
@@ -35,7 +46,7 @@
         color: #2F2F2F;
         margin-bottom: 20px;
         padding: 20px 0 0 0px;
-
+        text-transform: capitalize;
       }
 
       .child-link {
@@ -139,7 +150,7 @@
       }
 
       .jdgm-medals-wrapper {
-        padding: 16px;
+        padding-left: 16px;
         gap: 10px;
       }
 
@@ -285,6 +296,19 @@
   display: none;
 }
 
+.newsletter-form__field-wrapper {
+  .field__label {
+    
+    font-family: 'Nova-300';
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+    color:#2F2F2F;
+  
+
+  }
+}
+
 
 .inner_drawer-form {
   padding: 0 35px;
@@ -353,9 +377,11 @@
       margin-bottom: 15px;
 
     }
+
     .list-social__link {
       padding: 0px;
     }
+
     .list-social {
       gap: 10px;
       margin-left: 0;

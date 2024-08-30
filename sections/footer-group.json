@@ -17,20 +17,20 @@
           "type": "newsletter_block",
           "settings": {
             "logo_form": "shopify:\/\/shop_images\/image_26.png",
-            "heading": "JOIN THE FP TRIBE",
+            "heading": "Join the fp tribe",
             "content": "Be the first to find out about new products, upcoming stories, and our community…."
           }
         },
         "link_list_FJNEGi": {
           "type": "link_list",
           "settings": {
-            "menu": "footer"
+            "menu": "custom-footer-menu1"
           }
         },
         "link_list_KrLFmM": {
           "type": "link_list",
           "settings": {
-            "menu": "footer-menu-2"
+            "menu": "custom-footer-menu2"
           }
         }
       },
@@ -41,6 +41,10 @@
         "link_list_KrLFmM"
       ],
       "settings": {
+        "label_link1": "Privacy Policy",
+        "link1": "#",
+        "label_link2": "Terms and Conditions",
+        "link2": "#"
       }
     },
     "footer": {
