@@ -17,40 +17,43 @@
     class="collection-list"
   >
     {%- for block in section.blocks -%}
-      <div
-        class="collection-list-item number{{ forloop.index }}"
-      >
-        {% if block.settings.heading != blank %}
-          <h3 class="collection-list-item__heading" tabindex="0" aria-label="collection title">
-            {{ block.settings.heading }}
-          </h3>
-        {% endif %}
+      
+        <div
+          class="collection-list-item number{{ forloop.index }}"
+        >
+          <div class='shadow-box'>
+          {% if block.settings.heading != blank %}
+            <h3 class="collection-list-item__heading" tabindex="0" aria-label="collection title">
+              {{ block.settings.heading }}
+            </h3>
+          {% endif %}
 
-        {% if block.settings.sub_heading != blank %}
-          <h4 class="collection-list-item__sub-heading" tabindex="0" aria-label="collection sub title">
-            {{ block.settings.sub_heading }}
-          </h4>
-        {% endif %}
+          {% if block.settings.sub_heading != blank %}
+            <h4 class="collection-list-item__sub-heading" tabindex="0" aria-label="collection sub title">
+              {{ block.settings.sub_heading }}
+            </h4>
+          {% endif %}
 
-        {%- if block.settings.button_label != blank -%}
-          <div
-            class="collection-list-item__btn"
-            tabindex="0"
-            aria-label="button to enter collection"
-          >
-            <a
-              {% if block.settings.button_link == blank %}
-                role="link" aria-disabled="true"
-              {% else %}
-                href="{{ block.settings.button_link }}"
-              {% endif %}
-
-              class="btn"
+          {%- if block.settings.button_label != blank -%}
+            <div
+              class="collection-list-item__btn"
+              tabindex="0"
+              aria-label="button to enter collection"
             >
-              {{- block.settings.button_label | escape -}}
-            </a>
-          </div>
-        {% endif %}
+              <a
+                {% if block.settings.button_link == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ block.settings.button_link }}"
+                {% endif %}
+
+                class="btn"
+              >
+                {{- block.settings.button_label | escape -}}
+              </a>
+            </div>
+          {% endif %}
+        </div>
       </div>
     {%- endfor -%}
   </div>

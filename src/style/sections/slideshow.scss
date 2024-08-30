@@ -93,12 +93,10 @@
       font-size: 14px;
       line-height: 17.05px;
       letter-spacing: -0.03em;
-
       padding: 16px 40px 16px 40px;
-      background: transparent;
+      background: #ff5c35;
       border: 1px solid #ff5c35;
-      color: #ff5c35;
-
+      color: #fff;
       text-transform: uppercase;
     }
 
@@ -110,10 +108,6 @@
       content: none;
     }
 
-    .button:hover {
-      background: #ff5c35;
-      color: #fff;
-    }
   }
 }
 
