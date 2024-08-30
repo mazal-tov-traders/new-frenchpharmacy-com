@@ -17,7 +17,6 @@
           class="jdgm-carousel-number-of-reviews"
           data-number-of-reviews="{{ jm_metafields.all_reviews_count }}"
         >
-          from {{ shop.metafields.judgeme.all_reviews_count }} reviews
         </span>
       </span>
     </div>
@@ -25,95 +24,7 @@
   </div>
 </div>
 
-{% comment %} <script defer="defer">
-  function updateCarouselElements() {
-    const carouselContainer = document.querySelector('.custom-judgeme-carousel');
 
-    if (!carouselContainer) return;
-
-    const wrappers = carouselContainer.querySelectorAll('.jdgm-carousel-item__review');
-    const productNames = carouselContainer.querySelectorAll('.jdgm-carousel-item__reviewer-name-wrapper');
-    const stars = carouselContainer.querySelectorAll('.jdgm-carousel-item__review-rating');
-    const timestamps = carouselContainer.querySelectorAll('.jdgm-carousel-item__timestamp');
-
-    if (wrappers.length > 0 && productNames.length > 0) {
-      wrappers.forEach((wrapper, index) => {
-        const productName = productNames[index]?.querySelector('.jdgm-carousel-item__product.jdgm-ellipsis');
-        if (productName) {
-          const reviewContent = wrapper.querySelector('.jdgm-carousel-item__review-content');
-
-          if (reviewContent) {
-            wrapper.insertBefore(productName, reviewContent);
-          } else {
-            wrapper.appendChild(productName);
-          }
-        }
-      });
-
-      stars.forEach((star) => {
-        const ariaLabel = star.getAttribute('aria-label');
-
-        if (ariaLabel) {
-          const reviewsText = ariaLabel.replace('stars', 'Reviews');
-          const newElement = document.createElement('span');
-
-          newElement.classList.add('starsnumber-reviews');
-          newElement.textContent = reviewsText;
-
-          star.appendChild(newElement);
-        }
-      });
-
-      timestamps.forEach((timestamp) => {
-        const dateStr = timestamp.getAttribute('data-time');
-
-        if (dateStr) {
-          const dateParts = dateStr.split('/');
-
-          if (dateParts.length === 3) {
-            const month = parseInt(dateParts[0], 10) - 1;
-            const day = parseInt(dateParts[1], 10);
-            const year = parseInt(dateParts[2], 10);
-
-            const fullYear = year < 100 ? 2000 + year : year;
-
-            const dateObj = new Date(fullYear, month, day);
-
-            if (!isNaN(dateObj)) {
-              const formattedDate = dateObj.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              });
-
-              const newDateElement = document.createElement('div');
-              newDateElement.classList.add('formatted-date');
-              newDateElement.textContent = formattedDate;
-
-              timestamp.parentNode.replaceChild(newDateElement, timestamp);
-            } else {
-              console.error(`Invalid date object for: ${dateStr}`);
-            }
-          } else {
-            console.error(`Incorrect date format: ${dateStr}`);
-          }
-        } else {
-          console.error('No valid date string found in data-time attribute.');
-        }
-      });
-    } else {
-      console.error('No wrappers or product names found in the carousel container.');
-    }
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const intervalId = setInterval(() => {
-      updateCarouselElements();
-
-      clearInterval(intervalId);
-    }, 300);
-  });
-</script> {% endcomment %}
 <script defer="defer">
   function updateCarouselElements() {
     const carouselContainer = document.querySelector('.custom-judgeme-carousel');
@@ -129,7 +40,7 @@
       wrappers.forEach((wrapper, index) => {
         const productName = productNames[index]?.querySelector('.jdgm-carousel-item__product.jdgm-ellipsis');
         if (productName) {
-          // Move the productName to the very beginning of the wrapper
+  
           wrapper.insertBefore(productName, wrapper.firstChild);
         }
       });
@@ -144,7 +55,6 @@
           newElement.classList.add('starsnumber-reviews');
           newElement.textContent = reviewsText;
 
-          // Add the new element to the star rating container
           star.appendChild(newElement);
         }
       });
