@@ -70,10 +70,10 @@
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
-        "media_size": "large",
+        "media_size": "medium",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail_slider",
         "media_position": "left",
         "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",
@@ -116,11 +116,53 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "section_for_tabs_tGyXHR": {
+      "type": "section-for-tabs",
+      "settings": {
+        "trigger": "Description"
+      }
+    },
+    "section_for_tabs_8mDnDA": {
+      "type": "section-for-tabs",
+      "settings": {
+        "trigger": "Efficient"
+      }
+    },
+    "section_for_tabs_jNJQHw": {
+      "type": "section-for-tabs",
+      "settings": {
+        "trigger": "Simple to use"
+      }
+    },
+    "section_for_tabs_n3Mxpa": {
+      "type": "section-for-tabs",
+      "settings": {
+        "trigger": "Hero ingredient"
+      }
+    },
+    "section_for_tabs_JfCzTx": {
+      "type": "section-for-tabs",
+      "settings": {
+        "trigger": "Commitment"
+      }
+    },
+    "section_for_tabs_Ujmz7W": {
+      "type": "section-for-tabs",
+      "settings": {
+        "trigger": "Product videos"
+      }
     }
   },
   "order": [
     "main",
     "related-products",
-    "1715769130a7f413f4"
+    "1715769130a7f413f4",
+    "section_for_tabs_tGyXHR",
+    "section_for_tabs_8mDnDA",
+    "section_for_tabs_jNJQHw",
+    "section_for_tabs_n3Mxpa",
+    "section_for_tabs_JfCzTx",
+    "section_for_tabs_Ujmz7W"
   ]
 }

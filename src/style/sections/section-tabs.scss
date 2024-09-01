@@ -3,31 +3,35 @@
     padding-bottom: 10px;
   }
 }
+
 .free-downloads-tabs {
   width: 100%;
-  max-width: 1320px;
+  max-width: 1360px;
   margin: 0 auto;
-  padding: 0 35px 80px;
+  padding: 0 35px 0;
+
   &__wrapper {
-      display: flex;
-      border-radius: 10px;
-      border: 1px solid #000;
-      overflow: hidden;
+    display: flex;
+    overflow: hidden;
   }
+
   &__buttons {
     display: none;
-      width: 300px;
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
   }
+
   &__content {
     width: 100%;
+
     @media (min-width:1090px) {
       flex: 1 0 0;
     }
   }
 }
+
 .section-tab {
   .inner-tab-content {
     border: 1px solid rgba(58, 57, 58, 0.3);
@@ -35,25 +39,12 @@
     overflow: hidden;
     display: flex;
   }
-  .tab-trigger {
-    display: block;
-    width: 100%;
-    text-align: left;
-    border: none;
-    padding: 24px 50px 24px 25px;
-    cursor: pointer;
-    transition: color 0.3s, text-shadow 0.3s;
-    position: relative;
 
-    p {
-      display: inline;
-      margin: 0;
-    }
-  }
+
 
   &__wrapper {
     width: 100%;
-  
+
     border-top: 1px solid rgba(58, 57, 58, 0.3);
     padding: 25px;
 
@@ -65,6 +56,45 @@
 }
 
 
- 
-  
 
+
+
+// new style
+
+
+
+
+.free-downloads-tabs__buttons {
+  
+  .tab-trigger {
+    width: 220px;
+    padding: 12px 0 12px 0;
+    border: 1px solid #9F9F9F;
+    background: #FFFFFF;
+    color: #2F2F2F;
+    font-family: 'Barlow';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.8px;
+
+
+  }
+
+  .tab-trigger.active {
+    border: 1px solid #FF5C35;
+    background: #FF5C35;
+    color: #fff;
+  }
+}
+
+
+
+.free-downloads-tabs {
+  .inner-tab-content {
+    display: flex;
+  }
+}
+
+.sw-carousel-list {
+  width: 901px !important;
+}
