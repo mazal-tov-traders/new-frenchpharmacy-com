@@ -1,0 +1,54 @@
+{% assign content = section.settings.trigger %}
+<div class="tab-trigger" data="{{ section.settings.trigger }}"></div>
+<article class="section-tab">
+  
+  <div class="inner-tab-content">
+    <div class="left-box">
+      <h3>{{ section.settings.trigger }}</h3>
+      {% if content contains 'Description' %}
+        {% assign metafield_content = product.metafields.custom.different %}
+        {% if metafield_content %}
+          {{ metafield_content | metafield_tag }}
+        {% endif %}
+      {% endif %}
+    </div>
+    <div class="section-tab__wrapper">
+      {% if content contains 'Description' %}
+        {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
+        {%- if featured_media -%}
+          {{
+            featured_media.preview_image
+            | image_url: width: 416
+            | image_tag:
+              loading: 'lazy',
+              sizes: sizes,
+              widths: '54, 74, 104, 162, 208, 324, 416',
+              alt: featured_media.alt
+            | escape
+          }}
+        {%- endif -%}
+      {% endif %}
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Section For Tabs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "trigger",
+      "label": "Tab Name"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Section For Tabs"
+    }
+  ]
+}
+{% endschema %}

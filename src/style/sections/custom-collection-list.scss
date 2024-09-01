@@ -18,7 +18,7 @@
 
     @media screen and (min-width: 800px) {
       .collection-list-item.active {
-        width: 40%;
+        width: 570px;
       }
     }
 
@@ -157,8 +157,17 @@
     }
     @media screen and (min-width: 800px) {
       padding-bottom: 39px;
-      padding-left: 50px;
     }
     
   }
+  .collection-list-item.active{
+    .shadow-box {
+      
+      @media screen and (min-width: 800px) {
+        padding-left: 50px;
+      }
+      
+    }
+  }
+
 }
