@@ -12,7 +12,11 @@
 
   &__wrapper {
     display: flex;
-    overflow: hidden;
+
+    @media (max-width: 1010px) {
+      flex-direction: column;
+    }
+
   }
 
   &__buttons {
@@ -20,16 +24,53 @@
     display: flex;
     flex-direction: column;
     gap: 1px;
+
+    @media (max-width: 1010px) {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+
+    .tab-trigger {
+
+      width: 220px;
+      padding: 12px 0 12px 0;
+      border: 1px solid #9F9F9F;
+      background: #FFFFFF;
+      color: #2F2F2F;
+      font-family: 'Barlow';
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16.8px;
+      text-transform: uppercase;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      padding-left: 30px;
+      cursor: pointer;
+
+      @media screen and (max-width:535px) {
+        width: 100%;
+      }
+    }
+
+    .tab-trigger.active {
+      border: 1px solid #FF5C35;
+      background: #FF5C35;
+      color: #fff;
+
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
   }
 
   &__content {
     width: 100%;
     padding: 40px 50px;
-    border: 1px solid rgba(58, 57, 58, 0.3);
-
-    @media (min-width:1090px) {
-      flex: 1 0 0;
+    @media screen and (max-width:535px) {
+      padding: 40px 20px;
     }
+    border: 1px solid rgba(58, 57, 58, 0.3);
   }
 }
 
@@ -49,40 +90,17 @@
 
 // new style
 
-.free-downloads-tabs__buttons {
-  .tab-trigger {
-    width: 220px;
-    padding: 12px 0 12px 0;
-    border: 1px solid #9F9F9F;
-    background: #FFFFFF;
-    color: #2F2F2F;
-    font-family: 'Barlow';
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16.8px;
-    text-transform: uppercase;
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    padding-left: 30px;
-    cursor: pointer;
-  }
-
-  .tab-trigger.active {
-    border: 1px solid #FF5C35;
-    background: #FF5C35;
-    color: #fff;
-
-    img {
-      filter: brightness(0) invert(1);
-    }
-  }
-}
+.free-downloads-tabs__buttons {}
 
 .free-downloads-tabs {
   .inner-tab-content {
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width:835px) {
+      flex-direction: column-reverse;
+      gap: 40px;
+    }
 
     .left-box {
       &__title {
@@ -104,7 +122,8 @@
           text-align: left;
           color: #3A393A;
           margin-bottom: 15px;
-          em{
+
+          em {
             margin-top: 20px;
             color: #FF5C35;
             font-style: normal;
@@ -114,6 +133,7 @@
         ul {
           margin: 0px 0px 20px 0px;
           padding: 0;
+
           li {
             list-style: none;
             display: flex;
@@ -144,11 +164,22 @@
 
       img {
         border: 1px solid #F0F0F0;
+        @media screen and (max-width: 1120px) and (min-width: 834px) {
+          width: 300px;
+          height: 300px;
+        }
+        @media screen and (max-width: 834px) {
+          width: 100%;
+          height: auto;
+        }
+
       }
     }
 
-    .right-box:has(img) {
-      margin-left: 70px;
+    @media screen and (min-width:835px) {
+      .right-box:has(img) {
+        margin-left: 70px;
+      }
     }
 
   }
@@ -157,3 +188,76 @@
 .sw-carousel-list {
   width: 901px !important;
 }
+
+
+
+// 
+
+//  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  стили для моб дроп даун табов !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// /* Стили для выпадающего списка */
+// .dropdown {
+//   position: relative;
+//   display: inline-block;
+//   width: 100%;
+// }
+
+// .dropdown-toggle {
+//   width: 100%;
+//   padding: 10px;
+//   background-color: #f0f0f0;
+//   border: none;
+//   cursor: pointer;
+//   text-align: left;
+// }
+
+// .dropdown-menu {
+//   display: none; /* Скрываем меню по умолчанию */
+//   position: absolute;
+//   width: 100%;
+//   background-color: #ffffff;
+//   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+//   z-index: 1;
+// }
+
+// .dropdown-menu .tab-trigger {
+//   padding: 10px;
+//   cursor: pointer;
+// }
+
+// .dropdown-menu .tab-trigger:hover {
+//   background-color: #f1f1f1;
+// }
+
+// .active-tab {
+//   font-weight: bold;
+// }
+
+// /* Адаптивные стили для мобильных устройств */
+// @media (max-width: 768px) {
+//   .free-downloads-tabs__buttons {
+//     display: none; /* Скрываем стандартные кнопки табов на мобильных устройствах */
+//   }
+
+//   .dropdown-menu {
+//     display: block;
+//   }
+// }
+
+// .dropdown-menu {
+//   display: none; /* Скрываем меню по умолчанию */
+//   position: absolute; /* Абсолютное позиционирование */
+//   background-color: white; /* Фон меню */
+//   border: 1px solid #ddd; /* Рамка меню */
+//   width: 100%; /* Ширина меню */
+//   z-index: 1000; /* Порядок наложения */
+// }
+
+// .dropdown-menu.show {
+//   display: block; /* Показываем меню, когда добавлен класс 'show' */
+// }
+
+// .dropdown-toggle {
+//   cursor: pointer; /* Указатель при наведении */
+//   display: inline-block; /* Отображение в виде кнопки */
+// }

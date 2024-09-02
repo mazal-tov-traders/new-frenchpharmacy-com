@@ -1,11 +1,10 @@
-// Находим все элементы с классом 'section-tab'
 const tabSections = document.querySelectorAll('.section-tab');
 
-// Проверяем, есть ли такие элементы на странице
 if (tabSections.length) {
 
     const createLayout = () => {
         const main = document.querySelector('main');
+        const tabsSections = document.querySelectorAll('.section.tabs-for-product');
         const tabsSectionEl = document.createElement('section');
         const tabsWrapperEl = document.createElement('div');
         const tabsButtonsEl = document.createElement('div');
@@ -16,9 +15,18 @@ if (tabSections.length) {
         tabsButtonsEl.classList.add('free-downloads-tabs__buttons');
         tabsContentEl.classList.add('free-downloads-tabs__content');
     
-        main.append(tabsSectionEl);
         tabsSectionEl.append(tabsWrapperEl);
         tabsWrapperEl.append(tabsButtonsEl, tabsContentEl);
+    
+        if (tabsSections.length > 0) {
+
+            const lastTabSection = tabsSections[tabsSections.length - 1];
+
+            lastTabSection.insertAdjacentElement('afterend', tabsSectionEl);
+        } else {
+
+            main.appendChild(tabsSectionEl);
+        }
     
         tabSections.forEach((tab, index) => {
             const trigger = tab.querySelector('.tab-trigger');
@@ -26,149 +34,338 @@ if (tabSections.length) {
             const triggerText = trigger.getAttribute('data');
             const triggerIcon = trigger.getAttribute('data-icon');
     
-            // Создаем временный <div>, чтобы получить текст без HTML-разметки
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = triggerText;
             const buttonText = tempDiv.textContent || tempDiv.innerText;
     
-            // Обновляем индексы для триггера и контента
             trigger.dataset.tabIndex = `${index}`;
             tabContent.dataset.tabIndex = `${index}`;
     
-            // Создаем новый элемент для кнопки таба
             const buttonEl = document.createElement('div');
             buttonEl.classList.add('tab-trigger');
             buttonEl.dataset.tabIndex = `${index}`;
     
-            // Сначала добавляем текст кнопки
             buttonEl.textContent = buttonText;
     
-            // Проверяем наличие иконки и добавляем её
             if (triggerIcon) {
                 const iconEl = document.createElement('img');
                 iconEl.classList.add('icon-trigger-tab');
-                iconEl.src = triggerIcon;  // Используем корректный URL из data-атрибута
-                iconEl.alt = buttonText;   // Альтернативный текст для иконки
-                iconEl.width = 36;         // Устанавливаем ширину иконки
+                iconEl.src = triggerIcon;
+                iconEl.alt = buttonText;
+                iconEl.width = 36;
     
-                // Добавляем иконку перед текстом кнопки
                 buttonEl.prepend(iconEl);
             }
     
-            // Добавляем контент текущего таба в контейнер контента табов
             tabsContentEl.appendChild(tabContent);
-    
-            // Добавляем кнопку текущего таба в контейнер кнопок табов
             tabsButtonsEl.appendChild(buttonEl);
         });
     };
-    
-    
 
-    // Функция для переключения между табами
     const toggleTab = () => {
-        // Находим все кнопки табов на десктопе
+
         const tabButtonsOnDesktop = document.querySelectorAll('.free-downloads-tabs__buttons .tab-trigger');
 
-        // Находим все кнопки табов на мобильных устройствах
         const tabButtonsOnMobile = document.querySelectorAll('.section-tab .tab-trigger');
 
-        // Находим весь контент табов
         const tabContentList = document.querySelectorAll('.free-downloads-tabs__content .inner-tab-content');
 
-        // Логика для переключения табов на мобильных устройствах
         tabButtonsOnMobile.forEach((btn) => {
             btn.addEventListener('click', () => {
-                // Переключаем класс 'active' для кнопки, чтобы показать или скрыть её состояние
+
                 btn.classList.toggle('active');
 
-                // Переключаем видимость контента в зависимости от нажатой кнопки
                 tabContentList.forEach((tabContent) => {
                     if (tabContent.dataset.tabIndex === btn.dataset.tabIndex) {
-                        tabContent.classList.toggle('hidden'); // Показываем или скрываем контент
+                        tabContent.classList.toggle('hidden'); 
                     }
                 });
 
-                // Плавно прокручиваем к нажатой кнопке
                 scrollToElement(btn);
             });
         });
 
-        // Логика для переключения табов на десктопе
         tabButtonsOnDesktop.forEach((btn) => {
             btn.addEventListener('click', () => {
-                // Получаем индекс текущей кнопки
+
                 const tabIndex = btn.dataset.tabIndex;
 
-                // Скрываем или показываем контент табов в зависимости от индекса
                 tabContentList.forEach((tabContent) => {
                     if (tabContent.dataset.tabIndex !== tabIndex) {
-                        tabContent.classList.add('hidden'); // Скрываем контент, если индекс не совпадает
+                        tabContent.classList.add('hidden');
                     } else {
-                        tabContent.classList.remove('hidden'); // Показываем контент, если индекс совпадает
+                        tabContent.classList.remove('hidden');
                     }
                 });
 
-                // Обновляем активное состояние кнопок
                 tabButtonsOnDesktop.forEach((button) => {
                     button.classList.remove('active');
                 });
                 btn.classList.add('active');
 
-                // Плавно прокручиваем к секции табов
                 scrollToElement(btn.closest('.free-downloads-tabs'));
             });
         });
     };
 
-    // Функция для плавного прокручивания к элементу
     const scrollToElement = (element) => {
-        // Находим элемент заголовка, чтобы учесть его высоту при прокрутке
+
         const header = document.querySelector('.section-header');
 
-        // Получаем высоту заголовка с учетом отступа
         const headerHeight = header.getBoundingClientRect().height + 10;
 
-        // Получаем положение элемента относительно верхней части экрана
         const top = element.getBoundingClientRect().top;
 
-        // Вычисляем позицию прокрутки, учитывая высоту заголовка и текущую прокрутку страницы
         const y = top + window.pageYOffset - headerHeight;
 
-        // Плавно прокручиваем окно до нужной позиции
         window.scrollTo({ top: y, behavior: 'smooth' });
     };
 
-    // Инициализация табов и установка начальных состояний
     const init = () => {
-        // Находим все кнопки табов
+
         const tabButtons = document.querySelectorAll('.tab-trigger');
-
-        // Находим весь контент табов
         const tabContentList = document.querySelectorAll('.free-downloads-tabs__content .inner-tab-content');
-
-        // Получаем индекс первого таба для его активации
         const firstTabIndex = tabContentList[0].dataset.tabIndex;
 
-        // Скрываем все табы, кроме первого
         tabContentList.forEach((tabContent, index) => {
             if (index !== 0) {
-                tabContent.classList.add('hidden'); // Добавляем класс 'hidden' для скрытия контента
+                tabContent.classList.add('hidden'); 
             }
         });
 
-        // Устанавливаем первый таб как активный
         tabButtons.forEach((btn) => {
             if (btn.dataset.tabIndex === firstTabIndex) {
-                btn.classList.add('active'); // Добавляем класс 'active' для активного состояния
+                btn.classList.add('active'); 
             }
         });
 
-        // Запускаем логику переключения табов
         toggleTab();
     };
 
-    // Создаем разметку и инициализируем табы
     createLayout();
     init();
 }
+
+
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     // Находим все элементы с классом 'section-tab'
+//     const tabSections = document.querySelectorAll('.section-tab');
+
+//     // Проверяем, есть ли такие элементы на странице
+//     if (tabSections.length) {
+
+//         // Функция для определения текущей ширины экрана
+//         const isMobileView = () => window.innerWidth <= 800;
+
+//         const createLayout = () => {
+//             const main = document.querySelector('main');
+//             const tabsSectionEl = document.createElement('section');
+//             const tabsWrapperEl = document.createElement('div');
+//             const tabsContentEl = document.createElement('div');
+
+//             if (isMobileView()) {
+//                 // Логика для мобильного вида (меню dropdown)
+//                 const dropdownEl = document.createElement('div');
+//                 const dropdownToggleEl = document.createElement('button');
+//                 const dropdownMenuEl = document.createElement('div');
+
+//                 tabsSectionEl.classList.add('free-downloads-tabs');
+//                 tabsWrapperEl.classList.add('free-downloads-tabs__wrapper');
+//                 tabsContentEl.classList.add('free-downloads-tabs__content');
+//                 dropdownEl.classList.add('dropdown');
+//                 dropdownToggleEl.classList.add('dropdown-toggle');
+//                 dropdownMenuEl.classList.add('dropdown-menu');
+
+//                 main.append(tabsSectionEl);
+//                 tabsSectionEl.append(tabsWrapperEl);
+//                 tabsWrapperEl.append(dropdownEl, tabsContentEl);
+//                 dropdownEl.append(dropdownToggleEl, dropdownMenuEl);
+
+//                 // Создание элементов табов
+//                 tabSections.forEach((tab, index) => {
+//                     const trigger = tab.querySelector('.tab-trigger');
+//                     const tabContent = tab.querySelector('.inner-tab-content');
+//                     const triggerText = trigger.getAttribute('data');
+
+//                     const tempDiv = document.createElement('div');
+//                     tempDiv.innerHTML = triggerText;
+//                     const buttonText = tempDiv.textContent || tempDiv.innerText;
+
+//                     trigger.dataset.tabIndex = `${index}`;
+//                     tabContent.dataset.tabIndex = `${index}`;
+
+//                     const buttonEl = document.createElement('div');
+//                     buttonEl.classList.add('tab-trigger');
+//                     buttonEl.dataset.tabIndex = `${index}`;
+//                     buttonEl.textContent = buttonText;
+
+//                     dropdownMenuEl.appendChild(buttonEl);
+//                     tabsContentEl.appendChild(tabContent);
+
+//                     if (index === 0) {
+//                         dropdownToggleEl.textContent = buttonText;
+//                         tabContent.classList.remove('hidden');
+//                     } else {
+//                         tabContent.classList.add('hidden');
+//                     }
+//                 });
+
+//                 dropdownToggleEl.addEventListener('click', () => {
+//                     dropdownMenuEl.classList.toggle('show');
+//                 });
+
+//                 dropdownMenuEl.querySelectorAll('.tab-trigger').forEach((btn) => {
+//                     btn.addEventListener('click', () => {
+//                         const tabIndex = btn.dataset.tabIndex;
+
+//                         tabsContentEl.querySelectorAll('.inner-tab-content').forEach((content) => {
+//                             content.classList.add('hidden');
+//                         });
+
+//                         const activeContent = tabsContentEl.querySelector(`.inner-tab-content[data-tab-index='${tabIndex}']`);
+//                         if (activeContent) {
+//                             activeContent.classList.remove('hidden');
+//                         }
+
+//                         dropdownToggleEl.textContent = btn.textContent;
+//                         dropdownMenuEl.classList.remove('show');
+//                     });
+//                 });
+
+//             } else {
+//                 // Логика для десктопного вида
+//                 const tabsButtonsEl = document.createElement('div');
+
+//                 tabsSectionEl.classList.add('free-downloads-tabs');
+//                 tabsWrapperEl.classList.add('free-downloads-tabs__wrapper');
+//                 tabsButtonsEl.classList.add('free-downloads-tabs__buttons');
+//                 tabsContentEl.classList.add('free-downloads-tabs__content');
+
+//                 main.append(tabsSectionEl);
+//                 tabsSectionEl.append(tabsWrapperEl);
+//                 tabsWrapperEl.append(tabsButtonsEl, tabsContentEl);
+
+//                 tabSections.forEach((tab, index) => {
+//                     const trigger = tab.querySelector('.tab-trigger');
+//                     const tabContent = tab.querySelector('.inner-tab-content');
+//                     const triggerText = trigger.getAttribute('data');
+//                     const triggerIcon = trigger.getAttribute('data-icon');
+
+//                     const tempDiv = document.createElement('div');
+//                     tempDiv.innerHTML = triggerText;
+//                     const buttonText = tempDiv.textContent || tempDiv.innerText;
+
+//                     trigger.dataset.tabIndex = `${index}`;
+//                     tabContent.dataset.tabIndex = `${index}`;
+
+//                     const buttonEl = document.createElement('div');
+//                     buttonEl.classList.add('tab-trigger');
+//                     buttonEl.dataset.tabIndex = `${index}`;
+//                     buttonEl.textContent = buttonText;
+
+//                     if (triggerIcon) {
+//                         const iconEl = document.createElement('img');
+//                         iconEl.classList.add('icon-trigger-tab');
+//                         iconEl.src = triggerIcon;
+//                         iconEl.alt = buttonText;
+//                         iconEl.width = 36;
+//                         buttonEl.prepend(iconEl);
+//                     }
+
+//                     tabsContentEl.appendChild(tabContent);
+//                     tabsButtonsEl.appendChild(buttonEl);
+//                 });
+//             }
+//         };
+
+//         const toggleTab = () => {
+//             if (isMobileView()) {
+//                 // Логика переключения табов для мобильной версии
+//                 const tabButtonsOnMobile = document.querySelectorAll('.section-tab .tab-trigger');
+//                 const tabContentList = document.querySelectorAll('.free-downloads-tabs__content .inner-tab-content');
+
+//                 tabButtonsOnMobile.forEach((btn) => {
+//                     btn.addEventListener('click', () => {
+//                         const isActive = btn.classList.contains('active');
+
+//                         tabButtonsOnMobile.forEach(button => button.classList.remove('active'));
+//                         tabContentList.forEach((tabContent) => {
+//                             tabContent.classList.add('hidden');
+//                         });
+
+//                         if (!isActive) {
+//                             btn.classList.add('active');
+//                             const activeContent = document.querySelector(`.free-downloads-tabs__content .inner-tab-content[data-tab-index='${btn.dataset.tabIndex}']`);
+//                             if (activeContent) {
+//                                 activeContent.classList.remove('hidden');
+//                             }
+
+//                             scrollToElement(btn);
+//                         }
+//                     });
+//                 });
+//             } else {
+//                 // Логика переключения табов для десктопной версии
+//                 const tabButtonsOnDesktop = document.querySelectorAll('.free-downloads-tabs__buttons .tab-trigger');
+//                 const tabContentList = document.querySelectorAll('.free-downloads-tabs__content .inner-tab-content');
+
+//                 tabButtonsOnDesktop.forEach((btn) => {
+//                     btn.addEventListener('click', () => {
+//                         const tabIndex = btn.dataset.tabIndex;
+
+//                         tabContentList.forEach((tabContent) => {
+//                             if (tabContent.dataset.tabIndex !== tabIndex) {
+//                                 tabContent.classList.add('hidden');
+//                             } else {
+//                                 tabContent.classList.remove('hidden');
+//                             }
+//                         });
+
+//                         tabButtonsOnDesktop.forEach((button) => {
+//                             button.classList.remove('active');
+//                         });
+//                         btn.classList.add('active');
+
+//                         scrollToElement(btn.closest('.free-downloads-tabs'));
+//                     });
+//                 });
+//             }
+//         };
+
+//         const scrollToElement = (element) => {
+//             const header = document.querySelector('.section-header');
+//             const headerHeight = header ? header.getBoundingClientRect().height + 10 : 0;
+//             const top = element.getBoundingClientRect().top;
+//             const y = top + window.pageYOffset - headerHeight;
+//             window.scrollTo({ top: y, behavior: 'smooth' });
+//         };
+
+//         const init = () => {
+//             const tabButtons = document.querySelectorAll('.tab-trigger');
+//             const tabContentList = document.querySelectorAll('.free-downloads-tabs__content .inner-tab-content');
+//             const firstTabIndex = tabContentList[0].dataset.tabIndex;
+
+//             tabContentList.forEach((tabContent, index) => {
+//                 if (index !== 0) {
+//                     tabContent.classList.add('hidden');
+//                 }
+//             });
+
+//             tabButtons.forEach((btn) => {
+//                 if (btn.dataset.tabIndex === firstTabIndex) {
+//                     btn.classList.add('active');
+//                 }
+//             });
+
+//             toggleTab();
+//         };
+
+//         createLayout();
+//         init();
+
+//         window.addEventListener('resize', () => {
+//             location.reload(); // Обновляем страницу при изменении размера окна, чтобы подстроиться под новый вид
+//         });
+//     }
+// });
