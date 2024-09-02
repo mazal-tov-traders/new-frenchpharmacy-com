@@ -1,10 +1,10 @@
 {% assign content = section.settings.trigger %}
 
 <article class="section-tab">
-  <div class="tab-trigger" data-icon="{{ section.settings.icon }}" data="{{ section.settings.trigger }}"></div>
+  <div class="tab-trigger" data-icon="{{ section.settings.icon | image_url: width: 100 }}" data="{{ section.settings.trigger }}"></div>
   <div class="inner-tab-content">
     <div class="left-box">
-      <h3>{{ section.settings.trigger }}</h3>
+      <h3 class='left-box__title'>{{ section.settings.trigger }}</h3>
       {% comment %} Description {% endcomment %}
       {% if content contains 'Description' %}
         {{ product.metafields.custom.different | metafield_tag }}
@@ -32,7 +32,7 @@
         {%- endfor -%}
       {% endif %}
     </div>
-    <div class="rifht-box">
+    <div class="right-box">
       {% comment %} Description {% endcomment %}
       {% if content contains 'Description' %}
         {%- assign featured_media = product.selected_or_first_available_variant.featured_media -%}
@@ -70,19 +70,6 @@
     </div>
   </div>
 </article>
-{% comment %} {% if content contains 'Description' %}
-  {% style %}
-    .tab-trigger::before{
-      content: '';
-      display: inline-block;
-      width: 36px;
-      height: 36px;
-      background-image: url('{{ 'icon-description.svg' | asset_url }}');
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-  {% endstyle %}
-{% endif %} {% endcomment %}
 {% schema %}
 {
   "name": "Section For Tabs",

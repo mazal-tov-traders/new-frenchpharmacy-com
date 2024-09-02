@@ -1,7 +1,7 @@
 .shopify-section {
-  &:not(:last-child) .section-tab {
-    padding-bottom: 10px;
-  }
+  // &:not(:last-child) .section-tab {
+  //   padding-bottom: 10px;
+  // }
 }
 
 .free-downloads-tabs {
@@ -17,7 +17,6 @@
 
   &__buttons {
     display: none;
-    width: 300px;
     display: flex;
     flex-direction: column;
     gap: 1px;
@@ -25,6 +24,8 @@
 
   &__content {
     width: 100%;
+    padding: 40px 50px;
+    border: 1px solid rgba(58, 57, 58, 0.3);
 
     @media (min-width:1090px) {
       flex: 1 0 0;
@@ -33,18 +34,10 @@
 }
 
 .section-tab {
-  .inner-tab-content {
-    border: 1px solid rgba(58, 57, 58, 0.3);
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-  }
-
-
 
   &__wrapper {
     width: 100%;
-
+    background-color: red;
     border-top: 1px solid rgba(58, 57, 58, 0.3);
     padding: 25px;
 
@@ -52,20 +45,11 @@
       display: none;
     }
   }
-
 }
-
-
-
-
 
 // new style
 
-
-
-
 .free-downloads-tabs__buttons {
-  
   .tab-trigger {
     width: 220px;
     padding: 12px 0 12px 0;
@@ -76,22 +60,97 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 16.8px;
-
-
+    text-transform: uppercase;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding-left: 30px;
+    cursor: pointer;
   }
 
   .tab-trigger.active {
     border: 1px solid #FF5C35;
     background: #FF5C35;
     color: #fff;
+
+    img {
+      filter: brightness(0) invert(1);
+    }
   }
 }
-
-
 
 .free-downloads-tabs {
   .inner-tab-content {
     display: flex;
+    justify-content: space-between;
+
+    .left-box {
+      &__title {
+        font-family: 'Barlow';
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 28.8px;
+        text-align: left;
+        color: #3A393A;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .metafield-rich_text_field {
+        p {
+          font-family: 'Nova-300';
+          font-size: 16px;
+          line-height: 24px;
+          text-align: left;
+          color: #3A393A;
+          margin-bottom: 15px;
+          em{
+            margin-top: 20px;
+            color: #FF5C35;
+            font-style: normal;
+          }
+        }
+
+        ul {
+          margin: 0px 0px 20px 0px;
+          padding: 0;
+          li {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            font-family: 'Nova-300';
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 24px;
+            text-align: left;
+            margin-bottom: 10px;
+            align-items: center;
+          }
+
+          li::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background-image: url('/assets/li-marker.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+
+        }
+      }
+    }
+
+    .right-box {
+
+      img {
+        border: 1px solid #F0F0F0;
+      }
+    }
+
+    .right-box:has(img) {
+      margin-left: 70px;
+    }
+
   }
 }
 

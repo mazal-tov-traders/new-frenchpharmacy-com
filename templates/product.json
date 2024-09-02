@@ -120,37 +120,53 @@
     "section_for_tabs_tGyXHR": {
       "type": "section-for-tabs",
       "settings": {
-        "trigger": "Description"
+        "trigger": "Description",
+        "icon": "shopify:\/\/shop_images\/fi_3528062_1.svg"
       }
     },
     "section_for_tabs_8mDnDA": {
       "type": "section-for-tabs",
       "settings": {
-        "trigger": "Efficient"
+        "trigger": "Efficient",
+        "icon": "shopify:\/\/shop_images\/fi_3306434.svg"
       }
     },
     "section_for_tabs_jNJQHw": {
       "type": "section-for-tabs",
       "settings": {
-        "trigger": "Simple to use"
+        "trigger": "Simple to use",
+        "icon": "shopify:\/\/shop_images\/fi_16702077.svg"
       }
     },
     "section_for_tabs_n3Mxpa": {
       "type": "section-for-tabs",
       "settings": {
-        "trigger": "Hero ingredient"
+        "trigger": "Hero ingredient",
+        "icon": "shopify:\/\/shop_images\/fi_731134.svg"
       }
     },
     "section_for_tabs_JfCzTx": {
       "type": "section-for-tabs",
       "settings": {
-        "trigger": "Commitment"
+        "trigger": "Commitment",
+        "icon": "shopify:\/\/shop_images\/fi_5995896.svg"
       }
     },
     "section_for_tabs_Ujmz7W": {
       "type": "section-for-tabs",
+      "blocks": {
+        "socialwidget_base_widget_GJ3NGt": {
+          "type": "shopify:\/\/apps\/socialwidget\/blocks\/base-widget\/508b8d5b-b176-4dc6-a0ba-2b222db6eb79",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "socialwidget_base_widget_GJ3NGt"
+      ],
       "settings": {
-        "trigger": "Product videos"
+        "trigger": "Product videos",
+        "icon": "shopify:\/\/shop_images\/fi_15524184.svg"
       }
     }
   },

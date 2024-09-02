@@ -20,4 +20,7 @@
 .page-width.scroll-trigger.animate--slide-in{
     padding-bottom: 74px;
     padding-top: 120px;
+    @media screen and (min-width: 1200px) {
+        padding-top: 78px;
+    }
 }
