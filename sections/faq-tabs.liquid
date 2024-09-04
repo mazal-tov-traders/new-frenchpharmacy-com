@@ -65,36 +65,72 @@
             {%- endif -%}
 
           {%- when 'media' -%}
-            {% if block.settings.video_url != blank %}
-              <div class="tab-trigger__video" data-video-url="{{ block.settings.video_url.id }}">
-                <div class="popup-video" id="popup">
-                  <span class="close" onclick="closePopup()">X</span>
-                  <div id="videoContainer" class="video-container"></div>
+            <div class="media-block">
+              {% if block.settings.video_url != blank %}
+                <div class="tab-trigger__video" data-video-url="{{ block.settings.video_url.id }}">
+                  <div class="popup-video" id="popup">
+                    <span class="close" onclick="closePopup()">
+                      <svg
+                        width="24px"
+                        height="24px"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                        <g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#fff"/> </g>
+                      </svg>
+                    </span>
+                    <div id="videoContainer" class="video-container"></div>
+                  </div>
+                  <div class="tab-trigger__video_inner">
+                    {% if block.settings.image != blank %}
+                      {{
+                        block.settings.image
+                        | image_url: width: 880
+                        | image_tag: loading: 'lazy', class: 'tab-trigger__video_img', alt: alt
+                      }}
+                    {% endif %}
+                    {% if block.settings.video_icon != blank %}
+                      <img
+                        src="{{ block.settings.video_icon | img_url: 'original' }}"
+                        alt="image"
+                        class="tab-trigger__video_icon"
+                        onclick="showPopup(this.closest('[data-video-url]').dataset.videoUrl)"
+                      >
+                    {% endif %}
+                  </div>
                 </div>
-                <div class="tab-trigger__video_inner">
-                  {% if block.settings.image != blank %}
-                    {{
-                      block.settings.image
-                      | image_url: width: 425
-                      | image_tag: loading: 'lazy', class: 'tab-trigger__video_img', alt: alt
-                    }}
-                  {% endif %}
-                  {% if block.settings.video_icon != blank %}
-                    <img
-                      src="{{ block.settings.video_icon | img_url: 'original' }}"
-                      alt="image"
-                      class="tab-trigger__video_icon"
-                      onclick="showPopup(this.closest('[data-video-url]').dataset.videoUrl)"
-                    >
-                  {% endif %}
+              {% endif %}
+              {% if block.settings.image1 != blank %}
+                <div>
+                  {{
+                    block.settings.image1
+                    | image_url: width: 880
+                    | image_tag: loading: 'lazy', class: 'tab-trigger__inner_img1', alt: alt
+                  }}
                 </div>
-              </div>
-            {% endif %}
+              {% endif %}
+              {% if block.settings.image2 != blank %}
+                <div>
+                  {{
+                    block.settings.image2
+                    | image_url: width: 880
+                    | image_tag: loading: 'lazy', class: 'tab-trigger__inner_img2', alt: alt
+                  }}
+                </div>
+              {% endif %}
+              {% if block.settings.content != blank %}
+                <div class="tab-trigger__content">{{ block.settings.content }}</div>
+              {% endif %}
+            </div>
         {%- endcase -%}
       {%- endfor -%}
     </div>
   </div>
 </article>
+
 
 {% schema %}
 {
@@ -213,8 +249,8 @@
         },
         {
           "type": "richtext",
-          "id": "text",
-          "label": "Description"
+          "id": "content",
+          "label": "Content"
         }
       ]
     }
