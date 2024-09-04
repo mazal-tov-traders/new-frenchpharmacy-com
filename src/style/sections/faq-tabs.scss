@@ -1,0 +1,186 @@
+.free-faq-tabs {
+    &__wrapper {
+        max-width: 1360px;
+        padding-left: 35px;
+        padding-right: 35px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        gap: 110px;
+        justify-content: space-between;
+
+
+    }
+
+    &__buttons {
+        display: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+
+        @media (max-width: 1010px) {
+            flex-wrap: wrap;
+            flex-direction: row;
+        }
+
+        .tab-trigger {
+
+            width: 300px;
+            padding: 14px 0 14px 20px;
+            border: 1px solid #2F2F2F;
+            background: #FFFFFF;
+            color: #2F2F2F;
+            font-family: 'Barlow';
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 16.8px;
+            text-transform: uppercase;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            cursor: pointer;
+
+            @media screen and (max-width:535px) {
+                width: 100%;
+            }
+        }
+
+        .tab-trigger.active {
+            border: 1px solid #00C08B;
+            background: #00C08B;
+            color: #fff;
+
+            img {
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+
+    &__content {
+        width: 100%;
+        margin-bottom: 100px;
+
+        .tab-trigger__wrapper {
+            &_title {
+                position: relative;
+                margin-bottom: 40px;
+
+                .h3-title {
+                    font-family: 'Nova-400';
+                    font-size: 18px;
+                    line-height: 24px;
+                    text-align: left;
+                    color: #28282D;
+                    padding: 10px 20px 8px 20px;
+                    background-color: #CAEFE2;
+                    max-width: max-content;
+                }
+
+                &::after {
+                    border-bottom: 1px solid #caefe2;
+                    content: "";
+                    left: 0;
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translateY(-50%);
+                    width: 100%;
+                    z-index: -1;
+                }
+            }
+        }
+
+        .tab-trigger__title {
+            font-family: 'Barlow';
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 28px;
+            text-align: left;
+            color: #28282D;
+            margin-bottom: 20px;
+        }
+
+        .tab-trigger__text {
+            p {
+
+                font-family: 'Nova-300';
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 24px;
+                text-align: left;
+                margin-bottom: 10px;
+
+            }
+
+            p:last-of-type {
+                margin-bottom: 0px;
+            }
+
+
+        }
+
+        .tab-trigger__text.border-bottom-on {
+            border-bottom: 1px solid #F0F0F0;
+            padding-bottom: 40px;
+            margin-bottom: 40px;
+
+
+        }
+
+        .tab-trigger__button {
+
+            padding: 16px 25px 16px 25px;
+            border: 1px solid #6A6A6A;
+            background-color: transparent;
+            font-family: 'Nova-400';
+            font-size: 14px;
+            line-height: 14px;
+            letter-spacing: -0.03em;
+            color: #6A6A6A;
+            text-transform: uppercase;
+            display: inline-block;
+
+            &:hover {
+                background-color: #FF5C35;
+                color: #fff;
+                border: 1px solid #FF5C35;
+            }
+        }
+
+        .link-inner {
+            .link {
+                font-family: "Nova-700";
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 19.49px;
+                letter-spacing: -0.03em;
+                text-align: left;
+                color: rgba(47, 47, 47, 1);
+                transition: color 0.5s, transform 0.5s ease-in-out;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                padding: 10px 15px 10px 0px;
+
+                svg {
+                    stroke: #2f2f2f;
+                    transition: transform 0.5s ease-in-out, stroke 0.5s;
+                }
+            }
+
+            &:hover {
+                svg {
+                    transform: rotate(45deg);
+                    stroke: red;
+                }
+
+                .link {
+                    color: red;
+                }
+            }
+        }
+
+    }
+
+
+}

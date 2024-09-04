@@ -1,0 +1,146 @@
+<article class="faq-tabs">
+  <div
+    class="tab-trigger"
+    data-icon="{{ section.settings.icon | image_url: width: 100 }}"
+    data="{{ section.settings.trigger }}"
+  ></div>
+  <div class="tab-trigger__wrapper">
+    <div class="tab-trigger__wrapper_title">
+      <h3 class="h3-title">{{ section.settings.trigger }}</h3>
+    </div>
+    <div class="tab-trigger__blocks">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'heading' -%}
+            <h3 class="tab-trigger__title">{{ block.settings.heading }}</h3>
+          {%- when 'text' -%}
+            <div class="tab-trigger__text{% if block.settings.border_bottom %} border-bottom-on{% endif %}">
+              {{ block.settings.text }}
+            </div>
+          {%- when 'button' -%}
+            {%- if block.settings.button_label != blank -%}
+              <a
+                {% if block.settings.button_link == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ block.settings.button_link }}"
+                {% endif %}
+                class="tab-trigger__button"
+              >
+                {{- block.settings.button_label | escape -}}
+              </a>
+            {%- endif -%}
+
+          {%- when 'link' -%}
+            {%- if block.settings.link_label != blank -%}
+              <div class="link-inner">
+                <a {% if block.settings.link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.link }}"
+                  {% endif %}
+                  class="link">
+                  {{- block.settings.link_label | escape -}}
+                  <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.34834 1.72692L10.773 1.72692M10.773 1.72692L10.773 9.15154M10.773 1.72692L1.22702 11.2729"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            {%- endif -%}
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</article>
+{% schema %}
+{
+  "name": "Section For FAQ Tabs",
+  "tag": "section",
+  "class": "section section__faq-tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "trigger",
+      "label": "Tab Name"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon for tab"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Description",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description"
+        },
+        {
+          "type": "checkbox",
+          "id": "border_bottom",
+          "default": false,
+          "label": "Border Bottom"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "t:sections.rich-text.blocks.buttons.settings.button_label_1.label",
+          "info": "t:sections.rich-text.blocks.buttons.settings.button_label_1.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "button link"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "name": "Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_label",
+          "default": "link label",
+          "label": "link label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "link url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section For FAQ Tabs"
+    }
+  ]
+}
+{% endschema %}
