@@ -1,3 +1,17 @@
+{{ 'video-section.css' | asset_url | stylesheet_tag }}
+{{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign video_idd = section.settings.video_url.id
+
+  if section.settings.video != null
+    assign ratio_diff = section.settings.video.aspect_ratio | minus: section.settings.video_url.aspect_ratio | abs
+    if ratio_diff < 0.01 and ratio_diff > 0
+      assign fix_ratio = true
+    endif
+  endif
+-%}
+
 <article class="faq-tabs">
   <div
     class="tab-trigger"
@@ -34,12 +48,14 @@
           {%- when 'link' -%}
             {%- if block.settings.link_label != blank -%}
               <div class="link-inner">
-                <a {% if block.settings.link == blank %}
+                <a
+                  {% if block.settings.link == blank %}
                     role="link" aria-disabled="true"
                   {% else %}
                     href="{{ block.settings.link }}"
                   {% endif %}
-                  class="link">
+                  class="link"
+                >
                   {{- block.settings.link_label | escape -}}
                   <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.34834 1.72692L10.773 1.72692M10.773 1.72692L10.773 9.15154M10.773 1.72692L1.22702 11.2729"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -47,11 +63,39 @@
                 </a>
               </div>
             {%- endif -%}
+
+          {%- when 'media' -%}
+            {% if block.settings.video_url != blank %}
+              <div class="tab-trigger__video" data-video-url="{{ block.settings.video_url.id }}">
+                <div class="popup-video" id="popup">
+                  <span class="close" onclick="closePopup()">X</span>
+                  <div id="videoContainer" class="video-container"></div>
+                </div>
+                <div class="tab-trigger__video_inner">
+                  {% if block.settings.image != blank %}
+                    {{
+                      block.settings.image
+                      | image_url: width: 425
+                      | image_tag: loading: 'lazy', class: 'tab-trigger__video_img', alt: alt
+                    }}
+                  {% endif %}
+                  {% if block.settings.video_icon != blank %}
+                    <img
+                      src="{{ block.settings.video_icon | img_url: 'original' }}"
+                      alt="image"
+                      class="tab-trigger__video_icon"
+                      onclick="showPopup(this.closest('[data-video-url]').dataset.videoUrl)"
+                    >
+                  {% endif %}
+                </div>
+              </div>
+            {% endif %}
         {%- endcase -%}
       {%- endfor -%}
     </div>
   </div>
 </article>
+
 {% schema %}
 {
   "name": "Section For FAQ Tabs",
@@ -133,6 +177,44 @@
           "type": "url",
           "id": "link",
           "label": "link url"
+        }
+      ]
+    },
+    {
+      "type": "media",
+      "name": "Media",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image video"
+        },
+        {
+          "type": "image_picker",
+          "id": "video_icon",
+          "label": "Video Icon"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "accept": ["youtube", "vimeo"],
+          "label": "t:sections.video.settings.video_url.label",
+          "info": "t:sections.video.settings.video_url.info"
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Description"
         }
       ]
     }

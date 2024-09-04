@@ -16,7 +16,7 @@
         display: none;
         display: flex;
         flex-direction: column;
-        gap: 1px;
+        gap: 5px;
 
         @media (max-width: 1010px) {
             flex-wrap: wrap;
@@ -40,6 +40,13 @@
             align-items: center;
             cursor: pointer;
 
+            svg {
+                path {
+                    fill: #2F2F2F;
+                }
+
+            }
+
             @media screen and (max-width:535px) {
                 width: 100%;
             }
@@ -52,6 +59,13 @@
 
             img {
                 filter: brightness(0) invert(1);
+            }
+
+            svg {
+                path {
+                    fill: #fff;
+                }
+
             }
         }
     }
@@ -148,14 +162,15 @@
         }
 
         .link-inner {
+            max-width: max-content;
+
             .link {
-                font-family: "Nova-700";
+                font-family: "Nova-400";
                 font-size: 16px;
-                font-weight: 700;
                 line-height: 19.49px;
                 letter-spacing: -0.03em;
                 text-align: left;
-                color: rgba(47, 47, 47, 1);
+                color: #2F2F2F;
                 transition: color 0.5s, transform 0.5s ease-in-out;
                 display: flex;
                 gap: 10px;
@@ -171,16 +186,48 @@
             &:hover {
                 svg {
                     transform: rotate(45deg);
-                    stroke: red;
+                    stroke: #FF5C35;
                 }
 
                 .link {
-                    color: red;
+                    color: #FF5C35;
                 }
             }
         }
 
-    }
 
+        .tab-trigger__video {
+            .popup-video {
+                background: rgba(0, 0, 0, 0.6);
+                width: 100%;
+                height: 100%;
+                display: none;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 100vw;
+                z-index: 4;
+
+                .video-container {
+                    margin: 0 auto;
+                    width: 94vw;
+                    margin-top: 12vh;
+                    iframe {
+                        max-width: 100%;
+                        width: 100%;
+                        height: auto;
+                        aspect-ratio: 16 / 9;
+                    }
+                }
+            }
+        }
+
+        &_inner {}
+
+        &_img {}
+
+        &_icon {}
+    }
 
 }
