@@ -43,8 +43,12 @@
         "text_7EPhxM": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi.<\/p><p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>",
-            "border_bottom": true
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi.<\/p><p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>"
+          }
+        },
+        "border_4KTG63": {
+          "type": "border",
+          "settings": {
           }
         },
         "heading_TtV4HW": {
@@ -66,8 +70,7 @@
         "text_BkdMjT": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
-            "border_bottom": false
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>"
           }
         },
         "button_hHhazj": {
@@ -81,6 +84,7 @@
       "block_order": [
         "heading_nFfVby",
         "text_7EPhxM",
+        "border_4KTG63",
         "heading_TtV4HW",
         "media_kftWXp",
         "text_BkdMjT",
@@ -103,8 +107,7 @@
         "text_bLJz4n": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p><p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>",
-            "border_bottom": false
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p><p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>"
           }
         },
         "heading_MHqGgJ": {
@@ -121,11 +124,15 @@
             "content": "<ul><li>Lorem ipsum dolor sit amet consectetur. Sed faucibus non quis viverra eget id cras sit quisque. <\/li><li>Lorem ipsum dolor sit amet consectetur. Sed faucibus non quis viverra eget id cras sit quisque. <\/li><li>Lorem ipsum dolor sit amet consectetur. <\/li><li>Lorem ipsum dolor sit amet consectetur. Sed faucibus non quis viverra eget id cras sit quisque. <\/li><\/ul>"
           }
         },
+        "border_KLRhFn": {
+          "type": "border",
+          "settings": {
+          }
+        },
         "text_RbBXAk": {
           "type": "text",
           "settings": {
-            "text": "",
-            "border_bottom": true
+            "text": ""
           }
         },
         "heading_8jEWzU": {
@@ -137,8 +144,7 @@
         "text_93rxfU": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>",
-            "border_bottom": false
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>"
           }
         }
       },
@@ -147,6 +153,7 @@
         "text_bLJz4n",
         "heading_MHqGgJ",
         "media_tmgFnJ",
+        "border_KLRhFn",
         "text_RbBXAk",
         "heading_8jEWzU",
         "text_93rxfU"
@@ -168,8 +175,7 @@
         "text_qEiejb": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p><p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
-            "border_bottom": false
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p><p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>"
           }
         },
         "link_W4NmTf": {
@@ -177,6 +183,11 @@
           "settings": {
             "link_label": "link label",
             "link": "#"
+          }
+        },
+        "border_TGzRyc": {
+          "type": "border",
+          "settings": {
           }
         },
         "heading_dVyBCN": {
@@ -188,8 +199,7 @@
         "text_VtcjKQ": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
-            "border_bottom": false
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>"
           }
         }
       },
@@ -197,6 +207,7 @@
         "heading_crWjFC",
         "text_qEiejb",
         "link_W4NmTf",
+        "border_TGzRyc",
         "heading_dVyBCN",
         "text_VtcjKQ"
       ],
@@ -217,8 +228,12 @@
         "text_mQyLLf": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p><p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
-            "border_bottom": true
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p><p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>"
+          }
+        },
+        "border_3Tfg6J": {
+          "type": "border",
+          "settings": {
           }
         },
         "heading_jC6fJQ": {
@@ -230,14 +245,14 @@
         "text_KxdYVP": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
-            "border_bottom": false
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>"
           }
         }
       },
       "block_order": [
         "heading_Vzz4Qh",
         "text_mQyLLf",
+        "border_3Tfg6J",
         "heading_jC6fJQ",
         "text_KxdYVP"
       ],
@@ -266,8 +281,12 @@
         "text_7DCCtD": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p><p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>",
-            "border_bottom": true
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p><p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>"
+          }
+        },
+        "border_rfUq4J": {
+          "type": "border",
+          "settings": {
           }
         },
         "heading_pgdhHb": {
@@ -279,8 +298,7 @@
         "text_RQ4GwA": {
           "type": "text",
           "settings": {
-            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
-            "border_bottom": false
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>"
           }
         }
       },
@@ -288,6 +306,7 @@
         "heading_g7RtYM",
         "media_pT8FFJ",
         "text_7DCCtD",
+        "border_rfUq4J",
         "heading_pgdhHb",
         "text_RQ4GwA"
       ],

@@ -104,7 +104,7 @@
                 </div>
               {% endif %}
               {% if block.settings.image1 != blank %}
-                <div>
+                <div class='tab-trigger__inner_images'>
                   {{
                     block.settings.image1
                     | image_url: width: 880
@@ -113,7 +113,7 @@
                 </div>
               {% endif %}
               {% if block.settings.image2 != blank %}
-                <div>
+                <div class='tab-trigger__inner_images'> 
                   {{
                     block.settings.image2
                     | image_url: width: 880
