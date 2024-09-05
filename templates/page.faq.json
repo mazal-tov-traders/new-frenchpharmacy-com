@@ -1,0 +1,320 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_HAJDKR": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_r3KxcD": {
+          "type": "heading",
+          "settings": {
+            "heading": "FREQUENTLY ASKED QUESTIONS",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "heading_r3KxcD"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "faq_tabs_nVzcLj": {
+      "type": "faq-tabs",
+      "blocks": {
+        "heading_nFfVby": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "text_7EPhxM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi.<\/p><p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>",
+            "border_bottom": true
+          }
+        },
+        "heading_TtV4HW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "media_kftWXp": {
+          "type": "media",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_4133732.jpg",
+            "video_icon": "shopify:\/\/shop_images\/fi_1384060_1.svg",
+            "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+            "image1": "shopify:\/\/shop_images\/Rectangle_4133733.jpg",
+            "content": ""
+          }
+        },
+        "text_BkdMjT": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
+            "border_bottom": false
+          }
+        },
+        "button_hHhazj": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nFfVby",
+        "text_7EPhxM",
+        "heading_TtV4HW",
+        "media_kftWXp",
+        "text_BkdMjT",
+        "button_hHhazj"
+      ],
+      "settings": {
+        "trigger": "Shipping & Orders",
+        "icon": "shopify:\/\/shop_images\/fi_5637272.svg"
+      }
+    },
+    "faq_tabs_3ngw6x": {
+      "type": "faq-tabs",
+      "blocks": {
+        "heading_3kNt7y": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "text_bLJz4n": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p><p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>",
+            "border_bottom": false
+          }
+        },
+        "heading_MHqGgJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur."
+          }
+        },
+        "media_tmgFnJ": {
+          "type": "media",
+          "settings": {
+            "video_url": "",
+            "image1": "shopify:\/\/shop_images\/Rectangle_4133733_1.jpg",
+            "content": "<ul><li>Lorem ipsum dolor sit amet consectetur. Sed faucibus non quis viverra eget id cras sit quisque. <\/li><li>Lorem ipsum dolor sit amet consectetur. Sed faucibus non quis viverra eget id cras sit quisque. <\/li><li>Lorem ipsum dolor sit amet consectetur. <\/li><li>Lorem ipsum dolor sit amet consectetur. Sed faucibus non quis viverra eget id cras sit quisque. <\/li><\/ul>"
+          }
+        },
+        "text_RbBXAk": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "border_bottom": true
+          }
+        },
+        "heading_8jEWzU": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "text_93rxfU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>",
+            "border_bottom": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_3kNt7y",
+        "text_bLJz4n",
+        "heading_MHqGgJ",
+        "media_tmgFnJ",
+        "text_RbBXAk",
+        "heading_8jEWzU",
+        "text_93rxfU"
+      ],
+      "settings": {
+        "trigger": "Returns & Exchanges",
+        "icon": "shopify:\/\/shop_images\/fi_9827048.svg"
+      }
+    },
+    "faq_tabs_VEVJeH": {
+      "type": "faq-tabs",
+      "blocks": {
+        "heading_crWjFC": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "text_qEiejb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p><p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
+            "border_bottom": false
+          }
+        },
+        "link_W4NmTf": {
+          "type": "link",
+          "settings": {
+            "link_label": "link label",
+            "link": "#"
+          }
+        },
+        "heading_dVyBCN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "text_VtcjKQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
+            "border_bottom": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_crWjFC",
+        "text_qEiejb",
+        "link_W4NmTf",
+        "heading_dVyBCN",
+        "text_VtcjKQ"
+      ],
+      "settings": {
+        "trigger": "Billing & Payments",
+        "icon": "shopify:\/\/shop_images\/fi_3344835.svg"
+      }
+    },
+    "faq_tabs_XMrHdp": {
+      "type": "faq-tabs",
+      "blocks": {
+        "heading_Vzz4Qh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "text_mQyLLf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p><p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
+            "border_bottom": true
+          }
+        },
+        "heading_jC6fJQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "text_KxdYVP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
+            "border_bottom": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_Vzz4Qh",
+        "text_mQyLLf",
+        "heading_jC6fJQ",
+        "text_KxdYVP"
+      ],
+      "settings": {
+        "trigger": "Warranty",
+        "icon": "shopify:\/\/shop_images\/fi_5562363.svg"
+      }
+    },
+    "faq_tabs_xTaGGb": {
+      "type": "faq-tabs",
+      "blocks": {
+        "heading_g7RtYM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "media_pT8FFJ": {
+          "type": "media",
+          "settings": {
+            "video_url": "",
+            "image1": "shopify:\/\/shop_images\/image_38.jpg",
+            "content": ""
+          }
+        },
+        "text_7DCCtD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p><p>Lorem ipsum dolor sit amet consectetur. Justo proin urna felis bibendum arcu vitae ipsum sollicitudin. In platea pretium senectus arcu. Lorem cursus odio eu eget cras id tristique. In etiam pretium aliquam porta. Pharetra mattis arcu magna quis vulputate turpis vitae egestas. Et fermentum augue dignissim volutpat bibendum et. In blandit nec orci at pharetra amet. Sed orci quis.<\/p>",
+            "border_bottom": true
+          }
+        },
+        "heading_pgdhHb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur?"
+          }
+        },
+        "text_RQ4GwA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lorem ipsum dolor sit amet consectetur. Ipsum vestibulum ornare ut rhoncus ultricies lacinia adipiscing id. Sem rhoncus cras maecenas phasellus. Elementum egestas augue pharetra risus facilisi. Id mattis penatibus nunc sed tempor imperdiet massa sed.<\/p>",
+            "border_bottom": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_g7RtYM",
+        "media_pT8FFJ",
+        "text_7DCCtD",
+        "heading_pgdhHb",
+        "text_RQ4GwA"
+      ],
+      "settings": {
+        "trigger": "Affiliate Program",
+        "icon": "shopify:\/\/shop_images\/fi_13904920.svg"
+      }
+    },
+    "faq_newsletter_3MXTLV": {
+      "type": "faq-newsletter",
+      "settings": {
+        "image1": "shopify:\/\/shop_images\/Ellipse_3_1.jpg",
+        "image2": "shopify:\/\/shop_images\/Ellipse_4_1.jpg",
+        "image3": "shopify:\/\/shop_images\/Ellipse_5_1.jpg",
+        "heading": "<p>JOIN THE FP TRIBE<\/p>",
+        "content": "<p>Be the first to find out about new products, upcoming stories, and our community….<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_HAJDKR",
+    "faq_tabs_nVzcLj",
+    "faq_tabs_3ngw6x",
+    "faq_tabs_VEVJeH",
+    "faq_tabs_XMrHdp",
+    "faq_tabs_xTaGGb",
+    "faq_newsletter_3MXTLV"
+  ]
+}

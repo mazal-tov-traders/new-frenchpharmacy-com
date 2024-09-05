@@ -28,7 +28,7 @@
           {%- when 'heading' -%}
             <h3 class="tab-trigger__title">{{ block.settings.heading }}</h3>
           {%- when 'text' -%}
-            <div class="tab-trigger__text{% if block.settings.border_bottom %} border-bottom-on{% endif %}">
+            <div class="tab-trigger__text">
               {{ block.settings.text }}
             </div>
           {%- when 'button' -%}
@@ -125,6 +125,8 @@
                 <div class="tab-trigger__content">{{ block.settings.content }}</div>
               {% endif %}
             </div>
+            {%- when 'border' -%}
+              <div class='faq-border'>.</div>
         {%- endcase -%}
       {%- endfor -%}
     </div>
@@ -172,12 +174,6 @@
           "type": "richtext",
           "id": "text",
           "label": "Description"
-        },
-        {
-          "type": "checkbox",
-          "id": "border_bottom",
-          "default": false,
-          "label": "Border Bottom"
         }
       ]
     },
@@ -197,6 +193,12 @@
           "id": "button_link",
           "label": "button link"
         }
+      ]
+    },
+    {
+      "type": "border",
+      "name": "Border",
+      "settings": [
       ]
     },
     {
