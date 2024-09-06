@@ -142,6 +142,21 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "breadcrumbs": {
+        "type": "breadcrumbs",
+        "settings": {
+          "breadcrumbs_enabled": true,
+          "breadcrumbs_menu_definition": "main-menu",
+          "prefer_shortest_path": false,
+          "separator_shape": "slash",
+          "font_size": 14,
+          "color_scheme": "",
+          "enable_divider": false,
+          "divider_color": "#ccc",
+          "padding_top": 12,
+          "padding_bottom": 12
+        }
       }
     },
     "content_for_index": [

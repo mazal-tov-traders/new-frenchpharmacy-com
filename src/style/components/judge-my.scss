@@ -287,40 +287,55 @@
 .custom-style {
     .jdgm-medal {
 
-        width: 70px;
-        height: 70px;
+        width: 70px !important;
+        height: 70px !important;
     }
 
-    .jdgm-medals-wrapper .jdgm-medal-wrapper:not(:first-child) {
-        margin-left: 30px;
-    }
-
-    .jdgm-medals-wrapper .jdgm-medal-wrapper {
-        margin: 0px;
-
+    .jdgm-medals__container {
+        padding: 0;
+        display: flex !important;
+        flex-wrap: wrap !important ;
+        gap: 30px !important;
+        justify-content: center !important;
+        width: 100% !important;
     }
 
     .jdgm-verified-wrapper {
         margin-left: 19px;
-        margin-right: 30px;
         padding-right: 42px;
         padding-bottom: 0px;
         padding-top: 0px;
         border-right: 1px solid #CAEFE2;
 
     }
+
     .jdgm-medals-wrapper .jdgm-medals__container {
-         padding: 0;
+        padding: 0 !important;
     }
+
     .jdgm-medals-wrapper {
-         padding: 0px; 
-    
+        padding: 0px !important;
+
     }
+
     @media screen and (min-width: 1200px) {
         .page-width.scroll-trigger.animate--slide-in {
-            padding-top: 120px;
-            padding-bottom: 120px;
+            padding-top: 120px !important;
+            padding-bottom: 120px !important;
         }
+    }
+
+    .jdgm-medals-wrapper--small .jdgm-medals {
+        max-width: 1300px !important;
+    }
+
+    .jdgm-widget.jdgm-medals-wrapper {
+        flex-wrap: wrap !important;
+        gap: 30px !important;
+
+    }
+    .jdgm-medals-wrapper .jdgm-medal-wrapper {
+        margin: 0 !important;
     }
 
 }

@@ -77,14 +77,14 @@
       ],
       "settings": {
         "background": "shopify:\/\/shop_images\/image.jpg",
-        "heading": "Contact form",
+        "heading": "CONTACT US",
         "heading_size": "h1",
         "color_scheme": "",
         "titel": "Let’s connect today!",
         "text": "Bonjour & welcome to frenchpharmacy.com.",
         "richtext": "<p>We’d love to hear from you. Select your question, send us your message. We’ll respond as soon as possible as we’re here for you!<\/p>",
         "padding_top": 36,
-        "padding_bottom": 36,
+        "padding_bottom": 0,
         "link_label": "More Contact Options",
         "link": "#"
       }

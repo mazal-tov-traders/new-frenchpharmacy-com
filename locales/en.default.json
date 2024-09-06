@@ -248,11 +248,11 @@
     "contact": {
       "form": {
         "title": "Contact form",
-        "name": "Name",
-        "email": "Email",
+        "name": "What's your name (required)",
+        "email": "What's your email address (required)",
         "phone": "Phone number",
-        "comment": "Comment",
-        "send": "Send",
+        "comment": "Share with us",
+        "send": "SUBMIT",
         "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
         "error_heading": "Please adjust the following:"
       }
@@ -522,7 +522,7 @@
   "shopify": {
     "checkout": {
       "contact": {
-        "email_label": "111111"
+        "email_label": "Email"
       }
     }
   }

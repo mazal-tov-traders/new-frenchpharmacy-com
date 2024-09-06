@@ -1,11 +1,15 @@
 .custom-contact-form {
     .contact {
         display: flex;
-        gap: 134px;
+        gap: 40px;
         justify-content: center;
         flex-wrap: wrap;
 
-        @media (min-width: 640px) {
+        @media (min-width: 1225px) {
+            gap: 134px;
+        }
+
+        @media (min-width: 1050px) {
 
             align-items: flex-start;
             justify-content: space-between;
@@ -14,9 +18,9 @@
 
         .contact-form_inner {
             width: 100%;
-            max-width: 756px;
+            max-width: 1200px;
 
-            @media (min-width: 640px) {
+            @media (min-width: 1050px) {
 
                 flex: 1 0 0;
                 padding-top: 5px;
@@ -26,9 +30,9 @@
 
         .conact-collapsible__inner {
             width: 100%;
-            max-width: 756px;
+            max-width: 1200px;
 
-            @media (min-width: 640px) {
+            @media (min-width: 1050px) {
 
                 max-width: 400px;
                 width: 100%;
@@ -76,6 +80,7 @@
                     font-family: 'Nova-400';
                     font-size: 16px;
                     line-height: 19.49px;
+                    padding-right: 45px;
                     text-align: left;
                     color: #28282D;
                 }
@@ -136,7 +141,7 @@
     }
 
     .background-image_contact-for {
-        max-width: 756px;
+        max-width: 1200px;
         width: 100%;
         min-height: 180px;
         display: flex;
@@ -151,6 +156,14 @@
     }
 
     .innerform {
+        @media screen and (max-width: 750px) {
+            padding: 40px 35px;
+        }
+        padding: 40px 73px;
+        max-width: 1200px;
+        width: 100%;
+        background-color: #FFF7F5;
+
         &_heading {
             font-family: 'Barlow';
             font-size: 28px;
@@ -182,6 +195,26 @@
         }
     }
 
+    .field__input:focus {
+        box-shadow: none;
+    }
+
+    .text-area.field__input {
+        height: 104px;
+    }
+
+    .field_name,
+    .field_email {
+        .field__label {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        max-width: 611px;
+        width: 100%;
+    }
+
     .field__input {
         background: transparent;
         height: 45px;
@@ -191,7 +224,7 @@
         margin-top: 12px;
         padding: 30px;
         background-color: #fafafa;
-        max-width: 756px;
+        max-width: 1200px;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -243,12 +276,7 @@
 
     }
 
-    .innerform {
-        padding: 40px 74px;
-        max-width: 756px;
-        width: 100%;
-        background-color: #FFF7F5;
-    }
+
 
     .field:after {
         content: "";
@@ -261,18 +289,19 @@
     }
 
     .contact__fields {
-       
-        
-        @media screen and (min-width: 750px) {
-            grid-column-gap: 8px;
+        display: flex;
+        grid-column-gap: 8px;
+        @media screen and (max-width: 712px) {
+            flex-wrap: wrap;
         }
     }
 
-    @media screen and (min-width: 750px) {
-        .contact .field {
-            margin-bottom: 1rem;
-            border: 1px solid #6a6a6a;
-        }
+
+    .contact .field {
+        overflow: hidden;
+        margin-bottom: 1rem;
+        border: 1px solid #6a6a6a;
+
     }
 
     .field__label,
@@ -282,6 +311,7 @@
         color: #2F2F2F;
         line-height: 24px;
         text-align: left;
+        letter-spacing: 0rem;
     }
 
     .field__label {
@@ -307,9 +337,11 @@
     .custom-field__input:focus {
         outline: none;
     }
-    .contact-form-body{
+
+    .contact-form-body {
         height: 110px;
     }
+
     .custom-field__input {
         width: 100%;
         padding: 12px 20px;
