@@ -1,0 +1,114 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "contact_form_MxwmT7": {
+      "type": "contact-form",
+      "blocks": {
+        "options_m6tAQg": {
+          "type": "options",
+          "settings": {
+            "option": "option 1"
+          }
+        },
+        "options_pA9yxr": {
+          "type": "options",
+          "settings": {
+            "option": "option 2"
+          }
+        },
+        "options_DCNtCC": {
+          "type": "options",
+          "settings": {
+            "option": "option 3"
+          }
+        },
+        "collapsible_row_ECnXHK": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet",
+            "row_content": "<p>Lorem ipsum dolor sit amet consectetur. Condimentum lectus amet auctor enim cursus egestas amet elit at. Enim eu tortor ultrices aenean mauris. Massa nulla donec nunc ut libero a felis. Hac dignissim turpis quisque congue viverra congue eget.<\/p>"
+          }
+        },
+        "collapsible_row_g9hFP6": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur. Egestas quisque.",
+            "row_content": "<p>Lorem ipsum dolor sit amet consectetur. Egestas quisque.<\/p>"
+          }
+        },
+        "collapsible_row_hfW9NQ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet",
+            "row_content": "<p>Lorem ipsum dolor sit amet<\/p>"
+          }
+        },
+        "collapsible_row_U9DGkq": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet consectetur. Egestas quisque.",
+            "row_content": "<p>Lorem ipsum dolor sit amet consectetur. Egestas quisque.<\/p>"
+          }
+        },
+        "collapsible_row_AkBiDW": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Lorem ipsum dolor sit amet",
+            "row_content": "<p>Lorem ipsum dolor sit amet<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "options_m6tAQg",
+        "options_pA9yxr",
+        "options_DCNtCC",
+        "collapsible_row_ECnXHK",
+        "collapsible_row_g9hFP6",
+        "collapsible_row_hfW9NQ",
+        "collapsible_row_U9DGkq",
+        "collapsible_row_AkBiDW"
+      ],
+      "settings": {
+        "background": "shopify:\/\/shop_images\/image.jpg",
+        "heading": "Contact form",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "titel": "Let’s connect today!",
+        "text": "Bonjour & welcome to frenchpharmacy.com.",
+        "richtext": "<p>We’d love to hear from you. Select your question, send us your message. We’ll respond as soon as possible as we’re here for you!<\/p>",
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "link_label": "More Contact Options",
+        "link": "#"
+      }
+    },
+    "17256142823d3f149e": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_medals_py8qxQ": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/medals\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_medals_py8qxQ"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "contact_form_MxwmT7",
+    "17256142823d3f149e"
+  ]
+}

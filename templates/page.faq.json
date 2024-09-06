@@ -181,7 +181,7 @@
         "link_W4NmTf": {
           "type": "link",
           "settings": {
-            "link_label": "link label",
+            "link_label": "Learn More",
             "link": "#"
           }
         },
@@ -324,6 +324,22 @@
         "heading": "<p>JOIN THE FP TRIBE<\/p>",
         "content": "<p>Be the first to find out about new products, upcoming stories, and our community….<\/p>"
       }
+    },
+    "1725614623524494c6": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_medals_X4xgH6": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/medals\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_medals_X4xgH6"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -334,6 +350,7 @@
     "faq_tabs_VEVJeH",
     "faq_tabs_XMrHdp",
     "faq_tabs_xTaGGb",
-    "faq_newsletter_3MXTLV"
+    "faq_newsletter_3MXTLV",
+    "1725614623524494c6"
   ]
 }
