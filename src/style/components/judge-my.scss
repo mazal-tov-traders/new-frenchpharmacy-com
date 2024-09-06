@@ -33,9 +33,11 @@
         text-align: center;
         color: #2F2F2F;
         margin-bottom: 20px !important;
+
         @media screen and (min-width: 768px) {
             line-height: 24px !important;
         }
+
         @media screen and (max-width: 767px) {
             line-height: 26px !important;
         }
@@ -244,29 +246,33 @@
         font-size: 13px !important;
 
     }
+
     @media only screen and (max-width: 767px) {
         .jdgm-carousel-item {
             width: 50% !important;
         }
+
         .jdgm-carousel--aligned-theme .jdgm-carousel-item__product-image {
             width: 140px !important;
         }
+
         .jdgm-carousel-title-and-link {
             width: calc(100% - 0px) !important;
-            
+
         }
     }
+
     @media screen and (max-width: 1560px) {
         .jdgm-carousel-wrapper .jdgm-carousel__left-arrow {
             margin-left: 0px !important;
             margin-top: 0px !important;
         }
-    
+
         .jdgm-carousel-wrapper .jdgm-carousel__right-arrow {
             margin-right: 0px !important;
             margin-top: 0px !important;
         }
-    
+
         .jdgm-carousel__arrows {
             margin-top: 50px !important;
             display: flex !important;
@@ -277,3 +283,44 @@
     }
 }
 
+
+.custom-style {
+    .jdgm-medal {
+
+        width: 70px;
+        height: 70px;
+    }
+
+    .jdgm-medals-wrapper .jdgm-medal-wrapper:not(:first-child) {
+        margin-left: 30px;
+    }
+
+    .jdgm-medals-wrapper .jdgm-medal-wrapper {
+        margin: 0px;
+
+    }
+
+    .jdgm-verified-wrapper {
+        margin-left: 19px;
+        margin-right: 30px;
+        padding-right: 42px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        border-right: 1px solid #CAEFE2;
+
+    }
+    .jdgm-medals-wrapper .jdgm-medals__container {
+         padding: 0;
+    }
+    .jdgm-medals-wrapper {
+         padding: 0px; 
+    
+    }
+    @media screen and (min-width: 1200px) {
+        .page-width.scroll-trigger.animate--slide-in {
+            padding-top: 120px;
+            padding-bottom: 120px;
+        }
+    }
+
+}
