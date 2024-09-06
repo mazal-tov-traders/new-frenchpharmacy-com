@@ -1,0 +1,19 @@
+<div class="tags-wrapper">
+    <script>
+        console.log("asd", {{ blog.all_tags | json }})
+    </script>
+    <ul class="blog-sidebar__categories-tags">
+        {% for tag in blog.all_tags %}
+
+                <li>
+                    <a href="{% if current_tags contains tag %}{{ blog.url }}{% else %}{{ blog.url }}/tagged/{{ tag | handle }}{% endif %}" class="blog-sidebar__categories-tags-item {% if current_tags contains tag %} blog-sidebar__categories-tags-item--active{% endif %}">
+                    {% assign clean_tag_name = tag | replace: 'Category_', '' %}
+                    {{ clean_tag_name }}
+                    </a>
+                </li>
+         
+        {% endfor %}
+    </ul>
+    <div class="tag-toggle more">{{ 'general.custom.show_more' | t }}</div>
+    <div class="tag-toggle less">{{ 'general.custom.show_less' | t }}</div>
+</div>

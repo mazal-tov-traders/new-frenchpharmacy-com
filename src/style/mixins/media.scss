@@ -1,0 +1,67 @@
+@mixin xs {
+    @media screen and (min-width: 540px) {
+      @content;
+    }
+  }
+  
+  @mixin sm {
+    @media screen and (min-width: 750px) {
+      @content;
+    }
+  }
+  
+  @mixin md {
+    @media screen and (min-width: 990px) {
+      @content;
+    }
+  }
+  
+  @mixin lg {
+    @media screen and (min-width: 1024px) {
+      @content;
+    }
+  }
+  
+  @mixin xlg {
+    @media screen and (min-width: 1140px) {
+      @content;
+    }
+  }
+  
+  
+  
+  
+  @mixin sm-md {
+    @media screen and (min-width: 750px) and (max-width: 989px) {
+      @content;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  @mixin xs-max {
+    @media screen and (max-width: 540px) {
+      @content;
+    }
+  }
+  
+  @mixin sm-max {
+    @media screen and (max-width: 749px) {
+      @content;
+    }
+  }
+  
+  @mixin md-max {
+    @media screen and (max-width: 1023px) {
+      @content;
+    }
+  }
+  
+  @mixin xlg-max {
+    @media screen and (max-width: 1139px) {
+      @content;
+    }
+  }

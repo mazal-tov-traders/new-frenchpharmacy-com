@@ -1,0 +1,90 @@
+<div class="custom-article-card">
+  <a href="{{ article.url }}" class="custom-article-card__img">
+      {% assign first_image = article.content | split: '<img ' | last | split: 'src="' | last | split: '"' | first %}
+
+      {% if article.image.src != blank %}
+          <img src="{{ article.image.src | image_url: width: 450 }}">
+      {% elsif first_image != blank and 
+          first_image != 'youtube' and 
+          first_image != '<p>' and 
+          first_image != 't_' and 
+          first_image != '<a ' and 
+          first_image != 'class' and 
+          first_image != 'vimeo' and 
+          first_image != 'div'
+      %}
+          {% if first_image contains 'cdn' %}
+              <img src="{{ first_image }}" alt="Article Image">
+          {% else %}
+              {% if settings.article_cart_image %}
+                  <img src="{{ settings.article_cart_image | image_url: width: 450 }}">
+              {% else %}
+                  {{ 'image' | placeholder_svg_tag }}
+              {% endif %}
+          {% endif %}
+      {% else %}
+          {% if settings.article_cart_image %}
+              <img src="{{ settings.article_cart_image | image_url: width: 450 }}">
+          {% else %}
+              {{ 'image' | placeholder_svg_tag }}
+          {% endif %}
+      {% endif %}
+  </a>
+  <div class="custom-article-card__content">
+      <div class="custom-article-card__content-info">
+          <div class="custom-article-card__content-info-read">
+              {% assign words = article.content | strip_html | split: ' ' %}
+              {% assign time = words.size | divided_by: 200 | round %}
+
+              {% if time == 0 %}
+                  1 {{ 'general.custom.read_time' | t }}
+              {% else %}
+                  {{ time }} {{ 'general.custom.read_time' | t }}
+              {% endif %}
+          </div>
+          <div class="custom-article-card__content-info-create">
+              {% for item in article.tags  %}
+                  {% if item contains "archive" %}
+                      {% assign data-created = item |  remove: 'archive-' |  replace: '-', ' ' %}
+                          {{ data-created }}
+                  {% endif %}
+              {% endfor %}
+              {{- article.published_at | time_tag: '%d %B %Y' -}}
+          </div>
+      </div>
+
+      {% assign artTags = "" %}
+      {% for item in article.tags  %}
+        {% unless item contains 'archive' %}
+          {% assign artTags = artTags | append: item | append: ',' %}
+        {% endunless %}
+      {% endfor %}
+      {% assign artTags = artTags | split: ',' %}
+
+      {% if artTags.size > 0 %}
+          <div class="custom-article-card__content-tags">
+              {% for tag in artTags limit: 2 %}
+                  {% unless tag contains 'archive' %}
+                      <div class="custom-article-card__content-tags-item">
+                          {{ tag |  remove: 'Category_'  }}
+                      </div>
+                  {% endunless %}
+              {% endfor %}
+          </div>
+      {% endif %}
+
+      <a href="{{ article.url }}" class="custom-article-card__content-title">
+          {{ article.title }}
+      </a>
+      {% if article.excerpt != blank or article.content != blank %}
+          <div class="custom-article-card__content-text">
+              {% if article.excerpt != blank %}
+                  {{ article.excerpt }} 
+              {% else %}
+                  {{ article.content | strip_html | truncate: 137 }}
+              {% endif %}
+              <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+          </div>    
+      {% endif %}
+  </div>
+</div>

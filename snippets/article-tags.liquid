@@ -1,0 +1,13 @@
+{% if article.tags != blank %}
+    <ul class="article-template__tags list-unstyled">
+      {% for tag in article.tags -%}
+        {% unless tag contains 'archive' %}
+          <li class="article-template__tags-item"> 
+            {{ tag | remove: 'Category_' | link_to_tag: tag }}
+          </li> 
+        {% endunless %}
+      {%- endfor %}
+    </ul>
+  {% endif %}
+  
+  

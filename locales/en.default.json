@@ -10,6 +10,34 @@
       "admin_link_html": "Are you the store owner? <a href=\"\/admin\" class=\"link underlined-link\">Log in here<\/a>",
       "powered_by_shopify_html": "This shop will be powered by {{ shopify }}"
     },
+    "custom": {
+      "see_more": "See More",
+      "shop_all_products": "Shop All Products",
+      "items": "item(s)",
+      "blog_categories": "blog categories",
+      "search": "search",
+      "blog_archive": "Blog Archive",
+      "blog_search": "Search in Blog",
+      "burger_text": "Menu",
+      "best_selling": "Best Selling",
+      "pagination_page": "Page {{ current_page }} of {{ page_size }}",
+      "show": "Show",
+      "in_stock": "In Stock",
+      "out_of_stock": "Please Call for Availability",
+      "new": "New",
+      "popular": "Popular",
+      "featured": "Featured",
+      "price_low_to_high": "Price: Low to High",
+      "price_high_to_low": "Price: High to Low",
+      "your_choice": "Your Choice",
+      "search_brand": "Search Brand",
+      "relevance": "Relevance",
+      "description": "Description",
+      "back_to_search_results": "Back to Search Results",
+      "show_more": "Show More",
+      "show_less": "Show Less",
+      "read_time": "minute read"
+    },
     "social": {
       "alt_text": {
         "share_on_facebook": "Share on Facebook",
@@ -84,6 +112,7 @@
     "article": {
       "blog": "Blog",
       "read_more_title": "Read more: {{ title }}",
+      "read_more": "more",
       "comments": {
         "one": "{{ count }} comment",
         "other": "{{ count }} comments"

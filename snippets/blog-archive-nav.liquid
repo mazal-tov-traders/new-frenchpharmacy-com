@@ -1,0 +1,23 @@
+<div class="blog-sidebar__archive-title blog-sidebar__title">
+    {{ 'general.custom.blog_archive' | t }}
+</div>
+<div class="blog-sidebar__archive-content tags-wrapper">
+    <ul id="paginated-list" data-blog-archive class="blog-sidebar__archive-list">
+        {% for tag in blog.all_tags %}
+            {% if tag contains "archive" %}
+                {% assign data-created = tag |  remove: 'archive-' |  replace: '-', ' ' %}
+                {% assign tag_parts = tag | split: '-' %}
+                {% assign month_part = data-created | split: ' ' | first %}
+                {% assign last_part = tag_parts | last %}
+                
+                <li data-year-created="{{ last_part }}" data-month-created="{{ month_part }}" data-created="{{ data-created }}" class="{% if current_tags contains tag %}active{% endif %}">
+                    <a href="{{ blog.url }}/tagged/{{ tag | handle }}" >
+                        {{ data-created }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <div class="tag-toggle more">{{ 'general.custom.show_more' | t }}</div>
+    <div class="tag-toggle less">{{ 'general.custom.show_less' | t }}</div>
+</div>
