@@ -43,13 +43,13 @@
               {% endif %}
           </div>
           <div class="custom-article-card__content-info-create">
-              {% for item in article.tags  %}
+              {% comment %} {% for item in article.tags  %}
                   {% if item contains "archive" %}
                       {% assign data-created = item |  remove: 'archive-' |  replace: '-', ' ' %}
                           {{ data-created }}
                   {% endif %}
-              {% endfor %}
-              {{- article.published_at | time_tag: '%d %B %Y' -}}
+              {% endfor %} {% endcomment %}
+              {{- article.published_at | time_tag: '%B %d, %Y' -}}
           </div>
       </div>
 
@@ -63,7 +63,7 @@
 
       {% if artTags.size > 0 %}
           <div class="custom-article-card__content-tags">
-              {% for tag in artTags limit: 2 %}
+              {% for tag in artTags limit: 1 %}
                   {% unless tag contains 'archive' %}
                       <div class="custom-article-card__content-tags-item">
                           {{ tag |  remove: 'Category_'  }}
@@ -81,7 +81,7 @@
               {% if article.excerpt != blank %}
                   {{ article.excerpt }} 
               {% else %}
-                  {{ article.content | strip_html | truncate: 137 }}
+                  {{ article.content | strip_html | truncate: 200 }}
               {% endif %}
               <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
           </div>    

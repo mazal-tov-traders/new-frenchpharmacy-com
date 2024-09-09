@@ -35,9 +35,6 @@
         {%- when '@app' -%}
           {% render block %}
           
-        {%- when 'breadcrumbs' -%}
-          {% render 'breadcrumbs' %}
-          
         {%- when 'tags' -%}
           {% render 'article-tags' %}
           
@@ -364,9 +361,9 @@
           </form>
         </div>
       </div> 
-      <div class="blog-sidebar__archive-wrap blog-sidebar__item">
+      {% comment %} <div class="blog-sidebar__archive-wrap blog-sidebar__item">
         {% render 'blog-archive-nav' blog: blog %}
-      </div>
+      </div> {% endcomment %}
     </div>
 
   </aside>

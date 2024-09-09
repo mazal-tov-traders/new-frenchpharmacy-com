@@ -114,39 +114,6 @@
     }
   }
 
-  .section-newsletter {
-    margin: 0 -2rem;
-
-    @include sm {
-      margin: 0;
-    }
-
-    .newsletter__wrapper {
-      @include md {
-        flex-direction: column;
-      }
-
-      @include xlg {
-        padding-left: 10rem;
-        padding-right: 10rem;
-      }
-    }
-
-    .newsletter__title {
-      @include md {
-        text-align: center;
-      }
-    }
-  }
-
-  .newsletter {
-    padding: 4rem 0;
-
-    @include md {
-      padding: 5rem 0;
-    }
-  }
-
   .article-template__back {
     margin: 3.9rem 0 0;
 

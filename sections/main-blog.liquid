@@ -12,6 +12,10 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign product = section.settings.product
+-%}
+
 {% assign handles = '' %}
 {% for block in section.blocks %}
   {%- case block.type -%}
@@ -27,9 +31,9 @@
     "blogs": [
       {% paginate blog.articles by 9999 %}
         {% for cat in handles %}
-          {%- for article in blogs[cat].articles -%} 
+          {%- for article in blogs[cat].articles -%}
             {
-            {% if article.metafields.custom.read_time %} 
+            {% if article.metafields.custom.read_time %}
               "metafields": "{{ article.metafields.custom.read_time }}",
             {% endif %}
               "url": "{{ article.url }}",
@@ -62,16 +66,16 @@
           {%- when 'article' -%}
             <a href="{{ block.settings.blog_post.url }}" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.70) 100%), url('{{ block.settings.blog_post.image.src | image_url: width: 720 }}'), lightgray 50% / cover no-repeat;" class="custom-blog__post-banner-box">
               <div class="custom-blog__post-banner-info">
-                  <div class="custom-blog__post-banner-info-create">
-                    {{ block.settings.blog_post.created_at | date: "%d %b %Y" }}
-                  </div>
-                  {% for tag in block.settings.blog_post.tags limit: 1 %}
-                    {% unless tag contains 'archive' %}
-                      <div class="custom-blog__post-banner-info-tag">
-                        {{ tag }}
-                      </div>
-                    {% endunless %}
-                  {% endfor %}
+                <div class="custom-blog__post-banner-info-create">
+                  {{ block.settings.blog_post.created_at | date: '%d %b %Y' }}
+                </div>
+                {% for tag in block.settings.blog_post.tags limit: 1 %}
+                  {% unless tag contains 'archive' %}
+                    <div class="custom-blog__post-banner-info-tag">
+                      {{ tag }}
+                    </div>
+                  {% endunless %}
+                {% endfor %}
               </div>
               <div class="custom-blog__post-banner-title">
                 {{ block.settings.blog_post.title }}
@@ -79,23 +83,46 @@
             </a>
         {% endcase %}
       {% endfor %}
-
     </div>
+
+    <div>{% render 'newsletter' %}</div>
+
     <div class="custom-blog-grid__wrap">
       <div data-article-card class="custom-blog-grid__articles">
         {%- paginate blog.articles by section.settings.count_pagination -%}
-              {%- for article in blog.articles -%}
-                <div class="custom-blog-grid__articles-item">
+          {%- for article in blog.articles -%}
+            <div class="custom-blog-grid__articles-item">
                   {%- render 'custom-blog-article-card', article: article-%}
-                </div>
-              {%- endfor -%}
-            {%- if paginate.pages > 1 -%}
-              {%- render 'pagination-blog', paginate: paginate -%}
-            {%- endif -%}
+            </div>
+          {%- endfor -%}
+          {%- if paginate.pages > 1 -%}
+            {%- render 'pagination-blog', paginate: paginate -%}
+          {%- endif -%}
         {%- endpaginate -%}
-
       </div>
       <div class="custom-blog-grid__sidebar">
+        {% comment %}  {% endcomment %}
+        <div class="blog_product-card">
+          
+          {% render 'card-product',
+            card_product: product,
+            quick_add: true,
+            show_product_info: true,
+            extend_height: true,
+            media_aspect_ratio: 'adapt',
+            show_vendor: true,
+            show_rating: true,
+            section_id: section.id,
+            lazy_load: lazy_load,
+            show_labels: false
+          %}
+       
+          <a href="/cart/add?id={{ product.variants.first.id }}" class="add-to-cart-button">
+            Add to Cart
+          </a>
+     
+        </div> 
+        {% comment %}  {% endcomment %}
         {% if blog.all_tags.size > 0 %}
           <div class="blog-sidebar__categories__wrap blog-sidebar__item">
             <div class="blog-sidebar__categories-title blog-sidebar__title">
@@ -131,9 +158,11 @@
             </form>
           </div>
         </div>
-        <div class="blog-sidebar__archive-wrap blog-sidebar__item">
-          {% render 'blog-archive-nav' blog: blog %}
-        </div>
+        {% comment %}
+          <div class="blog-sidebar__archive-wrap blog-sidebar__item">
+            {% render 'blog-archive-nav' blog: blog %}
+          </div>
+        {% endcomment %}
       </div>
     </div>
     <div data-pagination-container class="pagination__wrap">       
@@ -150,6 +179,11 @@
   "class": "section",
   "settings": [
     {
+      "type": "product",
+      "id": "product",
+      "label": "t:sections.featured-product.settings.product.label"
+    },
+    {
       "type": "header",
       "content": "t:sections.all.padding.section_padding_heading"
     },
@@ -161,7 +195,7 @@
       "step": 1,
       "label": "Number of articles per page",
       "default": 20
-    }, 
+    },
     {
       "type": "range",
       "id": "padding_top",
@@ -183,28 +217,39 @@
       "default": 36
     }
   ],
-    "blocks": [
+  "blocks": [
     {
-        "type": "article",
-        "name": "article",
-        "settings": [
-            {
-                "type": "article",
-                "id": "blog_post",
-                "label": "Blog Posts to Show"
-            }
-        ]
-    },  
+      "type": "article",
+      "name": "article",
+      "settings": [
+        {
+          "type": "article",
+          "id": "blog_post",
+          "label": "Blog Posts to Show"
+        }
+      ]
+    },
     {
-        "type": "blog",
-        "name": "Blog",
-        "settings": [
-          {
-            "type": "blog",
-            "id": "blog",
-            "label": "Blog"
-          }
-        ]
+      "type": "blog",
+      "name": "Blog",
+      "settings": [
+        {
+          "type": "blog",
+          "id": "blog",
+          "label": "Blog"
+        }
+      ]
+    },
+    {
+      "type": "product_card",
+      "name": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.featured-product.settings.product.label"
+        }
+      ]
     }
   ]
 }
