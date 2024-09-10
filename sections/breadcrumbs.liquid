@@ -488,7 +488,7 @@
     .breadcrumbs__item:not(:last-child):after {
       content: '';
       display: inline-block;
-      margin: 0 .20em;
+      margin: 0 .50em;
       position: relative;
       vertical-align: middle;
       {% if section.settings.separator_shape == 'triangle' %}
@@ -499,8 +499,8 @@
         transform: rotate(45deg);
         top: -0.1em; 
       {% elsif section.settings.separator_shape == 'slash' %}
-        content: '/';
-        margin-left: .5em;
+        content: '|';
+        margin-left: .9em;
       {% endif %}
     }
   

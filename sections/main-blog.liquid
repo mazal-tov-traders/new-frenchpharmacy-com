@@ -12,6 +12,9 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign product = section.settings.product
+-%}
 
 {% assign handles = '' %}
 {% for block in section.blocks %}
@@ -55,7 +58,7 @@
 <div class="main-blog custom-main-blog page-width section-{{ section.id }}-padding">
   <div class="custom-blog">
     <h1 class="custom-blog__title">
-      {{ blog.title | escape }}
+      {{ section.settings.title }}
     </h1>
     <div class="custom-blog__post-banner-wrap">
       {% for block in section.blocks %}
@@ -64,7 +67,7 @@
             <a href="{{ block.settings.blog_post.url }}" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.70) 100%), url('{{ block.settings.blog_post.image.src | image_url: width: 720 }}'), lightgray 50% / cover no-repeat;" class="custom-blog__post-banner-box">
               <div class="custom-blog__post-banner-info">
                 <div class="custom-blog__post-banner-info-create">
-                  {{ block.settings.blog_post.created_at | date: '%d %b %Y' }}
+                  {{ block.settings.blog_post.created_at | date: '%b %d, %Y' }}
                 </div>
                 {% for tag in block.settings.blog_post.tags limit: 1 %}
                   {% unless tag contains 'archive' %}
@@ -168,6 +171,11 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "title", 
+      "label": "title"
+    },
     {
       "type": "product",
       "id": "product",

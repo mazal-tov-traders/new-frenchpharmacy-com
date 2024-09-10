@@ -81,7 +81,7 @@
               {% if article.excerpt != blank %}
                   {{ article.excerpt }} 
               {% else %}
-                  {{ article.content | strip_html | truncate: 200 }}
+                  {{ article.content | strip_html | truncate: 180 }}
               {% endif %}
               <a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
           </div>    
