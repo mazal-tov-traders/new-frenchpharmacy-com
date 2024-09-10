@@ -100,7 +100,6 @@
       <div class="custom-blog-grid__sidebar">
         {% comment %}  {% endcomment %}
         <div class="blog_product-card">
-          
           {% render 'card-product',
             card_product: product,
             quick_add: true,
@@ -113,11 +112,9 @@
             lazy_load: lazy_load,
             show_labels: false
           %}
-       
           <a href="/cart/add?id={{ product.variants.first.id }}" class="add-to-cart-button">
             Add to Cart
           </a>
-     
         </div> 
         {% comment %}  {% endcomment %}
         {% if blog.all_tags.size > 0 %}
@@ -125,9 +122,7 @@
             <div class="blog-sidebar__categories-title blog-sidebar__title">
               {{ 'general.custom.blog_categories' | t }}
             </div>
-
             {% render "all-tags" %}
-
           </div>
         {% endif %}
         <div class="blog-sidebar__search__wrap blog-sidebar__item">
@@ -155,11 +150,9 @@
             </form>
           </div>
         </div>
-        {% comment %}
-          <div class="blog-sidebar__archive-wrap blog-sidebar__item">
+          {% comment %} <div class="blog-sidebar__archive-wrap blog-sidebar__item">
             {% render 'blog-archive-nav' blog: blog %}
-          </div>
-        {% endcomment %}
+          </div> {% endcomment %}
       </div>
     </div>
     <div data-pagination-container class="pagination__wrap">       
@@ -234,17 +227,6 @@
           "type": "blog",
           "id": "blog",
           "label": "Blog"
-        }
-      ]
-    },
-    {
-      "type": "product_card",
-      "name": "product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "t:sections.featured-product.settings.product.label"
         }
       ]
     }
