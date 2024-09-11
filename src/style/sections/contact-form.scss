@@ -150,6 +150,13 @@
 
         .title {
             margin: 0;
+            color: #2F2F2F;
+            font-family: 'Barlow';
+            font-size: 34px;
+            font-weight: 400;
+            line-height: 40.8px;
+            text-align: left;
+
         }
 
         margin-bottom: 10px;
@@ -159,6 +166,7 @@
         @media screen and (max-width: 750px) {
             padding: 40px 35px;
         }
+
         padding: 40px 73px;
         max-width: 1200px;
         width: 100%;
@@ -243,6 +251,70 @@
         .link-inner {
             max-width: max-content;
 
+            .popup-contact-options {
+                min-height: 300px;
+                padding: 40px 50px;
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background-color: white;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+
+                .popup-contact__title {
+                    font-family: 'Barlow';
+                    font-size: 24px;
+                    font-weight: 400;
+                    line-height: 28.8px;
+                    text-align: left;
+                    color: #3A393A;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #d9d9d9;
+                    margin-bottom: 20px;
+                }
+
+                .contact-info {
+                    margin-bottom: 20px;
+                }
+
+                .contact-info,
+                .chat-recommendation {
+                    display: flex;
+                    gap: 20px;
+
+                    p {
+                        font-family: 'Nova-300';
+                        font-size: 16px;
+                        line-height: 24px;
+                        text-align: left;
+                        color: #3A393A;
+
+                        a {
+                            font-family: 'Nova-600';
+                            font-size: 16px;
+                            line-height: 24px;
+                            text-align: left;
+                            color: #00C08B;
+
+                        }
+
+                    }
+                }
+            }
+
+            .popup-contact-options.active {
+                display: block;
+            }
+
+            .popup-btn-clouse {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                cursor: pointer;
+            }
+
             .link {
                 font-family: "Nova-400";
                 font-size: 16px;
@@ -260,18 +332,20 @@
                     stroke: #2f2f2f;
                     transition: transform 0.5s ease-in-out, stroke 0.5s;
                 }
-            }
 
-            &:hover {
-                svg {
-                    transform: rotate(45deg);
-                    stroke: #FF5C35;
-                }
+                &:hover {
+                    svg {
+                        transform: rotate(45deg);
+                        stroke: #FF5C35;
+                    }
 
-                .link {
+
                     color: #FF5C35;
+
                 }
             }
+
+
         }
 
     }
@@ -291,6 +365,7 @@
     .contact__fields {
         display: flex;
         grid-column-gap: 8px;
+
         @media screen and (max-width: 712px) {
             flex-wrap: wrap;
         }

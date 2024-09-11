@@ -146,56 +146,116 @@
         <div class="block-link">
           <h3 class="block-link_title">Need More Help?</h3>
           <div class="link-inner">
-            <a
-              {% if section.settings.link == blank %}
-                role="link" aria-disabled="true"
-              {% else %}
-                href="{{ section.settings.link }}"
-              {% endif %}
-              class="link"
+            <div
+              class="link link-popup"
             >
               {{- section.settings.link_label | escape -}}
               <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3.34834 1.72692L10.773 1.72692M10.773 1.72692L10.773 9.15154M10.773 1.72692L1.22702 11.2729"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-            </a>
+            </div>
+            <div class="popup-contact-options">
+              <div class="popup-btn-clouse">{% render 'icon-close-small' %}</div>
+              {% if section.settings.popup_title != blank %}
+                <h3 class='popup-contact__title'>{{ section.settings.popup_title }}</h3>
+              {% endif %}
+              {% if section.settings.contact_info != blank %}
+                <div class="contact-info">
+                  <span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_1244_13099)">
+                      <path d="M0.981207 2.18906L2.57089 0.599376L2.57202 0.598282C3.23907 -0.0679885 4.32377 -0.0677542 4.99051 0.598985L6.91697 2.52541C7.03138 2.63982 7.03138 2.82532 6.91697 2.93969C6.80252 3.0541 6.61706 3.0541 6.50265 2.93969L4.57623 1.01323C4.2094 0.646367 3.65012 0.586642 3.22033 0.833627L7.03585 4.64915C7.28279 4.21936 7.22307 3.66011 6.85624 3.29325L6.55297 2.99001C6.43852 2.8756 4.65901 0.948038 4.77342 0.833627C4.88783 0.719217 6.85284 2.46124 6.96722 2.57569L7.27053 2.87892C7.93746 3.5459 7.93746 4.63114 7.27053 5.29815L5.45413 7.11451C5.28757 7.28107 5.19586 7.50247 5.19586 7.73797C5.19586 7.97351 5.28761 8.19491 5.45413 8.36147L11.5399 14.4472C11.7065 14.6138 11.9279 14.7055 12.1634 14.7055C12.3989 14.7055 12.6203 14.6138 12.7869 14.4472L14.6033 12.6309C14.9263 12.3078 15.3559 12.1298 15.8129 12.1298C16.2698 12.1298 16.6994 12.3078 17.0225 12.6309L19.3025 14.9109C19.9695 15.5779 19.9695 16.6632 19.3025 17.3301L17.7124 18.9202C17.0774 19.5552 16.2353 19.9013 15.3528 19.9013C15.2123 19.9013 15.0707 19.8925 14.9288 19.8748L11.5682 19.4534C10.8014 19.3573 10.0781 19.0034 9.5316 18.4569L2.30715 11.2324C2.19274 11.118 2.19274 10.9325 2.30715 10.8181C2.4216 10.7037 2.60707 10.7037 2.72148 10.8181L9.94589 18.0426C10.4008 18.4974 11.0028 18.792 11.641 18.872L15.0016 19.2934C15.8538 19.4002 16.6908 19.1132 17.2981 18.5059L18.681 17.123L14.8104 13.2524L13.2012 14.8616C12.924 15.1388 12.5555 15.2915 12.1634 15.2915C11.7714 15.2915 11.4028 15.1388 11.1256 14.8616L5.03985 8.77583C4.46764 8.20358 4.46764 7.27251 5.03985 6.70026L6.6491 5.09105L2.7785 1.22045L1.39561 2.60338C0.788284 3.21067 0.501259 4.04768 0.608131 4.89984L1.02945 8.2605C1.10949 8.89876 1.40409 9.50077 1.85892 9.95564L8.75728 16.854C8.8717 16.9684 8.8717 17.1539 8.75728 17.2683C8.70006 17.3255 8.62506 17.3541 8.5501 17.3541C8.47514 17.3541 8.40015 17.3255 8.34292 17.2683L1.44452 10.3699C0.898085 9.82342 0.544149 9.10016 0.448019 8.33334L0.0267029 4.97269C-0.102825 3.93975 0.245094 2.92517 0.981207 2.18906ZM18.8881 15.3253L16.6082 13.0452C16.3957 12.8328 16.1133 12.7158 15.8129 12.7158C15.6128 12.7158 15.4208 12.768 15.2521 12.8654L19.068 16.6814C19.1654 16.5126 19.2176 16.3206 19.2176 16.1205C19.2176 15.8201 19.1006 15.5377 18.8881 15.3253Z" fill="#2F2F2F"/>
+                      <path d="M19.1022 10.0177H15.9775C15.8157 10.0177 15.6845 9.88655 15.6845 9.72476C15.6845 9.56297 15.8157 9.4318 15.9775 9.4318H19.1022C19.2742 9.4318 19.4141 9.29188 19.4141 9.1199V3.01428C19.4141 2.84229 19.2742 2.70238 19.1022 2.70238H12.5381C12.3661 2.70238 12.2262 2.84229 12.2262 3.01428V7.71208C12.2262 8.00028 12.105 8.27797 11.8937 8.4739L10.8845 9.4102C10.8886 9.41817 10.896 9.42735 10.9024 9.43176H16.6137C16.7755 9.43176 16.9067 9.56293 16.9067 9.72472C16.9067 9.88652 16.7755 10.0177 16.6137 10.0177H10.8966H10.8935C10.6531 10.0177 10.4298 9.85773 10.3369 9.61883C10.2477 9.38907 10.3057 9.14376 10.4855 8.98123L11.4953 8.04434C11.5875 7.95887 11.6403 7.83774 11.6403 7.71204V3.01428C11.6403 2.51922 12.0431 2.11646 12.5381 2.11646H19.1022C19.5972 2.11646 20 2.51922 20 3.01428V9.11986C20 9.61496 19.5972 10.0177 19.1022 10.0177Z" fill="#2F2F2F"/>
+                      <path d="M17.4404 3.43481C17.6022 3.43481 17.7333 3.56598 17.7333 3.72778V4.33666C18.16 4.31827 18.5634 4.68962 18.5625 5.13989V7.96211C18.5625 8.40503 18.2022 8.76533 17.7593 8.76533H13.8814C13.4385 8.76533 13.0782 8.40499 13.0782 7.96211V5.13989C13.0745 4.71072 13.4553 4.32334 13.9073 4.33666V3.72778C13.9073 3.56598 14.0384 3.43481 14.2003 3.43481C14.3621 3.43481 14.4932 3.56598 14.4932 3.72778V4.33666H17.1474V3.72778C17.1474 3.56598 17.2785 3.43481 17.4404 3.43481ZM15.2968 6.15439V6.87398H16.3437V6.15439H15.2968ZM13.664 6.15439V6.87398H14.7109V6.15439H13.664ZM15.2968 7.4599V8.17945H16.3437V7.4599H15.2968ZM16.9297 6.87398H17.9765V6.15439H16.9296L16.9297 6.87398ZM17.9765 7.96211V7.45986H16.9296V8.17941H17.7592C17.879 8.17945 17.9765 8.08195 17.9765 7.96211ZM13.8813 8.17945H14.7109V7.4599H13.664V7.96215C13.664 8.08195 13.7615 8.17945 13.8813 8.17945ZM13.664 5.13989V5.56843H17.9765V5.13989C17.9765 5.02004 17.879 4.92259 17.7592 4.92259H13.8813C13.7615 4.92259 13.664 5.02008 13.664 5.13989Z" fill="#2F2F2F"/>
+                      </g>
+                      <defs>
+                      <clipPath id="clip0_1244_13099">
+                      <rect width="20" height="20" fill="white" transform="matrix(-1 0 0 1 20 0)"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                  <p>For all inquiries related to bill payment, payment authorizations and any other related inquiries, please call <a  href="tel:+{{ section.settings.contact_info }}">{{ section.settings.contact_info }}</a> between 8a - 9p Eastern, Mon-Sat.</p>
+          
+                </div>
+              {% endif %}
+              {% if section.settings.chat_recommendation != blank %}
+                <div class="chat-recommendation">
+                  <span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_1244_13092)">
+                      <path d="M3.33333 8.48832H7.66667C7.851 8.48832 8 8.33899 8 8.15499C8 7.97099 7.851 7.82166 7.66667 7.82166H3.33333C3.149 7.82166 3 7.97099 3 8.15499C3 8.33899 3.149 8.48832 3.33333 8.48832Z" fill="#2F2F2F"/>
+                      <path d="M12 9.82166H3.33333C3.149 9.82166 3 9.97099 3 10.155C3 10.339 3.149 10.4883 3.33333 10.4883H12C12.1843 10.4883 12.3333 10.339 12.3333 10.155C12.3333 9.97099 12.1843 9.82166 12 9.82166Z" fill="#2F2F2F"/>
+                      <path d="M12 11.8217H3.33333C3.149 11.8217 3 11.971 3 12.155C3 12.339 3.149 12.4883 3.33333 12.4883H12C12.1843 12.4883 12.3333 12.339 12.3333 12.155C12.3333 11.971 12.1843 11.8217 12 11.8217Z" fill="#2F2F2F"/>
+                      <path d="M18.024 0.844989L6.64333 0.821655C5.55333 0.821655 4.66667 1.70832 4.66667 2.79832V4.50632L1.97667 4.51199C0.886667 4.51199 0 5.39865 0 6.48865V13.5357C0 14.6257 0.886667 15.512 1.97667 15.512H4V18.8453C4 18.983 4.08467 19.1067 4.21333 19.1563C4.25233 19.1713 4.293 19.1787 4.33333 19.1787C4.42533 19.1787 4.51567 19.1403 4.58 19.0697L7.81467 15.5113L13.3567 15.4887C14.4467 15.4887 15.3333 14.602 15.3333 13.5123V13.4747L17.0867 15.4033C17.151 15.474 17.2413 15.5123 17.3333 15.5123C17.3737 15.5123 17.4143 15.505 17.4533 15.49C17.582 15.4403 17.6667 15.3167 17.6667 15.179V11.8457H18.0233C19.1133 11.8457 20 10.959 20 9.86932V2.82166C20 1.73199 19.1137 0.845322 18.024 0.844989ZM14.6667 13.512C14.6667 14.2343 14.079 14.8217 13.3553 14.8217L7.66533 14.845C7.572 14.8453 7.48267 14.885 7.42 14.954L4.66667 17.983V15.1783C4.66667 14.9943 4.51767 14.845 4.33333 14.845H1.97667C1.25433 14.845 0.666667 14.2573 0.666667 13.5353V6.48832C0.666667 5.76599 1.25433 5.17832 1.97733 5.17832L5 5.17199C5.00033 5.17199 5.00033 5.17199 5.00067 5.17199L13.3567 5.15465C14.079 5.15465 14.6667 5.74232 14.6667 6.46465V12.6117V13.512ZM19.3333 9.86866C19.3333 10.591 18.7457 11.1783 18.0233 11.1783H17.3333C17.149 11.1783 17 11.3277 17 11.5117V14.3163L15.3333 12.483V6.46499C15.3333 5.37499 14.4467 4.48832 13.356 4.48832L5.33333 4.50465V2.79799C5.33333 2.07566 5.921 1.48799 6.64267 1.48799L18.023 1.51132C18.0233 1.51132 18.0233 1.51132 18.0237 1.51132C18.746 1.51132 19.3337 2.09899 19.3337 2.82132L19.3333 9.86866Z" fill="#2F2F2F"/>
+                      </g>
+                      <defs>
+                      <clipPath id="clip0_1244_13092">
+                      <rect width="20" height="20" fill="white"/>
+                      </clipPath>
+                      </defs>
+                    </svg>
+                  </span>
+                  {{ section.settings.chat_recommendation }}
+                </div>
+              {% endif %}
+            </div>
           </div>
         </div>
       {%- endif -%}
     </div>
-    <div class='conact-collapsible__inner'>
+    <div class="conact-collapsible__inner">
       <div class="faq">
         <h2 class="faq__title">Popular FAQ</h2>
         {%- for block in section.blocks -%}
           {% case block.type %}
             {% when 'collapsible_row' %}
-        <div class="faq__item">
-          <button class="faq__question">
-            {{ block.settings.heading }}
-            <span class="faq__icon"></span>
-          </button>
-          <div class="faq__answer">
-            {{ block.settings.row_content }}
-          </div>
-        </div>
-      {% endcase %}
-      {% endfor %}
+              <div class="faq__item">
+                <button class="faq__question">
+                  {{ block.settings.heading }}
+                  <span class="faq__icon"></span>
+                </button>
+                <div class="faq__answer">
+                  {{ block.settings.row_content }}
+                </div>
+              </div>
+          {% endcase %}
+        {% endfor %}
       </div>
     </div>
   </div>
 </div>
 <script>
-  document.querySelectorAll('.faq__question').forEach(button => {
+  const buttonPopUp = document.querySelector('.link-popup');
+  const popUpContainer = document.querySelector('.popup-contact-options');
+  const closePopUpButton = document.querySelector('.popup-btn-clouse');
+
+  buttonPopUp.addEventListener('click', () => {
+    popUpContainer.classList.add('active');
+    popUpContainer.style.display = 'block'; 
+  });
+
+  closePopUpButton.addEventListener('click', () => {
+    popUpContainer.classList.remove('active');
+    popUpContainer.style.display = 'none'; 
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!popUpContainer.contains(e.target) && !buttonPopUp.contains(e.target)) {
+      popUpContainer.classList.remove('active');
+      popUpContainer.style.display = 'none'; 
+    }
+  });
+
+  document.querySelectorAll('.faq__question').forEach((button) => {
     button.addEventListener('click', () => {
       const isActive = button.classList.contains('active');
-      
-      // Закрываем все активные
-      document.querySelectorAll('.faq__question.active').forEach(activeButton => {
+
+      document.querySelectorAll('.faq__question.active').forEach((activeButton) => {
         activeButton.classList.remove('active');
         activeButton.nextElementSibling.style.display = 'none';
       });
-  
-      // Открываем текущий
+
       if (!isActive) {
         button.classList.add('active');
         button.nextElementSibling.style.display = 'block';
@@ -204,17 +264,17 @@
   });
 </script>
 {% style %}
-  #shopify-section-{{ section.id }} {
+    #shopify-section-{{ section.id }} {
 
-        .background-image_contact-for{
-          background-image: url({{ section.settings.background | image_url: width: 800 }});
-    	    background-repeat: no-repeat;
-    	    background-position: center;
-    	    background-size: cover;
+          .background-image_contact-for{
+            background-image: url({{ section.settings.background | image_url: width: 800 }});
+      	    background-repeat: no-repeat;
+      	    background-position: center;
+      	    background-size: cover;
 
-        }
+          }
 
-  }
+    }
 {% endstyle %}
 {% schema %}
 {
@@ -308,10 +368,20 @@
       "label": "link label"
     },
     {
-      "type": "url",
-      "id": "link",
-      "label": "link url"
-    }
+      "type": "text",
+      "id": "popup_title",
+      "label": "popup Title"
+    },
+    {
+      "type": "text",
+      "id": "contact_info",
+      "label": "contact tell"
+    },
+    {
+      "type": "richtext",
+      "id": "chat_recommendation",
+      "label": "chat recommendation"
+    },
   ],
   "blocks": [
     {

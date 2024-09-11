@@ -26,34 +26,13 @@
           "settings": {
             "blog": "beauty-secrets"
           }
-        },
-        "blog_RLggAe": {
-          "type": "blog",
-          "settings": {
-            "blog": "christele-s-secrets"
-          }
-        },
-        "blog_YVCRjH": {
-          "type": "blog",
-          "settings": {
-            "blog": "inner-power"
-          }
-        },
-        "blog_Hfxmcj": {
-          "type": "blog",
-          "settings": {
-            "blog": "news"
-          }
         }
       },
       "block_order": [
         "article_NVDWTM",
         "article_bz6H9y",
         "article_Ctfa6Q",
-        "blog_TgRDkf",
-        "blog_RLggAe",
-        "blog_YVCRjH",
-        "blog_Hfxmcj"
+        "blog_TgRDkf"
       ],
       "settings": {
         "title": "French Pharmacy Blog",
