@@ -1,7 +1,7 @@
 <div class="tags-wrapper">
-    <script>
+    {% comment %} <script>
         console.log("asd", {{ blog.all_tags | json }})
-    </script>
+    </script> {% endcomment %}
     <ul class="blog-sidebar__categories-tags">
         <li>
             <a href="{{ blog.url }}" class="blog-sidebar__categories-tags-item {% if current_tags == blank %} blog-sidebar__categories-tags-item--active{% endif %}">

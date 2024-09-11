@@ -118,7 +118,7 @@
           <a href="/cart/add?id={{ product.variants.first.id }}" class="add-to-cart-button">
             Add to Cart
           </a>
-        </div> 
+        </div>  
         {% comment %}  {% endcomment %}
         {% if blog.all_tags.size > 0 %}
           <div class="blog-sidebar__categories__wrap blog-sidebar__item">
@@ -230,6 +230,7 @@
     {
       "type": "blog",
       "name": "Blog",
+      "limit": 1,
       "settings": [
         {
           "type": "blog",
