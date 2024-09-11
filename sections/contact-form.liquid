@@ -263,6 +263,20 @@
     });
   });
 </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById('ContactFooter');
+
+    if (form) {
+      form.addEventListener('submit', function(event) {
+        // Проверяем, что форма отправлена успешно
+        if (form.querySelector('.newsletter-form__message--success')) {
+          window.location.href = "https://frenchpharmacy.com/pages/thank-you"; // Перенаправление на страницу "Спасибо"
+        }
+      });
+    }
+  });
+</script>
 {% style %}
     #shopify-section-{{ section.id }} {
 

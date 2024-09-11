@@ -1,0 +1,91 @@
+.thank-you {
+    padding: 60px 0 120px;
+
+    &__title {
+        color: #2F2F2F;
+        font-family: 'Barlow';
+        font-size: 34px;
+        font-weight: 500;
+        margin-bottom: 20px;
+        line-height: 40.8px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__p {
+        font-family: "Nova-300", sans-serif;
+        font-size: 1rem;
+        font-style: normal;
+        line-height: 1.625rem;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: -.03rem;
+        color: #2F2F2F;
+        text-align: center;
+    }
+
+    .thank-you__wrapper {
+        padding-top: 90px;
+        max-width: 500px;
+        margin: 0 auto 80px;
+
+
+    }
+
+    .thank-you__wrapper-social-links {
+        margin-bottom: 80px;
+
+        .thank-you__subtitle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 34px;
+            font-family: "Nova-600", sans-serif;
+            font-size: 1.75rem;
+            font-style: normal;
+            line-height: 2.125rem;
+            text-decoration: none;
+            text-transform: none;
+            margin-bottom: 25px;
+        }
+
+        .thank-you__subtitle::after,
+        .thank-you__subtitle::before {
+            content: "";
+            height: 1px;
+            background: #093642;
+            flex-grow: 1;
+        }
+        .list-social__item .icon {
+            height: 4.2rem;
+            width: 4.2rem;
+        }
+    }
+
+    .thank-you__button {
+        margin: 0 auto;
+        background: #ff5c35;
+        width: fit-content;
+        padding: 14px 25px; 
+        display: flex;
+        gap: 7px;
+        transition: transform 0.7s ease;
+        a {
+            text-decoration: none;
+            font-family: 'Nova-400';
+            font-size: 14px;
+            letter-spacing: -.03em;
+            line-height: 19.05px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+        svg{
+            transition: transform 0.7s ease;
+        }
+        &:hover {
+            svg {
+                transform: rotate(45deg);
+            }
+        }
+    }
+}
