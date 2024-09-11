@@ -24,7 +24,7 @@
             aria-label="{{ 'general.pagination.previous' | t }}"
             
           >
-          {% render 'icon-caret-blog' %} Previous
+          {% render 'icon-caret-blog' %} <span class=mob-text-hiden>Previous</span>
           </a>
         </li>
 
@@ -61,7 +61,7 @@
               class="pagination__item pagination__item--next pagination__item-arrow link motion-reduce {% unless paginate.next %}not-active{% endunless %}"
               aria-label="{{ 'general.pagination.next' | t }}"
             >
-              Next {% render 'icon-caret-blog' %}
+              <span class=mob-text-hiden>Next</span> {% render 'icon-caret-blog' %}
             </a>
           </li>
       </ul>
