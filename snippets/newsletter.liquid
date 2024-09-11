@@ -14,23 +14,23 @@
   class="newsletter">
   <div class="custom-newsletter__wrapper content-container isolate section-{{ block.id }}-padding">
     <h3 class='custom-newsletter__wrapper-title'>Sign up for our Newsletter </h3>
-    <div class="newsletter__form">
+    <div class="blog-newsletter__form">
 
       {% form 'customer', class: 'newsletter-form' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
         <div
-          class="newsletter-form__field-wrapper{%- if form.errors -%} form__has-errors{%- endif -%}"
+          class="blog-newsletter-form__field-wrapper{%- if form.errors -%} form__has-errors{%- endif -%}"
           {% if settings.animations_reveal_on_scroll %}
             data-cascade
             style="--animation-order: {{ forloop.index }};"
           {% endif %}
           >
-          <div class="custom-field field">
+          <div class="blog-custom-field">
             <input
               id="NewsletterForm--{{ section.id }}"
               type="email"
               name="contact[email]"
-              class="field__input"
+              class="blog-field__input"
               value="{{ form.email }}"
               aria-required="true"
               autocorrect="off"
@@ -46,9 +46,9 @@
               placeholder="{{ 'newsletter.label' | t }}"
               required
             >
-            <label class="field__label" for="NewsletterForm--{{ section.id }}">
+            {% comment %} <label class="blog-field__label" for="NewsletterForm--{{ section.id }}">
               {{ 'newsletter.label' | t }}
-            </label>
+            </label> {% endcomment %}
             {%- if form.errors -%}
               <small class="newsletter-form__message newsletter-form__message--error form__message" id="Newsletter-error--{{ section.id }}">
                 {{- form.errors.translated_fields.email | capitalize }}
@@ -56,10 +56,10 @@
               </small>
             {%- endif -%}
           </div>
-          <div class="field field__submit">
+          <div class="blog-field__submit">
             <button
               type="submit"
-              class="button"
+              class="blog-newsletter-button"
               name="commit"
               id="Subscribe"
               aria-label="{{ 'newsletter.button_label' | t }}"

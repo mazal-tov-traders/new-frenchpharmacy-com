@@ -2,18 +2,86 @@
   "sections": {
     "main": {
       "type": "main-blog",
+      "blocks": {
+        "article_NVDWTM": {
+          "type": "article",
+          "settings": {
+            "blog_post": "beauty-secrets\/unlocking-the-secrets-of-cicaplast-your-skins-ultimate-ally"
+          }
+        },
+        "article_bz6H9y": {
+          "type": "article",
+          "settings": {
+            "blog_post": "beauty-secrets\/are-innoxa-blue-drops-everything-they-say-they-are"
+          }
+        },
+        "article_Ctfa6Q": {
+          "type": "article",
+          "settings": {
+            "blog_post": "beauty-secrets\/unveil-the-potential-of-retinol-for-your-skin"
+          }
+        },
+        "blog_TgRDkf": {
+          "type": "blog",
+          "settings": {
+            "blog": "beauty-secrets"
+          }
+        },
+        "blog_RLggAe": {
+          "type": "blog",
+          "settings": {
+            "blog": "christele-s-secrets"
+          }
+        },
+        "blog_YVCRjH": {
+          "type": "blog",
+          "settings": {
+            "blog": "inner-power"
+          }
+        },
+        "blog_Hfxmcj": {
+          "type": "blog",
+          "settings": {
+            "blog": "news"
+          }
+        }
+      },
+      "block_order": [
+        "article_NVDWTM",
+        "article_bz6H9y",
+        "article_Ctfa6Q",
+        "blog_TgRDkf",
+        "blog_RLggAe",
+        "blog_YVCRjH",
+        "blog_Hfxmcj"
+      ],
       "settings": {
-        "layout": "collage",
-        "show_image": true,
-        "image_height": "medium",
-        "show_date": true,
-        "show_author": false,
+        "title": "French Pharmacy Blog",
+        "product": "acm-lightening-body-milk-anti-stain",
+        "count_pagination": 6,
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "17259870685227d24f": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_medals_R4bBFn": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/medals\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_medals_R4bBFn"
+      ],
+      "settings": {
+        "include_margins": true
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "17259870685227d24f"
   ]
 }

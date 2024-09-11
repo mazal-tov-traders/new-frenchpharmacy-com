@@ -3,6 +3,11 @@
         console.log("asd", {{ blog.all_tags | json }})
     </script>
     <ul class="blog-sidebar__categories-tags">
+        <li>
+            <a href="{{ blog.url }}" class="blog-sidebar__categories-tags-item {% if current_tags == blank %} blog-sidebar__categories-tags-item--active{% endif %}">
+                All
+            </a>
+        </li>
         {% for tag in blog.all_tags %}
 
                 <li>

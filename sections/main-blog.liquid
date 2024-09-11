@@ -64,7 +64,7 @@
       {% for block in section.blocks %}
         {%- case block.type -%}
           {%- when 'article' -%}
-            <a href="{{ block.settings.blog_post.url }}" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.70) 100%), url('{{ block.settings.blog_post.image.src | image_url: width: 720 }}'), lightgray 50% / cover no-repeat;" class="custom-blog__post-banner-box">
+            <a href="{{ block.settings.blog_post.url }}" style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.70) 100%), url('{{ block.settings.blog_post.image.src | image_url: width: 720 }}')" class="custom-blog__post-banner-box">
               <div class="custom-blog__post-banner-info">
                 <div class="custom-blog__post-banner-info-create">
                   {{ block.settings.blog_post.created_at | date: '%b %d, %Y' }}
