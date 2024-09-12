@@ -101,7 +101,6 @@
         {%- endpaginate -%}
       </div>
       <div class="custom-blog-grid__sidebar">
-        {% comment %}  {% endcomment %}
         <div class="blog_product-card">
           {% render 'card-product',
             card_product: product,
@@ -119,7 +118,6 @@
             Add to Cart
           </a>
         </div>  
-        {% comment %}  {% endcomment %}
         {% if blog.all_tags.size > 0 %}
           <div class="blog-sidebar__categories__wrap blog-sidebar__item">
             <div class="blog-sidebar__categories-title blog-sidebar__title">
@@ -153,9 +151,6 @@
             </form>
           </div>
         </div>
-          {% comment %} <div class="blog-sidebar__archive-wrap blog-sidebar__item">
-            {% render 'blog-archive-nav' blog: blog %}
-          </div> {% endcomment %}
       </div>
     </div>
     <div data-pagination-container class="pagination__wrap">       

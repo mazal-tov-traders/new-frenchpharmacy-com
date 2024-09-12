@@ -1,12 +1,12 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
-<script type='application/json' data-section="blogs">  
+<script type="application/json" data-section="blogs">
   {
     "blogs": [
       {% paginate blog.articles by 9999 %}
-        {%- for article in blog.articles -%} 
+        {%- for article in blog.articles -%}
           {
-          {% if article.metafields.custom.read_time %} 
+          {% if article.metafields.custom.read_time %}
             "metafields": "{{ article.metafields.custom.read_time }}",
           {% endif %}
             "url": "{{ article.url }}",
@@ -30,14 +30,20 @@
 
 <div class="page-width page-twocolumns">
   <article class="article-template" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="article-template__back {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
+        <span class="icon-wrap">{% render 'icon-caret-blog', icon: 'left' %}</span>
+        {{ 'blogs.article.back_to' | t: title: blog.title }}
+      </a>
+    </div>
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when '@app' -%}
           {% render block %}
-          
+
         {%- when 'tags' -%}
           {% render 'article-tags' %}
-          
+
         {%- when 'featured_image' -%}
           {%- if article.image -%}
             <div
@@ -72,7 +78,25 @@
               </div>
             </div>
           {%- endif -%}
-  
+        {%- when 'tag' -%}
+          {% assign artTags = '' %}
+          {% for item in article.tags %}
+            {% unless item contains 'archive' %}
+              {% assign artTags = artTags | append: item | append: ',' %}
+            {% endunless %}
+          {% endfor %}
+          {% assign artTags = artTags | split: ',' %}
+          {% if artTags.size > 0 %}
+            <div class="custom-article-card__content-tags">
+              {% for tag in artTags limit: 1 %}
+                {% unless tag contains 'archive' %}
+                  <div class="custom-article-card__content-tags-item">
+                    {{ tag | remove: 'Category_' }}
+                  </div>
+                {% endunless %}
+              {% endfor %}
+            </div>
+          {% endif %}
         {%- when 'title' -%}
           <header
             class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
@@ -80,7 +104,7 @@
           >
             {%- if block.settings.blog_show_date -%}
               <span class="circle-divider" itemprop="dateCreated pubdate datePublished">
-                {{- article.published_at | time_tag: '%d %B %Y' -}}
+                {{- article.published_at | time_tag: '%B %d, %Y' -}}
               </span>
             {%- endif -%}
             <h1
@@ -91,12 +115,12 @@
             </h1>
             {%- if block.settings.blog_show_author -%}
               <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-                Posted by 
+                Posted by
                 <span itemprop="name">{{ article.author }}</span>
               </span>
             {%- endif -%}
           </header>
-  
+
         {%- when 'content' -%}
           <div
             class="article-template__content rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -105,25 +129,19 @@
           >
             {{ article.content }}
           </div>
-  
+
         {%- when 'share' -%}
           {%- render 'social-icons' -%}
-          
-        {%- when 'signup' -%}
-          <div class="section-newsletter">
-            {% render 'newsletter', block: block %}
-          </div>
-  
       {%- endcase -%}
     {%- endfor -%}
-  
+
     <div class="article-template__back {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
-        <span class="icon-wrap">{% render 'icon-chevron', icon: 'left' %}</span>
+        <span class="icon-wrap">{% render 'icon-caret-blog', icon: 'left' %}</span>
         {{ 'blogs.article.back_to' | t: title: blog.title }}
       </a>
     </div>
-  
+
     {%- if blog.comments_enabled? -%}
       <div class="article-template__comment-wrapper background-secondary">
         <div
@@ -132,7 +150,7 @@
         >
           {%- if article.comments_count > 0 -%}
             {%- assign anchorId = '#Comments-' | append: article.id -%}
-  
+
             <h2 id="Comments-{{ article.id }}" tabindex="-1">
               {{ 'blogs.article.comments' | t: count: article.comments_count }}
             </h2>
@@ -146,7 +164,7 @@
                     </footer>
                   </article>
                 {%- endif -%}
-  
+
                 {%- for comment in article.comments -%}
                   <article id="{{ comment.id }}" class="article-template__comments-comment">
                     {{ comment.content }}
@@ -201,7 +219,7 @@
                 </h3>
               </div>
             {%- endif -%}
-  
+
             <div
               {% if blog.moderated? == false %}
                 class="article-template__comments-fields"
@@ -312,19 +330,55 @@
   {% comment %}
   {% endcomment %}
   <aside class="article-aside">
-    <div class="article-aside__meta">
-      {% if article.metafields.custom.product_banner_for_sidebar != nil %}
+    {% for block in section.blocks %}
+      {%- case block.type -%}
+        {%- when 'discount_card' -%}
+          <div class="discount-card">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 310 | image_tag: class: 'discount-card_image' }}
+            {% endif %}
+            <div class="discount-card_inner">
+              {%- if block.settings.heading != blank -%}
+                <h3 class="discount-card_heading">{{ block.settings.heading }}</h3>
+              {% endif %}
+              {%- if block.settings.content != blank -%}
+                <div class="discount-card_content">
+                  {{ block.settings.content }}
+                </div>
+              {% endif %}
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="discount-card_button"
+                >
+                  {{- block.settings.button_label | escape -}}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+    {% comment %} <div class="article-aside__meta">
+      {% if article.metafields.custom.product_banner_for_sidebar != null %}
         {% liquid
           assign article_object = article.metafields.custom.product_banner_for_sidebar.value
         %}
 
         <div class="article-aside__banner">
           <a href="{{ article_object.product.value.url }}" title="{{ article_object.product.value.title }}">
-            {{ article_object.product_banner.value | image_url: width: article_object.product_banner.value.width | image_tag }}
+            {{
+              article_object.product_banner.value
+              | image_url: width: article_object.product_banner.value.width
+              | image_tag
+            }}
           </a>
         </div>
       {% endif %}
-    </div>
+    </div> {% endcomment %}
     <div class="blog-sidebar__wrap">
       {% if blog.all_tags.size > 0 %}
         <div class="blog-sidebar__categories__wrap blog-sidebar__item">
@@ -332,8 +386,7 @@
             {{ 'general.custom.blog_categories' | t }}
           </div>
 
-          {% render "all-tags" %}
-          
+          {% render 'all-tags' %}
         </div>
       {% endif %}
       <div class="blog-sidebar__search__wrap blog-sidebar__item">
@@ -343,11 +396,21 @@
         <div class="blog-sidebar__search-form">
           <form method="get" action="/search">
             <div class="field">
-              <input type="hidden" name="type" value="article" />
-              <input placeholder="{{ 'general.custom.blog_search' | t }}" id="search-blog" class="search__input field__input" type="text" name="q" />
+              <input type="hidden" name="type" value="article">
+              <input
+                placeholder="{{ 'general.custom.blog_search' | t }}"
+                id="search-blog"
+                class="search__input field__input"
+                type="text"
+                name="q"
+              >
               <label class="field__label" for="search-blog">{{ 'general.custom.blog_search' | t }}</label>
 
-              <button type="reset" class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}" aria-label="{{ 'general.search.reset' | t }}">
+              <button
+                type="reset"
+                class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
+                aria-label="{{ 'general.search.reset' | t }}"
+              >
                 <svg class="icon icon-close" aria-hidden="true" focusable="false">
                   <use xlink:href="#icon-reset">
                 </svg>
@@ -360,12 +423,8 @@
             </div>
           </form>
         </div>
-      </div> 
-      {% comment %} <div class="blog-sidebar__archive-wrap blog-sidebar__item">
-        {% render 'blog-archive-nav' blog: blog %}
-      </div> {% endcomment %}
+      </div>
     </div>
-
   </aside>
 </div>
 
@@ -404,7 +463,7 @@
   let iframes = document.querySelectorAll('iframe[src*="youtube"]');
 
   iframes.forEach((iframe) => {
-    let wrapper = document.createElement('div', { is: "expanding-list" });
+    let wrapper = document.createElement('div', { is: 'expanding-list' });
     iframe.parentNode.insertBefore(wrapper, iframe);
     wrapper.appendChild(iframe);
     iframe.parentNode.classList.add('responsive-video');
@@ -474,6 +533,46 @@
       ]
     },
     {
+      "type": "tag",
+      "name": "tag",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "discount_card",
+      "name": "discount card",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "heading"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "content"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "default": "Button label",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_label_1.label",
+          "info": "t:sections.image-banner.blocks.buttons.settings.button_label_1.info"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.image-banner.blocks.buttons.settings.button_link_1.label"
+        }
+      ]
+    },
+    {
       "type": "content",
       "name": "t:sections.main-article.blocks.content.name",
       "limit": 1
@@ -496,52 +595,6 @@
         {
           "type": "paragraph",
           "content": "t:sections.main-article.blocks.share.settings.title_info.content"
-        }
-      ]
-    },
-    {
-      "type": "breadcrumbs",
-      "name": "t:sections.main-article.blocks.breadcrumbs.name"
-    },
-    {
-      "type": "tags",
-      "name": "t:sections.main-article.blocks.tags.name"
-    },
-    {
-      "type": "signup",
-      "name": "t:sections.main-article.blocks.signup.name",
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "Sign up to receive news and special deals",
-          "label": "t:sections.newsletter.blocks.heading.settings.heading.label"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "default": "<p>We will never spam or sell your email.</p>",
-          "label": "t:sections.newsletter.blocks.paragraph.settings.paragraph.label"
-        },
-        {
-          "type": "image_picker",
-          "id": "section_bg_mobile",
-          "label": "t:sections.newsletter.settings.section_background.mobile.label"
-        },
-        {
-          "type": "image_picker",
-          "id": "section_bg_desktop",
-          "label": "t:sections.newsletter.settings.section_background.desktop.label"
-        },
-        {
-          "type": "color",
-          "id": "section_color",
-          "label": "t:sections.newsletter.settings.section_color.label",
-          "default": "#363636"
-        },
-        {
-          "type": "paragraph",
-          "content": "t:sections.newsletter.settings.paragraph.content"
         }
       ]
     }

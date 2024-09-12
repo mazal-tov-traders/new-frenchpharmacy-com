@@ -1,0 +1,189 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="blog-post">
+  <div class="page-width">
+    <div class="inner_content_btn-slider">
+      <div class="wraper-content">
+        {% if section.settings.heading != blank %}
+          <h2 class="title">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+      </div>
+      <div class="wrapper_btn-slider desk_btn-slider">
+        <div class="swiper-button-prev">
+          {% render 'icon-swiper-prev' %}
+        </div>
+        <div class="swiper-button-next">
+          {% render 'icon-swiper-next' %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-width blog-page-width">
+    <div class="swiper mySwiper">
+      <ul
+        id="Slider-{{ section.id }}"
+        class="blog__posts articles-wrapper contains-card swiper-wrapper"
+        role="list"
+      >
+        {%- if section.settings.blog != blank -%}
+          {%- for article in section.settings.blog.articles -%}
+            <li
+              id="Slide-{{ section.id }}-{{ forloop.index }}"
+              class="blog__post swiper-slide"
+              {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+              {% endif %}
+            >
+              {% render 'custom-article-card',
+                blog: section.settings.blog,
+                article: article,
+                media_aspect_ratio: 1.66,
+                show_image: true,
+                show_date: false,
+                show_author: false,
+                show_excerpt: true,
+                custom_class: 'blurred-image'
+              %}
+            </li>
+          {%- endfor -%}
+        {% endif %}
+      </ul>
+      
+    </div>
+    {% comment %} <div class="wrapper_btn-slider mob_btn-slider">
+      <div class="swiper-button-prev">
+        {% render 'icon-swiper-prev' %}
+      </div>
+      <div class="swiper-button-next">
+        {% render 'icon-swiper-next' %}
+      </div>
+    </div> {% endcomment %}
+  </div>
+</div>
+{% style %}
+    #shopify-section-{{ section.id }} {
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      height: calc((100% - 30px) / 2) !important;
+      margin-top: 0px !important;
+      display: block;
+    }
+    .swiper-grid-column > .swiper-wrapper {
+      flex-wrap: wrap !important;
+      flex-direction: row !important;
+    }
+  }
+{% endstyle %}
+<script>
+  const section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }} = {
+      section: document.querySelector("#shopify-section-{{ section.id }}"),
+      init() {
+        this.slider = new Swiper(this.section.querySelector(".mySwiper"), {
+          speed: 1000,
+          {% comment %} grabCursor: true,  {% endcomment %}
+          {% comment %} centeredSlides: true,  {% endcomment %}
+          {% comment %} loopedSlides: 2,
+          initialSlide: 1,  {% endcomment %}
+          loop: true, 
+          {% comment %} createElements: true,  {% endcomment %}
+          freeMode: true,  
+          navigation: {
+            nextEl: this.section.querySelector('.swiper-button-next'),
+            prevEl: this.section.querySelector('.swiper-button-prev')
+          },
+          breakpoints: {
+          300: {
+            slidesPerView: 1,
+            centeredSlides: false,
+            spaceBetween: 20,
+            grid: {
+              rows: 2,
+            },
+          },
+          1460: {
+            slidesPerView: 2,
+            spaceBetween: 37,
+          },
+        }
+        });
+      }
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+      section_scripts_{{ section.id | replace: "-", "_" | replace: "--", "_" }}.init()
+    })
+</script>
+
+{% schema %}
+{
+  "name": "Blog post slider",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "The Blog",
+      "label": "heading"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog post slider"
+    }
+  ]
+}
+{% endschema %}

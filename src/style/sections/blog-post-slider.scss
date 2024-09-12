@@ -1,0 +1,220 @@
+.blog-post {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    background: #F3FFFC;
+    padding-top: 119px;
+    @media screen and (max-width: 700px) {
+        position: relative;
+        
+      }
+    @media screen and (min-width: 990px) {
+  
+      .title,
+      .title-wrapper-with-link {
+        margin: 0;
+      }
+    }
+  
+    .blog-page-width{
+        padding-top: 54px;
+        padding-bottom: 42px;
+    }
+    .inner_content_btn-slider {
+      @media screen and (min-width: 771px) {
+        align-items: flex-end;
+      }
+  
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .wraper-content {
+        .title {
+          font-family: "Barlow" sans-serif;
+          font-size: 34px;
+          font-weight: 500;
+          line-height: 40.8px;
+          text-align: left;
+          text-transform: uppercase;
+          color: rgba(47, 47, 47, 1);
+  
+          @media screen and (max-width: 450px) {
+  
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 33.6px;
+  
+  
+          }
+        }
+  
+        .sub-title {
+          font-family: "Nova-300";
+          font-size: 20px;
+          font-weight: 300;
+          line-height: 30px;
+          text-align: left;
+          color: rgba(47, 47, 47, 1);
+        }
+      }
+  
+      .wrapper_btn-slider {
+        display: flex;
+        gap: 21px;
+        @media screen and (max-width: 700px) {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+       
+  
+        .swiper-button-prev {
+          position: unset;
+        }
+  
+        .swiper-button-next {
+          position: unset;
+        }
+      }
+    }
+  
+    .wrapper_btn-slider.mob_btn-slider {
+      display: block;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+  
+      .swiper-button-prev,
+      .swiper-button-next {
+        position: static;
+        width: 50px;
+        height: 50px;
+        background: #00c08b;
+        border-radius: 50%;
+        z-index: 1;
+        border: none;
+  
+        svg {
+          width: 9px;
+  
+          path {
+            fill: #fff;
+          }
+        }
+      }
+    }
+  
+    // @media screen and (min-width: 762px) {
+    //   .wrapper_btn-slider.mob_btn-slider {
+    //     display: none;
+    //   }
+    // }
+  
+    // @media screen and (max-width: 762px) {
+  
+    //   .wrapper_btn-slider.desk_btn-slider {
+    //     display: none;
+    //   }
+    // }
+  
+    .swiper-wrapper {
+      padding-left: 0px;
+    }
+  
+    .wrapper_btn-slider .swiper-button-prev,
+    .swiper-button-next {
+      background: transparent;
+      border: 1px solid #6A6A6A;
+  
+      svg path {
+        fill: #6A6A6A;
+      }
+    }
+  }
+  
+  .custom-blog-card-wrapper {
+    display: flex;
+    gap: 30px;
+  
+    @media screen and (max-width: 1250px) {
+      flex-direction: column;
+    }
+  
+    .blog-card-img {
+      max-width: 320px;
+      height: 200px;
+        object-fit: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      @media screen and (min-width: 760px) {
+        max-width: 300px;
+        height: 400px;
+      }
+  
+
+    }
+  
+    .blog-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+  
+      .first-tags {
+        padding: 6px 15px;
+        background: rgba(202, 239, 226, 1);
+        font-family: "Nova-300" sans-serif;
+        font-size: 14px;
+        line-height: 17.05px;
+        text-align: left;
+        color: rgba(47, 47, 47, 1);
+        margin-bottom: 20px;
+      }
+  
+      .card__heading {
+        font-family: "Nova-400";
+        font-size: 30px;
+        line-height: 42px;
+        text-align: left;
+        color: rgba(47, 47, 47, 1);
+        margin-bottom: 50px;
+      }
+  
+      .link-inner {
+        .link {
+          font-family: "Nova-700";
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 19.49px;
+          letter-spacing: -0.03em;
+          text-align: left;
+          color: rgba(47, 47, 47, 1);
+          transition: color 0.5s, transform 0.5s ease-in-out;
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          padding: 0;
+          text-transform: uppercase;
+  
+          svg {
+            stroke: #2f2f2f;
+            transition: transform 0.5s ease-in-out, stroke 0.5s;
+          }
+        }
+  
+        &:hover {
+          svg {
+            transform: rotate(45deg);
+            stroke: #FF5C35;
+          }
+  
+          .link {
+            color: #FF5C35;
+          }
+        }
+      }
+    }
+  }
