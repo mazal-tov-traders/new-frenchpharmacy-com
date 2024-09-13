@@ -437,31 +437,29 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
+ 
 
-  function closeDrawer() {
-    const btnClose = document.querySelector(".js-close-drawer");
-    const btnTrigger = document.querySelector(".js-custom-header [aria-controls='menu-drawer']");
+function closeDrawer() {
+  const btnClose = document.querySelector(".js-close-drawer");
 
-    btnClose.addEventListener("click", ()=> {
-      btnTrigger.click();
-    })
-  }
-
-  function closeSubDrawer() {
-    const btnsClose = document.querySelectorAll(".js-close-subdrawer");
-    const closeElems = document.querySelectorAll(".js-custom-header [data-close]");
-
-    btnsClose.forEach(element => {
-        element.addEventListener("click", ()=> {
-          closeElems.forEach(closeElem => {
-            closeElem.removeAttribute("open");
-          });
-      })
+  if (btnClose) {
+    btnClose.addEventListener("click", () => {
+      const menuDrawer = document.querySelector("[aria-controls='menu-drawer']");
+      if (menuDrawer) {
+        menuDrawer.click();
+      } else {
+        console.error("Menu drawer not found");
+      }
     });
+  } else {
+    console.error("closeDrawer: Close button not found");
   }
+}
 
+document.addEventListener('DOMContentLoaded', () => {
   closeDrawer();
-  closeSubDrawer();
+});
+
 {% endjavascript %}
 
 <script type="application/ld+json">
