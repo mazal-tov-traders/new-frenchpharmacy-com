@@ -1,5 +1,5 @@
 {%- if section.settings.breadcrumbs_enabled -%}
-    {%- unless template == 'index' or template == 'cart' or template == '404' -%}
+    {%- unless template == 'index' or template == 'cart' or template == '404' or template == 'blog' or template == 'article' -%}
   
       {% assign breadcrumbs_menu = linklists[section.settings.breadcrumbs_menu_definition].links %}
       {% assign max_depth = 0 %}

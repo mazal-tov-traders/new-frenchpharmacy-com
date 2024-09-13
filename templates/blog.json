@@ -1,5 +1,10 @@
 {
   "sections": {
+    "breadcrumbs_blog_wJ7xQb": {
+      "type": "breadcrumbs-blog",
+      "settings": {
+      }
+    },
     "main": {
       "type": "main-blog",
       "blocks": {
@@ -60,6 +65,7 @@
     }
   },
   "order": [
+    "breadcrumbs_blog_wJ7xQb",
     "main",
     "17259870685227d24f"
   ]

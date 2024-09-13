@@ -1,5 +1,10 @@
 {
   "sections": {
+    "breadcrumbs_blog_jjPz9Q": {
+      "type": "breadcrumbs-blog",
+      "settings": {
+      }
+    },
     "main": {
       "type": "main-article",
       "blocks": {
@@ -26,19 +31,58 @@
           "type": "content",
           "settings": {
           }
+        },
+        "discount_card_AL9BMj": {
+          "type": "discount_card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_4133641.jpg",
+            "heading": "10% off sitewide!",
+            "content": "Lorem ipsum dolor sit amet consectetur. Scelerisque id in sit.",
+            "button_label": "Lorem ipsum",
+            "button_link": "#"
+          }
         }
       },
       "block_order": [
         "featured_image",
         "title",
         "share",
-        "content"
+        "content",
+        "discount_card_AL9BMj"
       ],
       "settings": {
+      }
+    },
+    "slider_blog_post_BCr9mz": {
+      "type": "slider-blog-post",
+      "settings": {
+        "heading": "More articles you might like",
+        "blog": "beauty-secrets",
+        "padding_top": 50,
+        "padding_bottom": 60
+      }
+    },
+    "1726161297fd4206a1": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_medals_MnyPFA": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/medals\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_medals_MnyPFA"
+      ],
+      "settings": {
+        "include_margins": true
       }
     }
   },
   "order": [
-    "main"
+    "breadcrumbs_blog_jjPz9Q",
+    "main",
+    "slider_blog_post_BCr9mz",
+    "1726161297fd4206a1"
   ]
 }

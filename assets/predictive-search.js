@@ -1,3 +1,4 @@
+if (typeof SearchForm !== 'undefined') {
 class PredictiveSearch extends SearchForm {
   constructor() {
     super();
@@ -275,3 +276,4 @@ class PredictiveSearch extends SearchForm {
 }
 
 customElements.define('predictive-search', PredictiveSearch);
+}
