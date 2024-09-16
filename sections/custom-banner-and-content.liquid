@@ -1,9 +1,25 @@
-<div class="banner-wrapper">
+{%- style -%}
+  .section-{{ section.id }}-margin {
+    margin-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px !important;
+    margin-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px !important;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-margin {
+      margin-top: {{ section.settings.padding_top }}px !important;
+      margin-bottom: {{ section.settings.padding_bottom }}px !important;
+    }
+  }
+{%- endstyle -%}
+<div class="banner-wrapper {{ section.settings.banner_width }} {{section.settings.image_height}} section-{{ section.id }}-margin">
   <div
     class="page-width inner_banner-content"
   >
     {% if section.settings.img_in_banner != blank %}
       {{ section.settings.img_in_banner | image_url: width: 498 | image_tag: class: 'img-in-banner' }}
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <h3 class="banner-heading">{{ section.settings.heading }}</h3>
     {% endif %}
     {% if section.settings.content != blank %}
       <h3 class="banner-content">{{ section.settings.content }}</h3>
@@ -12,41 +28,93 @@
       {%- for block in section.blocks -%}
         {% case block.type %}
           {%- when 'icons' -%}
-            <div class='icon-box'>
-            {% if block.settings.icon != blank %}
-              {{ block.settings.icon | image_url: width: 200 | image_tag: class: 'icon' }}
-            {% endif %}
-          </div>
+            <div class="icon-box">
+              {% if block.settings.icon != blank %}
+                {{ block.settings.icon | image_url: width: 200 | image_tag: class: 'icon' }}
+              {% endif %}
+            </div>
+          {%- when 'buttons' -%}
+            <div
+              class="banner__buttons"
+            >
+              {%- if block.settings.button_label != blank -%}
+                <a
+                  {% if block.settings.button_link == blank %}
+                    role="link" aria-disabled="true"
+                  {% else %}
+                    href="{{ block.settings.button_link }}"
+                  {% endif %}
+                  class="btn btn-{{ forloop.index }}"
+                >
+                  {{- block.settings.button_label | escape -}}
+                </a>
+              {%- endif -%}
+            </div>
         {% endcase %}
       {%- endfor -%}
     </div>
   </div>
 </div>
-
 {%- style -%}
   #shopify-section-{{ section.id }} {
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'buttons' -%}
+          .btn-{{ forloop.index }}{
+            --color-button-background: {{ block.settings.color_button_backgroun }};
+            --color-color-button-label: {{ block.settings.color_button_label }};
+            --color-color-button-border: {{ block.settings.color_button_border }};
+            --hover-color-button-background: {{ block.settings.hover_color_button_backgroun }};
+            --hover-color-button-border: {{ block.settings.hover_color_button_border }};
+            --hover-color-button-label: {{ block.settings.hover_color_button_label }};
+          }
+          .btn-{{ forloop.index }}{
+            background-color: var(--color-button-background);
+            color: var(--color-color-button-label);
+            border: 1px solid var(--color-color-button-border);
+          }
+          .btn-{{ forloop.index }}:hover{
+            background-color: var(--hover-color-button-background);
+            border: 1px solid var(--hover-color-button-border);
+            color: var(--hover-color-button-label);
+          }
+      {%- endcase -%}
+    {%- endfor -%}
+
     @media screen and (min-width: 750px) {
       .banner-wrapper{
-          background-image: url({{ section.settings.banner_desktop | image_url: width: 1920 }});
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          max-width: 1920px;
-          width: 100%;
-          margin: 0 auto;
-          min-height: 516px;
+        background-image: url({{ section.settings.banner_desktop | image_url: width: 1920 }});
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin: 0 auto;
+
+      }
+      .banner-wrapper.full-width{
+        max-width: 1920px;
+        width: 100%;
+      }
+      .banner-wrapper.container_width{
+        max-width: 1290px;
+        width: 100%;
+      }
+      .banner-wrapper.small{
+        min-height: 200px;
+      }
+      .banner-wrapper.medium{
+        min-height: 516px;
       }
     }
     @media screen and (max-width: 749px) {
       .banner-wrapper{
         background-image: url({{ section.settings.banner_mobile | image_url: width: 749 }});
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          max-width: 1920px;
-          width: 100%;
-          margin: 0 auto;
-          min-height: 789px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        max-width: 1920px;
+        width: 100%;
+        margin: 0 auto;
+        min-height: 789px;
        }
     }
   }
@@ -57,6 +125,39 @@
   "tag": "section",
   "class": "section custom-banner-and-content",
   "settings": [
+    {
+      "type": "select",
+      "id": "banner_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full width"
+        },
+        {
+          "value": "container_width",
+          "label": "Сontainer width"
+        }
+      ],
+      "default": "full-width",
+      "label": "Banner width"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.image-banner.settings.image_height.options__2.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.image-banner.settings.image_height.options__3.label"
+        }
+      ],
+      "default": "medium",
+      "label": "t:sections.image-banner.settings.image_height.label",
+      "info": "t:sections.image-banner.settings.image_height.info"
+    },
     {
       "type": "image_picker",
       "id": "banner_desktop",
@@ -76,6 +177,31 @@
       "type": "inline_richtext",
       "id": "content",
       "label": "content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
     }
   ],
   "blocks": [
@@ -87,6 +213,58 @@
           "type": "image_picker",
           "id": "icon",
           "label": "Icon"
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        },
+        {
+          "type": "color",
+          "id": "color_button_backgroun",
+          "label": "Button Background Color",
+          "default": "rgba(29, 34, 40, 0)"
+        },
+        {
+          "type": "color",
+          "id": "color_button_label",
+          "label": "Button Color Label",
+          "default": "#2f2f2f"
+        },
+        {
+          "type": "color",
+          "id": "color_button_border",
+          "label": "Button Color Border",
+          "default": "#2f2f2f"
+        },
+        {
+          "type": "color",
+          "id": "hover_color_button_backgroun",
+          "label": "Hover Button Background Color",
+          "default": "rgba(29, 34, 40, 0)"
+        },
+        {
+          "type": "color",
+          "id": "hover_color_button_border",
+          "label": "Hover Button Color Border",
+          "default": "#2f2f2f"
+        },
+        {
+          "type": "color",
+          "id": "hover_color_button_label",
+          "label": "Hover Button Color Label",
+          "default": "#2f2f2f"
         }
       ]
     }

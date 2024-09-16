@@ -1,0 +1,442 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "shipping_section_8aYtrf": {
+      "type": "shipping-section",
+      "blocks": {
+        "heading_Mnaqwk": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>SHIPPING<\/p>"
+          }
+        },
+        "heading_8mCyHk": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Important<\/p>"
+          }
+        },
+        "content_ywBPwW": {
+          "type": "content",
+          "settings": {
+            "content": "<p>Once the order has left our warehouse, it is the customer's full responsibility to receive it at the address provided at the time of purchase.<\/p><p><\/p>",
+            "background_inner": false
+          }
+        },
+        "border_pmxnxa": {
+          "type": "border",
+          "settings": {
+          }
+        },
+        "content_qbJnYw": {
+          "type": "content",
+          "settings": {
+            "content": "<p>Once your order has been dropped off, we cannot be held responsible if the package is lost or stolen. However, US Health Drugstore LLC is paying an insurance which covers all orders against Theft, Damages or Lost packages.<\/p>",
+            "background_inner": false
+          }
+        },
+        "border_MUpAM8": {
+          "type": "border",
+          "settings": {
+          }
+        },
+        "content_U4gHH7": {
+          "type": "content",
+          "settings": {
+            "content": "<p>Return requests will not be possible for a product used OR opened.<\/p>",
+            "background_inner": false
+          }
+        },
+        "border_zJQVp8": {
+          "type": "border",
+          "settings": {
+          }
+        },
+        "content_9gEwXn": {
+          "type": "content",
+          "settings": {
+            "content": "<p>In case of a shipping cost refund or part refund request for an order leaving late our warehouse: this is possible online for business days and products showing \"IN STOCK\" and having no warning message for being late in stock or Out of stock with the possibility to pre-purchase.<\/p>",
+            "background_inner": false
+          }
+        },
+        "border_epDUnk": {
+          "type": "border",
+          "settings": {
+          }
+        },
+        "content_bQbCBF": {
+          "type": "content",
+          "settings": {
+            "content": "<p>Frenchpharmacy.com cannot be held liable in the case a delivery from the carrying company (the \"carrier\", IE UPS, DHL, USPS etc) is late and does not match the time service expected. As well, frenchpharmacy.com cannot be held responsible, in any way, if a mistake is made by the customer on the address at the time of purchase. In such cases, customer is responsible for loss of the order unless it returns in good conditions to Frenchpharmacy.. In such a latter case, Refund is then processed minus a $14 restocking fee as well as the original cost of shipping.<\/p>",
+            "background_inner": false
+          }
+        },
+        "heading_c8AJem": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Choose from the shipping options below<\/p>"
+          }
+        },
+        "content_4gNHDp": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>Overnight Delivery<\/strong><\/p><p>UPS NEXT DAY AIR (business days) in the USA: $88.00 (Next day air is guaranted only for order placed before Noon (12pm EST) from Monday to Thursday - no Saturday Delivery-). PLEASE note that FrenchPharmacy.com cannot be held responsible if a 24h shipment fails to make it on time as many parameters can affect fast delivery (weather, late order, pick-up error by courrier etc).<\/p>",
+            "background_inner": true
+          }
+        },
+        "content_BbEMia": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>Standard Ground<\/strong><\/p><p>(6-10 Business days) Free standard economy shipping for all orders over $74.99 in the USA.<\/p>",
+            "background_inner": true
+          }
+        },
+        "content_6U3Gb9": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>2-3 Business Days guaranteed delivery (orders placed before 1pm EST on business days)<\/strong><\/p><p>UPS $21.40 for orders less than $75.<\/p><p>UPS $16.40 for orders over $74.99.<\/p>",
+            "background_inner": true
+          }
+        },
+        "content_hgjee7": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>Expedited Ground<\/strong><\/p><p>DHL or USPS (6-10 Business days) $11.40 (not available to Alaska, Hawaii, U.S Virgin Islands, Guam, American Samoa, Palau, and the Northern Mariana Islands) for orders less than $75.00, FREE above $74.99<\/p><p>DHL or USPS (6-10 Business days) $11.40 (Other U.S. Territories*)<\/p>",
+            "background_inner": true
+          }
+        },
+        "content_HGVnHg": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>International<\/strong><\/p><p>DHL Express International 10-15 days business days is Free for orders above $74.99 for the rest of the world.<\/p><p>International Expedited 4-10 days with tracking DHL $39.90 for rest of the world. <\/p><p>Internation Expedited is $34.40 for orders above $74.99.<\/p>",
+            "background_inner": true
+          }
+        },
+        "sticky_sidebar_jbQVnG": {
+          "type": "sticky_sidebar",
+          "settings": {
+            "top_img": "shopify:\/\/shop_images\/fi_411776.svg",
+            "heading": "<p>How to get<strong> FREE Shipping:<\/strong><\/p>",
+            "content": "<ul><li>Free standard shipping over $75.00<\/li><li>Ship to an address within the United States.<\/li><li>Your shipment will arrive within 6-10 business days from your order.<\/li><li>*Your total purchase must reach the designated amount after any discounts are applied and prior to the costs of shipping and tax.<\/li><\/ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Mnaqwk",
+        "heading_8mCyHk",
+        "content_ywBPwW",
+        "border_pmxnxa",
+        "content_qbJnYw",
+        "border_MUpAM8",
+        "content_U4gHH7",
+        "border_zJQVp8",
+        "content_9gEwXn",
+        "border_epDUnk",
+        "content_bQbCBF",
+        "heading_c8AJem",
+        "content_4gNHDp",
+        "content_BbEMia",
+        "content_6U3Gb9",
+        "content_hgjee7",
+        "content_HGVnHg",
+        "sticky_sidebar_jbQVnG"
+      ],
+      "settings": {
+      }
+    },
+    "shipping_returns_table_LN9Xq7": {
+      "type": "shipping-returns-table",
+      "blocks": {
+        "heading_XtLaUF": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Shipping Costs and Methods for <strong>Domestic Orders<\/strong><\/p>",
+            "text_color": "#00C08B"
+          }
+        },
+        "column_title_Tcwhaa": {
+          "type": "column_title",
+          "settings": {
+            "column_title1": "Shipping Method",
+            "column_title2": "Shipping Cost",
+            "column_title3": "Expected Arrival",
+            "background_color": "#00C08B"
+          }
+        },
+        "column_text_hTN3FY": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "Ground Economy (orders over $74.99)",
+            "column_text2": "Free shipping",
+            "column_text3": "6-10 business days, no PO Boxes"
+          }
+        },
+        "column_text_nFWxRh": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "Ground Economy (orders less than $75)",
+            "column_text2": "$11.40",
+            "column_text3": "6-10 business days, no PO Boxes"
+          }
+        },
+        "column_text_rVXYxP": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "Ground Standard (orders over $74.99)",
+            "column_text2": "$4.50",
+            "column_text3": "4-9 business days, no PO Boxes"
+          }
+        },
+        "column_text_TLhzqN": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "Ground Standard (orders less than $75)",
+            "column_text2": "$13.80",
+            "column_text3": "4-9 business days, no PO Boxes"
+          }
+        },
+        "column_text_axKgWw": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "Expedited** Ground (orders over $74.99)",
+            "column_text2": "$14.40",
+            "column_text3": "3-4 business days, no PO Boxes"
+          }
+        },
+        "column_text_RWqm7q": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "Expedited** Ground (orders less than $75)",
+            "column_text2": "$21.40",
+            "column_text3": "3-4 business days, no PO Boxes"
+          }
+        },
+        "column_text_qirRQi": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "UPS 2 DAYS AIR (orders over $74.99)",
+            "column_text2": "$26.40",
+            "column_text3": "2-3 business day, no PO Boxes"
+          }
+        },
+        "column_text_hkyzBQ": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "UPS 2 DAYS AIR (orders less than $75)",
+            "column_text2": "$32.40",
+            "column_text3": "2-3 business day, no PO Boxes"
+          }
+        },
+        "column_text_RHmKr9": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "UPS NEXT DAY AIR (business days)",
+            "column_text2": "$88.00",
+            "column_text3": "1-2 business day, no PO Boxes"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XtLaUF",
+        "column_title_Tcwhaa",
+        "column_text_hTN3FY",
+        "column_text_nFWxRh",
+        "column_text_rVXYxP",
+        "column_text_TLhzqN",
+        "column_text_axKgWw",
+        "column_text_RWqm7q",
+        "column_text_qirRQi",
+        "column_text_hkyzBQ",
+        "column_text_RHmKr9"
+      ],
+      "settings": {
+      }
+    },
+    "shipping_returns_table_EDKNKa": {
+      "type": "shipping-returns-table",
+      "blocks": {
+        "heading_AQpL93": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Shipping Costs and Methods for <strong>International Orders<\/strong><\/p>",
+            "text_color": "#ff5c35"
+          }
+        },
+        "column_title_VUqrcy": {
+          "type": "column_title",
+          "settings": {
+            "column_title1": "Shipping Method",
+            "column_title2": "Shipping Cost",
+            "column_title3": "Expected Arrival",
+            "background_color": "#ff5c35"
+          }
+        },
+        "column_text_mhHnPM": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "DHL International Shipping (orders over $74.99)",
+            "column_text2": "Free shipping",
+            "column_text3": "10-16 business day, no PO Boxes"
+          }
+        },
+        "column_text_AJFn67": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "DHL Express (orders over $74.99)",
+            "column_text2": "$34.40",
+            "column_text3": "2-4 business day, no PO Boxes"
+          }
+        },
+        "column_text_mJBtkG": {
+          "type": "column_text",
+          "settings": {
+            "column_text1": "DHL Express (orders less than $75)",
+            "column_text2": "$39.90",
+            "column_text3": "2-4 business day, no PO Boxes"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AQpL93",
+        "column_title_VUqrcy",
+        "column_text_mhHnPM",
+        "column_text_AJFn67",
+        "column_text_mJBtkG"
+      ],
+      "settings": {
+      }
+    },
+    "shipping_section_MK7nGj": {
+      "type": "shipping-section",
+      "blocks": {
+        "heading_MqQpKQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "<p>Shipping Restrictions<\/p>"
+          }
+        },
+        "content_KEWUDc": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>Out of Stock<\/strong><\/p><p>Please make sure to add us to your address book so that you may receive a confirmation email or a support email (customerlove@frenchpharmacy.com).<\/p>",
+            "background_inner": true
+          }
+        },
+        "content_qDLTyt": {
+          "type": "content",
+          "settings": {
+            "content": "<p>Refused Packages or Address Errors<\/p><p>A $14 Non-Delivery fee will be charged for refused shipments ($49 for international orders) or orders placed with an incorrect address. The Non-Delivery fee will be charged to the payment form selected during your checkout, and will be subtracted from any refund or store credit. If a new shipment is requested or not, an additional flat rate charge of $11.40 may be added to off balance shipping costs.<\/p>",
+            "background_inner": true
+          }
+        },
+        "content_kPUE4G": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>United States Postal Service (USPS)<\/strong><\/p><p>USPS is required for all deliveries to PO Boxes and military addresses. We cannot guarantee replacement of lost packages shipped via USPS.<\/p>",
+            "background_inner": true
+          }
+        },
+        "content_kgJwm4": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>Next Day and Second Day Shipping<\/strong><\/p><p>All UPS next-day orders will be delivered on the next business day. If an order is placed on Friday by 1:00 PM EST, the shipment should be received by the customer on Monday, pending credit card verification. Any order placed on a weekend will be shipped on the next business day. Business days are Monday through Friday.<\/p><p><\/p><p>All UPS 2-3 day orders will be delivered in two or three business days. If an order is placed on Friday by 1:00 PM EST, the shipment should be received by the customer on Tuesday, pending credit card verification. Any order placed on a weekend will be shipped on Monday. Business days are Monday through Friday.<\/p>",
+            "background_inner": true
+          }
+        },
+        "content_VFBtwP": {
+          "type": "content",
+          "settings": {
+            "content": "<p><strong>Back-ordered items<\/strong><\/p><p>All in-stock products generally ship within 24 hours of the order being placed. When available, the back-ordered item(s) will ship, free of charge to the customer. Domestic backordered items are usually shipped within 3-7 business days.<\/p>",
+            "background_inner": true
+          }
+        },
+        "sticky_sidebar_YfVgxk": {
+          "type": "sticky_sidebar",
+          "settings": {
+            "top_img": "shopify:\/\/shop_images\/Group_2.svg",
+            "heading": "<p><strong>Additional<\/strong> Shipping Details<\/p>",
+            "content": "<ul><li>Orders to PO. Boxes, APO\/FPO\/DPO are sent via USPS only.<\/li><li>We will notify you of any complications with your credit card.<\/li><li>frenchpharmacy.com strictly follows all national regulations regarding the sale, purchase and shipment of any product or product ingredient that is considered restricted or prohibited by any law within the United States<\/li><li>Free Shipping is not a guaranteed service.<\/li><li>Delivery to U.S. only. Excludes weekends and holidays. In-stock items only.<\/li><li>Dangerous goods cannot ship via 2-3 days service or overnight (this includes most fragrances).<\/li><li>Orders received on Saturday and Sunday to be processed by close of business day Monday.<\/li><\/ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MqQpKQ",
+        "content_KEWUDc",
+        "content_qDLTyt",
+        "content_kPUE4G",
+        "content_kgJwm4",
+        "content_VFBtwP",
+        "sticky_sidebar_YfVgxk"
+      ],
+      "settings": {
+      }
+    },
+    "shipping_section_3DAkJJ": {
+      "type": "shipping-section",
+      "blocks": {
+        "section_heading_Q4Xtfg": {
+          "type": "section_heading",
+          "settings": {
+            "section_heading": "<p>RETURNS<\/p>",
+            "border": true
+          }
+        },
+        "content_Y3VV3j": {
+          "type": "content",
+          "settings": {
+            "content": "<p>Your complete satisfaction is always important to us and we understand there are times that you may need to return a product.<strong> In the event that you do need to return your product, please review the policy below:<\/strong><\/p><ul><li>Returns must be made within 14 days of your purchase date for a refund.<\/li><li>Returned merchandise must be in its original, UNOPENED and UNUSED, resalable condition. Products are all checked upon return.<\/li><li>You will be responsible for the return shipping & handling charges, which will not be refunded, unless you received damaged items.<\/li><li>All returns will be credited to the original credit card used at the time of purchase once return is validated by the warehouse.<\/li><\/ul><p>In case of help please write to <a href=\"#\" target=\"_blank\" title=\"customerlove@frenchpharmacy.com.  \">customerlove@frenchpharmacy.com.  <\/a><\/p><p>In case we are to send you a label for the return, you would be credited for the full refund of purchase product price, less product shipping (we do not reimburse any shipping costs) and handling ($14 flat fee in the USA, $49 for international orders). An additional new delivery fee may be added for new delivery requests within 14 days of purchase.<\/p>",
+            "background_inner": false
+          }
+        },
+        "sticky_sidebar_MKGQj8": {
+          "type": "sticky_sidebar",
+          "settings": {
+            "top_img": "shopify:\/\/shop_images\/logo_1_69cce49e-9b33-49a2-8161-7d2bbfe1a0de.png",
+            "heading": "<p>We strive to make our clients feel special and we’re thrilled when you love your experience with our unique product selection.<\/p>",
+            "content": "<p>We want you to feel beautiful everyday and we’re so happy that we can be a small part of your life.<\/p>",
+            "buttom_img": "shopify:\/\/shop_images\/Vector_2.svg"
+          }
+        }
+      },
+      "block_order": [
+        "section_heading_Q4Xtfg",
+        "content_Y3VV3j",
+        "sticky_sidebar_MKGQj8"
+      ],
+      "settings": {
+      }
+    },
+    "172647743510f3217f": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_medals_jrVFLP": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/medals\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_medals_jrVFLP"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "shipping_section_8aYtrf",
+    "shipping_returns_table_LN9Xq7",
+    "shipping_returns_table_EDKNKa",
+    "shipping_section_MK7nGj",
+    "shipping_section_3DAkJJ",
+    "172647743510f3217f"
+  ]
+}

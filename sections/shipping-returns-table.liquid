@@ -1,0 +1,151 @@
+<div class="page-width">
+  <div class="shipping-section">
+    {%- for block in section.blocks -%}
+      {% case block.type %}
+        {%- when 'heading' -%}
+          {% if block.settings.heading != blank %}
+            <h2 class="shipping-section__heading">{{ block.settings.heading }}</h2>
+          {% endif %}
+      {% endcase %}
+    {%- endfor -%}
+    <table class="shipping-table">
+      <thead>
+        <tr>
+          {%- for block in section.blocks -%}
+            {% case block.type %}
+              {%- when 'column_title' -%}
+                {% if block.settings.column_title1 != blank %}
+                  <th class="shipping-table__title">{{ block.settings.column_title1 }}</th>
+                {% endif %}
+                {% if block.settings.column_title2 != blank %}
+                  <th class="shipping-table__title">{{ block.settings.column_title2 }}</th>
+                {% endif %}
+                {% if block.settings.column_title3 != blank %}
+                  <th class="shipping-table__title">{{ block.settings.column_title3 }}</th>
+                {% endif %}
+            {% endcase %}
+          {%- endfor -%}
+        </tr>
+      </thead>
+      <tbody>
+        {%- for block in section.blocks -%}
+          {% case block.type %}
+            {%- when 'column_text' -%}
+              <tr>
+              {% if block.settings.column_text1 != blank %}
+                <td class="shipping-table__text">{{ block.settings.column_text1 }}</td>
+              {% endif %}
+              {% if block.settings.column_text2 != blank %}
+                <td class="shipping-table__text">{{ block.settings.column_text2 }}</td>
+              {% endif %}
+              {% if block.settings.column_text3 != blank %}
+                <td class="shipping-table__text">{{ block.settings.column_text3 }}</td>
+              {% endif %}
+            </tr>
+          {% endcase %}
+        {%- endfor -%}
+      </tbody>
+    </table>
+  </div>
+</div>
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'heading' %}
+          .shipping-section__heading strong {
+            color:{{ block.settings.text_color }};
+            font-weight: 400;
+          }
+        {% when 'column_title' %}
+          .shipping-table thead {
+            background-color:{{ block.settings.background_color }};
+          }
+      {% endcase %}
+    {% endfor %}
+  }
+{%- endstyle -%}
+
+{% schema %}
+{
+  "name": "Shipping & Returns Table",
+  "tag": "section",
+  "class": "section shipping-returns-table",
+  "settings": [
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "color for bold font",
+          "default": "#00C08B"
+        }
+      ]
+    },
+    {
+      "type": "column_title",
+      "name": "Column title",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_title1",
+          "label": "Column title"
+        },
+        {
+          "type": "text",
+          "id": "column_title2",
+          "label": "Column title"
+        },
+        {
+          "type": "text",
+          "id": "column_title3",
+          "label": "Column title"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "row background color",
+          "default": "#00C08B"
+        }
+      ]
+    },
+    {
+      "type": "column_text",
+      "name": "Column text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "column_text1",
+          "label": "Column text"
+        },
+        {
+          "type": "text",
+          "id": "column_text2",
+          "label": "Column text"
+        },
+        {
+          "type": "text",
+          "id": "column_text3",
+          "label": "Column text"
+        }
+      ]
+    },
+  ],
+  "presets": [
+    {
+      "name": "Shipping & Returns Table"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,168 @@
+<div class="page-width">
+  {%- for block in section.blocks -%}
+    {% case block.type %}
+      {%- when 'section_heading' -%}
+        <div class="border{% if block.settings.border %} show{% else %} hidden{% endif %}">.</div>
+        {% if block.settings.section_heading != blank %}
+          <h2 class="shipping-section__heading">{{ block.settings.section_heading }}</h2>
+        {% endif %}
+    {% endcase %}
+  {%- endfor -%}
+  <div class="shipping-section-content">
+    <div class="shipping-content">
+      <div class="important-info">
+        {%- for block in section.blocks -%}
+          {% case block.type %}
+            {%- when 'heading' -%}
+              {% if block.settings.heading != blank %}
+                <h3 class="important-info__heading">{{ block.settings.heading }}</h3>
+              {% endif %}
+            {%- when 'content' -%}
+              {% if block.settings.content != blank %}
+                <div class="important-info__content{% if block.settings.background_inner  %} background-inner{% endif %}">
+                  {{ block.settings.content }}
+                </div>
+              {% endif %}
+            {%- when 'border' -%}
+              <div class="important-info__border">.</div>
+          {% endcase %}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {% case block.type %}
+        {%- when 'sticky_sidebar' -%}
+          {% if block.settings.top_img != blank %}
+            <div class="sticky-sidebar">
+              <div class="free-shipping-info">
+                {% if block.settings.top_img != blank %}
+                  <img
+                    src="{{ block.settings.top_img | image_url }}"
+                    alt="image"
+                    height="auto"
+                    width="auto"
+                    loading="lazy"
+                    class="sticky-sidebar__top-img"
+                  >
+                {% endif %}
+                {% if block.settings.heading != blank %}
+                  <h3 class="sticky-sidebar__heading">{{ block.settings.heading }}</h3>
+                {% endif %}
+                {% if block.settings.content != blank %}
+                  <div class="sticky-sidebar__content">
+                    {{ block.settings.content }}
+                  </div>
+                {% endif %}
+                {% if block.settings.buttom_img != blank %}
+                  <div class="inner__buttom-img">
+                    <img
+                      src="{{ block.settings.buttom_img | image_url }}"
+                      alt="image"
+                      height="auto"
+                      width="auto"
+                      loading="lazy"
+                      class="sticky-sidebar__buttom-img"
+                    >
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+      {% endcase %}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "shipping-section",
+  "tag": "section",
+  "class": "section custom_shippinh-returns",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "name": "content",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "background_inner",
+          "default": false,
+          "label": "add background inner"
+        }
+      ]
+    },
+    {
+      "type": "border",
+      "name": "Border",
+      "settings": []
+    },
+    {
+      "type": "sticky_sidebar",
+      "name": "Sticky Sidebar",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "top_img",
+          "label": "top Image"
+        },
+        {
+          "type": "richtext",
+          "id": "heading",
+          "label": "heading"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "image_picker",
+          "id": "buttom_img",
+          "label": "bottom Image"
+        }
+      ]
+    },
+    {
+      "type": "section_heading",
+      "name": "Section Heading",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "section_heading",
+          "label": "Section Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "border",
+          "default": false,
+          "label": "Border"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "shipping-section"
+    }
+  ]
+}
+{% endschema %}

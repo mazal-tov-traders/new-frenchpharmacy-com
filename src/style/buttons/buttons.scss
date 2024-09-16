@@ -1,28 +1,14 @@
-// .button {
-//   $button-bg: #ffbf26;
-//   background-color: $button-bg;
-//   font-size: 1.6rem;
-//   font-weight: 600;
-//   letter-spacing: 0;
-//   min-height: calc(4.3rem + var(--buttons-border-width) * 2);
-//   padding: 0 3.9rem;
-
-//   &:not([disabled]):hover {
-//     &:after {
-//       box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-//           rgba(var(--color-button-text), var(--border-opacity)),
-//         0 0 0 calc(var(--buttons-border-width) + 1px) $button-bg;
-//     }
-//   }
-
-//   &:after {
-//     box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-//         rgba(var(--color-button-text), var(--border-opacity)),
-//       0 0 0 var(--buttons-border-width) $button-bg;
-//   }
-// }
-
-// .button--secondary {
-//   background-color: #fff;
-//   color: rgba(var(--color-foreground));
-// }
+.btn{
+    padding: 10px 20px;
+    color: #2F2F2F;
+    width: fit-content;
+    border: 1px solid #2F2F2F;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Raleway';
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14.09px;
+    text-align: center;
+    background: transparent;
+}

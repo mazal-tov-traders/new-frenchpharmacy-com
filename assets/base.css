@@ -3486,3 +3486,11 @@ details-disclosure > details {
 }
 
 
+:root {
+  --color-button-background: var(--color-button-background);
+  --color-color-button-label: var(--color-color-button-label);
+  --color-color-button-border: var(--color-color-button-border);
+  --hover-color-button-background: var(--hover-color-button-background);
+  --hover-color-button-border: var(--hover-color-button-border);
+  --hover-color-button-label: var(--hover-color-button-label);
+}

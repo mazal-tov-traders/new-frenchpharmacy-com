@@ -1,0 +1,78 @@
+
+
+.shipping-returns-table {
+    margin-bottom: 60px;
+}
+
+.shipping-returns-table:last-of-type {
+    margin-bottom: 80px;
+}
+.shipping-section {
+    max-width: 1300px;
+    margin: 0 auto;
+    
+
+    &__heading {
+        font-family: 'Barlow';
+        font-size: 34px;
+        font-weight: 400;
+        line-height: 40.8px;
+        text-align: center;
+        color: #2F2F2F;
+        margin-bottom: 30px;
+
+    }
+}
+
+.shipping-table {
+    width: 100%;
+    border-collapse: collapse;
+    
+
+    &__title {
+        font-family: 'Nova-700';
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 24px;
+        text-align: left;
+        color: white;
+    }
+
+    thead {
+        th {
+            padding: 13px 30px;
+
+        }
+
+        th:nth-child(1){
+            border-right: 1px solid #F0F0F0;
+            width: 40%;
+        }
+        th:nth-child(2) {
+            border-right: 1px solid #F0F0F0;
+            width: 25%;
+        }
+        th:nth-child(3) {
+            width: 35%;
+        }
+    }
+
+    &__text {
+        font-family: 'Nova-300';
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+        color: #000000;
+
+    }
+}
+
+
+
+.shipping-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+.shipping-table tbody td {
+    padding: 13px 30px;
+    border: 1px solid #F0F0F0;
+}

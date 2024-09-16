@@ -1,0 +1,253 @@
+.custom_shippinh-returns {
+    .border {
+        height: 0;
+        color: transparent;
+        border-bottom: 1px solid #d9d9d9;
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
+
+    .border.hidden {
+        display: none;
+    }
+
+    .border.show {
+        display: block;
+    }
+
+    .shipping-section__heading {
+        color: #2f2f2f;
+        font-family: 'Barlow';
+        font-size: 34px;
+        font-weight: 400;
+        line-height: 40.8px;
+        margin-bottom: 30px;
+        text-align: center;
+        margin: 80px 0 50px;
+    }
+
+    .shipping-section-content {
+
+        margin-bottom: 100px;
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        column-gap: 80px;
+
+        @media (max-width: 1280px) {
+            column-gap: 70px;
+            grid-template-columns: 1fr 290px;
+        }
+
+        @media (max-width: 1064px) {
+            column-gap: 30px;
+        }
+
+        @media (max-width: 1064px) {
+            grid-template-columns: 1fr;
+        }
+
+        .important-info {
+
+
+            &__heading {
+                font-family: 'Barlow';
+                font-size: 28px;
+                font-weight: 400;
+                line-height: 32px;
+                text-align: left;
+                color: #2f2f2f;
+                margin-bottom: 20px;
+            }
+
+            &__content {
+                font-family: 'Nova-300';
+                font-size: 16px;
+                font-weight: 300;
+                line-height: 24px;
+                text-align: left;
+                color: #2f2f2f;
+                margin-bottom: 10px;
+
+                p {
+                    margin-bottom: 20px;
+
+                    strong {
+                        color: #FF5C35;
+                        font-weight: 300;
+                    }
+
+                    a {
+                        color: #0095FF;
+
+                    }
+                }
+
+                p:last-of-type {
+                    margin-bottom: 0px;
+                }
+
+                ul {
+                    padding: 0;
+                    margin: 0 0 20px 0;
+
+                    li {
+                        margin-bottom: 15px;
+                        position: relative;
+                        list-style-type: none;
+                        gap: 15px;
+                        list-style: none;
+                        padding-left: 25px;
+                    }
+
+                    li:last-of-type {
+                        margin-bottom: 0px;
+                    }
+
+                    li::before {
+                        content: '';
+                        width: 10px;
+                        height: 10px;
+                        background-image: url('/assets/li-marker.svg');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        position: absolute;
+                        left: 0;
+                        top: 7px;
+                    }
+
+                }
+            }
+
+            &__content:last-of-type {
+                margin-bottom: 0;
+            }
+
+            &__content.background-inner {
+                background: #F3FFFC;
+                border: 1px solid #F0F0F0;
+                padding: 20px 30px;
+
+                p {
+                    margin-bottom: 15px;
+                }
+
+                p:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                strong {
+                    font-family: 'Nova-400';
+                    font-size: 20px;
+                    line-height: 30px;
+                    text-align: left;
+                    color: #2F2F2F;
+
+                }
+            }
+
+            &__border {
+                height: 0;
+                color: transparent;
+                border-bottom: 1px solid #f0f0f0;
+                margin-top: 15px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+
+    .sticky-sidebar {
+
+        @media (min-width: 1050px) {
+
+            max-width: 350px;
+            width: 100%;
+            position: -webkit-sticky;
+            position: sticky;
+            height: fit-content;
+            top: 270px;
+
+        }
+
+        &__top-img {
+            margin-bottom: 10px;
+            max-width: fit-content;
+        }
+
+        &__heading {
+            font-family: 'Nova-400';
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 30px;
+            text-align: left;
+            color: #2F2F2F;
+            margin-bottom: 20px;
+
+            strong {
+                color: #00C08B;
+                font-weight: 400;
+            }
+        }
+
+        &__content {
+
+            font-family: 'Nova-300';
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 24px;
+            text-align: left;
+            color: #2F2F2F;
+
+            p {
+                margin: 20px 0;
+            }
+
+            ul {
+                padding: 0;
+                margin: 0;
+
+                li {
+                    margin-bottom: 15px;
+                    position: relative;
+                    list-style-type: none;
+                    gap: 15px;
+                    list-style: none;
+                    padding-left: 25px;
+                }
+
+                li:last-of-type {
+                    margin-bottom: 0px;
+                }
+
+                li::before {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    background-image: url('/assets/li-marker.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    left: 0;
+                    top: 7px;
+                }
+
+            }
+        }
+
+        .inner__buttom-img {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        &__buttom-img {}
+    }
+
+    .sticky-sidebar .free-shipping-info {
+        background: #F3FFFC;
+        border: 1px solid #F0F0F0;
+        padding: 30px;
+        max-width: 350px;
+    }
+}
+
+
+
