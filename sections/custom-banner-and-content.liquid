@@ -33,26 +33,28 @@
                 {{ block.settings.icon | image_url: width: 200 | image_tag: class: 'icon' }}
               {% endif %}
             </div>
-          {%- when 'buttons' -%}
-            <div
-              class="banner__buttons"
-            >
-              {%- if block.settings.button_label != blank -%}
-                <a
-                  {% if block.settings.button_link == blank %}
-                    role="link" aria-disabled="true"
-                  {% else %}
-                    href="{{ block.settings.button_link }}"
-                  {% endif %}
-                  class="btn btn-{{ forloop.index }}"
-                >
-                  {{- block.settings.button_label | escape -}}
-                </a>
-              {%- endif -%}
-            </div>
         {% endcase %}
       {%- endfor -%}
     </div>
+    <div class='buttons-inner'>
+    {%- for block in section.blocks -%}
+      {% case block.type %}
+        {%- when 'buttons' -%}
+            {%- if block.settings.button_label != blank -%}
+              <a
+                {% if block.settings.button_link == blank %}
+                  role="link" aria-disabled="true"
+                {% else %}
+                  href="{{ block.settings.button_link }}"
+                {% endif %}
+                class="btn btn-{{ forloop.index }}"
+              >
+                {{- block.settings.button_label | escape -}}
+              </a>
+            {%- endif -%}
+      {% endcase %}
+    {%- endfor -%}
+  </div>
   </div>
 </div>
 {%- style -%}
@@ -187,8 +189,8 @@
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 120,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
       "default": 0
@@ -197,8 +199,8 @@
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 100,
-      "step": 1,
+      "max": 120,
+      "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 0

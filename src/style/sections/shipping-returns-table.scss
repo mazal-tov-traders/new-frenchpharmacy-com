@@ -1,12 +1,12 @@
 
 
-.shipping-returns-table {
-    margin-bottom: 60px;
-}
+// .shipping-returns-table {
+//     margin-bottom: 60px;
+// }
 
-.shipping-returns-table:last-of-type {
-    margin-bottom: 80px;
-}
+// .shipping-returns-table:last-of-type {
+//     margin-bottom: 80px;
+// }
 .shipping-section {
     max-width: 1300px;
     margin: 0 auto;
@@ -40,20 +40,20 @@
 
     thead {
         th {
-            padding: 13px 30px;
+            padding: 11.6px 30px;
 
         }
 
         th:nth-child(1){
             border-right: 1px solid #F0F0F0;
-            width: 40%;
+            width: 48%;
         }
         th:nth-child(2) {
             border-right: 1px solid #F0F0F0;
-            width: 25%;
+            width: 22%;
         }
         th:nth-child(3) {
-            width: 35%;
+            width: 26%;
         }
     }
 
@@ -73,6 +73,6 @@
     background-color: #fafafa;
   }
 .shipping-table tbody td {
-    padding: 13px 30px;
+    padding: 11.8px 30px;
     border: 1px solid #F0F0F0;
 }

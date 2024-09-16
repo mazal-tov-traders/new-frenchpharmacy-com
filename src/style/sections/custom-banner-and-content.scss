@@ -1,4 +1,24 @@
 .custom-banner-and-content {
+  .buttons-inner{
+    display: flex;
+    gap: 21px;
+    .btn{
+      padding: 8px 19px;
+      color: #2F2F2F;
+      width: fit-content;
+      border: 1px solid #2F2F2F;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: 'Raleway';
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 14.09px;
+      text-align: center;
+      background: transparent;
+  }
+  }
+ 
+
   .banner-wrapper {
     display: flex;
     justify-content: center;
