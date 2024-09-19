@@ -189,7 +189,94 @@
     {% render 'mask-arch' %}
   {%- endif -%}
 </div>
+<script defer="defer">
+   document.addEventListener('DOMContentLoaded', function () {
+    const collectionEl = document.querySelector('.collection');
 
+    if (collectionEl) {
+      const intervalId = setInterval(() => {
+        const gfSummaryEl = document.querySelector('.gf-summary');
+        const gfControlsContainerEl = document.querySelector('#gf-controls-container'); // Обращаемся к ID
+
+       
+        if (gfSummaryEl) {
+          console.log('Элемент .gf-summary найден');
+
+          // Копируем элемент
+          const newGfSummaryEl = gfSummaryEl.cloneNode(true);
+          newGfSummaryEl.classList.add('custom');
+          gfSummaryEl.style.display = 'none';
+
+          if (gfControlsContainerEl) {
+            console.log('Контейнер #gf-controls-container найден');
+            gfControlsContainerEl.insertBefore(newGfSummaryEl, gfControlsContainerEl.firstChild);
+            console.log('Новый элемент добавлен в контейнер');
+
+            // Очищаем интервал
+            clearInterval(intervalId);
+          } else {
+            console.log('Контейнер #gf-controls-container не найден');
+          }
+        } else {
+          console.log('Элемент .gf-summary пока не найден');
+        }
+      }, 500); // Проверяем каждые полсекунды
+    }
+  });
+ 
+  
+//!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+  let checkContainerInterval;
+
+function addCollectionImage() {
+    const container = document.getElementById('gf-tree');
+    
+    if (container) {
+        // Проверяем, существует ли элемент с классом 'test'
+        let existingElement = container.querySelector('.test');
+
+        if (!existingElement) {
+            const img = document.createElement('img');
+            img.src = '{{ collection.image | image_url: width: 222 }}'; // Устанавливаем URL изображения
+            img.alt = '{{ collection.image.alt | escape }}'; // Устанавливаем альтернативный текст
+            img.width = 222; // Устанавливаем ширину
+            img.height = 'auto'; // Устанавливаем высоту
+
+            img.classList.add('collection-img'); // Добавляем класс для отслеживания
+
+            // Вставляем изображение перед первым дочерним элементом контейнера
+            if (container.firstChild) {
+                container.insertBefore(img, container.firstChild);
+            } else {
+                container.appendChild(img);
+            }
+
+            console.log('Элемент добавлен');
+
+            // Останавливаем проверку после добавления изображения
+            stopChecking();
+        } else {
+            console.log('Элемент уже существует');
+        }
+    } else {
+        console.log('Контейнер с ID gf-tree не найден');
+    }
+}
+
+// Функция для остановки проверки
+function stopChecking() {
+    clearInterval(checkContainerInterval);
+    console.log('Проверка остановлена');
+}
+
+// Запускаем проверку каждые 500 миллисекунд
+checkContainerInterval = setInterval(addCollectionImage, 500);
+
+// Дополнительная проверка и остановка через 30 секунд
+setTimeout(stopChecking, 30000);
+
+</script>
 {% schema %}
 {
   "name": "t:sections.main-collection-product-grid.name",

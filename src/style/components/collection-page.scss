@@ -1,0 +1,294 @@
+.collection.page-width {
+    .pagination-wrapper {
+        display: none;
+    }
+
+    .collection-img {
+        width: 222px !important;
+        height: auto !important;
+        margin-bottom: 30px !important;
+    }
+}
+
+#gf-tree {
+
+    .gf-filter-header,
+    .globo-selected-items-wrapper,
+    .gf-filter-contents,
+    .gf-filter-footer {
+        background: #FAFAFA;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .gf-block-title {
+        font-family: 'Barlow' !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        line-height: 19.2px !important;
+        text-align: left !important;
+        color: #363636 !important;
+
+        .h3:after {
+            margin-right: 10px !important;
+            float: right !important;
+        }
+
+        .gf-refine-toggle {
+            font-family: 'Nova-400' !important;
+            font-size: 14px !important;
+            line-height: 17.05px !important;
+            letter-spacing: -0.03em !important;
+            text-align: left !important;
+            color: #3592FF !important;
+            text-decoration: underline !important;
+        }
+
+    }
+
+    .gf-block-content {
+        .gf-option-box {
+            li {
+                button {
+                    .gf-label {
+                        font-family: 'Nova-300';
+                        font-size: 16px;
+                        line-height: 24px;
+                        text-align: left;
+                        color: #363636;
+
+                    }
+                }
+            }
+        }
+
+        .checked .gf-RadioButton:before {
+            content: "";
+            height: 6.2px;
+            width: 8px;
+            background: none;
+            top: 5px;
+            left: 6px;
+            background-image: url('/assets/icon-check.svg');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .gf-RadioButton {
+            width: 20px !important;
+            height: 20px !important;
+            border: 1px solid #9F9F9F;
+            border-radius: 3px !important;
+            margin-right: 8px;
+            flex: 0 0 20px !important;
+        }
+
+        .checked[aria-checked="true"] {
+            .gf-RadioButton {
+                background-color: #00C08B;
+                border: 1px solid #00C08B !important;
+            }
+
+            .gf-label {
+                font-family: 'Nova-400';
+                color: #00C08B;
+
+            }
+
+        }
+    }
+
+    .globo-selected-items-wrapper {
+        padding-top: 30px;
+
+        .globo-selected-items {
+
+            padding: 20px 0 !important;
+            border-bottom: 1px solid #f0f0f0 !important;
+        }
+
+        .selected-item.gf-option-label {
+            justify-content: flex-start;
+            width: fit-content;
+            padding: 3px 10px 3px 10px !important;
+            gap: 10px;
+            border-radius: 3px;
+            background: #E4F2F8 !important;
+            margin-bottom: 8px !important;
+
+            .selected-item {
+                font-family: 'Nova-300' !important;
+                font-size: 14px !important;
+                line-height: 24px !important;
+                text-align: left !important;
+                color: #363636 !important;
+
+                span {
+                    display: none;
+                }
+
+                strong {
+                    span {
+                        display: block;
+                    }
+                }
+
+
+            }
+
+            .gf-clear {
+                margin-left: 10px !important;
+                margin-right: 0px !important;
+
+                svg {
+                    path {
+                        fill: #9F9F9F !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#gf-controls-container {
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+
+    .gf-controls-search-form {
+        max-width: 420px;
+        width: 100%;
+        height: 50px;
+
+        input.gf-controls-search-input {
+            height: auto;
+            font-family: 'Nova-300';
+            font-size: 16px;
+            line-height: 19.49px;
+            text-align: left;
+            color: #2F2F2F;
+
+        }
+
+        .gf-controls-search-button {
+            left: auto;
+            right: 0;
+
+        }
+
+        .gf-controls-clear-button {
+            right: 40px;
+        }
+    }
+
+    .gf-summary.custom {
+        flex: none;
+        font-family: 'Nova-300';
+        font-size: 16px;
+        text-align: left;
+        color: #2F2F2F;
+        display: flex;
+        gap: 7px;
+        height: 50px;
+        align-items: center;
+
+        b {
+            font-family: 'Nova-600';
+            font-size: 16px;
+            text-align: left;
+            color: #2F2F2F;
+        }
+    }
+
+    .gf-actions {
+        .gf-filter-selection {
+            height: 50px;
+
+            .sort-by.limit-by {
+                label {
+                    font-family: 'Nova-300';
+                    font-size: 16px;
+                    line-height: 19.49px;
+                    text-align: left;
+                    color: #2F2F2F;
+                    margin: 0 0px 0 15px;
+                }
+
+                .sortby-select {
+                    font-family: 'Nova-300';
+                    font-size: 16px;
+                    line-height: 19.49px;
+                    text-align: left;
+                    color: #2F2F2F;
+                    padding: 0px 38px 0 14.5px !important;
+                }
+            }
+
+            .sort-by:before {
+                right: 14.5px;
+                top: -1px;
+            }
+
+            .sort-by {
+                align-items: center;
+
+                .sort-by-toggle {
+                    padding: 0px 38px 0 15px;
+                    display: flex;
+                    gap: 10px;
+
+                    .sort-selected {
+                        font-family: 'Nova-300';
+                    }
+
+                    span {
+                        font-family: 'Nova-600';
+                        font-size: 16px;
+                        text-align: left;
+                        color: #2F2F2F;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+// cart product in collection
+.spf-product-card {
+    .jdgm-widget.jdgm-preview-badge{
+        margin-bottom: 23px;
+    }
+
+    .jdgm-prev-badge__text {
+        font-family: 'Nova-400';
+        font-size: 14px;
+        color: #6A6A6A;
+        display: inline-block;
+        visibility: visible;
+        position: relative;
+        padding-left: 10px;
+        padding-right: 10px;
+        
+    }
+
+    .jdgm-prev-badge__text::before {
+        content: "(";
+        position: absolute;
+        left: 0;
+    }
+
+    .jdgm-prev-badge__text::after {
+        content: ")";
+        position: absolute;
+        right: 0;
+    }
+
+    .jdgm-prev-badge[data-average-rating="0.00"] {
+        .jdgm-star {
+            color: grey;
+        }
+    }
+
+   
+}
