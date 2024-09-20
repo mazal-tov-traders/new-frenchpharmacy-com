@@ -29,6 +29,10 @@
     <div
         class="spf-product-card spf-product-card__center spf-product-card__template-2{% unless product.available %} spf-soldout{% endunless %}">
         <div class="spf-product-card__inner">
+
+            
+               
+ 
             {%- unless product.available -%}
             <span translatable class="spf-product__label spf-product__label-soldout">{{translation.product.sold_out |
                 default: "Sold out"}}</span> {%- endunless -%}
@@ -39,6 +43,14 @@
                         d="M1664 960q-152-236-381-353 61 104 61 225 0 185-131.5 316.5t-316.5 131.5-316.5-131.5-131.5-316.5q0-121 61-225-229 117-381 353 133 205 333.5 326.5t434.5 121.5 434.5-121.5 333.5-326.5zm-720-384q0-20-14-34t-34-14q-125 0-214.5 89.5t-89.5 214.5q0 20 14 34t34 14 34-14 14-34q0-86 61-147t147-61q20 0 34-14t14-34zm848 384q0 34-20 69-140 230-376.5 368.5t-499.5 138.5-499.5-139-376.5-368q-20-35-20-69t20-69q140-229 376.5-368t499.5-139 499.5 139 376.5 368q20 35 20 69z" />
                 </svg></a> <a class="spf-product-card__image-wrapper{% if images_count > 1 %} hover-effect{% endif %}"
                 href="{{root_url}}{{ product.url }}{{variant_url}}" style="padding-top:100%; padding-top:100%;">
+
+                {% assign original_price = product_compare_at_price %}
+                {% assign sale_price = product_price %}
+                {% if original_price > sale_price %}
+                {% assign discount_percentage = original_price | minus: sale_price | times: 100 | divided_by: original_price %}
+                <span class="discount-percentage">SALE {{ discount_percentage | round }}%</span>
+                {% endif %}
+
                 {%- if images_count > 0 -%}
                 {%- for image in product.images -%}
                 <img data-variants="{% if image.variant_ids %}{{image.variant_ids | join: ','}}{% endif %}"
@@ -72,24 +84,111 @@
         <div class="spf-product__info">
             <div class="jdgm-widget jdgm-preview-badge" data-id="{{ product.id }}" data-template="manual-installation"
                 data-auto-install="false">{{product.metafields.judgeme.badge}}</div>
+                <div class="product-vendor">{{ product.vendor }}</div>
             <div class="h4 spf-product-card__title">
                 <a translatable href="{{root_url}}{{ product.url }}{{variant_url}}">{{product.title}}</a>
             </div>
 
-            <div class="spf-product-card__price-wrapper">
-                {%- if product_compare_at_price > product_price -%}
-                <span
-                    class="spf-product-card__oldprice{% unless currencyFormat contains 'money' %} money{% endunless %}">{{
-                    product_compare_at_price | money }}</span>
-                <span
-                    class="spf-product-card__saleprice{% unless currencyFormat contains 'money' %} money{% endunless %}">{{
-                    product_price | money }}</span>
-                {%- else -%}
-                <span
-                    class="spf-product-card__price{% unless currencyFormat contains 'money' %} money{% endunless %}">{{
-                    product_price | money }}</span>
-                {%- endif -%}
-            </div>
+
+    {%- liquid
+        if use_variant
+        assign target = product.selected_or_first_available_variant
+    else
+        assign target = product
+    endif
+
+    assign compare_at_price = target.compare_at_price
+    assign price = target.price | default: 1999
+    assign price_min = product.price_min
+    assign price_max = product.price_max
+    assign available = target.available | default: false
+    assign money_price = price | money
+    assign money_price_min = price_min | money
+    assign money_price_max = price_max | money
+    if settings.currency_code_enabled
+    assign money_price = price | money_with_currency
+    assign money_price_min = price_min | money_with_currency
+    assign money_price_max = price_max | money_with_currency
+    endif
+
+    if target == product and product.price_varies
+        assign money_price = 'products.product.price.from_price_html' | t: price: money_price
+    endif
+    -%}
+
+    <div class="price
+        {%- if price_class %} {{ price_class }}{% endif -%}
+        {%- if available == false %} price--sold-out {% endif -%}
+        {%- if compare_at_price > price %} price--on-sale {% endif -%}
+        {%- if product.price_varies == false and product.compare_at_price_varies %} price--no-compare{% endif -%}
+        {%- if show_badges %} price--show-badge{% endif -%}
+    ">
+    <div class="price__container">
+    <div class="price__regular">
+      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
+      <span class="price-item price-item--regular">
+        {% assign money_price = money_price | split: '.' %}
+        {% assign afterZero = money_price[1] | prepend: '.<sup class="price-item_regular_cent">' | append: '</sup>' %}
+        {% assign money_price = money_price[0] | append: afterZero %}
+        {{ money_price }}
+      </span>
+    </div>
+
+    <div class="price__sale">
+      <span class="price-item price-item--sale price-item--last">
+        {{ money_price }}
+      </span>
+      <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
+      {%- unless product.price_varies == false and product.compare_at_price_varies %}
+        <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
+        <span>
+          <s class="price-item price-item--regular">
+            {% assign compare_at_price_string = compare_at_price | money %}
+
+            {% assign money_price_parts = compare_at_price_string | split: '.' %}
+            {% assign whole_part = money_price_parts[0] %}
+            {% assign fractional_part = money_price_parts[1]
+              | prepend: '.<sup class="price-item_sale_cent">'
+              | append: '</sup>'
+            %}
+
+            {% if settings.currency_code_enabled %}
+              {{ whole_part -}}
+              {{- fractional_part }}
+              {% comment %} {{ settings.currency_code }} {% endcomment %}
+            {% else %}
+              {{ whole_part -}}
+              {{- fractional_part }}
+            {% endif %}
+          </s>
+        </span>
+      {%- endunless -%}
+    </div>
+    <small class="unit-price caption{% if product.selected_or_first_available_variant.unit_price_measurement == nil %} hidden{% endif %}">
+      <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+      <span class="price-item price-item--last">
+        <span>{{- product.selected_or_first_available_variant.unit_price | money -}}</span>
+        <span aria-hidden="true">/</span>
+        <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+        <span>
+          {%- if product.selected_or_first_available_variant.unit_price_measurement.reference_value != 1 -%}
+            {{- product.selected_or_first_available_variant.unit_price_measurement.reference_value -}}
+          {%- endif -%}
+          {{ product.selected_or_first_available_variant.unit_price_measurement.reference_unit }}
+        </span>
+      </span>
+    </small>
+  </div>
+  {%- if show_badges -%}
+    <span class="badge price__badge-sale color-{{ settings.sale_badge_color_scheme }}">
+      {{ 'products.product.on_sale' | t }}
+    </span>
+
+    <span class="badge price__badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}">
+      {{ 'products.product.sold_out' | t }}
+    </span>
+  {%- endif -%}
+    </div>
         </div>
 
         <form class="spf-product__form" action="{{ root_url }}/cart/add" method="post">

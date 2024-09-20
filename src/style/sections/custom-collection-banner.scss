@@ -1,0 +1,123 @@
+.custom-collection-banner {
+    display: flex;
+    align-items: center;
+
+    .collection-hero__inner {
+        display: flex;
+        justify-content: space-between;
+        gap: 105px;
+        padding: 69.5px 35px 80px;
+    }
+
+    .collection-banner_left-inner {
+        max-width: 440px;
+
+        .icon-collection-banner {
+            margin-bottom: 24px;
+        }
+
+        .collection__title {
+            font-family: 'Barlow';
+            font-size: 34px;
+            font-weight: 400;
+            line-height: 40.8px;
+            text-align: left;
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            max-width: 400px;
+        }
+
+        .collection__content {
+            font-family: 'Nova-400';
+            font-size: 18px;
+            line-height: 24px;
+            text-align: left;
+            color: #fff;
+        }
+
+        .collection__content-green {
+
+            font-family: 'Nova-400';
+            font-size: 18px;
+            line-height: 24px;
+            text-align: left;
+            color: #00C08B;
+           
+        }
+
+        .link_anchor {
+            font-family:'Nova-400';
+            font-size: 16px;
+            line-height: 19.49px;
+            letter-spacing: -0.03em;
+            text-align: left;
+            display: flex;
+            gap: 10px;
+            color: #fff;
+            transition: color .5s, transform .5s ease-in-out;
+            align-items: center;
+            margin-top: 40px;
+              svg{
+                transform: rotate(325deg);
+                stroke: #fff;
+                transition: color .5s, transform .5s ease-in-out;
+              } 
+                  
+            
+            &:hover {
+                color: #ff5c35;
+                svg {
+                    stroke: #ff5c35;
+                    transform: rotate(360deg);
+                }
+            } 
+        }
+    }
+
+    .collection-banner_right-inner {
+        margin-top: 10.5px;
+        max-width: 745px;
+        width: 100%;
+        padding: 55px 60px;
+        background-color: rgba(255, 255, 255, 0.2);
+
+        .collection-hero__description {
+            ul {
+                padding: 0;
+                margin: 0;
+
+                li {
+
+                    font-family: 'Nova-300';
+                    font-size: 16px;
+                    line-height: 24px;
+                    text-align: left;
+                    gap: 15px;
+                    list-style: none;
+                    margin-bottom: 15px;
+                    position: relative;
+                    padding-left: 25px;
+                    color: #fff;
+                }
+
+                li:last-of-type {
+                    margin-bottom: 0px;
+                }
+
+                li::before {
+                    content: '';
+                    width: 10px;
+                    height: 10px;
+                    background-image: url('/assets/li-marker.svg');
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    left: 0;
+                    top: 7px;
+                }
+            }
+        }
+    }
+
+}

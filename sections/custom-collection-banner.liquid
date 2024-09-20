@@ -1,0 +1,62 @@
+<div class="custom-collection-banner">
+  <div class="collection-hero__inner page-width">
+    <div class="collection-banner_left-inner">
+      <img
+        src="{{ collection.metafields.custom.brand_icon_for_banner | image_url: width: 160 }}"
+        alt="icon collection"
+        class="icon-collection-banner"
+        width="160"
+        height="auto"
+      >
+      <h3 class="collection__title">{{ collection.metafields.custom.title | metafield_tag }}</h3>
+      <div class="collection__content">{{ collection.metafields.custom.content_for_banner | metafield_tag }}</div>
+      <div class="collection__content-green">
+        {{ collection.metafields.custom.green_text_for_banner | metafield_tag }}
+      </div>
+      <a class='link_anchor' href='#gf-controls-container'>Shop Now <span class="icon-wrap">{% render 'icon-arrow' %}</span></a>
+    </div>
+    <div class="collection-banner_right-inner">
+      {%- if section.settings.show_collection_description -%}
+        <div class="collection-hero__description rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+      .custom-collection-banner{
+        background-image: url({{ collection.metafields.custom.banner_for_collection | image_url: width: 1920 }});
+        max-width: 1920px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin: 0 auto;
+        min-height: 665px;
+      }
+  }
+{%- endstyle -%}
+{% schema %}
+{
+  "name": "Custom collection banner",
+  "class": "section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.main-collection-banner.settings.paragraph.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_description",
+      "default": true,
+      "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom collection banner",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

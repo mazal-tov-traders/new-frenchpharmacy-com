@@ -8,9 +8,32 @@
         height: auto !important;
         margin-bottom: 30px !important;
     }
+
+    #gf-tree:not(.spf-hidden)+#gf-grid {
+        max-width: 1023px;
+        width: 100%;
+        padding-left: 0px !important;
+    }
+}
+
+#gf-grid {
+    #gf-products {
+        margin-top: 50px;
+        margin-right: 0px !important;
+        margin-left: 0px !important;
+        justify-content: space-between;
+        margin-bottom: 75px;
+
+        .spf-col-md-4 {
+            max-width: 222px !important;
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+    }
 }
 
 #gf-tree {
+    width: 222px !important;
 
     .gf-filter-header,
     .globo-selected-items-wrapper,
@@ -22,12 +45,15 @@
     }
 
     .gf-block-title {
-        font-family: 'Barlow' !important;
-        font-size: 16px !important;
-        font-weight: 500 !important;
-        line-height: 19.2px !important;
-        text-align: left !important;
-        color: #363636 !important;
+        .h3 {
+            font-family: 'Barlow' !important;
+            font-size: 16px !important;
+            font-weight: 500 !important;
+            line-height: 19.2px !important;
+            text-align: left !important;
+            color: #363636 !important;
+        }
+
 
         .h3:after {
             margin-right: 10px !important;
@@ -97,13 +123,21 @@
 
         }
     }
-
+    .gf-option-block{
+        padding: 19px 0 14px 0 !important;
+        .gf-block-content{
+            margin-top: 15px;
+            ul li button {
+                padding: 5px 0;
+            }
+        }
+    }
     .globo-selected-items-wrapper {
-        padding-top: 30px;
-
+        padding-top: 27px;
+        
         .globo-selected-items {
 
-            padding: 20px 0 !important;
+            padding: 12px 0 !important;
             border-bottom: 1px solid #f0f0f0 !important;
         }
 
@@ -159,6 +193,7 @@
         max-width: 420px;
         width: 100%;
         height: 50px;
+        transform: translatex(-44px);
 
         input.gf-controls-search-input {
             height: auto;
@@ -167,13 +202,16 @@
             line-height: 19.49px;
             text-align: left;
             color: #2F2F2F;
-
+            border: none;
+            background: #F8F8F8;
+            padding: 15px 70px 12px 24px;
+            cursor: pointer;
         }
 
         .gf-controls-search-button {
             left: auto;
             right: 0;
-
+            padding: 8px 11px 2px 3px !important;
         }
 
         .gf-controls-clear-button {
@@ -188,9 +226,10 @@
         text-align: left;
         color: #2F2F2F;
         display: flex;
-        gap: 7px;
+        gap: 4px;
         height: 50px;
         align-items: center;
+        padding-left: 0px !important;
 
         b {
             font-family: 'Nova-600';
@@ -203,12 +242,15 @@
     .gf-actions {
         .gf-filter-selection {
             height: 50px;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
 
             .sort-by.limit-by {
+                margin-right: 20px;
+
                 label {
                     font-family: 'Nova-300';
                     font-size: 16px;
-                    line-height: 19.49px;
                     text-align: left;
                     color: #2F2F2F;
                     margin: 0 0px 0 15px;
@@ -217,16 +259,15 @@
                 .sortby-select {
                     font-family: 'Nova-300';
                     font-size: 16px;
-                    line-height: 19.49px;
                     text-align: left;
                     color: #2F2F2F;
-                    padding: 0px 38px 0 14.5px !important;
+                    padding: 0px 39px 0 4.5px !important;
                 }
             }
 
             .sort-by:before {
-                right: 14.5px;
-                top: -1px;
+                right: 9.5px;
+                top: 0px;
             }
 
             .sort-by {
@@ -256,8 +297,8 @@
 
 // cart product in collection
 .spf-product-card {
-    .jdgm-widget.jdgm-preview-badge{
-        margin-bottom: 23px;
+    .jdgm-widget.jdgm-preview-badge {
+        margin-bottom: 17px;
     }
 
     .jdgm-prev-badge__text {
@@ -267,9 +308,9 @@
         display: inline-block;
         visibility: visible;
         position: relative;
-        padding-left: 10px;
-        padding-right: 10px;
-        
+        padding-left: 5px;
+        padding-right: 5px;
+
     }
 
     .jdgm-prev-badge__text::before {
@@ -290,5 +331,123 @@
         }
     }
 
-   
+    .jdgm-prev-badge {
+        display: flex !important;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .jdgm-star {
+        padding: 0px 4px 0 0 !important;
+        font-size: 13px;
+    }
+
+    .product-vendor {
+        font-family: 'Nova-400';
+        font-size: 14px;
+        line-height: 14px;
+        letter-spacing: 0.03em;
+        text-align: center;
+        color: #6A6A6A;
+        margin-bottom: 10px;
+
+    }
+
+    .h4.spf-product-card__title {
+        margin-bottom: 15px !important;
+
+        a {
+            font-family: 'Nova-400' !important;
+            font-size: 18px !important;
+            line-height: 24px !important;
+            text-align: center !important;
+            color: #2F2F2F !important;
+
+        }
+
+    }
+
+    .price-item {
+        font-family: 'Nova-600';
+        font-size: 18px;
+        line-height: 26px;
+        letter-spacing: -0.03em;
+        text-align: left;
+        color: #2F2F2F;
+
+        .price-item_regular_cent {}
+    }
+
+    s.price-item {
+        font-family: 'Nova-300';
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: -0.03em;
+        text-align: left;
+        color: #9F9F9F;
+
+        .price-item_sale_cent {}
+    }
+
+    .spf-product__form-btn-addtocart {
+        margin-top: 27px !important;
+        width: 100%;
+        border: 1px solid #9f9f9f !important;
+        height: 50px !important;
+
+        i {
+            display: none !important;
+        }
+
+        span {
+            font-family: 'Nova-400' !important;
+            font-size: 14px !important;
+            letter-spacing: -0.03em !important;
+            color: #6A6A6A;
+
+        }
+    }
+
+    .spf-product__form-btn-addtocart:hover {
+        border: 1px solid #FF5C35 !important;
+        background: #FF5C35 !important;
+
+        span {
+            color: #fff !important;
+        }
+    }
+
+    .spf-product__label.spf-product__label-soldout {
+        display: none;
+    }
+
+    .spf-product-card__image-wrapper {
+        position: relative;
+
+        .discount-percentage {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 121;
+            padding: 4px 10px;
+            background: #00C08B;
+            color: #fff;
+            font-family: 'Nova-700';
+            font-size: 12px;
+            line-height: 12px;
+            text-align: center;
+            text-transform: uppercase;
+
+        }
+    }
+
+    .spf-product-card__inner {
+        padding-bottom: 18px;
+        border-bottom: 1px solid #F0F0F0;
+    }
+
+    .spf-product__info {
+        padding-top: 20px;
+    }
+
 }
