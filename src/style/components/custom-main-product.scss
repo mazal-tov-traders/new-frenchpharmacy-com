@@ -1,4 +1,3 @@
-
 .thumbnail__badge-video {
     position: absolute;
     top: 50%;
@@ -97,21 +96,45 @@ button.thumbnail[aria-current="true"] {
 .global-media-settings {
     border: 1px solid #9F9F9F !important;
 }
+
 .price {
     .badge {
         display: none;
     }
 }
-.product-form__input.product-form__quantity{
+
+.product-form__input.product-form__quantity {
     width: 49%;
     margin-right: -4px;
     vertical-align: top;
     display: inline-block;
 }
 
-variant-selects{
+variant-selects {
     width: 49%;
     margin-right: -4px;
     vertical-align: top;
     display: inline-block !important;
 }
+
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+.page-width.vertival-slider{
+    display: flex;
+    gap: 20px;
+    .swiper-vertical {
+        width: 25%;
+        overflow-y: clip;
+        .swiper-button-next{
+            top: 0;
+        }
+        .swiper-button-prev {
+           bottom: 0;
+        }
+        .swiper-slide {
+            width: 100%;
+        }
+    }
+}
+
