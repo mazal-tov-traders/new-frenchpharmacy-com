@@ -119,22 +119,4 @@ variant-selects {
 
 
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-.page-width.vertival-slider{
-    display: flex;
-    gap: 20px;
-    .swiper-vertical {
-        width: 25%;
-        overflow-y: clip;
-        .swiper-button-next{
-            top: 0;
-        }
-        .swiper-button-prev {
-           bottom: 0;
-        }
-        .swiper-slide {
-            width: 100%;
-        }
-    }
-}
 

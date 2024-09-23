@@ -25,71 +25,6 @@
     }
 
     @media screen and (min-width: 750px) {
-      /* enable arrows */
-
-
-
-      {% if section.settings.gallery_layout == 'thumbnail_slider' %}
-        .product--thumbnail .product__media-item:not(.is-active),
-        .product--thumbnail_slider .product__media-item:not(.is-active)
-      {
-        display:block !important;
-      }
-      .product{ .slider-buttons {
-       position: absolute;
-       bottom: 0;
-       right: 0;
-       background: wheat;
-       display: flex !important;
-       z-index: 999;
-      }
-    }
-      .enable_desktop_slider li{
-        width:calc(100% - 3rem)!important;
-      }
-      {% endif %}
-
-      /* if vertical slider */
-
-      {% if section.settings.gallery_layout == 'thumbnail_slider' and section.settings.enable_vertical_slider  %}
-        [data-desktop-layout="thumbnail_slider"] {
-            display: flex;
-            flex-direction: row-reverse;
-        }
-        slider-component{
-            width:90%;
-            height:fit-content;
-        }
-        .thumbnail-slider{
-            align-items: start;
-        }
-        .thumbnail-slider .thumbnail-list.slider--tablet-up {
-            flex-direction: column;
-            padding-top: 0;
-            overflow-y: auto;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            max-height: 365px;
-        }
-        .thumbnail-list.slider--tablet-up .thumbnail-list__item.slider__slide {
-            width: calc(100% - .8rem);
-            align-self: center;
-        }
-        .product{
-        .slider-button {
-            display: none !important;
-        }
-      }
-        .enable_desktop_slider {
-            margin-bottom: 0;
-        }
-        .enable_desktop_slider + .slider-buttons .slider-button {
-            display: block !important;
-        }
-      {% endif %}
-
-      /* end */
       .section-{{ section.id }}-padding {
         padding-top: {{ section.settings.padding_top }}px;
         padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -2281,13 +2216,6 @@
       ],
       "default": "stacked",
       "label": "t:sections.main-product.settings.gallery_layout.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_vertical_slider",
-      "default": false,
-      "label": "Vertical Slider",
-      "info": "Desctop layout needs to be thumbnail carousel"
     },
     {
       "type": "select",
