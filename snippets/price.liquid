@@ -50,7 +50,7 @@
   <div class="price__container">
     <div class="price__regular">
       <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
-      <span class="price-item price-item--regular">
+      <span class="js-price price-item price-item--regular">
         {% assign money_price = money_price | split: '.' %}
         {% assign afterZero = money_price[1] | prepend: '.<sup class="price-item_regular_cent">' | append: '</sup>' %}
         {% assign money_price = money_price[0] | append: afterZero %}

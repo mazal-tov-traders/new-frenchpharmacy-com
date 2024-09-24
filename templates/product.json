@@ -23,7 +23,7 @@
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
-            "picker_type": "button",
+            "picker_type": "dropdown",
             "swatch_shape": "circle"
           }
         },
@@ -44,15 +44,22 @@
           "settings": {
           }
         },
-        "share": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
-        },
         "judge_me_reviews_preview_badge_YXGE3n": {
           "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
+          }
+        },
+        "complementary_KnT8UV": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "inseparable...",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 1,
+            "products_per_page": 1,
+            "pagination_style": "counter",
+            "image_ratio": "portrait",
+            "enable_quick_add": false
           }
         }
       },
@@ -64,8 +71,8 @@
         "quantity_selector",
         "buy_buttons",
         "description",
-        "share",
-        "judge_me_reviews_preview_badge_YXGE3n"
+        "judge_me_reviews_preview_badge_YXGE3n",
+        "complementary_KnT8UV"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -74,6 +81,7 @@
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
+        "enable_vertical_slider": false,
         "media_position": "left",
         "image_zoom": "lightbox",
         "mobile_thumbnails": "hide",
@@ -168,6 +176,22 @@
         "trigger": "Product videos",
         "icon": "shopify:\/\/shop_images\/fi_15524184.svg"
       }
+    },
+    "1727176305776667ed": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_medals_XDDgPd": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/medals\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_medals_XDDgPd"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -179,6 +203,7 @@
     "section_for_tabs_jNJQHw",
     "section_for_tabs_n3Mxpa",
     "section_for_tabs_JfCzTx",
-    "section_for_tabs_Ujmz7W"
+    "section_for_tabs_Ujmz7W",
+    "1727176305776667ed"
   ]
 }
