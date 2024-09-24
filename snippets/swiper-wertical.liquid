@@ -1,0 +1,146 @@
+{%- liquid
+  if section.settings.hide_variants and variant_images.size == product.media.size
+    assign single_media_visible = true
+  endif
+
+  if limit == 1
+    assign single_media_visible = true
+  endif
+
+  assign media_count = product.media.size
+  if section.settings.hide_variants and media_count > 1 and variant_images.size > 0
+    assign media_count = media_count | minus: variant_images.size | plus: 1
+  endif
+
+  if media_count == 1 or single_media_visible
+    assign single_media_visible_mobile = true
+  endif
+
+  if media_count == 0 or single_media_visible_mobile or section.settings.mobile_thumbnails == 'show' or section.settings.mobile_thumbnails == 'columns' and media_count < 3
+    assign hide_mobile_slider = true
+  endif
+
+  if section.settings.media_size == 'large'
+    assign media_width = 0.65
+  elsif section.settings.media_size == 'medium'
+    assign media_width = 0.55
+  elsif section.settings.media_size == 'small'
+    assign media_width = 0.45
+  endif
+-%}
+
+<div class="media-galeree-swiper">
+  <div
+    thumbsSlider=""
+    class="swiper mySwiper"
+  >
+    <div
+      class="swiper-wrapper"
+    >
+      {%- for media in product.media -%}
+        <div
+          class="swiper-slide"
+        >{%- if media.media_type == 'model' -%}
+          <span class="thumbnail__badge" aria-hidden="true">
+            {%- render 'icon-3d-model' -%}
+          </span>
+        {%- elsif media.media_type == 'video' or media.media_type == 'external_video' -%}
+          <span class="thumbnail__badge-video" aria-hidden="true">
+            {%- render 'icon-play-video' -%}
+          </span>
+        {%- endif -%}
+          {{
+            media.preview_image
+            | image_url: width: 416
+            | image_tag:
+              loading: 'lazy',
+              sizes: sizes,
+              widths: '54, 74, 104, 162, 208, 324, 416',
+              id: thumbnail_id,
+              alt: media.alt
+            | escape
+          }}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+    <div
+      class="swiper-wrapper"
+    >
+      {%- for media in product.media -%}
+        <div
+          class="swiper-slide"
+        >
+          
+          {% render 'product-thumbnail', media: media, modal_id: section.id %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+  <div class="swiper-btn-next">{%  render "arrow-down" %}</div>
+</div>
+
+<style>
+  .mySwiper .swiper-slide-thumb-active {
+    opacity: 1;
+  }
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+// Инициализация первого слайдера (миниатюры)
+var swiperThumbs = new Swiper('.mySwiper', {
+  direction: 'vertical',
+  loop: true,
+  spaceBetween: 5,
+  slidesPerView: 4,
+  freeMode: true,
+  watchSlidesProgress: true,
+});
+
+// Инициализация второго слайдера (главный слайдер)
+var swiperMain = new Swiper('.mySwiper2', {
+  loop: true,
+  spaceBetween: 10,
+  navigation: {
+    nextEl: '.swiper-btn-next',
+  },
+  thumbs: {
+    swiper: swiperThumbs,
+  },
+  on: {
+    slideChange: function () {
+      // Получаем индекс активного слайда
+      const activeIndex = this.activeIndex;
+
+      // Получаем все слайды
+      const slides = this.slides;
+
+      // Проходимся по всем слайдам
+      slides.forEach((slide, index) => {
+        // Ищем видео внутри слайда
+        const video = slide.querySelector('video');
+        if (video) {
+          if (index === activeIndex) {
+            // Оставляем видео как есть, если слайд активен
+            return;
+          } else {
+            // Ставим видео на паузу для всех неактивных слайдов
+            video.pause();
+            video.currentTime = 0; // Сбрасываем время к началу
+          }
+        }
+      });
+    }
+  }
+});
+
+</script>

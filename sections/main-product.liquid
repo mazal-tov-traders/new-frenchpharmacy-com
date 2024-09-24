@@ -25,71 +25,6 @@
     }
 
     @media screen and (min-width: 750px) {
-      /* enable arrows */
-
-
-
-      {% if section.settings.gallery_layout == 'thumbnail_slider' %}
-        .product--thumbnail .product__media-item:not(.is-active),
-        .product--thumbnail_slider .product__media-item:not(.is-active)
-      {
-        display:block !important;
-      }
-      .product{ .slider-buttons {
-       position: absolute;
-       bottom: 0;
-       right: 0;
-       background: wheat;
-       display: flex !important;
-       z-index: 999;
-      }
-    }
-      .enable_desktop_slider li{
-        width:calc(100% - 3rem)!important;
-      }
-      {% endif %}
-
-      /* if vertical slider */
-
-      {% if section.settings.gallery_layout == 'thumbnail_slider' and section.settings.enable_vertical_slider  %}
-        [data-desktop-layout="thumbnail_slider"] {
-            display: flex;
-            flex-direction: row-reverse;
-        }
-        slider-component{
-            width:90%;
-            height:fit-content;
-        }
-        .thumbnail-slider{
-            align-items: start;
-        }
-        .thumbnail-slider .thumbnail-list.slider--tablet-up {
-            flex-direction: column;
-            padding-top: 0;
-            overflow-y: auto;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            max-height: 365px;
-        }
-        .thumbnail-list.slider--tablet-up .thumbnail-list__item.slider__slide {
-            width: calc(100% - .8rem);
-            align-self: center;
-        }
-        .product{
-        .slider-button {
-            display: none !important;
-        }
-      }
-        .enable_desktop_slider {
-            margin-bottom: 0;
-        }
-        .enable_desktop_slider + .slider-buttons .slider-button {
-            display: block !important;
-        }
-      {% endif %}
-
-      /* end */
       .section-{{ section.id }}-padding {
         padding-top: {{ section.settings.padding_top }}px;
         padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -132,9 +67,9 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+    <div class="product custom-product-info product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
       <div class="grid__item product__media-wrapper">
-        {% render 'product-media-gallery-vertical-slider', variant_images: variant_images %}
+        {% render 'swiper-wertical', variant_images: variant_images %}
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <product-info
@@ -144,11 +79,8 @@
           class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
-
           {%- for block in section.blocks -%}
             {%- case block.type -%}
-              {%- when '@app' -%}
-                {% render block %}
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -156,6 +88,10 @@
                 >
                   {{- block.settings.text -}}
                 </p>
+            {%- endcase -%}
+          {%- endfor -%}
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
                   <h1>{{ product.title | escape }}</h1>
@@ -165,6 +101,21 @@
                     </h2>
                   </a>
                 </div>
+            {%- endcase -%}
+          {%- endfor -%}
+          <div class="reviews-and-ship_inner">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when '@app' -%}
+                  {% render block %}
+              {%- endcase -%}
+            {%- endfor -%}
+            <span>|</span>
+            <div class="ship_within_usa">{% render 'icon-us' %} All products ship from within the US</div>
+          </div>
+
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -196,6 +147,7 @@
                 </div>
             {%- endcase -%}
           {%- endfor -%}
+
           {% comment %}  {% endcomment %}
           {% if product.metafields.custom_fields.skin_type != blank %}
             <h3 class="Heading u-h3">
@@ -226,7 +178,13 @@
             {% render 'icon-free-ship' %}BUY 2 AND GET <span>FREE SHIPPING</span>
           </h3>
 
-          <div class="ship_within_usa">{% render 'icon-us' %} ALL PRODUCTS SHIP FROM WITHIN THE US</div>
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'variant_picker' -%}
+                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+            {%- endcase -%}
+          {%- endfor -%}
+          
           {% comment %}  {% endcomment %}
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -439,10 +397,9 @@
                     </volume-pricing>
                   {%- endif -%}
                 </div>
-              {%- when 'variant_picker' -%}
-                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
             {%- endcase -%}
           {%- endfor -%}
+          
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'inventory' -%}
@@ -560,44 +517,46 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-              {%- when 'rating' -%}
-                {%- if product.metafields.reviews.rating.value != blank -%}
-                  <div class="rating-wrapper">
-                    {% liquid
-                      assign rating_decimal = 0
-                      assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                      if decimal >= 0.3 and decimal <= 0.7
-                        assign rating_decimal = 0.5
-                      elsif decimal > 0.7
-                        assign rating_decimal = 1
-                      endif
-                    %}
-                    <div
-                      class="rating"
-                      role="img"
-                      aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}"
-                    >
-                      <span
-                        aria-hidden="true"
-                        class="rating-star"
-                        style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
-                      ></span>
+                {% comment %}
+                  {%- when 'rating' -%}
+                  {%- if product.metafields.reviews.rating.value != blank -%}
+                    <div class="rating-wrapper">
+                      {% liquid
+                        assign rating_decimal = 0
+                        assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                        if decimal >= 0.3 and decimal <= 0.7
+                          assign rating_decimal = 0.5
+                        elsif decimal > 0.7
+                          assign rating_decimal = 1
+                        endif
+                      %}
+                      <div
+                        class="rating"
+                        role="img"
+                        aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="rating-star"
+                          style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+                        ></span>
+                      </div>
+                      <p class="rating-text caption">
+                        <span aria-hidden="true">
+                          {{- product.metafields.reviews.rating.value }} /
+                          {{ product.metafields.reviews.rating.value.scale_max -}}
+                        </span>
+                      </p>
+                      <p class="rating-count caption">
+                        <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+                        <span class="visually-hidden">
+                          {{- product.metafields.reviews.rating_count }}
+                          {{ 'accessibility.total_reviews' | t -}}
+                        </span>
+                      </p>
                     </div>
-                    <p class="rating-text caption">
-                      <span aria-hidden="true">
-                        {{- product.metafields.reviews.rating.value }} /
-                        {{ product.metafields.reviews.rating.value.scale_max -}}
-                      </span>
-                    </p>
-                    <p class="rating-count caption">
-                      <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                      <span class="visually-hidden">
-                        {{- product.metafields.reviews.rating_count }}
-                        {{ 'accessibility.total_reviews' | t -}}
-                      </span>
-                    </p>
-                  </div>
-                {%- endif -%}
+                  {%- endif -%}
+                {% endcomment %}
               {%- when 'complementary' -%}
                 <product-recommendations
                   class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"

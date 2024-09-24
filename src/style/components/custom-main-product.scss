@@ -103,20 +103,126 @@ button.thumbnail[aria-current="true"] {
     }
 }
 
-.product-form__input.product-form__quantity {
+
+variant-selects {
+    width: 49%;
+    vertical-align: top;
+
+}
+
+.product-form__quantity{
     width: 49%;
     margin-right: -4px;
     vertical-align: top;
     display: inline-block;
+    .product-form__input {   
+        max-width: 17rem;
+    }
 }
 
-variant-selects {
+div[data-shopify-editor-block*="buy_buttons"] {
     width: 49%;
     margin-right: -4px;
     vertical-align: top;
-    display: inline-block !important;
+    display: inline-block;
+  }
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  ВЕРТИКАЛ СЛАЙДЕР
+.media-galeree-swiper {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    height: 500px;
+
+
+    .swiper-wrapper {
+        box-sizing: border-box;
+    }
+
+    .swiper-btn-next {
+        position: absolute;
+        bottom: 0;
+        left: 50px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        border: 0.6px solid #9F9F9F;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .mySwiper2 {
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .mySwiper {
+        max-width: 134px;
+        width: 100%;
+        margin: 0;
+        height: 415px;
+
+        // .swiper-wrapper{
+        //     height: 415px;
+        // }
+        .swiper-slide {
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100px;
+                border: 1px solid #9F9F9F;
+            }
+        }
+
+        .swiper-slide-thumb-active {
+            img {
+                border: 0.5px solid red;
+            }
+
+        }
+    }
+
+    .deferred-media__poster-button {
+        background-color: transparent;
+        border: none;
+
+        .icon {
+            width: 5rem;
+            height: 5rem;
+        }
+    }
 }
 
+//  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! КАРД ПРОДУКТ 
+.custom-product-info {
+    .reviews-and-ship_inner {
+        display: flex;
+        gap: 30px;
 
+        .shopify-app-block {}
 
+        span {}
 
+        .ship_within_usa {}
+    }
+
+    .price__container {
+        .badge {
+            display: none;
+        }
+    }
+
+    .Heading.u-h3 {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Heading.u-h3.freeshipping {
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    }
+}
