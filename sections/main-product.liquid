@@ -804,45 +804,92 @@
     </script>
   </div>
 </section>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    function updatePrice(element, dataPrice, elementSum) {
-      let quantityInput = Number(element.querySelector('.quantity__input').value);
-      let unitPrice = dataPrice;
+ <script>
+ 
+{% comment %} document.querySelectorAll('.quantity__input').forEach(input => {
+  input.addEventListener('change', (event) => {
+      const newQuantity = parseInt(event.target.value, 10);
+      input.setAttribute('data-cart-quantity', newQuantity);
 
-      if (quantityInput >= 10) {
-        unitPrice *= 0.75;
+      // Получить текущую цену из div с классом product-form__price
+      const priceElement = document.querySelector('.product-form__price');
+      if (priceElement) {
+          // Получаем цену из data-price атрибута (без запятых)
+          const itemPrice = parseFloat(priceElement.getAttribute('data-price'));
+
+          // Рассчитать общую сумму
+          const totalSum = itemPrice * newQuantity;
+
+          // Найти кнопку по классу
+          const addButton = document.querySelector('.js-btn-product-submit');
+          console.log("Общая сумма:", totalSum);
+
+          if (addButton) {
+              // Проверим, какие span элементы присутствуют
+              console.log("Дочерние элементы кнопки:", addButton.children);
+
+              // Обновим текст элемента с ценой
+              const elementSum = addButton.querySelector('.product-form__price_rcp');
+              if (elementSum) {
+                  // Разделяем сумму на целую и дробную части
+                  const integerPart = Math.floor(totalSum);
+                  const decimalPart = (totalSum % 1).toFixed(2).split('.')[1]; // Получаем дробную часть
+
+                  // Обновляем отображение суммы
+                  elementSum.innerHTML = `
+                    <span class="product-form__price_rcp">     
+                      ${integerPart.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.<sup class="price-cent">${decimalPart}</sup>
+                    </span>
+                  `;
+              } else {
+                  console.error("Не найден элемент .product-form__price_rcp внутри кнопки");
+              }
+          } else {
+              console.error("Кнопка с классом .js-btn-product-submit не найдена");
+          }
       }
-
-      const formattedNumber = (Math.ceil(unitPrice) / 100).toFixed(2);
-      const [integerPart, decimalPart] = formattedNumber.split('.');
-
-      elementSum.innerHTML = `
-      <span class="product-form__price_rcp">     
-        $${integerPart}.<sup class="price-cent">${decimalPart}</sup>
-      </span>
-    `;
-    }
-
-    const buttonsWrapper = document.querySelectorAll('.wrapper-baton-and-quantity');
-
-    buttonsWrapper.forEach((element) => {
-      let dataPrice = parseFloat(element.querySelector('.product-form__price').getAttribute('data-price'));
-      let quantityButtons = element.querySelectorAll('.quantity__button');
-      let elementSum = element.querySelector('.product-form__price_rcp');
-      let quantityInputElement = element.querySelector('.quantity__input');
-      quantityInputElement.addEventListener('change', () => {
-        updatePrice(element, dataPrice, elementSum);
-      });
-
-      quantityButtons.forEach((button) => {
-        button.addEventListener('click', () => {
-          updatePrice(element, dataPrice, elementSum);
-        });
-      });
-    });
   });
-</script>
+}); {% endcomment %}
+
+function updatePrice(element, dataPrice, elementSum) {
+  let quantityInput = Number(element.querySelector('.quantity__input').value);
+  let unitPrice = dataPrice;
+
+  // Рассчитать общую сумму
+  const totalSum = unitPrice * quantityInput;
+
+  // Форматируем число для отображения
+  const formattedNumber = (Math.ceil(totalSum) / 100).toFixed(2);
+  const [integerPart, decimalPart] = formattedNumber.split('.');
+
+  // Обновляем отображение суммы
+  elementSum.innerHTML = `
+    <span class="product-form__price_rcp">     
+      $${integerPart}.<sup class="price-cent">${decimalPart}</sup>
+    </span>
+  `;
+}
+
+// Добавляем обработчик событий для всех элементов ввода количества
+document.querySelectorAll('.quantity__input').forEach(input => {
+  input.addEventListener('change', (event) => {
+      const quantityInputElement = event.target;
+      const productElement = quantityInputElement.closest('.product'); // Предполагается, что есть обертка с классом 'product'
+      
+      // Получаем цену из data-price атрибута
+      const priceElement = productElement.querySelector('.product-form__price');
+      const dataPrice = parseFloat(priceElement.getAttribute('data-price'));
+
+      // Находим элемент для отображения итоговой суммы
+      const addButton = document.querySelector('.js-btn-product-submit');
+      const elementSum = addButton.querySelector('.product-form__price_rcp');
+
+      // Обновляем цену
+      updatePrice(productElement, dataPrice, elementSum);
+  });
+});
+</script> 
+
 {% schema %}
 {
   "name": "t:sections.main-product.name",
